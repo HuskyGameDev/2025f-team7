@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-var speed = 250
+var speed = 150
+const SPEED_STANDARD = 150
 @onready var debug = $debug
 @onready var progress_bar = $ProgressBar
 
@@ -38,10 +39,10 @@ func slow():
 	debug.text = "slow"
 	speed = 50
 	await get_tree().create_timer(5).timeout
-	speed = 250
+	speed = SPEED_STANDARD
 
 func stun():
 	debug.text = "stun"
 	speed = 0
 	await get_tree().create_timer(2.5).timeout
-	speed = 250
+	speed = SPEED_STANDARD

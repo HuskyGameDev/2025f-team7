@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6t43grsclomr"]
+[gd_scene load_steps=13 format=3 uid="uid://b6t43grsclomr"]
 
 [ext_resource type="Script" uid="uid://djf1bewdugc0u" path="res://scenes/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/bullet.tscn" id="2_neq0i"]
-[ext_resource type="Script" uid="uid://p0uno3xxi6f6" path="res://scenes/FiniteStateMachine.gd" id="3_qnbj4"]
-[ext_resource type="Script" uid="uid://u2u5ul7o2b20" path="res://scenes/Idle.gd" id="4_r3bxh"]
-[ext_resource type="Script" uid="uid://uhysn1p2xi74" path="res://scenes/5Leaf.gd" id="5_wqpjq"]
-[ext_resource type="Script" uid="uid://ctgsoxfx6qrid" path="res://scenes/4Leaf.gd" id="6_2cdgk"]
-[ext_resource type="Script" uid="uid://b2ai2smah8g0f" path="res://scenes/3Leaf.gd" id="7_qsl3t"]
-[ext_resource type="Script" uid="uid://d1dykoder1h37" path="res://scenes/2Leaf.gd" id="8_qsl3t"]
+[ext_resource type="Script" uid="uid://p0uno3xxi6f6" path="res://scripts/State Machine/FiniteStateMachine.gd" id="3_qnbj4"]
+[ext_resource type="Script" uid="uid://u2u5ul7o2b20" path="res://scripts/Attack Patterns/PlaceholderBoss/Idle.gd" id="4_r3bxh"]
+[ext_resource type="Script" uid="uid://uhysn1p2xi74" path="res://scripts/Attack Patterns/PlaceholderBoss/5Leaf.gd" id="5_wqpjq"]
+[ext_resource type="Script" uid="uid://ctgsoxfx6qrid" path="res://scripts/Attack Patterns/PlaceholderBoss/4Leaf.gd" id="6_2cdgk"]
+[ext_resource type="Script" uid="uid://b2ai2smah8g0f" path="res://scripts/Attack Patterns/PlaceholderBoss/3Leaf.gd" id="7_qsl3t"]
+[ext_resource type="Script" uid="uid://d1dykoder1h37" path="res://scripts/Attack Patterns/PlaceholderBoss/2Leaf.gd" id="8_qsl3t"]
+[ext_resource type="Script" uid="uid://b3ukxtsdwdt7p" path="res://scripts/Attack Patterns/PlaceholderBoss/Fast2Leaf.gd" id="9_2avx2"]
+[ext_resource type="Script" uid="uid://bve5cd884r3v0" path="res://scripts/Attack Patterns/PlaceholderBoss/Slow8Leaf.gd" id="10_5f346"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mihky"]
 size = Vector2(20, 20)
@@ -62,6 +64,12 @@ script = ExtResource("7_qsl3t")
 
 [node name="2Leaf" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("8_qsl3t")
+
+[node name="Fast2Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("9_2avx2")
+
+[node name="Slow8Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("10_5f346")
 
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_entered"]

@@ -4,6 +4,7 @@ func enter():
 	super.enter()
 	owner.alpha = 3
 	owner.bullet_type = 3 # color of bullet
+	owner.speed = 400
 
 func transition():
 	if can_transition:

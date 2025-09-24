@@ -5,6 +5,7 @@ var theta: float = 0.0
 
 @export var bullet_node: PackedScene
 var bullet_type: int = 0
+var speed: int = 100
 
 
 func get_vector(angle):
@@ -18,6 +19,7 @@ func shoot(angle):
 	bullet.position = global_position
 	bullet.direction = get_vector(angle)
 	bullet.set_property(bullet_type)
+	bullet.set_speed(speed)
 	
 	get_tree().current_scene.call_deferred("add_child", bullet)
 

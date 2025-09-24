@@ -4,6 +4,7 @@ func enter():
 	super.enter()
 	owner.alpha = 1.3 # angle of shots
 	owner.bullet_type = 0 # color of bullet
+	owner.speed = 100
 	speed.start()
 
 
