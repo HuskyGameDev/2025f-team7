@@ -25,3 +25,10 @@ func shoot(angle):
 
 func _on_speed_timeout():
 	shoot(theta)
+
+func burst(countCircle, countOut, minVel, maxVel):
+	alpha = 2*PI/countCircle
+	for n in countOut:
+		speed = ((maxVel-minVel)/countOut)*n + minVel
+		for m in countCircle:
+			shoot(theta)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6t43grsclomr"]
+[gd_scene load_steps=14 format=3 uid="uid://b6t43grsclomr"]
 
 [ext_resource type="Script" uid="uid://djf1bewdugc0u" path="res://scenes/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/bullet.tscn" id="2_neq0i"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://d1dykoder1h37" path="res://scripts/Attack Patterns/PlaceholderBoss/2Leaf.gd" id="8_qsl3t"]
 [ext_resource type="Script" uid="uid://b3ukxtsdwdt7p" path="res://scripts/Attack Patterns/PlaceholderBoss/Fast2Leaf.gd" id="9_2avx2"]
 [ext_resource type="Script" uid="uid://bve5cd884r3v0" path="res://scripts/Attack Patterns/PlaceholderBoss/Slow8Leaf.gd" id="10_5f346"]
+[ext_resource type="Script" uid="uid://ml0uv5fw6bj4" path="res://scenes/BurstFlower.gd" id="11_0onds"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mihky"]
 size = Vector2(20, 20)
@@ -70,6 +71,9 @@ script = ExtResource("9_2avx2")
 
 [node name="Slow8Leaf" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("10_5f346")
+
+[node name="BurstFlower" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("11_0onds")
 
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_entered"]

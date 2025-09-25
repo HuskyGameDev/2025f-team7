@@ -7,4 +7,4 @@ func enter():
 
 func transition():
 	if can_transition:
-		get_parent().change_state("Slow8Leaf")
+		get_parent().change_state("BurstFlower")
