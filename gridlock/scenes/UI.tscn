@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=3 uid="uid://0jr31t7q60oj"]
+
+[ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/ui.gd" id="1_5en4g"]
+[ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
+[ext_resource type="Texture2D" uid="uid://culnoxofg3gmk" path="res://assets/sprites/Bomb.png" id="2_ro3t7"]
+[ext_resource type="Texture2D" uid="uid://dkydi42h41a5q" path="res://assets/sprites/hearts/Gray Heart.png" id="3_ua6yw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro3t7"]
+bg_color = Color(0.7411765, 0.76862746, 0.80784315, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
+bg_color = Color(0.92445606, 0.44463834, 0, 1)
+
+[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "BombPBar", "BombLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5en4g")
+full_heart = ExtResource("1_dj8aq")
+empty_heart = ExtResource("3_ua6yw")
+timeLabel = NodePath("PanelContainer/GridContainer/TimeLabel")
+BombPBar = NodePath("PanelContainer/BombContainer/BombBar")
+BombLabel = NodePath("PanelContainer/BombContainer/BombCountLabel")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+
+[node name="HeartContainer" type="GridContainer" parent="PanelContainer"]
+layout_mode = 2
+columns = 6
+
+[node name="HeartTexture" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_dj8aq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HeartTexture2" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_dj8aq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HeartTexture3" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_dj8aq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HeartTexture4" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_dj8aq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HeartTexture5" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_dj8aq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HeartTexture6" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_dj8aq")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="BombContainer" type="GridContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+columns = 3
+
+[node name="BombTexture" type="TextureRect" parent="PanelContainer/BombContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_ro3t7")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="BombCountLabel" type="Label" parent="PanelContainer/BombContainer"]
+layout_mode = 2
+text = "x0"
+
+[node name="BombBar" type="ProgressBar" parent="PanelContainer/BombContainer"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_ro3t7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5en4g")
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TimeTextLabel" type="Label" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "TIME"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "00:00:00"
