@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://beu3xwhat6ni6"]
+
+[ext_resource type="Script" uid="uid://b246t7t0uy65f" path="res://scripts/pause_screen.gd" id="1_gchx3"]
+
+[node name="pauseScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gchx3")
+
+[node name="mainPausePanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="mainPausePanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="pauseTextLabel" type="Label" parent="mainPausePanel/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "PAUSE"
+
+[node name="resumeButton" type="Button" parent="mainPausePanel/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Resume"
+
+[node name="optionButton" type="Button" parent="mainPausePanel/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Options"
+
+[node name="quitButton" type="Button" parent="mainPausePanel/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Quit"
+
+[node name="optionsPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="mainPausePanel/GridContainer/resumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="mainPausePanel/GridContainer/optionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="mainPausePanel/GridContainer/quitButton" to="." method="_on_quit_button_pressed"]

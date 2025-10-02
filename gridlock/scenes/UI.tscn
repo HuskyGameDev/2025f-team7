@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://0jr31t7q60oj"]
+[gd_scene load_steps=8 format=3 uid="uid://0jr31t7q60oj"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://culnoxofg3gmk" path="res://assets/sprites/bomb/Bomb.png" id="2_ro3t7"]
 [ext_resource type="Texture2D" uid="uid://dkydi42h41a5q" path="res://assets/sprites/hearts/Gray Heart.png" id="3_ua6yw"]
+[ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="5_wm3ai"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro3t7"]
 bg_color = Color(0.7411765, 0.76862746, 0.80784315, 1)
@@ -11,7 +12,7 @@ bg_color = Color(0.7411765, 0.76862746, 0.80784315, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
 bg_color = Color(0.92445606, 0.44463834, 0, 1)
 
-[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel")]
+[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,11 +22,13 @@ grow_vertical = 2
 script = ExtResource("1_5en4g")
 full_heart = ExtResource("1_dj8aq")
 empty_heart = ExtResource("3_ua6yw")
-timeLabel = NodePath("PanelContainer/GridContainer/TimeLabel")
-bombPBar = NodePath("PanelContainer/BombContainer/BombBar")
-bombLabel = NodePath("PanelContainer/BombContainer/BombCountLabel")
+timeLabel = NodePath("mainUIPanelContainer/GridContainer/TimeLabel")
+bombPBar = NodePath("mainUIPanelContainer/BombContainer/BombBar")
+bombLabel = NodePath("mainUIPanelContainer/BombContainer/BombCountLabel")
+mainPausePanel = NodePath("mainPausePanel")
+optionsPanel = NodePath("mainPausePanel/optionsPanel")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="mainUIPanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -35,65 +38,65 @@ offset_left = -154.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="HeartContainer" type="GridContainer" parent="PanelContainer"]
+[node name="HeartContainer" type="GridContainer" parent="mainUIPanelContainer"]
 layout_mode = 2
 
-[node name="HeartTexture" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+[node name="HeartTexture" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="HeartTexture2" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+[node name="HeartTexture2" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="HeartTexture3" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+[node name="HeartTexture3" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="HeartTexture4" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+[node name="HeartTexture4" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="HeartTexture5" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+[node name="HeartTexture5" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="HeartTexture6" type="TextureRect" parent="PanelContainer/HeartContainer" groups=["heartsGroup"]]
+[node name="HeartTexture6" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="BombContainer" type="GridContainer" parent="PanelContainer"]
+[node name="BombContainer" type="GridContainer" parent="mainUIPanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 columns = 2
 
-[node name="BombTexture" type="TextureRect" parent="PanelContainer/BombContainer"]
+[node name="BombTexture" type="TextureRect" parent="mainUIPanelContainer/BombContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("2_ro3t7")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="BombBar" type="ProgressBar" parent="PanelContainer/BombContainer"]
+[node name="BombBar" type="ProgressBar" parent="mainUIPanelContainer/BombContainer"]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -101,25 +104,113 @@ size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_ro3t7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5en4g")
 
-[node name="BombCountLabel" type="Label" parent="PanelContainer/BombContainer"]
+[node name="BombCountLabel" type="Label" parent="mainUIPanelContainer/BombContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "x0"
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer"]
+[node name="GridContainer" type="GridContainer" parent="mainUIPanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TimeTextLabel" type="Label" parent="PanelContainer/GridContainer"]
+[node name="TimeTextLabel" type="Label" parent="mainUIPanelContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "TIME"
 horizontal_alignment = 1
 
-[node name="TimeLabel" type="Label" parent="PanelContainer/GridContainer"]
+[node name="TimeLabel" type="Label" parent="mainUIPanelContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
 text = "00:00:00"
+
+[node name="mainPausePanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="mainPausePanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="pauseTextLabel" type="Label" parent="mainPausePanel/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "PAUSE"
+
+[node name="resumeButton" type="Button" parent="mainPausePanel/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Resume"
+
+[node name="optionButton" type="Button" parent="mainPausePanel/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Options"
+
+[node name="quitButton" type="Button" parent="mainPausePanel/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Quit"
+
+[node name="optionsPanel" type="PanelContainer" parent="mainPausePanel"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("5_wm3ai")
+
+[node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="optionsLabel" type="Label" parent="mainPausePanel/optionsPanel/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 100
+text = "OPTIONS"
+
+[node name="optionscontrolButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Controls"
+
+[node name="optionsaudioButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Audio"
+
+[node name="optionsbackButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Back"
+
+[node name="controlsPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("5_wm3ai")
+
+[node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/controlsPanel"]
+layout_mode = 2
+
+[node name="controlsLabel" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Controls"
+
+[node name="controlsBackButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="mainPausePanel/GridContainer/resumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="mainPausePanel/GridContainer/optionButton" to="." method="_on_option_button_pressed"]
+[connection signal="pressed" from="mainPausePanel/GridContainer/quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="mainPausePanel/optionsPanel/GridContainer/optionscontrolButton" to="." method="_on_optionscontrol_button_pressed"]
+[connection signal="pressed" from="mainPausePanel/optionsPanel/GridContainer/optionsbackButton" to="." method="_on_optionsback_button_pressed"]
+[connection signal="pressed" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/controlsBackButton" to="." method="_on_controls_back_button_pressed"]
