@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://0jr31t7q60oj"]
+[gd_scene load_steps=9 format=3 uid="uid://0jr31t7q60oj"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://culnoxofg3gmk" path="res://assets/sprites/bomb/Bomb.png" id="2_ro3t7"]
 [ext_resource type="Texture2D" uid="uid://dkydi42h41a5q" path="res://assets/sprites/hearts/Gray Heart.png" id="3_ua6yw"]
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="5_wm3ai"]
+[ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/controlButton.gd" id="6_8dubc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro3t7"]
 bg_color = Color(0.7411765, 0.76862746, 0.80784315, 1)
@@ -163,6 +164,7 @@ theme_override_font_sizes/font_size = 75
 text = "Quit"
 
 [node name="optionsPanel" type="PanelContainer" parent="mainPausePanel"]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
@@ -193,6 +195,7 @@ theme_override_font_sizes/font_size = 75
 text = "Back"
 
 [node name="controlsPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel"]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
@@ -204,8 +207,149 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+layout_mode = 2
+
+[node name="mainCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+layout_mode = 2
+folded = true
+title = "Main Character Movement"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable"]
+visible = false
+layout_mode = 2
+
+[node name="moveUpControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+layout_mode = 2
+text = "Move Up"
+
+[node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("6_8dubc")
+control_name = "MainPlayerMoveUp"
+
+[node name="moveDownControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+layout_mode = 2
+text = "Move Down"
+
+[node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+layout_mode = 2
+script = ExtResource("6_8dubc")
+control_name = "MainPlayerMoveDown"
+
+[node name="moveLeftControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+layout_mode = 2
+text = "Move Left"
+
+[node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+layout_mode = 2
+script = ExtResource("6_8dubc")
+control_name = "MainPlayerMoveLeft"
+
+[node name="moveRightControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+layout_mode = 2
+text = "Move Right"
+
+[node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+layout_mode = 2
+script = ExtResource("6_8dubc")
+control_name = "MainPlayerMoveRight"
+
+[node name="sawCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+layout_mode = 2
+folded = true
+title = "Saw Character Movement"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable"]
+visible = false
+layout_mode = 2
+
+[node name="moveUpControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+layout_mode = 2
+text = "Move Up"
+
+[node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("6_8dubc")
+control_name = "SawPlayerMoveUp"
+
+[node name="moveDownControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+layout_mode = 2
+text = "Move Down"
+
+[node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+layout_mode = 2
+script = ExtResource("6_8dubc")
+control_name = "SawPlayerMoveDown"
+
+[node name="moveLeftControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+layout_mode = 2
+text = "Move Left"
+
+[node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+layout_mode = 2
+script = ExtResource("6_8dubc")
+control_name = "SawPlayerMoveLeft"
+
+[node name="moveRightControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+layout_mode = 2
+text = "Move Right"
+
+[node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+layout_mode = 2
+script = ExtResource("6_8dubc")
+control_name = "SawPlayerMoveRight"
+
+[node name="otherFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+layout_mode = 2
+folded = true
+title = "Miscellaneous Controls"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable"]
+visible = false
+layout_mode = 2
+
+[node name="UseBombControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls"]
+layout_mode = 2
+text = "Use Bomb"
+
+[node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls"]
+layout_mode = 2
+script = ExtResource("6_8dubc")
+control_name = "UseBomb"
+
 [node name="controlsBackButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 text = "Back"
 
 [connection signal="pressed" from="mainPausePanel/GridContainer/resumeButton" to="." method="_on_resume_button_pressed"]

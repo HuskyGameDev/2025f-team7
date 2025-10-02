@@ -1,14 +1,14 @@
 extends Control
 
-var currentHealth = 6;
-var heartTextures = [];
+var currentHealth := 6;
+var heartTextures := [];
 
-var bombs = 0;
+var bombs := 0;
 
-var time = 0.0;
-var stopped = false;
+var time := 0.0;
+var stopped := false;
 
-var testVar = false;
+var testVar := false;
 
 @export var full_heart: Texture;
 @export var empty_heart: Texture;
