@@ -13,7 +13,8 @@ bg_color = Color(0.7411765, 0.76862746, 0.80784315, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
 bg_color = Color(0.92445606, 0.44463834, 0, 1)
 
-[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel")]
+[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel", "controlsPanel")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,8 +29,10 @@ bombPBar = NodePath("mainUIPanelContainer/BombContainer/BombBar")
 bombLabel = NodePath("mainUIPanelContainer/BombContainer/BombCountLabel")
 mainPausePanel = NodePath("mainPausePanel")
 optionsPanel = NodePath("mainPausePanel/optionsPanel")
+controlsPanel = NodePath("mainPausePanel/optionsPanel/controlsPanel")
 
 [node name="mainUIPanelContainer" type="PanelContainer" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -40,9 +43,11 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="HeartContainer" type="GridContainer" parent="mainUIPanelContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="HeartTexture" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
+process_mode = 3
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
@@ -50,6 +55,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="HeartTexture2" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
+process_mode = 3
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
@@ -57,6 +63,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="HeartTexture3" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
+process_mode = 3
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
@@ -64,6 +71,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="HeartTexture4" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
+process_mode = 3
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
@@ -71,6 +79,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="HeartTexture5" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
+process_mode = 3
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
@@ -78,6 +87,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="HeartTexture6" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
+process_mode = 3
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("1_dj8aq")
@@ -85,12 +95,14 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="BombContainer" type="GridContainer" parent="mainUIPanelContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 columns = 2
 
 [node name="BombTexture" type="TextureRect" parent="mainUIPanelContainer/BombContainer"]
+process_mode = 3
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("2_ro3t7")
@@ -98,6 +110,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="BombBar" type="ProgressBar" parent="mainUIPanelContainer/BombContainer"]
+process_mode = 3
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -106,29 +119,34 @@ theme_override_styles/background = SubResource("StyleBoxFlat_ro3t7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5en4g")
 
 [node name="BombCountLabel" type="Label" parent="mainUIPanelContainer/BombContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "x0"
 
 [node name="GridContainer" type="GridContainer" parent="mainUIPanelContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="TimeTextLabel" type="Label" parent="mainUIPanelContainer/GridContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "TIME"
 horizontal_alignment = 1
 
 [node name="TimeLabel" type="Label" parent="mainUIPanelContainer/GridContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
 text = "00:00:00"
 
 [node name="mainPausePanel" type="PanelContainer" parent="."]
+process_mode = 3
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -138,216 +156,265 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="mainPausePanel"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="pauseTextLabel" type="Label" parent="mainPausePanel/GridContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 100
 text = "PAUSE"
 
 [node name="resumeButton" type="Button" parent="mainPausePanel/GridContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Resume"
 
 [node name="optionButton" type="Button" parent="mainPausePanel/GridContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Options"
 
 [node name="quitButton" type="Button" parent="mainPausePanel/GridContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Quit"
 
 [node name="optionsPanel" type="PanelContainer" parent="mainPausePanel"]
+process_mode = 3
 visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
 [node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="optionsLabel" type="Label" parent="mainPausePanel/optionsPanel/GridContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 100
 text = "OPTIONS"
 
 [node name="optionscontrolButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
 [node name="optionsaudioButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Audio"
 
 [node name="optionsbackButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Back"
 
 [node name="controlsPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel"]
+process_mode = 3
 visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
 [node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/controlsPanel"]
+process_mode = 3
 layout_mode = 2
 
 [node name="controlsLabel" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="mainCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 folded = true
 title = "Main Character Movement"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable"]
+process_mode = 3
 visible = false
 layout_mode = 2
 
 [node name="moveUpControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+process_mode = 3
 layout_mode = 2
 text = "Move Up"
 
 [node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("6_8dubc")
 control_name = "MainPlayerMoveUp"
 
 [node name="moveDownControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+process_mode = 3
 layout_mode = 2
 text = "Move Down"
 
 [node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "MainPlayerMoveDown"
 
 [node name="moveLeftControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+process_mode = 3
 layout_mode = 2
 text = "Move Left"
 
 [node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "MainPlayerMoveLeft"
 
 [node name="moveRightControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+process_mode = 3
 layout_mode = 2
 text = "Move Right"
 
 [node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "MainPlayerMoveRight"
 
 [node name="sawCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 folded = true
 title = "Saw Character Movement"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable"]
+process_mode = 3
 visible = false
 layout_mode = 2
 
 [node name="moveUpControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+process_mode = 3
 layout_mode = 2
 text = "Move Up"
 
 [node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("6_8dubc")
 control_name = "SawPlayerMoveUp"
 
 [node name="moveDownControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+process_mode = 3
 layout_mode = 2
 text = "Move Down"
 
 [node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "SawPlayerMoveDown"
 
 [node name="moveLeftControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+process_mode = 3
 layout_mode = 2
 text = "Move Left"
 
 [node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "SawPlayerMoveLeft"
 
 [node name="moveRightControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+process_mode = 3
 layout_mode = 2
 text = "Move Right"
 
 [node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "SawPlayerMoveRight"
 
 [node name="otherFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 folded = true
 title = "Miscellaneous Controls"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable"]
+process_mode = 3
 visible = false
 layout_mode = 2
 
 [node name="UseBombControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls"]
+process_mode = 3
 layout_mode = 2
 text = "Use Bomb"
 
 [node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls"]
+process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "UseBomb"
 
 [node name="controlsBackButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 4
 text = "Back"

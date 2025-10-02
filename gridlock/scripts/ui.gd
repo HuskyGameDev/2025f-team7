@@ -67,25 +67,28 @@ func _near_Miss_Bomb() -> void:
 #Handles inputs for ui_cancel.
 func _input(_event: InputEvent) -> void:
 	if(Input.is_action_just_pressed("ui_cancel")):
-		mainPausePanel.visible = not mainPausePanel.visible;
 		if(controlsPanel.visible):
 			controlsPanel.visible = false;
 		elif(optionsPanel.visible):
 			optionsPanel.visible = false;
-		elif(not mainPausePanel.visible and not optionsPanel.visible):
-			stopped = true;
-			get_tree().paused = false;
-		elif(mainPausePanel.visible):
+		elif(not mainPausePanel.visible):
+			mainPausePanel.visible = true;
 			stopped = true;
 			get_tree().paused = true;
+		elif(mainPausePanel.visible):
+			mainPausePanel.visible = false;
+			stopped = false;
+			get_tree().paused = false;
 
 #Main Pause Panel Button
 func _on_resume_button_pressed() -> void:
-	Input.action_press("ui_cancel");
-	Input.action_release("ui_cancel");
+	mainPausePanel.visible = false;
+	stopped = false;
+	get_tree().paused = false;
 #Main Pause Panel Button
 func _on_option_button_pressed() -> void:
 	optionsPanel.visible = true;
+	print("TEST")
 #Main Pause Panel Button
 func _on_quit_button_pressed() -> void:
 	#This will be quit logic
