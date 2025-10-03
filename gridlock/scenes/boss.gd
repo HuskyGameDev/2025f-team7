@@ -6,6 +6,7 @@ var theta: float = 0.0
 @export var bullet_node: PackedScene
 var bullet_type: int = 0
 var speed: int = 100
+var target: Vector2
 
 
 func get_vector(angle):
@@ -32,3 +33,19 @@ func burst(countCircle, countOut, minVel, maxVel):
 		speed = ((maxVel-minVel)/countOut)*n + minVel
 		for m in countCircle:
 			shoot(theta)
+
+func trackShoot(countRows, countCols, minVel, maxVel, angle):
+	alpha = angle/countCols
+	for n: int in countRows:
+		speed = ((maxVel-minVel)/countRows)*n + minVel
+		theta = Vector2(1,0).angle_to(target - position) - (angle/2)
+		#shoot(theta)
+		for m in countCols:
+			shoot(theta)
+		
+	
+func _ready():
+	GlobalSignals.connect("player_position", Callable(self, "_track"))
+
+func _track(location: Vector2):
+	target = location

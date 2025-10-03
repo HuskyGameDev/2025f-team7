@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal player_position(location: Vector2)
+
 var speed = 150
 const SPEED_STANDARD = 150
 @onready var debug = $debug
@@ -13,6 +15,7 @@ var health = 100:
 func _physics_process(delta: float):
 	velocity = Input.get_vector("ui_left","ui_right","ui_up","ui_down") * speed
 	move_and_slide()
+	GlobalSignals.emit_signal("player_position", position)
 
 func set_status(bullet_type):
 	match bullet_type:

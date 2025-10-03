@@ -10,4 +10,4 @@ func enter():
 
 func transition():
 	if can_transition:
-		get_parent().change_state("4Leaf")
+		get_parent().change_state("PlayerAim")
