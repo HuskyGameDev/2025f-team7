@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj6w3v4v4534o"
-path="res://.godot/imported/blueBullet.png-2a6eceb3188b6a0e2b1cc6823b9a2d14.ctex"
+uid="uid://c7yit3t7vqldt"
+path="res://.godot/imported/blueBulletDirectional.png-ba32042e8be2a095e3598af2b4ffd3a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bullet/blueBullet.png"
-dest_files=["res://.godot/imported/blueBullet.png-2a6eceb3188b6a0e2b1cc6823b9a2d14.ctex"]
+source_file="res://assets/sprites/bullet/blueBulletDirectional.png"
+dest_files=["res://.godot/imported/blueBulletDirectional.png-ba32042e8be2a095e3598af2b4ffd3a1.ctex"]
 
 [params]
 

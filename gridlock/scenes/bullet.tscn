@@ -1,22 +1,23 @@
 [gd_scene load_steps=7 format=3 uid="uid://cmqfix6tqbbq"]
 
 [ext_resource type="Script" uid="uid://jjt1hso2wokm" path="res://scenes/bullet.gd" id="1_y25gk"]
-[ext_resource type="Texture2D" uid="uid://5latlvney7vf" path="res://assets/sprites/bullet/redBullet.png" id="2_l5glv"]
-[ext_resource type="Texture2D" uid="uid://blf38lwjmvlic" path="res://assets/sprites/bullet/yellowBullet.png" id="3_qncy5"]
-[ext_resource type="Texture2D" uid="uid://cgbs7f7f3jxbh" path="res://assets/sprites/bullet/greenBullet.png" id="4_tamys"]
-[ext_resource type="Texture2D" uid="uid://cj6w3v4v4534o" path="res://assets/sprites/bullet/blueBullet.png" id="5_26lx3"]
+[ext_resource type="Texture2D" uid="uid://b3v64h3vdr7de" path="res://assets/sprites/bullet/yellowBulletDirectional.png" id="3_qncy5"]
+[ext_resource type="Texture2D" uid="uid://jntwfis0l0rl" path="res://assets/sprites/bullet/greenBulletDirectional.png" id="4_tamys"]
+[ext_resource type="Texture2D" uid="uid://c7yit3t7vqldt" path="res://assets/sprites/bullet/blueBulletDirectional.png" id="5_26lx3"]
+[ext_resource type="Texture2D" uid="uid://b33p045djhvjb" path="res://assets/sprites/bullet/redBulletDirectional.png" id="6_tamys"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eoqba"]
-radius = 7.0
+radius = 4.0
 
 [node name="bullet" type="Area2D"]
 script = ExtResource("1_y25gk")
-texture_array = Array[Texture2D]([ExtResource("2_l5glv"), ExtResource("3_qncy5"), ExtResource("4_tamys"), ExtResource("5_26lx3")])
+texture_array = Array[Texture2D]([ExtResource("6_tamys"), ExtResource("3_qncy5"), ExtResource("4_tamys"), ExtResource("5_26lx3")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_l5glv")
+texture = ExtResource("6_tamys")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-6, -12, 12, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_eoqba")
