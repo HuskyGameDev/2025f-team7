@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6t43grsclomr"]
+[gd_scene load_steps=16 format=3 uid="uid://b6t43grsclomr"]
 
 [ext_resource type="Script" uid="uid://djf1bewdugc0u" path="res://scenes/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/bullet.tscn" id="2_neq0i"]
+[ext_resource type="Texture2D" uid="uid://c7anc0alr3pos" path="res://assets/sprites/Bosses/Boss.png" id="3_8eiau"]
 [ext_resource type="Script" uid="uid://p0uno3xxi6f6" path="res://scripts/State Machine/FiniteStateMachine.gd" id="3_qnbj4"]
 [ext_resource type="Script" uid="uid://u2u5ul7o2b20" path="res://scripts/Attack Patterns/PlaceholderBoss/Idle.gd" id="4_r3bxh"]
 [ext_resource type="Script" uid="uid://uhysn1p2xi74" path="res://scripts/Attack Patterns/PlaceholderBoss/5Leaf.gd" id="5_wqpjq"]
@@ -13,19 +14,18 @@
 [ext_resource type="Script" uid="uid://ml0uv5fw6bj4" path="res://scripts/Attack Patterns/PlaceholderBoss/BurstFlower.gd" id="11_0onds"]
 [ext_resource type="Script" uid="uid://d38qnjlfwx58u" path="res://scripts/Attack Patterns/PlaceholderBoss/PlayerAim.gd" id="12_lfs1x"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mihky"]
-size = Vector2(20, 20)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_neq0i"]
 radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vn2fc"]
+radius = 23.021729
 
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_dlmty")
 bullet_node = ExtResource("2_neq0i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 1, 1)
-texture = SubResource("PlaceholderTexture2D_mihky")
+texture = ExtResource("3_8eiau")
 
 [node name="Speed" type="Timer" parent="."]
 wait_time = 0.05
@@ -78,6 +78,10 @@ script = ExtResource("11_0onds")
 
 [node name="PlayerAim" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("12_lfs1x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_vn2fc")
 
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_entered"]

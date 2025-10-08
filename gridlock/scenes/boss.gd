@@ -7,12 +7,25 @@ var theta: float = 0.0
 var bullet_type: int = 0
 var speed: int = 100
 var target: Vector2
+var move_speed: int = 1
+var move_size: int = 500
+var t: float = 0.0
+var pos: Vector2 = Vector2.ZERO
 
+func _process(delta):
+	movement(delta)
+
+#Function for boss movement
+func movement(delta):
+	t += delta * move_speed
+	var x = move_size * sin(t)
+	var y = move_size * sin(t) * cos(t)
+	global_position = pos + Vector2(x,y)
+	
 
 func get_vector(angle):
 	theta = angle + alpha
 	return Vector2(cos(theta),sin(theta))
-
 
 func shoot(angle):
 	var bullet = bullet_node.instantiate()
@@ -46,6 +59,7 @@ func trackShoot(countRows, countCols, minVel, maxVel, angle):
 	
 func _ready():
 	GlobalSignals.connect("player_position", Callable(self, "_track"))
+	pos = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y / 4)
 
 func _track(location: Vector2):
 	target = location

@@ -19,5 +19,5 @@ func set_property(type):
 func set_speed(s):
 	speed = s
 
-func _on_body_entered(body):
-	body.set_status(bullet_type)
+#func _on_body_entered(body):
+	#body.set_status(bullet_type)

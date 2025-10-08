@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckobbp2dagqok"]
+[gd_scene load_steps=4 format=3 uid="uid://ckobbp2dagqok"]
 
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/boss.tscn" id="1_3n20u"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/player.tscn" id="2_bpcqn"]
+[ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="3_673pk"]
 
 [node name="BossRoom" type="Node2D"]
 
+[node name="parallax" parent="." instance=ExtResource("3_673pk")]
+
 [node name="Boss" parent="." instance=ExtResource("1_3n20u")]
-position = Vector2(491, 243)
+position = Vector2(978, 415)
 
 [node name="player" parent="." instance=ExtResource("2_bpcqn")]
-position = Vector2(641, 329)
+position = Vector2(995, 990)
