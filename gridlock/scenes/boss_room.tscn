@@ -11,5 +11,5 @@
 [node name="Boss" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(978, 415)
 
-[node name="player" parent="." instance=ExtResource("2_bpcqn")]
+[node name="player" parent="." groups=["player"] instance=ExtResource("2_bpcqn")]
 position = Vector2(995, 990)
