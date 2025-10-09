@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx3teay4u1uo"]
+
+[ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ascc0")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = -452.0
+offset_right = 320.0
+offset_bottom = -375.0
+grow_vertical = 0
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = -324.0
+offset_right = 320.0
+offset_bottom = -247.0
+grow_vertical = 0
+text = "Options
+"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = -196.0
+offset_right = 320.0
+offset_bottom = -119.0
+grow_vertical = 0
+text = "Quit"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 829.0
+offset_top = 308.0
+offset_right = 1101.0
+offset_bottom = 456.0
+text = "Imagine cool art here or
+something i guess"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

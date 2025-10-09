@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=3 uid="uid://bieqraoqjj3gm"]
 
-[ext_resource type="Script" uid="uid://dbyns6rd0cqi8" path="res://scenes/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dbyns6rd0cqi8" path="res://scenes/Player/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bphjnw4w73kop" path="res://assets/sprites/Player/Flower/Flower_90.png" id="2_fjrip"]
 [ext_resource type="Texture2D" uid="uid://d022rpg3f5ukb" path="res://assets/sprites/Player/Flower/Flower.png" id="2_g2els"]
 [ext_resource type="Shader" uid="uid://cv0js8fiedxe4" path="res://scenes/boil_line.gdshader" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bxm2ut3ijva6w" path="res://assets/sprites/Player/Flower/Flower_80.png" id="3_smehm"]
-[ext_resource type="Script" uid="uid://cvu8w3rsuvgos" path="res://scenes/Player_Sprite.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://cvu8w3rsuvgos" path="res://scenes/Player/Player_Sprite.gd" id="4_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cnm5xtw8rkvss" path="res://assets/sprites/Player/Flower/Flower_70.png" id="4_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://cld2eyer4lm4t" path="res://assets/sprites/Player/Flower/Flower_60.png" id="6_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://dfnb68bcmtjr2" path="res://assets/sprites/Player/Flower/Flower_50.png" id="7_oprun"]

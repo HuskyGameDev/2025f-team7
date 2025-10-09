@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://0jr31t7q60oj"]
 
-[ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/ui.gd" id="1_5en4g"]
+[ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://culnoxofg3gmk" path="res://assets/sprites/bomb/Bomb.png" id="2_ro3t7"]
 [ext_resource type="Texture2D" uid="uid://dkydi42h41a5q" path="res://assets/sprites/hearts/Gray Heart.png" id="3_ua6yw"]
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="5_wm3ai"]
-[ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/controlButton.gd" id="6_8dubc"]
+[ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="6_8dubc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro3t7"]
 bg_color = Color(0.7411765, 0.76862746, 0.80784315, 1)
