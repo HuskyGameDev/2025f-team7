@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://br0houypihsfp"]
+
+[ext_resource type="Script" uid="uid://clourv754sbas" path="res://saw.gd" id="1_54kj3"]
+[ext_resource type="Texture2D" uid="uid://gxkqvnouoe5i" path="res://Saw-Blade-40-Tooth-e1594908823334.webp" id="2_c2y56"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1tmk"]
+size = Vector2(67, 57)
+
+[node name="blade" type="CharacterBody2D"]
+position = Vector2(52, 18)
+script = ExtResource("1_54kj3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.0000038, -0.12499225)
+scale = Vector2(0.15874983, 0.13937505)
+texture = ExtResource("2_c2y56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t1tmk")
