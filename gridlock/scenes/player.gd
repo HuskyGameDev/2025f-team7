@@ -7,10 +7,17 @@ const SPEED_STANDARD = 150
 @onready var debug = $debug
 @onready var progress_bar = $ProgressBar
 
-var health = 100:
+@onready var sprite = $Sprite2D
+
+@export var health_sprites: Array[Texture2D] = []
+
+var health := 100:
 	set(value):
-		health = value
-		progress_bar.value = value
+		value = clamp(value, 0, 100)
+		if value != health:
+			health = value
+			progress_bar.value = value
+			_update_sprite()
 
 func _physics_process(delta: float):
 	velocity = Input.get_vector("ui_left","ui_right","ui_up","ui_down") * speed
@@ -49,3 +56,11 @@ func stun():
 	speed = 0
 	await get_tree().create_timer(2.5).timeout
 	speed = SPEED_STANDARD
+	
+func _update_sprite():
+	if health_sprites.is_empty():
+		return
+
+	var stage := int((100 - health) / 10)
+	stage = clamp(stage, 0, health_sprites.size() - 1)
+	sprite.texture = health_sprites[stage]

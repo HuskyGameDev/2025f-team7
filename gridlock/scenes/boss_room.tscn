@@ -12,4 +12,4 @@
 position = Vector2(978, 415)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_bpcqn")]
-position = Vector2(995, 990)
+position = Vector2(995, 989)
