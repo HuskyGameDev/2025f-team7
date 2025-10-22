@@ -8,6 +8,7 @@ var bullet_type: int = 0
 
 func _physics_process(delta):
 	position += direction * speed * delta
+	rotation = Vector2.UP.angle_to(direction)
 
 func _on_screen_exited():
 	queue_free()

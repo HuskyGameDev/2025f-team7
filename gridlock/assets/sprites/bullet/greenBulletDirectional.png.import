@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blf38lwjmvlic"
-path="res://.godot/imported/yellowBullet.png-89252f3318502516353656ee83e74ab2.ctex"
+uid="uid://jntwfis0l0rl"
+path="res://.godot/imported/greenBulletDirectional.png-653be507b8b53d47a56f5cc311d09c70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bullet/yellowBullet.png"
-dest_files=["res://.godot/imported/yellowBullet.png-89252f3318502516353656ee83e74ab2.ctex"]
+source_file="res://assets/sprites/bullet/greenBulletDirectional.png"
+dest_files=["res://.godot/imported/greenBulletDirectional.png-653be507b8b53d47a56f5cc311d09c70.ctex"]
 
 [params]
 
