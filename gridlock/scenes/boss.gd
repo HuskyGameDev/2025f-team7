@@ -7,16 +7,7 @@ var theta: float = 0.0
 var bullet_type: int = 0
 var speed: int = 100
 var target: Vector2
-var time_elapsed = 0.0
 
-var moving: bool = false
-
-func _process(delta):
-	if Input.is_key_pressed(KEY_M): moving = true
-
-func _physics_process(delta: float):
-	if (moving): time_elapsed += delta
-	position = Vector2(960 + 480*sin(time_elapsed/3), 400+240*sin(2*time_elapsed/3))
 
 func get_vector(angle):
 	theta = angle + alpha
