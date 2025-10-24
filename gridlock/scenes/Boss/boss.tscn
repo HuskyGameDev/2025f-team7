@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6t43grsclomr"]
+[gd_scene load_steps=19 format=3 uid="uid://b6t43grsclomr"]
 
 [ext_resource type="Script" uid="uid://djf1bewdugc0u" path="res://scenes/Boss/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_neq0i"]
@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://bve5cd884r3v0" path="res://scripts/Attack Patterns/PlaceholderBoss/Slow8Leaf.gd" id="10_5f346"]
 [ext_resource type="Script" uid="uid://ml0uv5fw6bj4" path="res://scripts/Attack Patterns/PlaceholderBoss/BurstFlower.gd" id="11_0onds"]
 [ext_resource type="Script" uid="uid://d38qnjlfwx58u" path="res://scripts/Attack Patterns/PlaceholderBoss/PlayerAim.gd" id="12_lfs1x"]
+[ext_resource type="Script" uid="uid://b5e7y624ei0hh" path="res://scripts/State Machine/MovementStateMachine.gd" id="14_uotkj"]
+[ext_resource type="Script" uid="uid://bkbs5gje54gj0" path="res://scripts/MovementStates/MoveIdle.gd" id="15_aub7x"]
+[ext_resource type="Script" uid="uid://chnoj16rwbck0" path="res://scripts/MovementStates/Figure8.gd" id="16_4vq7k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_neq0i"]
 radius = 100.0
@@ -31,7 +34,7 @@ texture = ExtResource("3_8eiau")
 wait_time = 0.05
 
 [node name="Duration" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 4.0
 
 [node name="debug" type="Label" parent="."]
 offset_left = -19.0
@@ -82,6 +85,15 @@ script = ExtResource("12_lfs1x")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_vn2fc")
+
+[node name="MovementStateMachine" type="Node2D" parent="."]
+script = ExtResource("14_uotkj")
+
+[node name="Idle" type="Node2D" parent="MovementStateMachine"]
+script = ExtResource("15_aub7x")
+
+[node name="Figure8" type="Node2D" parent="MovementStateMachine"]
+script = ExtResource("16_4vq7k")
 
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_entered"]

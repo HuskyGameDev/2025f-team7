@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 var theta: float = 0.0
 @export_range(0,2*PI) var alpha: float = 0.0
+@export var starting_pattern: int
+@export var starting_movement: int
 
 @export var bullet_node: PackedScene
 var bullet_type: int = 0
@@ -12,15 +14,15 @@ var move_size: int = 500
 var t: float = 0.0
 var pos: Vector2 = Vector2.ZERO
 
-func _process(delta):
-	movement(delta)
+##func _process(delta):
+	##movement(delta)
 
 #Function for boss movement
-func movement(delta):
-	t += delta * move_speed
-	var x = move_size * sin(t)
-	var y = move_size * sin(t) * cos(t)
-	global_position = pos + Vector2(x,y)
+#func movement(delta):
+#	t += delta * move_speed
+#	var x = move_size * sin(t)
+#	var y = move_size * sin(t) * cos(t)
+#	global_position = pos + Vector2(x,y)
 	
 
 func get_vector(angle):

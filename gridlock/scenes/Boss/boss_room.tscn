@@ -10,6 +10,23 @@
 
 [node name="Boss" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(978, 415)
+starting_movement = 1
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_bpcqn")]
 position = Vector2(995, 989)
+
+[node name="TLTurret" parent="." instance=ExtResource("1_3n20u")]
+position = Vector2(100, 100)
+starting_pattern = 5
+
+[node name="TRTurret" parent="." instance=ExtResource("1_3n20u")]
+position = Vector2(1820, 100)
+starting_pattern = 5
+
+[node name="BLTurret" parent="." instance=ExtResource("1_3n20u")]
+position = Vector2(100, 980)
+starting_pattern = 5
+
+[node name="BRTurret" parent="." instance=ExtResource("1_3n20u")]
+position = Vector2(1820, 980)
+starting_pattern = 5
