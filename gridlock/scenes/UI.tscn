@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://0jr31t7q60oj"]
+[gd_scene load_steps=9 format=3 uid="uid://cie21po47es6f"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
@@ -147,7 +147,6 @@ text = "00:00:00"
 
 [node name="mainPausePanel" type="PanelContainer" parent="."]
 process_mode = 3
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,7 +187,6 @@ text = "Quit"
 
 [node name="optionsPanel" type="PanelContainer" parent="mainPausePanel"]
 process_mode = 3
-visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
@@ -225,7 +223,6 @@ text = "Back"
 
 [node name="controlsPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel"]
 process_mode = 3
-visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
