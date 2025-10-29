@@ -37,25 +37,19 @@ func set_status(bullet_type):
 
 func fire():
 	debug.text = "fire"
-	health -= 10
+	health -= 20
 
 func poison():
 	debug.text = "poison"
-	for i in range(5):
-		health -= 2
-		await get_tree().create_timer(1).timeout
+	health -= 20
 
 func slow():
 	debug.text = "slow"
-	speed = 50
-	await get_tree().create_timer(5).timeout
-	speed = SPEED_STANDARD
+	health -= 20
 
 func stun():
 	debug.text = "stun"
-	speed = 0
-	await get_tree().create_timer(2.5).timeout
-	speed = SPEED_STANDARD
+	health -= 20
 	
 func _update_sprite():
 	if health_sprites.is_empty():
