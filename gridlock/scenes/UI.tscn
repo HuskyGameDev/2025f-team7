@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cie21po47es6f"]
+[gd_scene load_steps=11 format=3 uid="uid://dchr5es6o6ida"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
+[ext_resource type="Theme" uid="uid://d8uuw1d6d7be" path="res://assets/label.tres" id="1_ktti3"]
 [ext_resource type="Texture2D" uid="uid://culnoxofg3gmk" path="res://assets/sprites/bomb/Bomb.png" id="2_ro3t7"]
 [ext_resource type="Texture2D" uid="uid://dkydi42h41a5q" path="res://assets/sprites/hearts/Gray Heart.png" id="3_ua6yw"]
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="5_wm3ai"]
@@ -22,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ktti3")
 script = ExtResource("1_5en4g")
 full_heart = ExtResource("1_dj8aq")
 empty_heart = ExtResource("3_ua6yw")
@@ -52,6 +54,7 @@ process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme = ExtResource("1_ktti3")
 text = "Wave Progress"
 
 [node name="WaveProgressBar" type="ProgressBar" parent="WaveProgressBar"]
