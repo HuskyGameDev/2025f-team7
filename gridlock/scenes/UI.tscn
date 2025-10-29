@@ -147,6 +147,7 @@ text = "00:00:00"
 
 [node name="mainPausePanel" type="PanelContainer" parent="."]
 process_mode = 3
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -187,6 +188,7 @@ text = "Quit"
 
 [node name="optionsPanel" type="PanelContainer" parent="mainPausePanel"]
 process_mode = 3
+visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
@@ -223,6 +225,7 @@ text = "Back"
 
 [node name="controlsPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel"]
 process_mode = 3
+visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
@@ -311,6 +314,36 @@ process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "MainPlayerMoveRight"
+
+[node name="moveFast" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast"]
+process_mode = 3
+layout_mode = 2
+text = "Fast Move"
+
+[node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast"]
+process_mode = 3
+layout_mode = 2
+script = ExtResource("6_8dubc")
+control_name = "FastWalk"
+
+[node name="moveSlow" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow"]
+process_mode = 3
+layout_mode = 2
+text = "Slow Walk"
+
+[node name="Button" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow"]
+process_mode = 3
+layout_mode = 2
+script = ExtResource("6_8dubc")
+control_name = "SlowWalk"
 
 [node name="sawCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
 process_mode = 3
