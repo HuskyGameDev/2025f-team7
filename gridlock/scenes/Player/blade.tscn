@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://br0houypihsfp"]
 
-[ext_resource type="Script" uid="uid://clourv754sbas" path="res://saw.gd" id="1_54kj3"]
-[ext_resource type="Texture2D" uid="uid://gxkqvnouoe5i" path="res://Saw-Blade-40-Tooth-e1594908823334.webp" id="2_c2y56"]
+[ext_resource type="Script" uid="uid://clourv754sbas" path="res://scripts/Player/saw.gd" id="1_54kj3"]
+[ext_resource type="Texture2D" uid="uid://cgb2w3fv32r42" path="res://assets/sprites/Saw/Saw.png" id="2_1s1bc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1tmk"]
 size = Vector2(67, 57)
@@ -13,7 +13,7 @@ script = ExtResource("1_54kj3")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.0000038, -0.12499225)
 scale = Vector2(0.15874983, 0.13937505)
-texture = ExtResource("2_c2y56")
+texture = ExtResource("2_1s1bc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_t1tmk")

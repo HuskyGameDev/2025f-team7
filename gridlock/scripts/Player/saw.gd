@@ -7,8 +7,8 @@ const SPEED = 300.0
 
 func _physics_process(delta: float) -> void:
 
-	var directionx := Input.get_axis("sawLeft", "sawRight")
-	var directiony :=Input.get_axis("sawUp", "sawDown")
+	var directionx := Input.get_axis("SawPlayerMoveLeft", "SawPlayerMoveRight")
+	var directiony :=Input.get_axis("SawPlayerMoveUp", "SawPlayerMoveDown")
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if directionx:

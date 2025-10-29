@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 signal player_position(location: Vector2)
 
-var speed = 150
+var SPEED = 300.0
+var SHIFTSPEED = 450
+var CTRLSPEED = 150
 const SPEED_STANDARD = 150
 @onready var debug = $debug
 @onready var progress_bar = $ProgressBar
@@ -20,7 +22,15 @@ var health := 100:
 			_update_sprite()
 
 func _physics_process(delta: float):
-	velocity = Input.get_vector("ui_left","ui_right","ui_up","ui_down") * speed
+	var currentSpeed = SPEED
+	if Input.is_action_pressed("FastWalk"):
+		currentSpeed = SHIFTSPEED
+	if Input.is_action_pressed("SlowWalk"):
+		currentSpeed = CTRLSPEED
+	
+	
+	velocity = Input.get_vector("MainPlayerMoveLeft","MainPlayerMoveRight","MainPlayerMoveUp","MainPlayerMoveDown") * currentSpeed
+	
 	move_and_slide()
 	GlobalSignals.emit_signal("player_position", position)
 

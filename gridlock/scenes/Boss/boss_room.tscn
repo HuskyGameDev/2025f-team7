@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckobbp2dagqok"]
+[gd_scene load_steps=5 format=3 uid="uid://ckobbp2dagqok"]
 
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_3n20u"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_bpcqn"]
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="3_673pk"]
+[ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="4_jotkl"]
 
 [node name="BossRoom" type="Node2D"]
 
@@ -13,7 +14,7 @@ position = Vector2(978, 415)
 starting_movement = 1
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_bpcqn")]
-position = Vector2(995, 989)
+position = Vector2(837, 845)
 
 [node name="TLTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(100, 100)
@@ -30,3 +31,6 @@ starting_pattern = 5
 [node name="BRTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(1820, 980)
 starting_pattern = 5
+
+[node name="blade" parent="." instance=ExtResource("4_jotkl")]
+position = Vector2(1217, 836)
