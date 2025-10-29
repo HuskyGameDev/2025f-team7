@@ -3,9 +3,11 @@ Signals to listen for(From Global to UI):
 	health_change -> _on_player_health_change
 	near_miss -> _near_Miss_Bomb
 	bomb_used -> _bomb_Used
+	enemy_progress -> _update_waveprogressbar
 	
 Signals sent out(From UI to Global):
 	_bomb_Used -> bomb_used
+	_update_waveprogressbar -> progress_bar_full()
 """
 
 extends Control
@@ -28,6 +30,8 @@ var testVar := false;
 @export var mainPausePanel: PanelContainer;
 @export var optionsPanel: PanelContainer;
 @export var controlsPanel: PanelContainer;
+@export var waveProgressBar: ProgressBar;
+@export var audioPanel: PanelContainer;
 
 
 func _ready() -> void:
@@ -37,6 +41,7 @@ func _ready() -> void:
 	GlobalSignals.connect("health_change", Callable(self, "_on_player_health_change"));
 	GlobalSignals.connect("near_miss", Callable(self, "_near_Miss_Bomb"));
 	GlobalSignals.connect("bomb_used", Callable(self, "_bomb_Used"));
+	GlobalSignals.connect("enemy_progress", Callable(self, "_update_waveprogressbar"));
 func _process(delta: float) -> void:
 	#if testVar==false:
 		#_on_player_health_change(5);
@@ -73,7 +78,7 @@ func _time_to_String() -> String:
 func _near_Miss_Bomb() -> void:
 	if(bombs<2):
 		bombPBar.value += 10;
-		if(bombPBar.volume>=100):
+		if(bombPBar.value>=100):
 			bombs += 1;
 			bombLabel.text = "x" + str(bombs);
 			bombPBar.value = 0;
@@ -83,11 +88,18 @@ func _near_Miss_Bomb() -> void:
 func _bomb_Used() -> void:
 	bombs -= 1;
 
+#activated by global signals
+func _update_waveprogressbar(increase: int) -> void:
+	waveProgressBar.value += increase;
+	if(waveProgressBar.volume >= 100):
+		GlobalSignals.emit_signal("progress_bar_full");
+
 #Handles inputs for ui_cancel.
 func _input(_event: InputEvent) -> void:
 	if(Input.is_action_just_pressed("ui_cancel")):
-		get_tree().set_input_as_handled()
-		if(controlsPanel.visible):
+		if(audioPanel.visible):
+			audioPanel.visible = false;
+		elif(controlsPanel.visible):
 			controlsPanel.visible = false;
 		elif(optionsPanel.visible):
 			optionsPanel.visible = false;
@@ -114,13 +126,21 @@ func _on_quit_button_pressed() -> void:
 	#This will be quit logic
 	pass # Replace with function body.
 
-#Options Panel Button
-func _on_optionsback_button_pressed() -> void:
-	optionsPanel.visible = false;
+
 #Options Panel Button
 func _on_optionscontrol_button_pressed() -> void:
 	controlsPanel.visible = true;
+#Options Panel Button
+func _on_optionsaudio_button_pressed() -> void:
+	audioPanel.visible = true;
+#Options Panel Button
+func _on_optionsback_button_pressed() -> void:
+	optionsPanel.visible = false;
 
 #Controls Panel Button
 func _on_controls_back_button_pressed() -> void:
 	controlsPanel.visible = false;
+
+#Audio Panel Button
+func _on_audio_back_button_pressed() -> void:
+	audioPanel.visible = false;
