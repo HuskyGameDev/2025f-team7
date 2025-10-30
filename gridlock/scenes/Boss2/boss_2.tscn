@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddy6dvqegvph2"]
+
+[ext_resource type="Script" path="res://scenes/Boss2/boss_2.gd" id="1_ypx45"]
+[ext_resource type="Texture2D" uid="uid://dvc6mag5yndlw" path="res://assets/sprites/Bosses/Head.png" id="2_ytnt7"]
+[ext_resource type="Texture2D" uid="uid://dmllr27gvddfg" path="res://assets/sprites/Bosses/Tail.png" id="3_udsia"]
+[ext_resource type="Texture2D" uid="uid://cac0rr8a58vt1" path="res://assets/sprites/Bosses/Middle.png" id="4_4ggrf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypx45"]
+size = Vector2(158.11761, 38.098663)
+
+[node name="Boss2" type="CharacterBody2D"]
+script = ExtResource("1_ypx45")
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(356.5, 106.875)
+scale = Vector2(0.91071457, 0.94491524)
+texture = ExtResource("2_ytnt7")
+
+[node name="Tail" type="Sprite2D" parent="."]
+position = Vector2(247, 108)
+texture = ExtResource("3_udsia")
+
+[node name="Segment" type="Sprite2D" parent="."]
+position = Vector2(303, 106)
+texture = ExtResource("4_4ggrf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(302, 109.00001)
+scale = Vector2(0.91071457, 0.94491524)
+shape = SubResource("RectangleShape2D_ypx45")

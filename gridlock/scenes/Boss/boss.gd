@@ -9,7 +9,7 @@ var theta: float = 0.0
 var bullet_type: int = 0
 var speed: int = 100
 var target: Vector2
-var move_speed: int = 1
+var move_speed: float = 0.8
 var move_size: int = 500
 var t: float = 0.0
 var pos: Vector2 = Vector2.ZERO
@@ -60,8 +60,9 @@ func trackShoot(countRows, countCols, minVel, maxVel, angle):
 		
 	
 func _ready():
+	$AnimatedSprite2D.play("move")
 	GlobalSignals.connect("player_position", Callable(self, "_track"))
-	pos = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y / 4)
+	pos = global_position
 
 func _track(location: Vector2):
 	target = location
