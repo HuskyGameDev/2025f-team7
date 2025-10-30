@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=18 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dt6o4j3f4w75j" path="res://assets/sprites/Bosses/Boss1.png" id="7_0jllc"]
 [ext_resource type="Texture2D" uid="uid://dwgt4vjwha7js" path="res://assets/sprites/Menu/Start.png" id="10_0jllc"]
 [ext_resource type="Texture2D" uid="uid://cyvl1twgbone" path="res://assets/sprites/Menu/Options.png" id="11_uuwny"]
-[ext_resource type="Texture2D" uid="uid://c1m0xioaysc3" path="res://assets/sprites/Menu/Color.png" id="12_birck"]
 [ext_resource type="Texture2D" uid="uid://du0l3e3xsw6tc" path="res://assets/sprites/Menu/quit.png" id="12_s4040"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h6xyy"]
@@ -81,6 +80,23 @@ animation = &"move"
 autoplay = "move"
 frame_progress = 0.74733365
 
+[node name="ColorPicker" type="ColorPicker" parent="MenuBackground"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.25104
+offset_top = -269.4986
+offset_right = 397.20294
+offset_bottom = 267.5014
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.47, 0.47)
+edit_alpha = false
+edit_intensity = false
+picker_shape = 1
+
 [node name="Flower" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_uuwny")
 position = Vector2(900, 825)
@@ -135,49 +151,16 @@ icon = ExtResource("12_s4040")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ColorButton" type="Button" parent="."]
-texture_filter = 1
-layout_mode = 0
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 781.0
-offset_top = -123.0
-offset_right = 1034.0
-offset_bottom = -46.0
-grow_vertical = 0
-icon = ExtResource("12_birck")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ColorPicker" type="ColorPicker" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 1104.0
-offset_top = 573.0
-offset_right = 1921.454
-offset_bottom = 1110.0
-scale = Vector2(1.11, 1.11)
-alignment = 1
-edit_alpha = false
-edit_intensity = false
-picker_shape = 2
-sampler_visible = false
-color_modes_visible = false
-sliders_visible = false
-hex_visible = false
-presets_visible = false
-
 [node name="Saw" type="Sprite2D" parent="."]
 texture_repeat = 1
 material = SubResource("ShaderMaterial_0jllc")
 position = Vector2(912.99994, 516)
 rotation = 0.24434595
-scale = Vector2(0.131, 0.116)
+scale = Vector2(0.201, 0.178)
 texture = ExtResource("5_lo6hs")
 script = ExtResource("5_uuwny")
 
+[connection signal="color_changed" from="MenuBackground/ColorPicker" to="Flower" method="_on_color_picker_color_changed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="ColorButton" to="." method="_on_color_button_pressed"]
-[connection signal="color_changed" from="ColorPicker" to="Flower" method="_on_color_picker_color_changed"]
