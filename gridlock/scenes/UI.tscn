@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dchr5es6o6ida"]
+[gd_scene load_steps=12 format=3 uid="uid://dchr5es6o6ida"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
 [ext_resource type="Theme" uid="uid://d8uuw1d6d7be" path="res://assets/label.tres" id="1_ktti3"]
 [ext_resource type="Texture2D" uid="uid://culnoxofg3gmk" path="res://assets/sprites/bomb/Bomb.png" id="2_ro3t7"]
 [ext_resource type="Texture2D" uid="uid://dkydi42h41a5q" path="res://assets/sprites/hearts/Gray Heart.png" id="3_ua6yw"]
+[ext_resource type="Script" uid="uid://cd1n6tkj0bmrm" path="res://scripts/UI/boss_inbound_text.gd" id="5_cgfq5"]
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="5_wm3ai"]
 [ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="6_8dubc"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="7_p7vwb"]
@@ -15,7 +16,7 @@ bg_color = Color(0.7411765, 0.76862746, 0.80784315, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
 bg_color = Color(0.92445606, 0.44463834, 0, 1)
 
-[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel", "controlsPanel", "waveProgressBar", "audioPanel")]
+[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel", "controlsPanel", "waveProgressLabel", "waveProgressBar", "audioPanel")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -33,6 +34,7 @@ bombLabel = NodePath("mainUIPanelContainer/BombContainer/BombCountLabel")
 mainPausePanel = NodePath("mainPausePanel")
 optionsPanel = NodePath("mainPausePanel/optionsPanel")
 controlsPanel = NodePath("mainPausePanel/optionsPanel/controlsPanel")
+waveProgressLabel = NodePath("WaveProgressBar/WaveProgressLabel")
 waveProgressBar = NodePath("WaveProgressBar/WaveProgressBar")
 audioPanel = NodePath("mainPausePanel/optionsPanel/AudioPanel")
 
@@ -66,6 +68,21 @@ size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_ro3t7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5en4g")
 show_percentage = false
+
+[node name="BossInboundText" type="Label" parent="WaveProgressBar"]
+process_mode = 3
+visible = false
+layout_mode = 2
+theme = ExtResource("1_ktti3")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_cgfq5")
+
+[node name="BossInboundTestButton" type="Button" parent="WaveProgressBar"]
+visible = false
+layout_mode = 2
+text = "TEST TEST TEST"
 
 [node name="mainUIPanelContainer" type="PanelContainer" parent="."]
 process_mode = 3
@@ -519,6 +536,8 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Back"
 
+[connection signal="bossInbound" from="." to="WaveProgressBar/BossInboundText" method="activate_label"]
+[connection signal="pressed" from="WaveProgressBar/BossInboundTestButton" to="WaveProgressBar/BossInboundText" method="activate_label"]
 [connection signal="pressed" from="mainPausePanel/GridContainer/resumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="mainPausePanel/GridContainer/optionButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="mainPausePanel/GridContainer/quitButton" to="." method="_on_quit_button_pressed"]

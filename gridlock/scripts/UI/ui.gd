@@ -21,6 +21,7 @@ var time := 0.0;
 var stopped := false;
 
 var testVar := false;
+signal bossInbound;
 
 @export var full_heart: Texture;
 @export var empty_heart: Texture;
@@ -30,6 +31,7 @@ var testVar := false;
 @export var mainPausePanel: PanelContainer;
 @export var optionsPanel: PanelContainer;
 @export var controlsPanel: PanelContainer;
+@export var waveProgressLabel: Label;
 @export var waveProgressBar: ProgressBar;
 @export var audioPanel: PanelContainer;
 
@@ -46,7 +48,7 @@ func _process(delta: float) -> void:
 	#if testVar==false:
 		#_on_player_health_change(5);
 		#testVar=true
-	if stopped:
+	if stopped||get_tree().paused:
 		return
 	time += delta;
 	timeLabel.text = _time_to_String();
@@ -90,9 +92,13 @@ func _bomb_Used() -> void:
 
 #activated by global signals
 func _update_waveprogressbar(increase: int) -> void:
-	waveProgressBar.value += increase;
-	if(waveProgressBar.volume >= 100):
-		GlobalSignals.emit_signal("progress_bar_full");
+	if(waveProgressBar.visible):
+		waveProgressBar.value += increase;
+		if(waveProgressBar.volume >= 100):
+			waveProgressBar.visible = false;
+			waveProgressLabel.visible = false;
+			GlobalSignals.emit_signal("progress_bar_full");
+			emit_signal("bossInbound");
 
 #Handles inputs for ui_cancel.
 func _input(_event: InputEvent) -> void:
