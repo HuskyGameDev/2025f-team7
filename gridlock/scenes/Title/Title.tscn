@@ -59,12 +59,12 @@ texture = ExtResource("2_h2cek")
 [node name="Title" type="Sprite2D" parent="MenuBackground"]
 texture_filter = 1
 position = Vector2(0, -184.011)
-scale = Vector2(5.378, 5.37)
+scale = Vector2(4.548, 4.541)
 texture = SubResource("CompressedTexture2D_h6xyy")
 
 [node name="Boss2" parent="MenuBackground" instance=ExtResource("3_h6xyy")]
 texture_filter = 1
-position = Vector2(135.56488, -354.48468)
+position = Vector2(148.11717, -352.98053)
 rotation = 0.61086524
 scale = Vector2(1.156, 1.018)
 skew = 0.000654459
@@ -72,7 +72,7 @@ script = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MenuBackground"]
 texture_filter = 1
-position = Vector2(-398.159, -59.665737)
+position = Vector2(-378.07535, -85.23677)
 rotation = 0.24401909
 scale = Vector2(2.2768018, 2.2740014)
 skew = 0.0006543398
