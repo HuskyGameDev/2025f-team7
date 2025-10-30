@@ -78,11 +78,11 @@ skew = 0.0006543398
 sprite_frames = SubResource("SpriteFrames_h2cek")
 animation = &"move"
 autoplay = "move"
-frame_progress = 0.3844958
+frame_progress = 0.74733365
 
 [node name="Flower" type="Sprite2D" parent="MenuBackground"]
 material = SubResource("ShaderMaterial_uuwny")
-position = Vector2(27.11296, 207.57658)
+position = Vector2(-28.117163, 142.89691)
 scale = Vector2(0.17065099, 0.17912476)
 texture = ExtResource("4_h6xyy")
 offset = Vector2(41.3, 10.05)
@@ -137,7 +137,7 @@ expand_icon = true
 [node name="Saw" type="Sprite2D" parent="."]
 texture_repeat = 1
 material = SubResource("ShaderMaterial_0jllc")
-position = Vector2(628.00006, 752)
+position = Vector2(912.99994, 516)
 rotation = 0.24434595
 scale = Vector2(0.201, 0.178)
 texture = ExtResource("5_lo6hs")
