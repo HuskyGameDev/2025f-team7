@@ -27,6 +27,8 @@ func _physics_process(delta: float):
 		currentSpeed = SHIFTSPEED
 	if Input.is_action_pressed("SlowWalk"):
 		currentSpeed = CTRLSPEED
+	if Input.is_action_just_pressed("UseBomb"):
+		get_tree().call_group("Bullet", "blow_up")
 	
 	
 	velocity = Input.get_vector("MainPlayerMoveLeft","MainPlayerMoveRight","MainPlayerMoveUp","MainPlayerMoveDown") * currentSpeed

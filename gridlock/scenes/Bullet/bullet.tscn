@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cmqfix6tqbbq"]
 
-[ext_resource type="Script" uid="uid://jjt1hso2wokm" path="res://scenes/bullet.gd" id="1_y25gk"]
+[ext_resource type="Script" uid="uid://jjt1hso2wokm" path="res://scenes/Bullet/bullet.gd" id="1_y25gk"]
 [ext_resource type="Texture2D" uid="uid://b3v64h3vdr7de" path="res://assets/sprites/bullet/yellowBulletDirectional.png" id="3_qncy5"]
 [ext_resource type="Texture2D" uid="uid://jntwfis0l0rl" path="res://assets/sprites/bullet/greenBulletDirectional.png" id="4_tamys"]
 [ext_resource type="Texture2D" uid="uid://c7yit3t7vqldt" path="res://assets/sprites/bullet/blueBulletDirectional.png" id="5_26lx3"]
@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_eoqba"]
 radius = 4.0
 
-[node name="bullet" type="Area2D"]
+[node name="bullet" type="Area2D" groups=["Bullet"]]
 script = ExtResource("1_y25gk")
 texture_array = Array[Texture2D]([ExtResource("6_tamys"), ExtResource("3_qncy5"), ExtResource("4_tamys"), ExtResource("5_26lx3")])
 
