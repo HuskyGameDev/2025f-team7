@@ -1,6 +1,4 @@
 extends Sprite2D
-func cursor(delta):
-	position = get_global_mouse_position()
 
 @export_range(0, 720, 10) var spin_speed: float = 180.0 # adjustable slider in inspector
 

@@ -1,6 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=18 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
+[ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
+[ext_resource type="Shader" uid="uid://cv0js8fiedxe4" path="res://scenes/boil_line.gdshader" id="3_437ew"]
+[ext_resource type="PackedScene" uid="uid://ddy6dvqegvph2" path="res://scenes/Boss2/boss_2.tscn" id="3_h6xyy"]
+[ext_resource type="Texture2D" uid="uid://d022rpg3f5ukb" path="res://assets/sprites/Player/Flower/Flower.png" id="4_h6xyy"]
+[ext_resource type="Script" uid="uid://cvu8w3rsuvgos" path="res://scenes/Player/Player_Sprite.gd" id="5_7iy1q"]
+[ext_resource type="Texture2D" uid="uid://cgb2w3fv32r42" path="res://assets/sprites/Saw/Saw.png" id="5_lo6hs"]
+[ext_resource type="Script" uid="uid://b8ddrokqo1lo3" path="res://scenes/Title/saw_cursor.gd" id="5_uuwny"]
+[ext_resource type="Texture2D" uid="uid://c7anc0alr3pos" path="res://assets/sprites/Bosses/Boss.png" id="6_lo6hs"]
+[ext_resource type="Texture2D" uid="uid://dt6o4j3f4w75j" path="res://assets/sprites/Bosses/Boss1.png" id="7_0jllc"]
+[ext_resource type="Texture2D" uid="uid://dwgt4vjwha7js" path="res://assets/sprites/Menu/Start.png" id="10_0jllc"]
+[ext_resource type="Texture2D" uid="uid://cyvl1twgbone" path="res://assets/sprites/Menu/Options.png" id="11_uuwny"]
+[ext_resource type="Texture2D" uid="uid://du0l3e3xsw6tc" path="res://assets/sprites/Menu/quit.png" id="12_s4040"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h6xyy"]
+load_path = "res://.godot/imported/TITLE.png-24dff41b91a507c67e6cea60932f1f3e.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2cek"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_lo6hs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0jllc")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uuwny"]
+shader = ExtResource("3_437ew")
+shader_parameter/step_rate = 7.44800035378
+shader_parameter/distortion_strength = 15.1950006742625
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jllc"]
+shader = ExtResource("3_437ew")
+shader_parameter/step_rate = 6.614000314165
+shader_parameter/distortion_strength = 18.6670008391825
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -11,19 +50,61 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ascc0")
 
+[node name="MenuBackground" type="Sprite2D" parent="."]
+position = Vector2(956, 540)
+scale = Vector2(1.9916667, 1.9944445)
+texture = ExtResource("2_h2cek")
+
+[node name="Title" type="Sprite2D" parent="MenuBackground"]
+texture_filter = 1
+position = Vector2(0, -184.011)
+scale = Vector2(5.378, 5.37)
+texture = SubResource("CompressedTexture2D_h6xyy")
+
+[node name="Boss2" parent="MenuBackground" instance=ExtResource("3_h6xyy")]
+texture_filter = 1
+position = Vector2(135.56488, -354.48468)
+rotation = 0.61086524
+scale = Vector2(1.156, 1.018)
+skew = 0.000654459
+script = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MenuBackground"]
+texture_filter = 1
+position = Vector2(-398.159, -59.665737)
+rotation = 0.24401909
+scale = Vector2(2.2768018, 2.2740014)
+skew = 0.0006543398
+sprite_frames = SubResource("SpriteFrames_h2cek")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.3844958
+
+[node name="Flower" type="Sprite2D" parent="MenuBackground"]
+material = SubResource("ShaderMaterial_uuwny")
+position = Vector2(27.11296, 207.57658)
+scale = Vector2(0.17065099, 0.17912476)
+texture = ExtResource("4_h6xyy")
+offset = Vector2(41.3, 10.05)
+script = ExtResource("5_7iy1q")
+
 [node name="StartButton" type="Button" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 67.0
 offset_top = -452.0
-offset_right = 320.0
+offset_right = 319.99997
 offset_bottom = -375.0
 grow_vertical = 0
-text = "Start"
+icon = ExtResource("10_0jllc")
+icon_alignment = 1
+expand_icon = true
 
 [node name="OptionsButton" type="Button" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -33,10 +114,13 @@ offset_top = -324.0
 offset_right = 320.0
 offset_bottom = -247.0
 grow_vertical = 0
-text = "Options
+text = "
 "
+icon = ExtResource("11_uuwny")
+expand_icon = true
 
 [node name="QuitButton" type="Button" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -46,16 +130,18 @@ offset_top = -196.0
 offset_right = 320.0
 offset_bottom = -119.0
 grow_vertical = 0
-text = "Quit"
+icon = ExtResource("12_s4040")
+icon_alignment = 1
+expand_icon = true
 
-[node name="TextEdit" type="TextEdit" parent="."]
-layout_mode = 0
-offset_left = 829.0
-offset_top = 308.0
-offset_right = 1101.0
-offset_bottom = 456.0
-text = "Imagine cool art here or
-something i guess"
+[node name="Saw" type="Sprite2D" parent="."]
+texture_repeat = 1
+material = SubResource("ShaderMaterial_0jllc")
+position = Vector2(628.00006, 752)
+rotation = 0.24434595
+scale = Vector2(0.201, 0.178)
+texture = ExtResource("5_lo6hs")
+script = ExtResource("5_uuwny")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

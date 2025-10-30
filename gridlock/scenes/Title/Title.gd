@@ -1,7 +1,10 @@
 extends Control
-
+#hides cursor
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 #Switches to the Main scene when StartButton is pressed
 func _on_start_button_pressed() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE #unhides mouse
 	get_tree().change_scene_to_file("res://scenes/Boss/boss_room.tscn")
 
 #Currently not implemented until we get a finished options menu, but will open said options menu when pressed
