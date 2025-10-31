@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal player_position(location: Vector2)
 
+
 var SPEED = 300.0
 var SHIFTSPEED = 450
 var CTRLSPEED = 150
@@ -20,6 +21,8 @@ var health := 100:
 			health = value
 			progress_bar.value = value
 			_update_sprite()
+func _ready():
+	emit_signal("player_position", global_position)
 
 func _physics_process(delta: float):
 	var currentSpeed = SPEED

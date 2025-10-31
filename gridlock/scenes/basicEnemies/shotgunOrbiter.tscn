@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://60d8f13gtv6b"]
+
+[ext_resource type="Script" uid="uid://cxlk7fd1qa62l" path="res://scripts/basicEnemies/shotgun_orbiter.gd" id="1_ctxoa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnk06"]
+size = Vector2(89, 90)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_80ekg"]
+
+[node name="ShotgunOrbiter" type="CharacterBody2D"]
+script = ExtResource("1_ctxoa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(34.5, 35)
+shape = SubResource("RectangleShape2D_qnk06")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(36.5, 36.000004)
+scale = Vector2(91, 88.000015)
+texture = SubResource("PlaceholderTexture2D_80ekg")
