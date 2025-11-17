@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckobbp2dagqok"]
+[gd_scene load_steps=8 format=3 uid="uid://ckobbp2dagqok"]
 
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_3n20u"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_bpcqn"]
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="3_673pk"]
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="4_jotkl"]
+[ext_resource type="Script" uid="uid://bsp7vbmx8aj5s" path="res://scenes/Boss/boss_manager.gd" id="5_u03sx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jotkl"]
 size = Vector2(1976.5, 21)
@@ -18,6 +19,8 @@ size = Vector2(26, 1022)
 [node name="Boss" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(978, 415)
 starting_movement = 1
+health = 100.0
+isMainBoss = true
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_bpcqn")]
 position = Vector2(837, 845)
@@ -25,18 +28,22 @@ position = Vector2(837, 845)
 [node name="TLTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(100, 100)
 starting_pattern = 9
+health = 50.0
 
 [node name="TRTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(1820, 100)
 starting_pattern = 9
+health = 50.0
 
 [node name="BLTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(100, 980)
 starting_pattern = 9
+health = 50.0
 
 [node name="BRTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(1820, 980)
 starting_pattern = 9
+health = 50.0
 
 [node name="blade" parent="." instance=ExtResource("4_jotkl")]
 position = Vector2(1217, 836)
@@ -58,3 +65,47 @@ shape = SubResource("RectangleShape2D_67v12")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1923, 527)
 shape = SubResource("RectangleShape2D_67v12")
+
+[node name="BossManager" type="Node2D" parent="."]
+script = ExtResource("5_u03sx")
+victory_screen = NodePath("../CanvasLayer/VictoryScreen")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VictoryScreen" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/VictoryScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6955032, 0.6955031, 0.6955031, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/VictoryScreen"]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 340.0
+offset_right = 1231.0
+offset_bottom = 423.0
+theme_override_font_sizes/font_size = 60
+text = "Congratulations!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VictoryScreen"]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 450.0
+offset_right = 1029.0
+offset_bottom = 481.0
+text = "Continue"

@@ -4,8 +4,9 @@ var theta: float = 0.0
 @export_range(0,2*PI) var alpha: float = 0.0
 @export var starting_pattern: int
 @export var starting_movement: int
-
+@export var health: float
 @export var bullet_node: PackedScene
+@export var isMainBoss: bool
 var bullet_type: int = 0
 var speed: int = 100
 var target: Vector2
@@ -13,10 +14,18 @@ var move_speed: float = 0.8
 var move_size: int = 500
 var t: float = 0.0
 var pos: Vector2 = Vector2.ZERO
+var beingHit: bool = false
 
-##func _process(delta):
-	##movement(delta)
+func _process(delta):
+	if (beingHit):
+		health -= 10*delta
+		if (health <= 0):
+			die()
 
+func die():
+	if (isMainBoss):
+		get_tree().call_group("game", "on_victory")
+	queue_free()
 #Function for boss movement
 #func movement(delta):
 #	t += delta * move_speed
@@ -66,3 +75,33 @@ func _ready():
 
 func _track(location: Vector2):
 	target = location
+	
+
+
+## IGNORE THE BODY_ENTERED
+func _on_player_detection_body_entered(body: Node2D) -> void:
+	##print(body.name + " hit")
+	if (body.name == "blade"):
+		print("ouch - hit")
+
+
+func _on_player_detection_body_exited(body: Node2D) -> void:
+	##print(body.name + " out")
+	if (body.name == "blade"):
+		print("ouch - out")
+		
+
+
+## Functions to track the blade collision
+func _on_player_detection_area_entered(area: Area2D) -> void:
+	##print(area.name + " in")
+	if (area.name == "BladeArea2D"):
+		print("ouch - in")
+		beingHit = true
+
+
+func _on_player_detection_area_exited(area: Area2D) -> void:
+	##print(area.name + " out")
+	if (area.name == "BladeArea2D"):
+		print("ouch - out")
+		beingHit = false

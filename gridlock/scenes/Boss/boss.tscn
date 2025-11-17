@@ -13,10 +13,10 @@
 [ext_resource type="Script" uid="uid://bve5cd884r3v0" path="res://scripts/Attack Patterns/PlaceholderBoss/Slow8Leaf.gd" id="10_5f346"]
 [ext_resource type="Script" uid="uid://ml0uv5fw6bj4" path="res://scripts/Attack Patterns/PlaceholderBoss/BurstFlower.gd" id="11_0onds"]
 [ext_resource type="Script" uid="uid://d38qnjlfwx58u" path="res://scripts/Attack Patterns/PlaceholderBoss/PlayerAim.gd" id="12_lfs1x"]
-[ext_resource type="Script" path="res://scenes/Boss/TurretLeaf.gd" id="14_i0cfg"]
+[ext_resource type="Script" uid="uid://ddesr6hdp7rtk" path="res://scenes/Boss/TurretLeaf.gd" id="14_i0cfg"]
 [ext_resource type="Script" uid="uid://b5e7y624ei0hh" path="res://scripts/State Machine/MovementStateMachine.gd" id="14_uotkj"]
 [ext_resource type="Script" uid="uid://bkbs5gje54gj0" path="res://scripts/MovementStates/MoveIdle.gd" id="15_aub7x"]
-[ext_resource type="Script" path="res://scenes/Boss/TurretAim.gd" id="15_i0cfg"]
+[ext_resource type="Script" uid="uid://cjvayvb2hd53j" path="res://scenes/Boss/TurretAim.gd" id="15_i0cfg"]
 [ext_resource type="Script" uid="uid://chnoj16rwbck0" path="res://scripts/MovementStates/Figure8.gd" id="16_4vq7k"]
 [ext_resource type="Texture2D" uid="uid://dt6o4j3f4w75j" path="res://assets/sprites/Bosses/Boss1.png" id="17_4vq7k"]
 
@@ -122,4 +122,8 @@ script = ExtResource("15_aub7x")
 script = ExtResource("16_4vq7k")
 
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
+[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
+[connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]

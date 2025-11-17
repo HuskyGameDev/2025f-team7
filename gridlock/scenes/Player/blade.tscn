@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://clourv754sbas" path="res://scripts/Player/saw.gd" id="1_54kj3"]
 [ext_resource type="Texture2D" uid="uid://cgb2w3fv32r42" path="res://assets/sprites/Saw/Saw.png" id="2_1s1bc"]
 [ext_resource type="Shader" uid="uid://cv0js8fiedxe4" path="res://scenes/boil_line.gdshader" id="2_hmvf4"]
-[ext_resource type="Script" path="res://scenes/Player/blade.gd" id="3_8eitm"]
+[ext_resource type="Script" uid="uid://c7vneo12soye2" path="res://scenes/Player/blade.gd" id="3_8eitm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n3ed1"]
 shader = ExtResource("2_hmvf4")
@@ -25,5 +25,7 @@ texture = ExtResource("2_1s1bc")
 script = ExtResource("3_8eitm")
 spin_speed = 230.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BladeArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BladeArea2D"]
 shape = SubResource("RectangleShape2D_t1tmk")
