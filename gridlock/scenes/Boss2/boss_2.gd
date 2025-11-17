@@ -21,11 +21,15 @@ func _process(delta):
 	movement(delta)
 
 #Function for boss movement
+#func movement(delta):
+	#angle += move_speed * delta
+	#position.x = radius * cos(angle) * stretch
+	#position.y = radius * sin(angle)
+	#global_position =  pos + Vector2(position.x,position.y)
+
+#Function for boss movement
 func movement(delta):
-	angle += move_speed * delta
-	position.x = radius * cos(angle) * stretch
-	position.y = radius * sin(angle)
-	global_position =  pos + Vector2(position.x,position.y)
+	$AnimatedSprite2D.rotation += 0.5 * delta
 	
 
 func get_vector(angle):
@@ -33,6 +37,7 @@ func get_vector(angle):
 	return Vector2(cos(theta),sin(theta))
 	
 func _ready():
+	$AnimatedSprite2D.play("move")
 	center = get_viewport().get_visible_rect().size * 0.5
 	pos = global_position
 	GlobalSignals.connect("player_position", Callable(self, "_track"))

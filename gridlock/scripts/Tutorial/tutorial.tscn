@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://ded8qkxp64wrc"]
+
+[ext_resource type="Script" uid="uid://ya0jddob1pt6" path="res://scripts/Tutorial/tutorial.gd" id="1_8o0w1"]
+[ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_kbdgn"]
+[ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="1_ob2r4"]
+[ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="2_kbdgn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o0w1"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_8o0w1")
+
+[node name="parallax" parent="." instance=ExtResource("1_kbdgn")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.257
+anchor_top = 0.043
+anchor_right = 0.77300006
+anchor_bottom = 0.178
+offset_left = -0.44000244
+offset_top = -0.44000244
+offset_right = 20.679932
+offset_bottom = -0.4400177
+theme_override_styles/panel = SubResource("StyleBoxFlat_8o0w1")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 35.0
+offset_right = 980.0
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 30
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="player" parent="." instance=ExtResource("1_ob2r4")]
+position = Vector2(795, 716)
+
+[node name="blade" parent="." instance=ExtResource("2_kbdgn")]
+position = Vector2(1127, 702)

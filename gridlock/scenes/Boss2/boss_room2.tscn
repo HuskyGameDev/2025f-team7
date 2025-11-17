@@ -10,10 +10,10 @@
 [node name="parallax" parent="." instance=ExtResource("1_a7lwn")]
 
 [node name="Boss2" parent="." instance=ExtResource("2_hsdv2")]
-position = Vector2(669, 397)
+position = Vector2(-77, 890)
 
 [node name="player" parent="." instance=ExtResource("5_dlyuh")]
-position = Vector2(934, 606)
+position = Vector2(788, 505)
 
 [node name="blade" parent="." instance=ExtResource("6_gob0o")]
-position = Vector2(1106, 610)
+position = Vector2(1185, 477)
