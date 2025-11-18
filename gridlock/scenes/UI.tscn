@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dchr5es6o6ida"]
+[gd_scene load_steps=12 format=3 uid="uid://b1yptc0ppcic"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
@@ -16,7 +16,7 @@ bg_color = Color(0.7411765, 0.76862746, 0.80784315, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
 bg_color = Color(0.92445606, 0.44463834, 0, 1)
 
-[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel", "controlsPanel", "waveProgressLabel", "waveProgressBar", "audioPanel")]
+[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel", "controlsPanel", "waveProgressLabel", "waveProgressBar", "audioPanel", "HeartContainer", "HeartTextureRect")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -37,6 +37,8 @@ controlsPanel = NodePath("mainPausePanel/optionsPanel/controlsPanel")
 waveProgressLabel = NodePath("WaveProgressBar/WaveProgressLabel")
 waveProgressBar = NodePath("WaveProgressBar/WaveProgressBar")
 audioPanel = NodePath("mainPausePanel/optionsPanel/AudioPanel")
+HeartContainer = NodePath("mainUIPanelContainer/HeartContainer")
+HeartTextureRect = NodePath("mainUIPanelContainer/HeartContainer/HeartTexture0")
 
 [node name="WaveProgressBar" type="GridContainer" parent="."]
 process_mode = 3
@@ -57,6 +59,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("1_ktti3")
+theme_override_colors/font_color = Color(0, 0.32050937, 0.31017795, 1)
 text = "Wave Progress"
 
 [node name="WaveProgressBar" type="ProgressBar" parent="WaveProgressBar"]
@@ -99,47 +102,7 @@ grow_vertical = 2
 process_mode = 3
 layout_mode = 2
 
-[node name="HeartTexture" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
-process_mode = 3
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("1_dj8aq")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="HeartTexture2" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
-process_mode = 3
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("1_dj8aq")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="HeartTexture3" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
-process_mode = 3
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("1_dj8aq")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="HeartTexture4" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
-process_mode = 3
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("1_dj8aq")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="HeartTexture5" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
-process_mode = 3
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("1_dj8aq")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="HeartTexture6" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
+[node name="HeartTexture0" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
 process_mode = 3
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2

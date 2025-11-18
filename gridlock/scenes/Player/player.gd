@@ -14,9 +14,9 @@ const SPEED_STANDARD = 150
 
 @export var health_sprites: Array[Texture2D] = []
 
-var health := 100:
+var health := 10:
 	set(value):
-		value = clamp(value, 0, 100)
+		value = clamp(value, 0, 10)
 		if value != health:
 			health = value
 			progress_bar.value = value
@@ -52,24 +52,28 @@ func set_status(bullet_type):
 
 func fire():
 	debug.text = "fire"
-	health -= 20
+	health -= 2
+	GlobalSignals.emit_signal("health_change", health)
 
 func poison():
 	debug.text = "poison"
-	health -= 20
+	health -= 2
+	GlobalSignals.emit_signal("health_change", health)
 
 func slow():
 	debug.text = "slow"
-	health -= 20
+	health -= 2
+	GlobalSignals.emit_signal("health_change", health)
 
 func stun():
 	debug.text = "stun"
-	health -= 20
+	health -= 2
+	GlobalSignals.emit_signal("health_change", health)
 	
 func _update_sprite():
 	if health_sprites.is_empty():
 		return
 
-	var stage := int((100 - health) / 10)
+	var stage := int((10 - health))
 	stage = clamp(stage, 0, health_sprites.size() - 1)
 	sprite.texture = health_sprites[stage]

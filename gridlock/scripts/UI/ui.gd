@@ -12,7 +12,7 @@ Signals sent out(From UI to Global):
 
 extends Control
 
-var currentHealth := 6;
+var currentHealth := 5;
 var heartTextures := [];
 
 var bombs := 0;
@@ -34,16 +34,29 @@ signal bossInbound;
 @export var waveProgressLabel: Label;
 @export var waveProgressBar: ProgressBar;
 @export var audioPanel: PanelContainer;
+@export var HeartContainer: GridContainer;
+@export var HeartTextureRect: TextureRect;
+
 
 
 func _ready() -> void:
+	for i in range(currentHealth-1):
+		var clone = HeartTextureRect.duplicate();
+		clone.name = "HeartTexture" + str(i+1)
+		HeartContainer.add_child(clone);
 	heartTextures = get_tree().get_nodes_in_group("heartsGroup");
-	heartTextures.sort_custom(func(a, b): return a.name > b.name);
+	
+	var regex = RegEx.new()
+	regex.compile("\\d+")
+	heartTextures.sort_custom(func(a, b): return int(regex.search(a.name).get_string()) < int(regex.search(b.name).get_string()));
+	
 	bombPBar.value = 0;
+	
 	GlobalSignals.connect("health_change", Callable(self, "_on_player_health_change"));
 	GlobalSignals.connect("near_miss", Callable(self, "_near_Miss_Bomb"));
 	GlobalSignals.connect("bomb_used", Callable(self, "_bomb_Used"));
 	GlobalSignals.connect("enemy_progress", Callable(self, "_update_waveprogressbar"));
+
 func _process(delta: float) -> void:
 	#if testVar==false:
 		#_on_player_health_change(5);
@@ -55,14 +68,15 @@ func _process(delta: float) -> void:
 
 #activated by GlobalSignals
 func _on_player_health_change(new_health) -> void:
-	if(new_health >= 0 and new_health <= 6):	
-		if(currentHealth < new_health):
-			currentHealth = new_health;
-			heartTextures[currentHealth].texture = full_heart;
+	var temp := int(new_health/2);
+	if(temp >= 0 and temp <= 5):	
+		if(currentHealth < temp):
+			currentHealth = temp;
+			heartTextures[currentHealth-1].texture = full_heart;
 
-		elif (currentHealth > new_health):
-			currentHealth = new_health;
-			heartTextures[currentHealth].texture = empty_heart;
+		elif (currentHealth > temp):
+			currentHealth = temp;
+			heartTextures[currentHealth-1].texture = empty_heart;
 
 		else:
 			return
@@ -109,14 +123,17 @@ func _input(_event: InputEvent) -> void:
 			controlsPanel.visible = false;
 		elif(optionsPanel.visible):
 			optionsPanel.visible = false;
-		elif(not mainPausePanel.visible):
-			mainPausePanel.visible = true;
-			stopped = true;
-			get_tree().paused = true;
 		elif(mainPausePanel.visible):
 			mainPausePanel.visible = false;
 			stopped = false;
 			get_tree().paused = false;
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;	
+		elif(not mainPausePanel.visible):
+			mainPausePanel.visible = true;
+			stopped = true;
+			get_tree().paused = true;
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
+		
 
 #Main Pause Panel Button
 func _on_resume_button_pressed() -> void:
