@@ -12,6 +12,7 @@ var _active := false;
 func _ready():
 	text = text_list[_curr_idx];
 	visible = false;
+	GlobalSignals.connect("boss_inbound_pause", Callable(self, "activate_label"));
 	
 func _process(delta):
 	if not _active:

@@ -56,6 +56,7 @@ func _ready() -> void:
 	GlobalSignals.connect("near_miss", Callable(self, "_near_Miss_Bomb"));
 	GlobalSignals.connect("bomb_used", Callable(self, "_bomb_Used"));
 	GlobalSignals.connect("enemy_progress", Callable(self, "_update_waveprogressbar"));
+	emit_signal("bossInbound");
 
 func _process(delta: float) -> void:
 	#if testVar==false:
@@ -72,11 +73,11 @@ func _on_player_health_change(new_health) -> void:
 	if(temp >= 0 and temp <= 5):	
 		if(currentHealth < temp):
 			currentHealth = temp;
-			heartTextures[currentHealth-1].texture = full_heart;
+			heartTextures[currentHealth].texture = full_heart;
 
 		elif (currentHealth > temp):
 			currentHealth = temp;
-			heartTextures[currentHealth-1].texture = empty_heart;
+			heartTextures[currentHealth].texture = empty_heart;
 
 		else:
 			return
