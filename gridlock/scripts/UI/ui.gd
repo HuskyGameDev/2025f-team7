@@ -1,4 +1,10 @@
 """
+Scipt for most of the UI functions.
+There are 3 other UI scripts:
+	boss_inbound_text.gd - Used in WaveProgressBar
+	controlButton.gd - Used in controlsPanel
+	volumeSlider.gd - Used in audioPanel
+
 Signals to listen for(From Global to UI):
 	health_change -> _on_player_health_change
 	near_miss -> _near_Miss_Bomb
@@ -38,26 +44,36 @@ signal bossInbound;
 @export var HeartTextureRect: TextureRect;
 
 
-
+#Code that needs to run on start
 func _ready() -> void:
+	#This block is for dynamic creation of heartTextures that go on the UI
+	#How many hearts that are created depend on currentHealth
+	#Uses regex and a custom sort to sort names of each heart texture
 	for i in range(currentHealth-1):
 		var clone = HeartTextureRect.duplicate();
 		clone.name = "HeartTexture" + str(i+1)
 		HeartContainer.add_child(clone);
 	heartTextures = get_tree().get_nodes_in_group("heartsGroup");
-	
 	var regex = RegEx.new()
 	regex.compile("\\d+")
 	heartTextures.sort_custom(func(a, b): return int(regex.search(a.name).get_string()) < int(regex.search(b.name).get_string()));
 	
+	#Make sure the bomb progress bar is 0
 	bombPBar.value = 0;
 	
+	#This sets up the global signals for the script
+	#Some are not in use
 	GlobalSignals.connect("health_change", Callable(self, "_on_player_health_change"));
 	GlobalSignals.connect("near_miss", Callable(self, "_near_Miss_Bomb"));
 	GlobalSignals.connect("bomb_used", Callable(self, "_bomb_Used"));
 	GlobalSignals.connect("enemy_progress", Callable(self, "_update_waveprogressbar"));
+	
+	#Remove after minion waves get put in
+	#Pauses the game after a level is loaded for a few seconds
 	emit_signal("bossInbound");
 
+#Increases the timer every second
+#If scene tree is paused or stopped flag is flipped timer doesn't increase
 func _process(delta: float) -> void:
 	#if testVar==false:
 		#_on_player_health_change(5);
@@ -66,14 +82,20 @@ func _process(delta: float) -> void:
 		return
 	time += delta;
 	timeLabel.text = _time_to_String();
-
-#activated by GlobalSignals
+"""
+Activated by GlobalSignals from player script
+Since player health has to work in multiples of 10
+because of how the flower petal animations work the new health
+amount has to be divided in 2.
+Uses the heartTextures array which is sorted and just changes the hearts
+"""
 func _on_player_health_change(new_health) -> void:
 	var temp := int(new_health/2);
 	if(temp >= 0 and temp <= 5):	
 		if(currentHealth < temp):
 			currentHealth = temp;
-			heartTextures[currentHealth].texture = full_heart;
+			for i in range(currentHealth):
+				heartTextures[i].texture = full_heart;
 
 		elif (currentHealth > temp):
 			currentHealth = temp;
@@ -82,6 +104,7 @@ func _on_player_health_change(new_health) -> void:
 		else:
 			return
 
+#Just converts the time var to a readable time format
 func _time_to_String() -> String:
 	var milisec = fmod(time, 1) * 100;
 	var seconds = fmod(time, 60);
@@ -89,9 +112,14 @@ func _time_to_String() -> String:
 	var format_S = "%02d:%02d:%02d";
 	var complete_string = format_S % [minutes, seconds, milisec];
 	return complete_string;
-
-#Should be called on a near miss to increase bomb bar
-#activated by GlobalSignals
+"""
+Should be called on a near miss to increase bomb bar
+Activated by GlobalSignals from nowhere for now
+Currently the UI script would handle increases in bombs
+based on near misses
+When a bomb is gained will emit to signal of bomb_gained
+Max bombs right now is 2
+"""
 func _near_Miss_Bomb() -> void:
 	if(bombs<2):
 		bombPBar.value += 10;
@@ -102,10 +130,18 @@ func _near_Miss_Bomb() -> void:
 			GlobalSignals.emit_signal("bomb_gained");
 
 #activated by global signals
+#When a bomb is used by player lower amount of bombs by 1
 func _bomb_Used() -> void:
 	bombs -= 1;
-
-#activated by global signals
+"""
+Activated by global signals
+Currently not used.
+Signal is recived from either a minion that dies or player on kill
+then increases the amount of progress on the bar
+When bar is filled spawn the boss by emitting to global signal progress_bar_full
+Then emits signal bossInbound to the script running on BossInboundText which pauses
+the game while the boss text is displayed
+"""
 func _update_waveprogressbar(increase: int) -> void:
 	if(waveProgressBar.visible):
 		waveProgressBar.value += increase;
@@ -115,7 +151,12 @@ func _update_waveprogressbar(increase: int) -> void:
 			GlobalSignals.emit_signal("progress_bar_full");
 			emit_signal("bossInbound");
 
-#Handles inputs for ui_cancel.
+"""
+Handles inputs for ui_cancel.
+Does nothing except on event ui_cancel which is esc currently
+Goes down the tree and checks the logic which does certain actions
+With this tree escape works throughout the whole pause and options screen currently
+"""
 func _input(_event: InputEvent) -> void:
 	if(Input.is_action_just_pressed("ui_cancel")):
 		if(audioPanel.visible):
@@ -135,8 +176,10 @@ func _input(_event: InputEvent) -> void:
 			get_tree().paused = true;
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
 		
-
-#Main Pause Panel Button
+"""
+Main Pause Panel Buttons
+This block deals with the the buttons under mainPausePanel and its GridContainer
+"""
 func _on_resume_button_pressed() -> void:
 	mainPausePanel.visible = false;
 	stopped = false;
@@ -144,14 +187,15 @@ func _on_resume_button_pressed() -> void:
 #Main Pause Panel Button
 func _on_option_button_pressed() -> void:
 	optionsPanel.visible = true;
-	print("TEST")
 #Main Pause Panel Button
 func _on_quit_button_pressed() -> void:
-	#This will be quit logic
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/Title/Title.tscn")
 
 
-#Options Panel Button
+"""
+Options Panel Buttons
+This block deals with the the buttons under optionsPanel and its GridContainer
+"""
 func _on_optionscontrol_button_pressed() -> void:
 	controlsPanel.visible = true;
 #Options Panel Button
@@ -161,10 +205,16 @@ func _on_optionsaudio_button_pressed() -> void:
 func _on_optionsback_button_pressed() -> void:
 	optionsPanel.visible = false;
 
-#Controls Panel Button
+"""
+Control Panel Buttons
+This block deals with the the buttons under controlsPanel and its GridContainer
+"""
 func _on_controls_back_button_pressed() -> void:
 	controlsPanel.visible = false;
 
-#Audio Panel Button
+"""
+Audio Panel Buttons
+This block deals with the the buttons under audioPanel and its GridContainer
+"""
 func _on_audio_back_button_pressed() -> void:
 	audioPanel.visible = false;

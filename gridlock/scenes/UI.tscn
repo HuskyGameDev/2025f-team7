@@ -36,7 +36,7 @@ optionsPanel = NodePath("mainPausePanel/optionsPanel")
 controlsPanel = NodePath("mainPausePanel/optionsPanel/controlsPanel")
 waveProgressLabel = NodePath("WaveProgressBar/WaveProgressLabel")
 waveProgressBar = NodePath("WaveProgressBar/WaveProgressBar")
-audioPanel = NodePath("mainPausePanel/optionsPanel/AudioPanel")
+audioPanel = NodePath("mainPausePanel/optionsPanel/audioPanel")
 HeartContainer = NodePath("mainUIPanelContainer/HeartContainer")
 HeartTextureRect = NodePath("mainUIPanelContainer/HeartContainer/HeartTexture0")
 
@@ -55,6 +55,7 @@ size_flags_vertical = 8
 
 [node name="WaveProgressLabel" type="Label" parent="WaveProgressBar"]
 process_mode = 3
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -64,6 +65,7 @@ text = "Wave Progress"
 
 [node name="WaveProgressBar" type="ProgressBar" parent="WaveProgressBar"]
 process_mode = 3
+visible = false
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -466,27 +468,27 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Back"
 
-[node name="AudioPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel"]
+[node name="audioPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel"]
 process_mode = 3
 visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
-[node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/AudioPanel"]
+[node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/audioPanel"]
 process_mode = 3
 layout_mode = 2
 
-[node name="MasterGridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/AudioPanel/GridContainer"]
+[node name="MasterGridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
 
-[node name="MasterLabel" type="Label" parent="mainPausePanel/optionsPanel/AudioPanel/GridContainer/MasterGridContainer"]
+[node name="MasterLabel" type="Label" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer/MasterGridContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Master Volume"
 
-[node name="MasterHSlider" type="HSlider" parent="mainPausePanel/optionsPanel/AudioPanel/GridContainer/MasterGridContainer" node_paths=PackedStringArray("volSlider")]
+[node name="MasterHSlider" type="HSlider" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer/MasterGridContainer" node_paths=PackedStringArray("volSlider")]
 process_mode = 3
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
@@ -494,7 +496,7 @@ script = ExtResource("7_p7vwb")
 volSlider = NodePath(".")
 selectedBus = "Master"
 
-[node name="audioBackButton" type="Button" parent="mainPausePanel/optionsPanel/AudioPanel/GridContainer"]
+[node name="audioBackButton" type="Button" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 4
@@ -509,4 +511,4 @@ text = "Back"
 [connection signal="pressed" from="mainPausePanel/optionsPanel/GridContainer/optionsaudioButton" to="." method="_on_optionsaudio_button_pressed"]
 [connection signal="pressed" from="mainPausePanel/optionsPanel/GridContainer/optionsbackButton" to="." method="_on_optionsback_button_pressed"]
 [connection signal="pressed" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/controlsBackButton" to="." method="_on_controls_back_button_pressed"]
-[connection signal="pressed" from="mainPausePanel/optionsPanel/AudioPanel/GridContainer/audioBackButton" to="." method="_on_audio_back_button_pressed"]
+[connection signal="pressed" from="mainPausePanel/optionsPanel/audioPanel/GridContainer/audioBackButton" to="." method="_on_audio_back_button_pressed"]
