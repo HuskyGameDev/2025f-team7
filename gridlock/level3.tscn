@@ -1,15 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmx7fanpymqug"]
+[gd_scene load_steps=7 format=3 uid="uid://bmx7fanpymqug"]
 
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="1_o2ccw"]
 [ext_resource type="PackedScene" uid="uid://60d8f13gtv6b" path="res://scenes/basicEnemies/shotgunOrbiter.tscn" id="2_qrujo"]
+[ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="3_5lcx6"]
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="3_qrujo"]
+[ext_resource type="PackedScene" uid="uid://dwrn3jf27llc" path="res://scenes/basicEnemies/swordDude.tscn" id="5_an40m"]
+[ext_resource type="PackedScene" uid="uid://dd330qd4wlqdq" path="res://scenes/basicEnemies/sniperEnemy.tscn" id="6_mu84n"]
 
-[node name="Node2D" type="Node2D"]
+[node name="level" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_o2ccw")]
-position = Vector2(512, 110)
+position = Vector2(698, 352)
 
 [node name="ShotgunOrbiter" parent="." instance=ExtResource("2_qrujo")]
+bullet_node = ExtResource("3_5lcx6")
 
 [node name="blade" parent="." instance=ExtResource("3_qrujo")]
 position = Vector2(742, 50)
+
+[node name="SwordDude" parent="." instance=ExtResource("5_an40m")]
+position = Vector2(232, 268)
+
+[node name="SniperEnemy" parent="." instance=ExtResource("6_mu84n")]
+position = Vector2(258, -78)

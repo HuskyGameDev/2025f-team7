@@ -2,16 +2,16 @@ extends CharacterBody2D
 #In spite of what would be best practice
 #I do not know what any of these unlabeled variables do. Please don't ask. 
 #I'll cry. 
-var speed: int = 200 # Speed of the enemy's movement
-var orbit_radius: int = 175 # Desired distance from the player
-var orbit_speed: int = 5 # How fast the enemy orbits
+var speed: int = 75 # Speed of the enemy's movement
+var orbit_radius: int = 500 # Desired distance from the player
+var orbit_speed: int = 1 # How fast the enemy orbits
 var player_position: Vector2
 @export var bullet_node: PackedScene
 var bullet_type: int = 0
 var bulletspeed: int = 100
 var target: Vector2
-var move_speed: float = 0.2
-var move_size: int = 200
+var move_speed: float = 0.1
+var move_size: int = 100
 var t: float = 0.0
 var pos: Vector2 = Vector2.ZERO
 var theta: float = 0.0
@@ -69,13 +69,13 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_shoot_timeout(angle) -> void:
-	alpha = angle/5 #Count Columns
+	alpha = 180/1 #Count Columns
 	for n: int in 1: #Count rows
 		#maxvelocity and then min velocity
 		speed = ((120-80)/10)*n + 80
-		theta = Vector2(1,0).angle_to(target - position) - (angle/2)
+		theta = Vector2(1,0).angle_to(target - position) - (180/2)
 		#shoot(theta)
-		for m in 5:
+		for m in 1:
 			shoot(theta)
 		
 	
