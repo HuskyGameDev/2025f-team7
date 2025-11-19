@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=25 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cyvl1twgbone" path="res://assets/sprites/Menu/Options.png" id="11_uuwny"]
 [ext_resource type="Texture2D" uid="uid://c1m0xioaysc3" path="res://assets/sprites/Menu/Color.png" id="12_birck"]
 [ext_resource type="Texture2D" uid="uid://du0l3e3xsw6tc" path="res://assets/sprites/Menu/quit.png" id="12_s4040"]
+[ext_resource type="Texture2D" uid="uid://bmbt75gs0watt" path="res://assets/sprites/Menu/tutorial.png" id="13_wvb7n"]
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="15_2e2l6"]
 [ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="16_l0whq"]
 [ext_resource type="Script" uid="uid://b0xrvt30cgsxw" path="res://scripts/UI/title_options_panel.gd" id="16_xutsw"]
@@ -69,9 +70,9 @@ texture = SubResource("CompressedTexture2D_h6xyy")
 
 [node name="Boss2" parent="MenuBackground" instance=ExtResource("3_h6xyy")]
 texture_filter = 1
-position = Vector2(148.11717, -352.98053)
+position = Vector2(231.96652, -126.85237)
 rotation = 0.61086524
-scale = Vector2(1.156, 1.018)
+scale = Vector2(0.126, 0.111)
 skew = 0.000654459
 script = null
 
@@ -151,6 +152,21 @@ offset_right = 1034.0
 offset_bottom = -46.0
 grow_vertical = 0
 icon = ExtResource("12_birck")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TutorialButton" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1469.0
+offset_top = -282.0
+offset_right = 1743.0
+offset_bottom = -189.0
+grow_vertical = 0
+icon = ExtResource("13_wvb7n")
 icon_alignment = 1
 expand_icon = true
 
@@ -545,6 +561,7 @@ text = "Back"
 [connection signal="pressed" from="OptionsButton" to="CanvasLayer/optionsPanel" method="_on_options_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="ColorButton" to="." method="_on_color_button_pressed"]
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="color_changed" from="ColorPicker" to="Flower" method="_on_color_picker_color_changed"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionscontrolButton" to="CanvasLayer/optionsPanel" method="_on_optionscontrol_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionsaudioButton" to="CanvasLayer/optionsPanel" method="_on_optionsaudio_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1yptc0ppcic"]
+[gd_scene load_steps=13 format=3 uid="uid://b1yptc0ppcic"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
@@ -9,6 +9,7 @@
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="5_wm3ai"]
 [ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="6_8dubc"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="7_p7vwb"]
+[ext_resource type="Texture2D" uid="uid://c0npmdqw5qmcn" path="res://assets/sprites/Menu/options_menu.png" id="8_w7enk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro3t7"]
 bg_color = Color(0.7411765, 0.76862746, 0.80784315, 1)
@@ -216,6 +217,12 @@ visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
+[node name="Sprite2D" type="Sprite2D" parent="mainPausePanel/optionsPanel"]
+modulate = Color(0.96035105, 0.96035105, 0.96035093, 1)
+position = Vector2(959.50006, 540.5)
+scale = Vector2(1.9989581, 1.998148)
+texture = ExtResource("8_w7enk")
+
 [node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel"]
 process_mode = 3
 layout_mode = 2
@@ -226,24 +233,32 @@ size_flags_vertical = 4
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 100
 text = "OPTIONS"
 
 [node name="optionscontrolButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
 [node name="optionsaudioButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 75
 text = "Audio"
 
 [node name="optionsbackButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 75
 text = "Back"
 
@@ -253,6 +268,12 @@ visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
+[node name="Sprite2D" type="Sprite2D" parent="mainPausePanel/optionsPanel/controlsPanel"]
+modulate = Color(0.96035105, 0.96035105, 0.96035093, 1)
+position = Vector2(959.50006, 540.5)
+scale = Vector2(1.9989581, 1.998148)
+texture = ExtResource("8_w7enk")
+
 [node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/controlsPanel"]
 process_mode = 3
 layout_mode = 2
@@ -260,6 +281,8 @@ layout_mode = 2
 [node name="controlsLabel" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
@@ -479,6 +502,12 @@ visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
+[node name="Sprite2D" type="Sprite2D" parent="mainPausePanel/optionsPanel/audioPanel"]
+modulate = Color(0.96035105, 0.96035105, 0.96035093, 1)
+position = Vector2(959.50006, 540.5)
+scale = Vector2(1.9989581, 1.998148)
+texture = ExtResource("8_w7enk")
+
 [node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/audioPanel"]
 process_mode = 3
 layout_mode = 2
@@ -491,6 +520,8 @@ layout_mode = 2
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
 text = "Master Volume"
 
 [node name="MasterHSlider" type="HSlider" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer/MasterGridContainer" node_paths=PackedStringArray("volSlider")]
