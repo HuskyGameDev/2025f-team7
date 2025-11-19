@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://ckobbp2dagqok"]
 
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_3n20u"]
-[ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/ui.tscn" id="1_67v12"]
+[ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="1_67v12"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_bpcqn"]
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="3_673pk"]
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="4_jotkl"]
-[ext_resource type="Script" path="res://scenes/Boss/boss_manager.gd" id="5_u03sx"]
+[ext_resource type="Script" uid="uid://bsp7vbmx8aj5s" path="res://scenes/Boss/boss_manager.gd" id="5_u03sx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jotkl"]
 size = Vector2(1976.5, 21)
@@ -19,6 +19,7 @@ size = Vector2(26, 1022)
 
 [node name="Boss" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(978, 415)
+starting_pattern = 1
 starting_movement = 1
 health = 100.0
 isMainBoss = true
@@ -28,22 +29,22 @@ position = Vector2(837, 845)
 
 [node name="TLTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(100, 100)
-starting_pattern = 9
+starting_pattern = 10
 health = 50.0
 
 [node name="TRTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(1666, 100)
-starting_pattern = 9
+starting_pattern = 10
 health = 50.0
 
 [node name="BLTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(100, 980)
-starting_pattern = 9
+starting_pattern = 10
 health = 50.0
 
 [node name="BRTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(1666, 980)
-starting_pattern = 9
+starting_pattern = 10
 health = 50.0
 
 [node name="blade" parent="." instance=ExtResource("4_jotkl")]

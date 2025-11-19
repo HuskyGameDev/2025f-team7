@@ -7,6 +7,8 @@ var SPEED = 300.0
 var SHIFTSPEED = 450
 var CTRLSPEED = 150
 var BOMBAVAIL = true; 
+var invincible = false
+var invincibleTimer: float = 0
 const SPEED_STANDARD = 150
 @onready var debug = $debug
 @onready var progress_bar = $ProgressBar
@@ -46,15 +48,18 @@ func _physics_process(delta: float):
 	GlobalSignals.emit_signal("player_position", position)
 
 func set_status(bullet_type):
-	match bullet_type:
-		0:
-			fire()
-		1:
-			poison()
-		2:
-			slow()
-		3:
-			stun()
+	if !invincible:
+		match bullet_type:
+			0:
+				fire()
+			1:
+				poison()
+			2:
+				slow()
+			3:
+				stun()
+		invincible = true
+		$InvincibleTimer.start(5)
 
 func fire():
 	debug.text = "fire"
@@ -83,3 +88,7 @@ func _update_sprite():
 	var stage := int((10 - health))
 	stage = clamp(stage, 0, health_sprites.size() - 1)
 	sprite.texture = health_sprites[stage]
+
+
+func _on_invincible_timer_timeout() -> void:
+	invincible = false

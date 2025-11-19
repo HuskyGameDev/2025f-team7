@@ -5,7 +5,7 @@ func enter():
 	owner.bullet_type = 3 # color of bullet
 	owner.alpha = 0
 	# write out burst pattern
-	owner.trackShoot(2, 3, 50, 150, PI/4)
+	owner.trackShoot(4, 4, 50, 150, PI/4)
 	can_transition = true
 
 
