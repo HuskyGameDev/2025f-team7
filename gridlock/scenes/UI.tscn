@@ -52,6 +52,7 @@ offset_bottom = 47.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme = ExtResource("1_ktti3")
 
 [node name="WaveProgressLabel" type="Label" parent="WaveProgressBar"]
 process_mode = 3
@@ -70,6 +71,7 @@ custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("1_ktti3")
 theme_override_styles/background = SubResource("StyleBoxFlat_ro3t7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5en4g")
 show_percentage = false
@@ -88,6 +90,7 @@ script = ExtResource("5_cgfq5")
 [node name="BossInboundTestButton" type="Button" parent="WaveProgressBar"]
 visible = false
 layout_mode = 2
+theme = ExtResource("1_ktti3")
 text = "TEST TEST TEST"
 
 [node name="mainUIPanelContainer" type="PanelContainer" parent="."]
@@ -100,6 +103,7 @@ anchor_bottom = 1.0
 offset_left = -154.0
 grow_horizontal = 0
 grow_vertical = 2
+theme = ExtResource("1_ktti3")
 
 [node name="HeartContainer" type="GridContainer" parent="mainUIPanelContainer"]
 process_mode = 3
@@ -173,6 +177,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ktti3")
 
 [node name="GridContainer" type="GridContainer" parent="mainPausePanel"]
 process_mode = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=24 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
@@ -17,6 +17,7 @@
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="15_2e2l6"]
 [ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="16_l0whq"]
 [ext_resource type="Script" uid="uid://b0xrvt30cgsxw" path="res://scripts/UI/title_options_panel.gd" id="16_xutsw"]
+[ext_resource type="Theme" uid="uid://d8uuw1d6d7be" path="res://assets/label.tres" id="17_wvb7n"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="17_xutsw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h6xyy"]
@@ -184,11 +185,13 @@ script = ExtResource("5_uuwny")
 
 [node name="optionsPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("controlsPanel", "audioPanel")]
 process_mode = 3
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("17_wvb7n")
 theme_override_styles/panel = ExtResource("15_2e2l6")
 script = ExtResource("16_xutsw")
 controlsPanel = NodePath("controlsPanel")
@@ -199,29 +202,34 @@ process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("17_wvb7n")
 
 [node name="optionsLabel" type="Label" parent="CanvasLayer/optionsPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 1
+theme = ExtResource("17_wvb7n")
 theme_override_font_sizes/font_size = 100
 text = "OPTIONS"
 
 [node name="optionscontrolButton" type="Button" parent="CanvasLayer/optionsPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
 [node name="optionsaudioButton" type="Button" parent="CanvasLayer/optionsPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 theme_override_font_sizes/font_size = 75
 text = "Audio"
 
 [node name="optionsbackButton" type="Button" parent="CanvasLayer/optionsPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 theme_override_font_sizes/font_size = 75
 text = "Back"
 
@@ -229,25 +237,30 @@ text = "Back"
 process_mode = 3
 visible = false
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 theme_override_styles/panel = ExtResource("15_2e2l6")
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/optionsPanel/controlsPanel"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="controlsLabel" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="mainCharacterMovementFoldable" type="FoldableContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 folded = true
 title = "Main Character Movement"
 
@@ -255,101 +268,121 @@ title = "Main Character Movement"
 process_mode = 3
 visible = false
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="moveUpControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 text = "Move Up"
 
 [node name="charMoveUpButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("17_wvb7n")
 script = ExtResource("16_l0whq")
 control_name = "MainPlayerMoveUp"
 
 [node name="moveDownControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 text = "Move Down"
 
 [node name="charMoveDownButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 script = ExtResource("16_l0whq")
 control_name = "MainPlayerMoveDown"
 
 [node name="moveLeftControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 text = "Move Left"
 
 [node name="charMoveLeftButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 script = ExtResource("16_l0whq")
 control_name = "MainPlayerMoveLeft"
 
 [node name="moveRightControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 text = "Move Right"
 
 [node name="charMoveRightButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 script = ExtResource("16_l0whq")
 control_name = "MainPlayerMoveRight"
 
 [node name="moveFast" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 text = "Fast Move"
 
 [node name="charMoveFastButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 script = ExtResource("16_l0whq")
 control_name = "FastWalk"
 
 [node name="moveSlow" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 text = "Slow Walk"
 
 [node name="charMoveSlowButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 script = ExtResource("16_l0whq")
 control_name = "SlowWalk"
 
 [node name="sawCharacterMovementFoldable" type="FoldableContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 folded = true
 title = "Saw Character Movement"
 
@@ -357,71 +390,85 @@ title = "Saw Character Movement"
 process_mode = 3
 visible = false
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="moveUpControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 text = "Move Up"
 
 [node name="sawMoveUpButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("17_wvb7n")
 script = ExtResource("16_l0whq")
 control_name = "SawPlayerMoveUp"
 
 [node name="moveDownControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 text = "Move Down"
 
 [node name="sawMoveDownButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 script = ExtResource("16_l0whq")
 control_name = "SawPlayerMoveDown"
 
 [node name="moveLeftControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 text = "Move Left"
 
 [node name="sawMoveLeftButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 script = ExtResource("16_l0whq")
 control_name = "SawPlayerMoveLeft"
 
 [node name="moveRightControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 text = "Move Right"
 
 [node name="sawMoveRightButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 script = ExtResource("16_l0whq")
 control_name = "SawPlayerMoveRight"
 
 [node name="otherFoldable" type="FoldableContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 folded = true
 title = "Miscellaneous Controls"
 
@@ -429,19 +476,23 @@ title = "Miscellaneous Controls"
 process_mode = 3
 visible = false
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="UseBombControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 
 [node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 text = "Use Bomb"
 
 [node name="useBombButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("17_wvb7n")
 script = ExtResource("16_l0whq")
 control_name = "UseBomb"
 
@@ -449,6 +500,7 @@ control_name = "UseBomb"
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("17_wvb7n")
 text = "Back"
 
 [node name="audioPanel" type="PanelContainer" parent="CanvasLayer/optionsPanel"]
@@ -469,11 +521,13 @@ layout_mode = 2
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("17_wvb7n")
+theme_override_font_sizes/font_size = 36
 text = "Master Volume"
 
 [node name="MasterHSlider" type="HSlider" parent="CanvasLayer/optionsPanel/audioPanel/GridContainer/MasterGridContainer" node_paths=PackedStringArray("volSlider")]
 process_mode = 3
-custom_minimum_size = Vector2(200, 20)
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 script = ExtResource("17_xutsw")
 volSlider = NodePath(".")
@@ -483,6 +537,7 @@ selectedBus = "Master"
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("17_wvb7n")
 text = "Back"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
