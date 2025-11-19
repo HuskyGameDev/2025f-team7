@@ -38,6 +38,16 @@ func shoot(angle):
 	
 	get_tree().current_scene.call_deferred("add_child", bullet)
 
+func trackShoot(countRows, countCols, minVel, maxVel, angle):
+	alpha = angle/countCols
+	for n: int in countRows:
+		speed = ((maxVel-minVel)/countRows)*n + minVel
+		theta = Vector2(1,0).angle_to(target - position) - (angle/2)
+		#shoot(theta)
+		for m in countCols:
+			shoot(theta)
+		
+	
 func _physics_process(delta: float) -> void:
 	if player_position:
 		var direction_to_player = (player_position - global_position).normalized()
@@ -56,3 +66,16 @@ func _physics_process(delta: float) -> void:
 
 		velocity = radial_velocity + orbital_velocity
 		move_and_slide()
+
+
+func _on_shoot_timeout() -> void:
+	alpha = 60/5 #Count Columns
+	for n: int in 1: #Count rows
+		#maxvelocity and then min velocity
+		speed = ((12-8)/1)*n + 8
+		theta = Vector2(1,0).angle_to(target - position) - (60/2)
+		#shoot(theta)
+		for m in 5:
+			shoot(theta)
+		
+	
