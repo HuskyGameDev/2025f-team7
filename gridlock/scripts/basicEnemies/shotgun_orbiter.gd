@@ -1,14 +1,17 @@
 extends CharacterBody2D
+#In spite of what would be best practice
+#I do not know what any of these unlabeled variables do. Please don't ask. 
+#I'll cry. 
 var speed: int = 200 # Speed of the enemy's movement
-var orbit_radius: int = 450 # Desired distance from the player
-var orbit_speed: int = 20 # How fast the enemy orbits
+var orbit_radius: int = 175 # Desired distance from the player
+var orbit_speed: int = 5 # How fast the enemy orbits
 var player_position: Vector2
 @export var bullet_node: PackedScene
 var bullet_type: int = 0
 var bulletspeed: int = 100
 var target: Vector2
-var move_speed: float = 0.8
-var move_size: int = 500
+var move_speed: float = 0.2
+var move_size: int = 200
 var t: float = 0.0
 var pos: Vector2 = Vector2.ZERO
 var theta: float = 0.0
