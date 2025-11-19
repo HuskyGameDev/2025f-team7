@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmx7fanpymqug"]
+
+[ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="1_o2ccw"]
+[ext_resource type="PackedScene" uid="uid://60d8f13gtv6b" path="res://scenes/basicEnemies/shotgunOrbiter.tscn" id="2_qrujo"]
+[ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="3_qrujo"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_o2ccw")]
+position = Vector2(512, 110)
+
+[node name="ShotgunOrbiter" parent="." instance=ExtResource("2_qrujo")]
+
+[node name="blade" parent="." instance=ExtResource("3_qrujo")]
+position = Vector2(742, 50)
