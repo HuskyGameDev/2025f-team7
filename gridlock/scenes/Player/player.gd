@@ -6,6 +6,7 @@ signal player_position(location: Vector2)
 var SPEED = 300.0
 var SHIFTSPEED = 450
 var CTRLSPEED = 150
+var BOMBAVAIL = true; 
 const SPEED_STANDARD = 150
 @onready var debug = $debug
 @onready var progress_bar = $ProgressBar
@@ -21,6 +22,8 @@ var health := 10:
 			health = value
 			progress_bar.value = value
 			_update_sprite()
+		if value == 0:
+			get_tree().change_scene_to_file("res://scenes/Title/Title.tscn")
 func _ready():
 	emit_signal("player_position", global_position)
 
@@ -31,7 +34,9 @@ func _physics_process(delta: float):
 	if Input.is_action_pressed("SlowWalk"):
 		currentSpeed = CTRLSPEED
 	if Input.is_action_just_pressed("UseBomb"):
-		get_tree().call_group("Bullet", "blow_up")
+		if BOMBAVAIL == true:
+			get_tree().call_group("Bullet", "blow_up")
+			BOMBAVAIL = false
 	
 	
 	velocity = Input.get_vector("MainPlayerMoveLeft","MainPlayerMoveRight","MainPlayerMoveUp","MainPlayerMoveDown") * currentSpeed
