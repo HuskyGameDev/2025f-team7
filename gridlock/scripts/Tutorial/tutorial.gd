@@ -19,14 +19,14 @@ func instruction():
 			$CanvasLayer/Panel/Label.text = "Move the saw using the arrow keys."
 			step += 1
 		2:
-			$CanvasLayer/Panel/Label.text = "The saw harms the enemies."
+			$CanvasLayer/Panel/Label.text = "The saw harms the enemies, and it is invulnerable to bullets."
 			step += 1
 		3:
 			$CanvasLayer/Panel/Label.text = "The center of the flower is vulnerable to bullets. The amount of flower petals represents its health."
 			step += 1
 		4:
-			$CanvasLayer/Panel/Label.text = "Press space to launch a bomb."
+			$CanvasLayer/Panel/Label.text = "Once the bomb bar reaches 100%, the bomb is ready. Press space to launch a bomb."
 			step += 1
 		5:
-			$CanvasLayer/Panel/Label.text = "The tutorial is now over. Go to the pause menu to exit."
+			$CanvasLayer/Panel/Label.text = "The tutorial is now over. Press Esc to exit the tutorial."
 			step += 1

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ded8qkxp64wrc"]
+[gd_scene load_steps=7 format=3 uid="uid://ded8qkxp64wrc"]
 
 [ext_resource type="Script" uid="uid://ya0jddob1pt6" path="res://scripts/Tutorial/tutorial.gd" id="1_8o0w1"]
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_kbdgn"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="1_ob2r4"]
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="2_kbdgn"]
+[ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="5_h2nhn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o0w1"]
 bg_color = Color(0, 0, 0, 1)
@@ -47,3 +48,7 @@ position = Vector2(795, 716)
 
 [node name="blade" parent="." instance=ExtResource("2_kbdgn")]
 position = Vector2(1127, 702)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer2" instance=ExtResource("5_h2nhn")]
