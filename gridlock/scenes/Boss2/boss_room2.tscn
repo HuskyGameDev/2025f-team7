@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmpqk2cr2f03v"]
+[gd_scene load_steps=6 format=3 uid="uid://bmpqk2cr2f03v"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_a7lwn"]
 [ext_resource type="PackedScene" uid="uid://ddy6dvqegvph2" path="res://scenes/Boss2/boss_2.tscn" id="2_hsdv2"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="5_dlyuh"]
+[ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/ui.tscn" id="5_vydpg"]
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="6_gob0o"]
 
 [node name="BossRoom2" type="Node2D"]
@@ -17,3 +18,7 @@ position = Vector2(788, 505)
 
 [node name="blade" parent="." instance=ExtResource("6_gob0o")]
 position = Vector2(1185, 477)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("5_vydpg")]
