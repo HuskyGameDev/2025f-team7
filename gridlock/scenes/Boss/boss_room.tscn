@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckobbp2dagqok"]
+[gd_scene load_steps=10 format=3 uid="uid://ckobbp2dagqok"]
 
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_3n20u"]
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="1_67v12"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="3_673pk"]
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="4_jotkl"]
 [ext_resource type="Script" uid="uid://bsp7vbmx8aj5s" path="res://scenes/Boss/boss_manager.gd" id="5_u03sx"]
+[ext_resource type="Script" uid="uid://c7yc0rwepuypc" path="res://scripts/UI/victory_screen.gd" id="7_nyngh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jotkl"]
 size = Vector2(1976.5, 21)
@@ -85,8 +86,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_nyngh")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/VictoryScreen"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,6 +99,7 @@ grow_vertical = 2
 color = Color(0.6955032, 0.6955031, 0.6955031, 1)
 
 [node name="Label" type="Label" parent="CanvasLayer/VictoryScreen"]
+process_mode = 3
 layout_mode = 0
 offset_left = 750.0
 offset_top = 340.0
@@ -107,9 +111,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/VictoryScreen"]
+process_mode = 3
 layout_mode = 0
 offset_left = 950.0
 offset_top = 450.0
 offset_right = 1029.0
 offset_bottom = 481.0
 text = "Continue"
+
+[connection signal="pressed" from="CanvasLayer/VictoryScreen/Button" to="CanvasLayer/VictoryScreen" method="_on_button_pressed"]

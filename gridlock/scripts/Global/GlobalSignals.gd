@@ -7,4 +7,5 @@ signal bomb_gained()#signal sent out when bomb is gained.
 signal bomb_used()#signal sent out on bomb use.
 signal enemy_progress(increase: int)
 signal progress_bar_full()
+signal boss_inbound_pause() #Debug func to call this from other objects
 var player_color: Color = Color(1, 1, 1)  # default white

@@ -18,3 +18,9 @@ shape = SubResource("RectangleShape2D_qnk06")
 position = Vector2(36.5, 36.000004)
 scale = Vector2(91, 88.000015)
 texture = SubResource("PlaceholderTexture2D_80ekg")
+
+[node name="shoot" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="shoot" to="." method="_on_shoot_timeout"]

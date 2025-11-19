@@ -1,14 +1,17 @@
 extends CharacterBody2D
+#In spite of what would be best practice
+#I do not know what any of these unlabeled variables do. Please don't ask. 
+#I'll cry. 
 var speed: int = 200 # Speed of the enemy's movement
-var orbit_radius: int = 450 # Desired distance from the player
-var orbit_speed: int = 20 # How fast the enemy orbits
+var orbit_radius: int = 175 # Desired distance from the player
+var orbit_speed: int = 5 # How fast the enemy orbits
 var player_position: Vector2
 @export var bullet_node: PackedScene
 var bullet_type: int = 0
 var bulletspeed: int = 100
 var target: Vector2
-var move_speed: float = 0.8
-var move_size: int = 500
+var move_speed: float = 0.2
+var move_size: int = 200
 var t: float = 0.0
 var pos: Vector2 = Vector2.ZERO
 var theta: float = 0.0
@@ -35,6 +38,16 @@ func shoot(angle):
 	
 	get_tree().current_scene.call_deferred("add_child", bullet)
 
+func trackShoot(countRows, countCols, minVel, maxVel, angle):
+	alpha = angle/countCols
+	for n: int in countRows:
+		speed = ((maxVel-minVel)/countRows)*n + minVel
+		theta = Vector2(1,0).angle_to(target - position) - (angle/2)
+		#shoot(theta)
+		for m in countCols:
+			shoot(theta)
+		
+	
 func _physics_process(delta: float) -> void:
 	if player_position:
 		var direction_to_player = (player_position - global_position).normalized()
@@ -53,3 +66,16 @@ func _physics_process(delta: float) -> void:
 
 		velocity = radial_velocity + orbital_velocity
 		move_and_slide()
+
+
+func _on_shoot_timeout() -> void:
+	alpha = 60/5 #Count Columns
+	for n: int in 1: #Count rows
+		#maxvelocity and then min velocity
+		speed = ((12-8)/1)*n + 8
+		theta = Vector2(1,0).angle_to(target - position) - (60/2)
+		#shoot(theta)
+		for m in 5:
+			shoot(theta)
+		
+	
