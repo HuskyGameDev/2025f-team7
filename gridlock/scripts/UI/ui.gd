@@ -21,7 +21,7 @@ extends Control
 var currentHealth := 5;
 var heartTextures := [];
 
-var bombs := 0;
+var bombs := 1;
 
 var time := 0.0;
 var stopped := false;
@@ -58,8 +58,9 @@ func _ready() -> void:
 	regex.compile("\\d+")
 	heartTextures.sort_custom(func(a, b): return int(regex.search(a.name).get_string()) < int(regex.search(b.name).get_string()));
 	
-	#Make sure the bomb progress bar is 0
+	#Make sure the bomb progress bar is 0 and bomb label is current
 	bombPBar.value = 0;
+	bombLabel.text = "x" + str(bombs);
 	
 	#This sets up the global signals for the script
 	#Some are not in use
@@ -133,6 +134,8 @@ func _near_Miss_Bomb() -> void:
 #When a bomb is used by player lower amount of bombs by 1
 func _bomb_Used() -> void:
 	bombs -= 1;
+	bombLabel.text = "x" + str(bombs);
+
 """
 Activated by global signals
 Currently not used.
@@ -189,6 +192,8 @@ func _on_option_button_pressed() -> void:
 	optionsPanel.visible = true;
 #Main Pause Panel Button
 func _on_quit_button_pressed() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
+	get_tree().paused = false;
 	get_tree().change_scene_to_file("res://scenes/Title/Title.tscn")
 
 

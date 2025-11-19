@@ -37,6 +37,7 @@ func _physics_process(delta: float):
 		if BOMBAVAIL == true:
 			get_tree().call_group("Bullet", "blow_up")
 			BOMBAVAIL = false
+			GlobalSignals.emit_signal("bomb_used")
 	
 	
 	velocity = Input.get_vector("MainPlayerMoveLeft","MainPlayerMoveRight","MainPlayerMoveUp","MainPlayerMoveDown") * currentSpeed
