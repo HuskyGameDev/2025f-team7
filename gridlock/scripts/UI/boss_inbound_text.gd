@@ -24,7 +24,7 @@ var _active := false;#If the script is running
 func _ready():
 	text = text_list[_curr_idx];
 	visible = false;
-	GlobalSignals.connect("boss_inbound_pause", Callable(self, "activate_label"));
+	GlobalSignals.connect("boss_inbound_pause", Callable(self, "activate_label"));#debug func
 
 """
 If the label sequence hasn't been activated this does nothing
