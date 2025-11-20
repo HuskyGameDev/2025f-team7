@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6t43grsclomr"]
+[gd_scene load_steps=25 format=3 uid="uid://b6t43grsclomr"]
 
 [ext_resource type="Script" uid="uid://djf1bewdugc0u" path="res://scenes/Boss/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_neq0i"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://uhysn1p2xi74" path="res://scripts/Attack Patterns/PlaceholderBoss/5Leaf.gd" id="5_wqpjq"]
 [ext_resource type="Script" uid="uid://ctgsoxfx6qrid" path="res://scripts/Attack Patterns/PlaceholderBoss/4Leaf.gd" id="6_2cdgk"]
 [ext_resource type="Script" uid="uid://b2ai2smah8g0f" path="res://scripts/Attack Patterns/PlaceholderBoss/3Leaf.gd" id="7_qsl3t"]
+[ext_resource type="Script" uid="uid://bpla01kkpl4cx" path="res://scenes/Boss/BossIdle.gd" id="7_tivtr"]
 [ext_resource type="Script" uid="uid://d1dykoder1h37" path="res://scripts/Attack Patterns/PlaceholderBoss/2Leaf.gd" id="8_qsl3t"]
 [ext_resource type="Script" uid="uid://b3ukxtsdwdt7p" path="res://scripts/Attack Patterns/PlaceholderBoss/Fast2Leaf.gd" id="9_2avx2"]
 [ext_resource type="Script" uid="uid://bve5cd884r3v0" path="res://scripts/Attack Patterns/PlaceholderBoss/Slow8Leaf.gd" id="10_5f346"]
@@ -19,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cjvayvb2hd53j" path="res://scenes/Boss/TurretAim.gd" id="15_i0cfg"]
 [ext_resource type="Script" uid="uid://chnoj16rwbck0" path="res://scripts/MovementStates/Figure8.gd" id="16_4vq7k"]
 [ext_resource type="Texture2D" uid="uid://dt6o4j3f4w75j" path="res://assets/sprites/Bosses/Boss1.png" id="17_4vq7k"]
+[ext_resource type="Script" uid="uid://b7auq17yxeri8" path="res://scenes/Boss/TurretIdle.gd" id="18_88t4m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4vq7k"]
 animations = [{
@@ -35,12 +37,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_neq0i"]
-radius = 100.0
+radius = 70.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vn2fc"]
 radius = 23.021729
 
 [node name="Boss" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_dlmty")
 bullet_node = ExtResource("2_neq0i")
 
@@ -77,6 +80,9 @@ script = ExtResource("3_qnbj4")
 [node name="Idle" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("4_r3bxh")
 
+[node name="BossIdle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_tivtr")
+
 [node name="5Leaf" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("5_wqpjq")
 
@@ -106,6 +112,9 @@ script = ExtResource("14_i0cfg")
 
 [node name="TurretAim" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("15_i0cfg")
+
+[node name="TurretIdle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("18_88t4m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)

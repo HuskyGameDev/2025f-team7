@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=27 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
 [ext_resource type="Shader" uid="uid://cv0js8fiedxe4" path="res://scenes/boil_line.gdshader" id="3_437ew"]
-[ext_resource type="PackedScene" uid="uid://ddy6dvqegvph2" path="res://scenes/Boss2/boss_2.tscn" id="3_h6xyy"]
+[ext_resource type="Texture2D" uid="uid://bcu7t1r3ukgea" path="res://assets/sprites/Bosses/Frame1.png" id="3_sxacd"]
 [ext_resource type="Texture2D" uid="uid://d022rpg3f5ukb" path="res://assets/sprites/Player/Flower/Flower.png" id="4_h6xyy"]
+[ext_resource type="Texture2D" uid="uid://b51nt706e4yry" path="res://assets/sprites/Bosses/Frame2.png" id="4_r8tji"]
 [ext_resource type="Script" uid="uid://cvu8w3rsuvgos" path="res://scenes/Player/Player_Sprite.gd" id="5_7iy1q"]
 [ext_resource type="Texture2D" uid="uid://cgb2w3fv32r42" path="res://assets/sprites/Saw/Saw.png" id="5_lo6hs"]
 [ext_resource type="Script" uid="uid://b8ddrokqo1lo3" path="res://scenes/Title/saw_cursor.gd" id="5_uuwny"]
@@ -14,9 +15,29 @@
 [ext_resource type="Texture2D" uid="uid://cyvl1twgbone" path="res://assets/sprites/Menu/Options.png" id="11_uuwny"]
 [ext_resource type="Texture2D" uid="uid://c1m0xioaysc3" path="res://assets/sprites/Menu/Color.png" id="12_birck"]
 [ext_resource type="Texture2D" uid="uid://du0l3e3xsw6tc" path="res://assets/sprites/Menu/quit.png" id="12_s4040"]
+[ext_resource type="Texture2D" uid="uid://bmbt75gs0watt" path="res://assets/sprites/Menu/tutorial.png" id="13_wvb7n"]
+[ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="15_2e2l6"]
+[ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="16_l0whq"]
+[ext_resource type="Script" uid="uid://b0xrvt30cgsxw" path="res://scripts/UI/title_options_panel.gd" id="16_xutsw"]
+[ext_resource type="Theme" uid="uid://d8uuw1d6d7be" path="res://assets/label.tres" id="17_wvb7n"]
+[ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="17_xutsw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h6xyy"]
 load_path = "res://.godot/imported/TITLE.png-24dff41b91a507c67e6cea60932f1f3e.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_blibh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sxacd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r8tji")
+}],
+"loop": true,
+"name": &"move",
+"speed": 3.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h2cek"]
 animations = [{
@@ -62,15 +83,17 @@ position = Vector2(0, -184.011)
 scale = Vector2(4.548, 4.541)
 texture = SubResource("CompressedTexture2D_h6xyy")
 
-[node name="Boss2" parent="MenuBackground" instance=ExtResource("3_h6xyy")]
-texture_filter = 1
-position = Vector2(148.11717, -352.98053)
-rotation = 0.61086524
-scale = Vector2(1.156, 1.018)
+[node name="Boss2" type="AnimatedSprite2D" parent="MenuBackground"]
+position = Vector2(368.53558, -82.22841)
+rotation = 0.6108652
+scale = Vector2(0.40899125, 0.34146667)
 skew = 0.000654459
-script = null
+sprite_frames = SubResource("SpriteFrames_blibh")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.5493734
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MenuBackground"]
+[node name="Boss1" type="AnimatedSprite2D" parent="MenuBackground"]
 texture_filter = 1
 position = Vector2(-378.07535, -85.23677)
 rotation = 0.24401909
@@ -149,6 +172,21 @@ icon = ExtResource("12_birck")
 icon_alignment = 1
 expand_icon = true
 
+[node name="TutorialButton" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1469.0
+offset_top = -282.0
+offset_right = 1743.0
+offset_bottom = -189.0
+grow_vertical = 0
+icon = ExtResource("13_wvb7n")
+icon_alignment = 1
+expand_icon = true
+
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
 layout_mode = 0
@@ -176,8 +214,374 @@ scale = Vector2(0.131, 0.116)
 texture = ExtResource("5_lo6hs")
 script = ExtResource("5_uuwny")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="optionsPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("controlsPanel", "audioPanel")]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17_wvb7n")
+theme_override_styles/panel = ExtResource("15_2e2l6")
+script = ExtResource("16_xutsw")
+controlsPanel = NodePath("controlsPanel")
+audioPanel = NodePath("audioPanel")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/optionsPanel"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("17_wvb7n")
+
+[node name="optionsLabel" type="Label" parent="CanvasLayer/optionsPanel/GridContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("17_wvb7n")
+theme_override_font_sizes/font_size = 100
+text = "OPTIONS"
+
+[node name="optionscontrolButton" type="Button" parent="CanvasLayer/optionsPanel/GridContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+theme_override_font_sizes/font_size = 75
+text = "Controls"
+
+[node name="optionsaudioButton" type="Button" parent="CanvasLayer/optionsPanel/GridContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+theme_override_font_sizes/font_size = 75
+text = "Audio"
+
+[node name="optionsbackButton" type="Button" parent="CanvasLayer/optionsPanel/GridContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+theme_override_font_sizes/font_size = 75
+text = "Back"
+
+[node name="controlsPanel" type="PanelContainer" parent="CanvasLayer/optionsPanel"]
+process_mode = 3
+visible = false
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+theme_override_styles/panel = ExtResource("15_2e2l6")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/optionsPanel/controlsPanel"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="controlsLabel" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+theme_override_font_sizes/font_size = 75
+text = "Controls"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="mainCharacterMovementFoldable" type="FoldableContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+folded = true
+title = "Main Character Movement"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable"]
+process_mode = 3
+visible = false
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="moveUpControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+text = "Move Up"
+
+[node name="charMoveUpButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("17_wvb7n")
+script = ExtResource("16_l0whq")
+control_name = "MainPlayerMoveUp"
+
+[node name="moveDownControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+text = "Move Down"
+
+[node name="charMoveDownButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+script = ExtResource("16_l0whq")
+control_name = "MainPlayerMoveDown"
+
+[node name="moveLeftControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+text = "Move Left"
+
+[node name="charMoveLeftButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+script = ExtResource("16_l0whq")
+control_name = "MainPlayerMoveLeft"
+
+[node name="moveRightControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+text = "Move Right"
+
+[node name="charMoveRightButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+script = ExtResource("16_l0whq")
+control_name = "MainPlayerMoveRight"
+
+[node name="moveFast" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+text = "Fast Move"
+
+[node name="charMoveFastButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+script = ExtResource("16_l0whq")
+control_name = "FastWalk"
+
+[node name="moveSlow" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+text = "Slow Walk"
+
+[node name="charMoveSlowButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+script = ExtResource("16_l0whq")
+control_name = "SlowWalk"
+
+[node name="sawCharacterMovementFoldable" type="FoldableContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+folded = true
+title = "Saw Character Movement"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable"]
+process_mode = 3
+visible = false
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="moveUpControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+text = "Move Up"
+
+[node name="sawMoveUpButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("17_wvb7n")
+script = ExtResource("16_l0whq")
+control_name = "SawPlayerMoveUp"
+
+[node name="moveDownControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+text = "Move Down"
+
+[node name="sawMoveDownButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+script = ExtResource("16_l0whq")
+control_name = "SawPlayerMoveDown"
+
+[node name="moveLeftControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+text = "Move Left"
+
+[node name="sawMoveLeftButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+script = ExtResource("16_l0whq")
+control_name = "SawPlayerMoveLeft"
+
+[node name="moveRightControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+text = "Move Right"
+
+[node name="sawMoveRightButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+script = ExtResource("16_l0whq")
+control_name = "SawPlayerMoveRight"
+
+[node name="otherFoldable" type="FoldableContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+folded = true
+title = "Miscellaneous Controls"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable"]
+process_mode = 3
+visible = false
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="UseBombControls" type="HBoxContainer" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+
+[node name="Label" type="Label" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+text = "Use Bomb"
+
+[node name="useBombButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls"]
+process_mode = 3
+layout_mode = 2
+theme = ExtResource("17_wvb7n")
+script = ExtResource("16_l0whq")
+control_name = "UseBomb"
+
+[node name="controlsBackButton" type="Button" parent="CanvasLayer/optionsPanel/controlsPanel/GridContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("17_wvb7n")
+text = "Back"
+
+[node name="audioPanel" type="PanelContainer" parent="CanvasLayer/optionsPanel"]
+process_mode = 3
+visible = false
+layout_mode = 2
+theme_override_styles/panel = ExtResource("15_2e2l6")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/optionsPanel/audioPanel"]
+process_mode = 3
+layout_mode = 2
+
+[node name="MasterGridContainer" type="GridContainer" parent="CanvasLayer/optionsPanel/audioPanel/GridContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="CanvasLayer/optionsPanel/audioPanel/GridContainer/MasterGridContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("17_wvb7n")
+theme_override_font_sizes/font_size = 36
+text = "Master Volume"
+
+[node name="MasterHSlider" type="HSlider" parent="CanvasLayer/optionsPanel/audioPanel/GridContainer/MasterGridContainer" node_paths=PackedStringArray("volSlider")]
+process_mode = 3
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+script = ExtResource("17_xutsw")
+volSlider = NodePath(".")
+selectedBus = "Master"
+
+[node name="audioBackButton" type="Button" parent="CanvasLayer/optionsPanel/audioPanel/GridContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("17_wvb7n")
+text = "Back"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="CanvasLayer/optionsPanel" method="_on_options_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="ColorButton" to="." method="_on_color_button_pressed"]
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="color_changed" from="ColorPicker" to="Flower" method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionscontrolButton" to="CanvasLayer/optionsPanel" method="_on_optionscontrol_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionsaudioButton" to="CanvasLayer/optionsPanel" method="_on_optionsaudio_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionsbackButton" to="CanvasLayer/optionsPanel" method="_on_optionsback_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/controlsBackButton" to="CanvasLayer/optionsPanel" method="_on_controls_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/optionsPanel/audioPanel/GridContainer/audioBackButton" to="CanvasLayer/optionsPanel" method="_on_audio_back_button_pressed"]

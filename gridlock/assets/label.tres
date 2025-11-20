@@ -3,4 +3,5 @@
 [ext_resource type="FontFile" uid="uid://fcmvobvaxrfl" path="res://assets/Pixeled.ttf" id="1_hgv2j"]
 
 [resource]
+Button/fonts/font = ExtResource("1_hgv2j")
 Label/fonts/font = ExtResource("1_hgv2j")

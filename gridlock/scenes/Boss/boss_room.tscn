@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckobbp2dagqok"]
+[gd_scene load_steps=13 format=3 uid="uid://ckobbp2dagqok"]
 
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_3n20u"]
-[ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/ui.tscn" id="1_67v12"]
+[ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="1_67v12"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_bpcqn"]
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="3_673pk"]
+[ext_resource type="Texture2D" uid="uid://kj2hkbm1lu4a" path="res://assets/sprites/other/boss1_turret_var3.png" id="4_3xa8x"]
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="4_jotkl"]
+[ext_resource type="Texture2D" uid="uid://cf48twroox0ku" path="res://assets/sprites/other/boss1_turret_var1.png" id="5_f2gah"]
 [ext_resource type="Script" uid="uid://bsp7vbmx8aj5s" path="res://scenes/Boss/boss_manager.gd" id="5_u03sx"]
+[ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="6_ar1tk"]
 [ext_resource type="Script" uid="uid://c7yc0rwepuypc" path="res://scripts/UI/victory_screen.gd" id="7_nyngh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jotkl"]
@@ -20,6 +23,7 @@ size = Vector2(26, 1022)
 
 [node name="Boss" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(978, 415)
+starting_pattern = 1
 starting_movement = 1
 health = 100.0
 isMainBoss = true
@@ -29,23 +33,51 @@ position = Vector2(837, 845)
 
 [node name="TLTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(100, 100)
-starting_pattern = 9
+starting_pattern = 12
 health = 50.0
+
+[node name="AnimatedSprite2D" parent="TLTurret" index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="TLTurret"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_3xa8x")
 
 [node name="TRTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(1666, 100)
-starting_pattern = 9
+starting_pattern = 10
 health = 50.0
+
+[node name="AnimatedSprite2D" parent="TRTurret" index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="TRTurret"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_f2gah")
 
 [node name="BLTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(100, 980)
-starting_pattern = 9
+starting_pattern = 10
 health = 50.0
+
+[node name="AnimatedSprite2D" parent="BLTurret" index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="BLTurret"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_ar1tk")
 
 [node name="BRTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(1666, 980)
-starting_pattern = 9
+starting_pattern = 12
 health = 50.0
+
+[node name="AnimatedSprite2D" parent="BRTurret" index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="BRTurret"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_3xa8x")
 
 [node name="blade" parent="." instance=ExtResource("4_jotkl")]
 position = Vector2(1217, 836)
@@ -119,3 +151,8 @@ offset_bottom = 481.0
 text = "Continue"
 
 [connection signal="pressed" from="CanvasLayer/VictoryScreen/Button" to="CanvasLayer/VictoryScreen" method="_on_button_pressed"]
+
+[editable path="TLTurret"]
+[editable path="TRTurret"]
+[editable path="BLTurret"]
+[editable path="BRTurret"]

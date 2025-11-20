@@ -29,7 +29,7 @@ func _process(delta):
 
 #Function for boss movement
 func movement(delta):
-	$AnimatedSprite2D.rotation += 0.5 * delta
+	self.rotation += 0.5 * delta
 	
 
 func get_vector(angle):
@@ -45,3 +45,17 @@ func _ready():
 
 func _track(location: Vector2):
 	target = location
+
+func shoot(angle):
+	var bullet = bullet_node.instantiate()
+	
+	bullet.position = $PlayerDetection/CollisionShape2D.global_position
+	bullet.direction = get_vector(angle)
+	bullet.set_property(bullet_type)
+	bullet.set_speed(speed)
+	
+	get_tree().current_scene.call_deferred("add_child", bullet)
+
+
+func _on_speed_timeout() -> void:
+	shoot(theta)
