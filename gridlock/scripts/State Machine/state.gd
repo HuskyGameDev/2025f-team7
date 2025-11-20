@@ -1,7 +1,7 @@
 extends Node2D
 class_name State
 
-@onready var debug = owner.find_child("debug")
+#@onready var debug = owner.find_child("debug")
 @onready var player = owner.get_parent().find_child("player")
 @onready var speed = owner.find_child("Speed")
 @onready var duration = owner.find_child("Duration")
@@ -28,4 +28,4 @@ func transition():
 
 func _physics_process(_delta):
 	transition()
-	debug.text = name
+	#debug.text = name

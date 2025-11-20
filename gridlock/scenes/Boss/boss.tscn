@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b6t43grsclomr"]
+[gd_scene load_steps=25 format=3 uid="uid://b6t43grsclomr"]
 
 [ext_resource type="Script" uid="uid://djf1bewdugc0u" path="res://scenes/Boss/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_neq0i"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cjvayvb2hd53j" path="res://scenes/Boss/TurretAim.gd" id="15_i0cfg"]
 [ext_resource type="Script" uid="uid://chnoj16rwbck0" path="res://scripts/MovementStates/Figure8.gd" id="16_4vq7k"]
 [ext_resource type="Texture2D" uid="uid://dt6o4j3f4w75j" path="res://assets/sprites/Bosses/Boss1.png" id="17_4vq7k"]
+[ext_resource type="Script" uid="uid://b7auq17yxeri8" path="res://scenes/Boss/TurretIdle.gd" id="18_88t4m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4vq7k"]
 animations = [{
@@ -36,7 +37,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_neq0i"]
-radius = 100.0
+radius = 70.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vn2fc"]
 radius = 23.021729
@@ -111,6 +112,9 @@ script = ExtResource("14_i0cfg")
 
 [node name="TurretAim" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("15_i0cfg")
+
+[node name="TurretIdle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("18_88t4m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)

@@ -2,10 +2,6 @@ extends State
 
 func enter():
 	super.enter()
-	owner.bullet_type = 3 # color of bullet
-	owner.alpha = 0
-	# write out burst pattern
-	owner.trackShoot(4, 4, 50, 150, PI/4)
 	speed.stop()
 
 

@@ -28,6 +28,7 @@ var health := 10:
 			get_tree().change_scene_to_file("res://scenes/Title/Title.tscn")
 func _ready():
 	emit_signal("player_position", global_position)
+	invincible = false
 
 func _physics_process(delta: float):
 	var currentSpeed = SPEED
