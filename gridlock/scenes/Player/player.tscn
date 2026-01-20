@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bieqraoqjj3gm"]
+[gd_scene load_steps=18 format=3 uid="uid://bieqraoqjj3gm"]
 
 [ext_resource type="Script" uid="uid://dbyns6rd0cqi8" path="res://scenes/Player/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://bphjnw4w73kop" path="res://assets/sprites/Player/Flower/Flower_90.png" id="2_fjrip"]
@@ -24,7 +24,11 @@ shader_parameter/distortion_strength = 15.1950006742625
 radius = 9.0
 height = 18.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t6q27"]
+radius = 34.0
+
 [node name="player" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_3vyb7")
 health_sprites = Array[Texture2D]([ExtResource("2_g2els"), ExtResource("2_fjrip"), ExtResource("3_smehm"), ExtResource("4_ur7pv"), ExtResource("6_f1ej7"), ExtResource("7_oprun"), ExtResource("8_a8ls1"), ExtResource("9_qfm1y"), ExtResource("10_fulsm"), ExtResource("11_4r5pv"), ExtResource("12_60mlk")])
 
@@ -62,4 +66,13 @@ value = 100.0
 [node name="InvincibleTimer" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="NearMissArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NearMissArea"]
+shape = SubResource("CircleShape2D_t6q27")
+debug_color = Color(0.69049925, 0.49823844, 0, 0.41960785)
+
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
+[connection signal="area_entered" from="NearMissArea" to="." method="_on_near_miss"]

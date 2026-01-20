@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 signal player_position(location: Vector2)
 
-
 var SPEED = 300.0
 var SHIFTSPEED = 450
 var CTRLSPEED = 150
@@ -10,6 +9,7 @@ var BOMBAVAIL = true;
 var invincible = false
 var invincibleTimer: float = 0
 const SPEED_STANDARD = 150
+const BOMB_STEP = 0.01
 @onready var debug = $debug
 @onready var progress_bar = $ProgressBar
 
@@ -26,6 +26,7 @@ var health := 10:
 			_update_sprite()
 		if value == 0:
 			get_tree().change_scene_to_file("res://scenes/Title/Title.tscn")
+
 func _ready():
 	emit_signal("player_position", global_position)
 	invincible = false
@@ -93,3 +94,7 @@ func _update_sprite():
 
 func _on_invincible_timer_timeout() -> void:
 	invincible = false
+
+
+func _on_near_miss(_area: Area2D) -> void:
+	GlobalSignals.emit_signal("near_miss")
