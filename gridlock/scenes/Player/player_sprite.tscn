@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3snw0is72pw8"]
+
+[ext_resource type="Shader" uid="uid://cv0js8fiedxe4" path="res://scenes/boil_line.gdshader" id="1_bnedm"]
+[ext_resource type="Script" uid="uid://cvu8w3rsuvgos" path="res://scenes/Player/player_sprite.gd" id="1_uh6u6"]
+[ext_resource type="SpriteFrames" uid="uid://b1tvj7j1t47l0" path="res://assets/sprites/Player/flower_shadow.tres" id="3_uh6u6"]
+[ext_resource type="SpriteFrames" uid="uid://c2dte35a4lfop" path="res://assets/sprites/Player/flower_background.tres" id="4_pxni6"]
+[ext_resource type="SpriteFrames" uid="uid://dtxsjbody588f" path="res://assets/sprites/Player/flower_foreground.tres" id="4_tbmvw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqkch"]
+shader = ExtResource("1_bnedm")
+shader_parameter/step_rate = 3.0000001425
+shader_parameter/distortion_strength = 2.0000000475
+
+[node name="PlayerSprite" type="Node2D"]
+script = ExtResource("1_uh6u6")
+
+[node name="Shadow" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.2509804)
+texture_filter = 4
+material = SubResource("ShaderMaterial_dqkch")
+position = Vector2(8, 8)
+sprite_frames = ExtResource("3_uh6u6")
+animation = &"5_hp"
+autoplay = "5_hp"
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+texture_filter = 4
+material = SubResource("ShaderMaterial_dqkch")
+sprite_frames = ExtResource("4_pxni6")
+animation = &"5_hp"
+autoplay = "5_hp"
+
+[node name="Foreground" type="AnimatedSprite2D" parent="."]
+texture_filter = 4
+material = SubResource("ShaderMaterial_dqkch")
+sprite_frames = ExtResource("4_tbmvw")
+animation = &"5_hp"
+autoplay = "5_hp"
