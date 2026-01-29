@@ -12,6 +12,7 @@ func _ready():
 		await get_tree().create_timer(5.0).timeout
 		laser(3, 4, target.x, target.y, 0)
 
+"Tracks Daisy using Global Signal"
 func _track(location: Vector2):
 	target = location
 
