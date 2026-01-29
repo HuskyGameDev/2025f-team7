@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://7pobh48bn0im"]
+
+[ext_resource type="Script" uid="uid://ndlhoqk52178" path="res://scenes/basicEnemies/laser.gd" id="1_q1gdv"]
+[ext_resource type="Texture2D" uid="uid://jboxq1auxq8d" path="res://assets/sprites/other/warning.png" id="2_dxuvq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q1gdv"]
+radius = 100.0
+
+[node name="Laser" type="Area2D"]
+script = ExtResource("1_q1gdv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q1gdv")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_dxuvq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
