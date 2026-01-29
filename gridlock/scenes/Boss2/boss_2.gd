@@ -59,3 +59,11 @@ func shoot(angle):
 
 func _on_speed_timeout() -> void:
 	shoot(theta)
+
+
+func _on_player_detection_entered(area):
+	pass # Replace with function body.
+
+
+func _on_player_detection_exited(area):
+	pass # Replace with function body.

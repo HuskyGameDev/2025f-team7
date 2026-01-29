@@ -13,9 +13,7 @@ const BOMB_STEP = 0.01
 @onready var debug = $debug
 @onready var progress_bar = $ProgressBar
 
-@onready var sprite = $Sprite2D
-
-@export var health_sprites: Array[Texture2D] = []
+@onready var sprite := $PlayerSprite
 
 var health := 10:
 	set(value):
@@ -31,7 +29,7 @@ func _ready():
 	emit_signal("player_position", global_position)
 	invincible = false
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	var currentSpeed = SPEED
 	if Input.is_action_pressed("FastWalk"):
 		currentSpeed = SHIFTSPEED
@@ -84,13 +82,7 @@ func stun():
 	GlobalSignals.emit_signal("health_change", health)
 	
 func _update_sprite():
-	if health_sprites.is_empty():
-		return
-
-	var stage := int((10 - health))
-	stage = clamp(stage, 0, health_sprites.size() - 1)
-	sprite.texture = health_sprites[stage]
-
+	sprite.health = ceil(health / 2.0)
 
 func _on_invincible_timer_timeout() -> void:
 	invincible = false

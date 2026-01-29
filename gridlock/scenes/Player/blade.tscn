@@ -10,8 +10,8 @@ shader = ExtResource("2_hmvf4")
 shader_parameter/step_rate = 6.614000314165
 shader_parameter/distortion_strength = 18.6670008391825
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1tmk"]
-size = Vector2(67, 57)
+[sub_resource type="CircleShape2D" id="CircleShape2D_hmvf4"]
+radius = 46.0
 
 [node name="blade" type="CharacterBody2D"]
 position = Vector2(52, 18)
@@ -28,4 +28,4 @@ spin_speed = 230.0
 [node name="BladeArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BladeArea2D"]
-shape = SubResource("RectangleShape2D_t1tmk")
+shape = SubResource("CircleShape2D_hmvf4")
