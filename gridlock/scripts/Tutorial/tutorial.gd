@@ -13,7 +13,7 @@ func _input(event):
 func instruction():
 	match step:
 		0:
-			$CanvasLayer/Panel/Label.text = "Move the flower using AWSD."
+			$CanvasLayer/Panel/Label.text = "Move the flower using WASD."
 			step += 1
 		1: 
 			$CanvasLayer/Panel/Label.text = "Move the saw using the arrow keys."

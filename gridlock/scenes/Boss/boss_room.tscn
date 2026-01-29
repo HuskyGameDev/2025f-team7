@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ckobbp2dagqok"]
+[gd_scene load_steps=15 format=3 uid="uid://ckobbp2dagqok"]
 
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_3n20u"]
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="1_67v12"]
@@ -10,6 +10,11 @@
 [ext_resource type="Script" uid="uid://bsp7vbmx8aj5s" path="res://scenes/Boss/boss_manager.gd" id="5_u03sx"]
 [ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="6_ar1tk"]
 [ext_resource type="Script" uid="uid://c7yc0rwepuypc" path="res://scripts/UI/victory_screen.gd" id="7_nyngh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f2gah"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3xa8x"]
+radius = 29.14
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jotkl"]
 size = Vector2(1976.5, 21)
@@ -30,6 +35,10 @@ isMainBoss = true
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_bpcqn")]
 position = Vector2(837, 845)
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="player"]
+shape = SubResource("CircleShape2D_f2gah")
 
 [node name="TLTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(100, 100)
@@ -81,22 +90,30 @@ texture = ExtResource("4_3xa8x")
 
 [node name="blade" parent="." instance=ExtResource("4_jotkl")]
 position = Vector2(1217, 836)
+collision_layer = 4
+collision_mask = 8
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blade"]
+shape = SubResource("CircleShape2D_3xa8x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Invisible Walls" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="Inviswall1" type="CollisionShape2D" parent="Invisible Walls"]
 position = Vector2(975, -11)
 shape = SubResource("RectangleShape2D_jotkl")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Inviswall2" type="CollisionShape2D" parent="Invisible Walls"]
+light_mask = 1023
 position = Vector2(964, 1056)
 shape = SubResource("RectangleShape2D_jotkl")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Inviswall3" type="CollisionShape2D" parent="Invisible Walls"]
 position = Vector2(-13, 510)
 shape = SubResource("RectangleShape2D_67v12")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Inviswall4" type="CollisionShape2D" parent="Invisible Walls"]
 position = Vector2(1779, 527)
 shape = SubResource("RectangleShape2D_67v12")
 
