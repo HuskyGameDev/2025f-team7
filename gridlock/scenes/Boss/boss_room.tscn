@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckobbp2dagqok"]
+[gd_scene load_steps=14 format=3 uid="uid://ckobbp2dagqok"]
 
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_3n20u"]
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="1_67v12"]
@@ -12,9 +12,6 @@
 [ext_resource type="Script" uid="uid://c7yc0rwepuypc" path="res://scripts/UI/victory_screen.gd" id="7_nyngh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2gah"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_3xa8x"]
-radius = 29.14
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jotkl"]
 size = Vector2(1976.5, 21)
@@ -91,9 +88,6 @@ texture = ExtResource("4_3xa8x")
 position = Vector2(1217, 836)
 collision_layer = 4
 collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blade"]
-shape = SubResource("CircleShape2D_3xa8x")
 
 [node name="Invisible Walls" type="StaticBody2D" parent="."]
 collision_layer = 8

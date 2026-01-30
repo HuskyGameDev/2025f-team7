@@ -53,7 +53,7 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="column"]
-position = Vector2(2452, 268)
+position = Vector2(2101, 268)
 shape = SubResource("RectangleShape2D_lmi6e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="column"]
