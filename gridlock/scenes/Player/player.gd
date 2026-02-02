@@ -5,7 +5,7 @@ signal player_position(location: Vector2)
 var SPEED = 300.0
 var SHIFTSPEED = 450
 var CTRLSPEED = 150
-var BOMBAVAIL = true; 
+@onready var bombs_available := 1
 var invincible = false
 var invincibleTimer: float = 0
 const SPEED_STANDARD = 150
@@ -28,6 +28,7 @@ var health := 10:
 func _ready():
 	emit_signal("player_position", global_position)
 	invincible = false
+	GlobalSignals.bomb_gained.connect(_on_bomb_gained)
 
 func _physics_process(_delta: float):
 	var currentSpeed = SPEED
@@ -36,9 +37,9 @@ func _physics_process(_delta: float):
 	if Input.is_action_pressed("SlowWalk"):
 		currentSpeed = CTRLSPEED
 	if Input.is_action_just_pressed("UseBomb"):
-		if BOMBAVAIL == true:
+		if bombs_available > 0:
 			get_tree().call_group("Bullet", "blow_up")
-			BOMBAVAIL = false
+			bombs_available -= 1
 			GlobalSignals.emit_signal("bomb_used")
 	
 	
@@ -90,3 +91,6 @@ func _on_invincible_timer_timeout() -> void:
 
 func _on_near_miss(_area: Area2D) -> void:
 	GlobalSignals.emit_signal("near_miss")
+
+func _on_bomb_gained() -> void:
+	bombs_available += 1
