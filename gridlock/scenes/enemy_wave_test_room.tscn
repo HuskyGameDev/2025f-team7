@@ -1,0 +1,135 @@
+[gd_scene load_steps=15 format=3 uid="uid://brbhv674ybd53"]
+
+[ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_5qtuy"]
+[ext_resource type="Script" uid="uid://c0iyvboumgjap" path="res://scripts/EnemyWaves/enemy_wave.gd" id="1_gqm1v"]
+[ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_0k1h6"]
+[ext_resource type="Script" uid="uid://b1rkfnw2y7pey" path="res://scripts/EnemyWaves/enemy_wave_entry.gd" id="2_yuidk"]
+[ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="3_px3wn"]
+[ext_resource type="PackedScene" uid="uid://dd6o2q0te40up" path="res://scenes/basicEnemies/laserEnemy.tscn" id="3_y0du7"]
+[ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="4_ijmob"]
+[ext_resource type="PackedScene" uid="uid://60d8f13gtv6b" path="res://scenes/basicEnemies/shotgunOrbiter.tscn" id="4_wfcfs"]
+[ext_resource type="Script" uid="uid://c7yc0rwepuypc" path="res://scripts/UI/victory_screen.gd" id="5_22lw5"]
+[ext_resource type="PackedScene" uid="uid://dd330qd4wlqdq" path="res://scenes/basicEnemies/sniperEnemy.tscn" id="5_pvvwi"]
+[ext_resource type="PackedScene" uid="uid://dwrn3jf27llc" path="res://scenes/basicEnemies/swordDude.tscn" id="6_o4743"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrvsb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqm1v"]
+size = Vector2(1792, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuidk"]
+size = Vector2(26, 1080.5)
+
+[node name="EnemyWaveTestRoom" type="Node2D"]
+
+[node name="EnemyWave" type="Node" parent="."]
+script = ExtResource("1_gqm1v")
+total_difficulty = 4.0
+
+[node name="LaserEnemy" type="Node" parent="EnemyWave"]
+script = ExtResource("2_yuidk")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("3_y0du7")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="ShotgunOrbiter" type="Node" parent="EnemyWave"]
+script = ExtResource("2_yuidk")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("4_wfcfs")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="SniperEnemy" type="Node" parent="EnemyWave"]
+script = ExtResource("2_yuidk")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("5_pvvwi")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="SwordDude" type="Node" parent="EnemyWave"]
+script = ExtResource("2_yuidk")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("6_o4743")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="parallax" parent="." instance=ExtResource("1_5qtuy")]
+
+[node name="blade" parent="." instance=ExtResource("3_px3wn")]
+position = Vector2(1217, 836)
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("2_0k1h6")]
+position = Vector2(837, 845)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="player"]
+shape = SubResource("CircleShape2D_xrvsb")
+
+[node name="Invisible Walls" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="Inviswall1" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(889.875, -11)
+shape = SubResource("RectangleShape2D_gqm1v")
+
+[node name="Inviswall2" type="CollisionShape2D" parent="Invisible Walls"]
+light_mask = 1023
+position = Vector2(896, 1056)
+shape = SubResource("RectangleShape2D_gqm1v")
+
+[node name="Inviswall3" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(-13, 526.75)
+shape = SubResource("RectangleShape2D_yuidk")
+
+[node name="Inviswall4" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(1779, 522.5)
+shape = SubResource("RectangleShape2D_yuidk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("4_ijmob")]
+
+[node name="VictoryScreen" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_22lw5")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/VictoryScreen"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6955032, 0.6955031, 0.6955031, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/VictoryScreen"]
+process_mode = 3
+layout_mode = 0
+offset_left = 750.0
+offset_top = 340.0
+offset_right = 1231.0
+offset_bottom = 423.0
+theme_override_font_sizes/font_size = 60
+text = "Congratulations!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VictoryScreen"]
+process_mode = 3
+layout_mode = 0
+offset_left = 950.0
+offset_top = 450.0
+offset_right = 1029.0
+offset_bottom = 481.0
+text = "Continue"
+
+[connection signal="pressed" from="CanvasLayer/VictoryScreen/Button" to="CanvasLayer/VictoryScreen" method="_on_button_pressed"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgbhpo80ucalq"]
+
+[ext_resource type="Texture2D" uid="uid://jboxq1auxq8d" path="res://assets/sprites/other/warning.png" id="1_mqbxa"]
+[ext_resource type="Script" uid="uid://dfouydodjwnj2" path="res://scripts/EnemyWaves/enemy_spawner.gd" id="2_vjfco"]
+
+[node name="EnemySpawner" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_mqbxa")
+script = ExtResource("2_vjfco")
