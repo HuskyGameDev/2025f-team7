@@ -3,6 +3,7 @@ extends Node
 @onready var bg: AnimatedSprite2D = $Background
 @onready var fg: AnimatedSprite2D = $Foreground
 @onready var shadow: AnimatedSprite2D = $Shadow
+@onready var config = ConfigFile.new() #creates configfile object
 
 @onready var health := 5:
 	get(): return health
@@ -15,12 +16,13 @@ extends Node
 		if shadow: shadow.play(str(health) + "_hp")
 
 func _ready():
+	var err = config.load("res://save_data.cfg")
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	# Use existing singleton
-	if "player_color" in GlobalSignals:
-		fg.modulate = GlobalSignals.player_color
-	else:
+	if err != OK:
 		fg.modulate = Color(1,1,1)
+	else:
+		fg.modulate = config.get_value("Player","player_color")
 		
 func _process(delta: float) -> void:
 	bg.rotation += delta
@@ -30,3 +32,5 @@ func _process(delta: float) -> void:
 func _on_color_picker_color_changed(color: Color) -> void:
 	fg.modulate = color
 	GlobalSignals.player_color = color
+	config.set_value("Player","player_color",color)
+	config.save("res://save_data.cfg")
