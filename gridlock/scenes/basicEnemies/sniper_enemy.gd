@@ -2,11 +2,17 @@ extends CharacterBody2D
 #In spite of what would be best practice
 #I do not know what any of these unlabeled variables do. Please don't ask. 
 #I'll cry. 
+
+@export_range(0,2*PI) var alpha: float = 0.0
+@export var starting_pattern: int
+@export var starting_movement: int
+@export var bullet_node: PackedScene
+@export var health: int
+
 var speed: int = 75 # Speed of the enemy's movement
 var orbit_radius: int = 500 # Desired distance from the player
 var orbit_speed: int = 1 # How fast the enemy orbits
 var player_position: Vector2
-@export var bullet_node: PackedScene
 var bullet_type: int = 0
 var bulletspeed: int = 100
 var target: Vector2
@@ -15,9 +21,9 @@ var move_size: int = 100
 var t: float = 0.0
 var pos: Vector2 = Vector2.ZERO
 var theta: float = 0.0
-@export_range(0,2*PI) var alpha: float = 0.0
-@export var starting_pattern: int
-@export var starting_movement: int
+var beingHit: bool = false
+
+
 func _ready():
 	GlobalSignals.player_position.connect(_on_position_change)
 
@@ -67,6 +73,14 @@ func _physics_process(delta: float) -> void:
 		velocity = radial_velocity + orbital_velocity
 		move_and_slide()
 
+func die():
+	queue_free()
+
+func _process(delta):
+	if (beingHit):
+		health -= 10*delta
+		if (health <= 0):
+			die()
 
 func _on_shoot_timeout(angle) -> void:
 	alpha = 180/1 #Count Columns
@@ -79,3 +93,13 @@ func _on_shoot_timeout(angle) -> void:
 			shoot(theta)
 		
 	
+
+
+func _on_player_detection_area_entered(area: Area2D) -> void:
+	if (area.name == "BladeArea2D"):
+		beingHit = true
+
+
+func _on_player_detection_area_exited(area: Area2D) -> void:
+	if (area.name == "BladeArea2D"):
+		beingHit = false

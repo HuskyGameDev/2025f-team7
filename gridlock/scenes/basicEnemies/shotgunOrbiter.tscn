@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://60d8f13gtv6b"]
+[gd_scene load_steps=5 format=3 uid="uid://60d8f13gtv6b"]
 
 [ext_resource type="Script" uid="uid://cxlk7fd1qa62l" path="res://scripts/basicEnemies/shotgun_orbiter.gd" id="1_ctxoa"]
 
@@ -7,12 +7,17 @@ size = Vector2(89, 90)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_80ekg"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctxoa"]
+size = Vector2(91, 88)
+
 [node name="ShotgunOrbiter" type="CharacterBody2D"]
 script = ExtResource("1_ctxoa")
+health = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(34.5, 35)
 shape = SubResource("RectangleShape2D_qnk06")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(36.5, 36.000004)
@@ -23,4 +28,12 @@ texture = SubResource("PlaceholderTexture2D_80ekg")
 wait_time = 4.0
 autostart = true
 
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(36.5, 36)
+shape = SubResource("RectangleShape2D_ctxoa")
+
 [connection signal="timeout" from="shoot" to="." method="_on_shoot_timeout"]
+[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
+[connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]

@@ -15,6 +15,7 @@ position = Vector2(698, 352)
 
 [node name="ShotgunOrbiter" parent="." instance=ExtResource("2_qrujo")]
 bullet_node = ExtResource("3_5lcx6")
+health = 50
 
 [node name="blade" parent="." instance=ExtResource("3_qrujo")]
 position = Vector2(742, 50)
