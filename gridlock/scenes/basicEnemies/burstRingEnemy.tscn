@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmwaa2ltynn4r"]
+
+[ext_resource type="Script" uid="uid://d3accpkpfkuu" path="res://scenes/basicEnemies/burst_ring_enemy.gd" id="1_5e0e0"]
+[ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_ywapf"]
+[ext_resource type="Script" uid="uid://p0uno3xxi6f6" path="res://scripts/State Machine/FiniteStateMachine.gd" id="3_fhj4o"]
+[ext_resource type="Script" uid="uid://by5vnikcwawk6" path="res://scenes/basicEnemies/burst_wave_left.gd" id="4_8yn6h"]
+[ext_resource type="Script" uid="uid://d1so4r52pmkw0" path="res://scenes/basicEnemies/burst_wave_right.gd" id="5_8yn6h"]
+
+[node name="BurstRingEnemy" type="CharacterBody2D"]
+script = ExtResource("1_5e0e0")
+bullet_node = ExtResource("2_ywapf")
+
+[node name="Duration" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="FiniteStateMachine" type="Node2D" parent="."]
+script = ExtResource("3_fhj4o")
+
+[node name="BurstWaveLeft" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("4_8yn6h")
+
+[node name="BurstWaveRight" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("5_8yn6h")
+
+[node name="BurstDelay" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="timeout" from="BurstDelay" to="FiniteStateMachine/BurstWaveLeft" method="_on_burst_delay_timeout"]

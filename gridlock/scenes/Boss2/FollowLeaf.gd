@@ -2,8 +2,8 @@ extends State
 
 func enter():
 	super.enter()
-	owner.alpha = 1.4
-	owner.bullet_type = 1 # color of bullet
+	owner.alpha = -0.8
+	owner.bullet_type = 3 # color of bullet
 	owner.speed = 100
 	speed.start()
 

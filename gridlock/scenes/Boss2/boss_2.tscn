@@ -61,4 +61,6 @@ wait_time = 4.0
 [node name="Speed" type="Timer" parent="."]
 wait_time = 0.05
 
+[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
+[connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]

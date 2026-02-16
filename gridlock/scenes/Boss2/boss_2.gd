@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var theta: float = 0.0
 @export_range(0,2*PI) var alpha: float = 0.0
+@export var health: float
 @export var starting_pattern: int
 @export var starting_movement: int
 @export var bullet_node: PackedScene
@@ -16,9 +17,18 @@ var angle: float = 0.0
 var stretch: float = 1.8
 var pos: Vector2
 var center: Vector2
+var beingHit: bool = false
+
+func die():
+	get_tree().call_group("game", "on_victory")
+	queue_free()
 
 func _process(delta):
 	movement(delta)
+	if (beingHit):
+		health -= 10*delta
+		if (health <= 0):
+			die()
 
 #Function for boss movement
 #func movement(delta):
@@ -61,9 +71,16 @@ func _on_speed_timeout() -> void:
 	shoot(theta)
 
 
-func _on_player_detection_entered(area):
-	pass # Replace with function body.
+## Functions to track the blade collision
+func _on_player_detection_area_entered(area: Area2D) -> void:
+	##print(area.name + " in")
+	if (area.name == "BladeArea2D"):
+		print("ouch - in")
+		beingHit = true
 
 
-func _on_player_detection_exited(area):
-	pass # Replace with function body.
+func _on_player_detection_area_exited(area: Area2D) -> void:
+	##print(area.name + " out")
+	if (area.name == "BladeArea2D"):
+		print("ouch - out")
+		beingHit = false
