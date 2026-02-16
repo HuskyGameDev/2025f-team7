@@ -94,3 +94,6 @@ func _on_near_miss(_area: Area2D) -> void:
 
 func _on_bomb_gained() -> void:
 	bombs_available += 1
+
+func _on_hit(_area: Area2D) -> void:
+	set_status(0)

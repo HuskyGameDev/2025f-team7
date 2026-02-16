@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bieqraoqjj3gm"]
+[gd_scene load_steps=6 format=3 uid="uid://bieqraoqjj3gm"]
 
 [ext_resource type="Script" uid="uid://dbyns6rd0cqi8" path="res://scenes/Player/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://d3snw0is72pw8" path="res://scenes/Player/player_sprite.tscn" id="2_1kbk7"]
@@ -9,6 +9,8 @@ height = 18.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t6q27"]
 radius = 34.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1kbk7"]
 
 [node name="player" type="CharacterBody2D"]
 collision_mask = 8
@@ -51,5 +53,14 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_t6q27")
 debug_color = Color(0.69049925, 0.49823844, 0, 0.41960785)
 
+[node name="HurtboxArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxArea"]
+shape = SubResource("CircleShape2D_1kbk7")
+debug_color = Color(0.98443025, 0, 0.34811187, 0.41960785)
+
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
 [connection signal="area_entered" from="NearMissArea" to="." method="_on_near_miss"]
+[connection signal="area_entered" from="HurtboxArea" to="." method="_on_hit"]

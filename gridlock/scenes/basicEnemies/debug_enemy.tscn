@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc2m4nk2u1h88"]
+
+[ext_resource type="Script" uid="uid://3sheo58upgnq" path="res://scenes/basicEnemies/debug_enemy.gd" id="1_d1wda"]
+[ext_resource type="Texture2D" uid="uid://c7anc0alr3pos" path="res://assets/sprites/Bosses/Boss.png" id="1_smmks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1wda"]
+size = Vector2(52, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ehl8"]
+size = Vector2(26, 35)
+
+[node name="TestEnemy" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_d1wda")
+speed = 100.0
+MAX_HEALTH = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_smmks")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_d1wda")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_6ehl8")
+debug_color = Color(0.98433834, 0, 0.34898046, 0.41960785)
