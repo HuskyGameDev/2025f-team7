@@ -6,10 +6,13 @@ const ENEMY_SPAWNER := preload("res://scenes/basicEnemies/enemy_spawner.tscn")
 @export var total_difficulty: float
 
 @onready var remaining_difficulty := total_difficulty
+@onready var enemies_alive := 0
 
 @onready var timer := SPAWN_RATE
 
 func _process(delta: float) -> void:
+	if remaining_difficulty == 0: return
+	
 	timer -= delta
 	while timer < 0:
 		__try_spawn()
@@ -25,7 +28,7 @@ func __try_spawn() -> void:
 			spawnable_enemies.append(child)
 	
 	if spawnable_enemies.size() == 0:
-		queue_free()
+		remaining_difficulty = 0
 		return
 	
 	var roll := randf_range(0, total_weight)
@@ -37,10 +40,21 @@ func __try_spawn() -> void:
 		var spawner := ENEMY_SPAWNER.instantiate()
 		spawner.spawns = enemy.spawns
 		spawner.spawn_time = SPAWN_RATE
+		spawner.spawned.connect(_enemy_spawned)
 		get_parent().add_child(spawner)
 		
 		spawner.global_position = Vector2(
 			randf_range(0, 1920),
 			randf_range(0, 1080)
 		)
+		
 		return
+
+func _enemy_spawned(node: Node2D) -> void:
+	enemies_alive += 1
+	node.tree_exited.connect(_enemy_died)
+
+func _enemy_died() -> void:
+	enemies_alive -= 1
+	if remaining_difficulty == 0 and enemies_alive == 0:
+		queue_free()
