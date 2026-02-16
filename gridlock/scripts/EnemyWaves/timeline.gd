@@ -8,7 +8,6 @@ func _enter_tree() -> void:
 	child_exiting_tree.connect(_child_exiting_tree)
 
 func __next_child() -> void:
-	print("hi!")
 	if get_child_count() == 0:
 		queue_free()
 		return
