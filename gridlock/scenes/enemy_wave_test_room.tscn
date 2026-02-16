@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://brbhv674ybd53"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_5qtuy"]
-[ext_resource type="Script" uid="uid://c0iyvboumgjap" path="res://scripts/EnemyWaves/enemy_wave.gd" id="1_gqm1v"]
+[ext_resource type="Script" uid="uid://c0iyvboumgjap" path="res://scripts/EnemyWaves/random_enemy_spawner.gd" id="1_gqm1v"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_0k1h6"]
 [ext_resource type="Script" uid="uid://b1rkfnw2y7pey" path="res://scripts/EnemyWaves/enemy_wave_entry.gd" id="2_yuidk"]
 [ext_resource type="PackedScene" uid="uid://cc2m4nk2u1h88" path="res://scenes/basicEnemies/debug_enemy.tscn" id="3_ijmob"]
@@ -120,11 +120,11 @@ position = Vector2(428, 902)
 spawns = ExtResource("3_y0du7")
 spawn_time = 2.0
 
-[node name="EnemyWave" type="Node" parent="Timeline"]
+[node name="RandomEnemySpawner" type="Node" parent="Timeline"]
 script = ExtResource("1_gqm1v")
 total_difficulty = 4.0
 
-[node name="DebugEnemy" type="Node" parent="Timeline/EnemyWave"]
+[node name="DebugEnemy" type="Node" parent="Timeline/RandomEnemySpawner"]
 script = ExtResource("2_yuidk")
 difficulty = 1.0
 weight = 1.0

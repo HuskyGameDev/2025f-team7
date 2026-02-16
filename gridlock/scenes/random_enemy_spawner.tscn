@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2ngwlsqos1wx"]
 
-[ext_resource type="Script" uid="uid://c0iyvboumgjap" path="res://scripts/EnemyWaves/enemy_wave.gd" id="1_xqg14"]
+[ext_resource type="Script" uid="uid://c0iyvboumgjap" path="res://scripts/EnemyWaves/random_enemy_spawner.gd" id="1_owthv"]
 
-[node name="EnemyWave" type="Node"]
-script = ExtResource("1_xqg14")
+[node name="RandomEnemySpawner" type="Node"]
+script = ExtResource("1_owthv")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2

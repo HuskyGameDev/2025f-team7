@@ -7,6 +7,8 @@ signal spawned(node: Node2D)
 
 @onready var timer := 0.0
 
+
+
 func _process(delta: float) -> void:
 	timer += delta
 	if timer >= spawn_time:
