@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cf48twroox0ku" path="res://assets/sprites/other/boss1_turret_var1.png" id="5_f2gah"]
 [ext_resource type="Script" uid="uid://bsp7vbmx8aj5s" path="res://scenes/Boss/boss_manager.gd" id="5_u03sx"]
 [ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="6_ar1tk"]
-[ext_resource type="Script" uid="uid://c7yc0rwepuypc" path="res://scripts/UI/victory_screen.gd" id="7_nyngh"]
+[ext_resource type="Script" path="res://scripts/UI/victory_screen.gd" id="7_nyngh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2gah"]
 
@@ -86,8 +86,6 @@ texture = ExtResource("4_3xa8x")
 
 [node name="blade" parent="." instance=ExtResource("4_jotkl")]
 position = Vector2(1217, 836)
-collision_layer = 4
-collision_mask = 8
 
 [node name="Invisible Walls" type="StaticBody2D" parent="."]
 collision_layer = 8

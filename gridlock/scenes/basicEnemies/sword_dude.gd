@@ -1,4 +1,5 @@
-extends CharacterBody2D
+
+extends Area2D
 #In spite of what would be best practice
 #I do not know what any of these unlabeled variables do. Please don't ask. 
 #I'll cry. 
@@ -6,6 +7,10 @@ var speed: int = 75 # Speed of the enemy's movement
 var orbit_radius: int = 0 # Desired distance from the player
 var orbit_speed: int = 0 # How fast the enemy orbits
 var player_position: Vector2
+
+@export var isMainBoss: bool = false
+var beingHit: bool = false
+
 @export var bullet_node: PackedScene
 var bullet_type: int = 0
 var bulletspeed: int = 100
@@ -20,6 +25,8 @@ var theta: float = 0.0
 @export var starting_movement: int
 func _ready():
 	GlobalSignals.player_position.connect(_on_position_change)
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
 
 func _on_position_change(player_pos: Vector2):
 	player_position = player_pos
@@ -67,6 +74,28 @@ func _physics_process(delta: float) -> void:
 		velocity = radial_velocity
 		move_and_slide()
 
+@export var MAX_HEALTH: float
 
+@onready var health := MAX_HEALTH:
+	get(): return health
+	set(value):
+		health = clampf(value, 0.0, MAX_HEALTH)
+
+@onready var taking_damage := false
+
+
+func _process(delta: float) -> void:
+	if taking_damage:
+		print("aaa i am taking damage")
+		health -= delta
 	
-	
+	if health == 0.0:
+		queue_free()
+
+func _on_body_entered(_body: PhysicsBody2D) -> void:
+	print("woah! area entered!")
+	taking_damage = true
+
+func _on_body_exited(_body: PhysicsBody2D) -> void:
+	print("woah! area exited!")
+	taking_damage = false

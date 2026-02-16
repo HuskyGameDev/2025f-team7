@@ -7,6 +7,11 @@ var orbit_radius: int = 175 # Desired distance from the player
 var orbit_speed: int = 5 # How fast the enemy orbits
 var player_position: Vector2
 @export var bullet_node: PackedScene
+#related to health
+@export var isMainBoss: bool = false
+@export var health: float = 10
+
+var beingHit: bool = false
 var bullet_type: int = 0
 var bulletspeed: int = 100
 var target: Vector2
@@ -66,8 +71,36 @@ func _physics_process(delta: float) -> void:
 
 		velocity = radial_velocity + orbital_velocity
 		move_and_slide()
-
-
+		
+func _process(delta):
+	if (beingHit):
+		health -= 10*delta
+		if (health <= 0):
+			die()
+			
+func die(): #This should run the second one, thus not ending the level. 
+	if (isMainBoss):
+		get_tree().call_group("game", "on_victory")
+	queue_free()
+	#For taking damage. 
+func _on_player_detection_area_entered(area: Area2D) -> void:
+	##print(area.name + " in")
+	if (area.name == "BladeArea2D"):
+		print("ouch - in")
+		beingHit = true
+func _on_player_detection_area_exited(area: Area2D) -> void:
+	##print(area.name + " out")
+	if (area.name == "BladeArea2D"):
+		print("ouch - out")
+		beingHit = false
+func _on_player_detection_body_entered(body: Node2D) -> void:
+	##print(body.name + " hit")
+	if (body.name == "blade"):
+		print("ouch - hit")
+func _on_player_detection_body_exited(body: Node2D) -> void:
+	##print(body.name + " out")
+	if (body.name == "blade"):
+		print("ouch - out")
 func _on_shoot_timeout(angle) -> void:
 	alpha = angle/5 #Count Columns
 	for n: int in 1: #Count rows
@@ -78,4 +111,5 @@ func _on_shoot_timeout(angle) -> void:
 		for m in 5:
 			shoot(theta)
 		
+	
 	

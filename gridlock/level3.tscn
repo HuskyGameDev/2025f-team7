@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmx7fanpymqug"]
+[gd_scene load_steps=7 format=3 uid="uid://bmx7fanpymqug"]
 
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="1_o2ccw"]
 [ext_resource type="PackedScene" uid="uid://60d8f13gtv6b" path="res://scenes/basicEnemies/shotgunOrbiter.tscn" id="2_qrujo"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="3_qrujo"]
 [ext_resource type="PackedScene" uid="uid://dwrn3jf27llc" path="res://scenes/basicEnemies/swordDude.tscn" id="5_an40m"]
 [ext_resource type="PackedScene" uid="uid://dd330qd4wlqdq" path="res://scenes/basicEnemies/sniperEnemy.tscn" id="6_mu84n"]
-[ext_resource type="PackedScene" uid="uid://dd6o2q0te40up" path="res://scenes/basicEnemies/laserEnemy.tscn" id="7_bmsap"]
 
 [node name="level" type="Node2D"]
 
@@ -21,9 +20,11 @@ position = Vector2(742, 50)
 
 [node name="SwordDude" parent="." instance=ExtResource("5_an40m")]
 position = Vector2(232, 268)
+isMainBoss = null
+health = null
+alpha = null
+starting_pattern = null
+starting_movement = null
 
 [node name="SniperEnemy" parent="." instance=ExtResource("6_mu84n")]
 position = Vector2(258, -78)
-
-[node name="LaserEnemy" parent="." instance=ExtResource("7_bmsap")]
-position = Vector2(1031, 328)
