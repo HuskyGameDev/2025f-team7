@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd330qd4wlqdq"]
+[gd_scene load_steps=5 format=3 uid="uid://dd330qd4wlqdq"]
 
 [ext_resource type="Texture2D" uid="uid://c8dgju5xuntri" path="res://scenes/basicEnemies/sniper.jpg" id="1_gskm0"]
 [ext_resource type="Script" uid="uid://c6u7ulp0b7oam" path="res://scenes/basicEnemies/sniper_enemy.gd" id="1_xd12u"]
@@ -6,8 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd12u"]
 size = Vector2(95, 87)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbwvw"]
+size = Vector2(91, 86)
+
 [node name="SniperEnemy" type="CharacterBody2D"]
 script = ExtResource("1_xd12u")
+health = 25
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(39.5, 35)
@@ -17,3 +21,13 @@ texture = ExtResource("1_gskm0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(37.5, 33.5)
 shape = SubResource("RectangleShape2D_xd12u")
+disabled = true
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(39.5, 35)
+shape = SubResource("RectangleShape2D_tbwvw")
+
+[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
+[connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]
