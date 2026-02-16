@@ -86,8 +86,6 @@ texture = ExtResource("4_3xa8x")
 
 [node name="blade" parent="." instance=ExtResource("4_jotkl")]
 position = Vector2(1217, 836)
-collision_layer = 4
-collision_mask = 8
 
 [node name="Invisible Walls" type="StaticBody2D" parent="."]
 collision_layer = 8
@@ -99,7 +97,7 @@ shape = SubResource("RectangleShape2D_jotkl")
 
 [node name="Inviswall2" type="CollisionShape2D" parent="Invisible Walls"]
 light_mask = 1023
-position = Vector2(964, 1056)
+position = Vector2(964, 1035)
 shape = SubResource("RectangleShape2D_jotkl")
 
 [node name="Inviswall3" type="CollisionShape2D" parent="Invisible Walls"]

@@ -18,8 +18,10 @@ var stretch: float = 1.8
 var pos: Vector2
 var center: Vector2
 var beingHit: bool = false
+var max_health: float
 
 func die():
+	GlobalSignals.emit_signal("boss_died")
 	get_tree().call_group("game", "on_victory")
 	queue_free()
 
@@ -27,6 +29,8 @@ func _process(delta):
 	movement(delta)
 	if (beingHit):
 		health -= 10*delta
+		health = max(health, 0)
+		GlobalSignals.emit_signal("boss_health_change", health, max_health)
 		if (health <= 0):
 			die()
 
@@ -52,6 +56,7 @@ func _ready():
 	pos = global_position
 	GlobalSignals.connect("player_position", Callable(self, "_track"))
 	
+	max_health = health
 
 func _track(location: Vector2):
 	target = location

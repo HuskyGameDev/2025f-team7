@@ -42,6 +42,7 @@ signal bossInbound;
 @export var audioPanel: PanelContainer;
 @export var HeartContainer: GridContainer;
 @export var HeartTextureRect: TextureRect;
+@onready var BossHealthBar: ProgressBar = $BossHealthBar
 
 
 #Code that needs to run on start
@@ -68,10 +69,16 @@ func _ready() -> void:
 	GlobalSignals.connect("near_miss", Callable(self, "_near_Miss_Bomb"));
 	GlobalSignals.connect("bomb_used", Callable(self, "_bomb_Used"));
 	GlobalSignals.connect("enemy_progress", Callable(self, "_update_waveprogressbar"));
+	GlobalSignals.connect("boss_health_change", Callable(self, "_on_boss_health_change"));
+	GlobalSignals.connect("boss_spawned", Callable(self, "_on_boss_spawned"));
+	GlobalSignals.connect("boss_died", Callable(self, "_on_boss_died"));
 	
 	#Remove after minion waves get put in
 	#Pauses the game after a level is loaded for a few seconds
 	emit_signal("bossInbound");
+	
+	#sets the Boss Health Bar to not visible
+	BossHealthBar.visible = false
 
 #Increases the timer every second
 #If scene tree is paused or stopped flag is flipped timer doesn't increase
@@ -83,6 +90,8 @@ func _process(delta: float) -> void:
 		return
 	time += delta;
 	timeLabel.text = _time_to_String();
+	
+	
 """
 Activated by GlobalSignals from player script
 Since player health has to work in multiples of 10
@@ -223,3 +232,23 @@ This block deals with the the buttons under audioPanel and its GridContainer
 """
 func _on_audio_back_button_pressed() -> void:
 	audioPanel.visible = false;
+
+"""
+Temp
+Temp
+"""
+func _on_boss_health_change(current, max):
+	if not BossHealthBar:
+		return
+	
+	if not BossHealthBar.visible:
+		BossHealthBar.visible = true
+		BossHealthBar.max_value = max
+		BossHealthBar.value = max
+	
+	BossHealthBar.value = current
+
+
+func _on_boss_died():
+	if BossHealthBar:
+		BossHealthBar.visible = false

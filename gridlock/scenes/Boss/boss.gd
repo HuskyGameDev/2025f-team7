@@ -15,15 +15,20 @@ var move_size: int = 500
 var t: float = 0.0
 var pos: Vector2 = Vector2.ZERO
 var beingHit: bool = false
+var max_health: float
 
 func _process(delta):
 	if (beingHit):
 		health -= 10*delta
+		health = max(health, 0)
+		if isMainBoss:
+			GlobalSignals.emit_signal("boss_health_change", health, max_health)
 		if (health <= 0):
 			die()
 
 func die():
 	if (isMainBoss):
+		GlobalSignals.emit_signal("boss_died")
 		get_tree().call_group("game", "on_victory")
 	queue_free()
 #Function for boss movement
@@ -72,6 +77,8 @@ func _ready():
 	$AnimatedSprite2D.play("move")
 	GlobalSignals.connect("player_position", Callable(self, "_track"))
 	pos = global_position
+	
+	max_health = health
 
 func _track(location: Vector2):
 	target = location

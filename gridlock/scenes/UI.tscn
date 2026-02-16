@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1yptc0ppcic"]
+[gd_scene load_steps=17 format=3 uid="uid://b1yptc0ppcic"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
@@ -19,6 +19,9 @@ bg_color = Color(0.7411765, 0.76862746, 0.80784315, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
 bg_color = Color(0.92445606, 0.44463834, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sqrc"]
+bg_color = Color(0.9137255, 0.047058824, 0.015686275, 0.79607844)
 
 [node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel", "controlsPanel", "waveProgressLabel", "waveProgressBar", "audioPanel", "HeartContainer", "HeartTextureRect")]
 process_mode = 3
@@ -111,6 +114,7 @@ theme = ExtResource("1_ktti3")
 
 [node name="HeartContainer" type="GridContainer" parent="mainUIPanelContainer"]
 process_mode = 3
+visible = false
 layout_mode = 2
 
 [node name="HeartTexture0" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
@@ -562,6 +566,24 @@ process_mode = 3
 layout_mode = 2
 size_flags_vertical = 4
 text = "Back"
+
+[node name="BossHealthBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -98.0
+offset_top = 465.0
+offset_right = 331.1001
+offset_bottom = -566.80005
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5707964
+theme_override_colors/font_color = Color(0.9578478, 0.95135707, 0.90729994, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_5sqrc")
+value = 100.0
+show_percentage = false
 
 [connection signal="bossInbound" from="." to="WaveProgressBar/BossInboundText" method="activate_label"]
 [connection signal="pressed" from="WaveProgressBar/BossInboundTestButton" to="WaveProgressBar/BossInboundText" method="activate_label"]
