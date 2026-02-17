@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 var speed: int = 200 # Speed of the enemy's movement
 var orbit_radius: int = 175 # Desired distance from the player
-var orbit_speed: int = 5 # How fast the enemy orbits
+var orbit_speed: int = 3 # How fast the enemy orbits
 var player_position: Vector2
 var bullet_type: int = 0
 var bulletspeed: int = 100

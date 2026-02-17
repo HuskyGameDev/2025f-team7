@@ -37,7 +37,7 @@ func get_vector(angle):
 func shoot(angle):
 	var bullet = bullet_node.instantiate()
 	
-	bullet.position = global_position
+	bullet.position = position
 	bullet.direction = get_vector(angle)
 	bullet.set_property(bullet_type)
 	bullet.set_speed(speed)
@@ -82,14 +82,15 @@ func _process(delta):
 		if (health <= 0):
 			die()
 
-func _on_shoot_timeout(angle) -> void:
-	alpha = 180/1 #Count Columns
+func _on_shoot_timeout() -> void:
+	print ("shooting")
+	alpha = 1 #Count Columns
 	for n: int in 1: #Count rows
 		#maxvelocity and then min velocity
 		speed = ((120-80)/10)*n + 80
-		theta = Vector2(1,0).angle_to(target - position) - (180/2)
+		theta = Vector2(1,0).angle_to(player_position - position) - (180/2)
 		#shoot(theta)
-		for m in 1:
+		for m: int in 5:
 			shoot(theta)
 		
 	
