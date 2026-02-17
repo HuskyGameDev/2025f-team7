@@ -1,19 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwrn3jf27llc"]
+[gd_scene load_steps=5 format=3 uid="uid://dwrn3jf27llc"]
 
 [ext_resource type="Script" uid="uid://bj2q0nivsih57" path="res://scenes/basicEnemies/sword_dude.gd" id="1_p3v8f"]
 [ext_resource type="Texture2D" uid="uid://bfb3775ypu8bw" path="res://scenes/basicEnemies/sword stock photo.jpg" id="1_peqvu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3v8f"]
-size = Vector2(195, 118)
+size = Vector2(195, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvkfc"]
+size = Vector2(195, 120)
 
 [node name="SwordDude" type="CharacterBody2D"]
 script = ExtResource("1_p3v8f")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(96.5, 60)
-shape = SubResource("RectangleShape2D_p3v8f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(97.5, 59.75)
 scale = Vector2(0.31862745, 0.29753086)
 texture = ExtResource("1_peqvu")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(97.5, 60)
+shape = SubResource("RectangleShape2D_p3v8f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(97.5, 60)
+shape = SubResource("RectangleShape2D_xvkfc")
+disabled = true
+
+[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
+[connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]

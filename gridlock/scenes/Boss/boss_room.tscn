@@ -97,7 +97,7 @@ shape = SubResource("RectangleShape2D_jotkl")
 
 [node name="Inviswall2" type="CollisionShape2D" parent="Invisible Walls"]
 light_mask = 1023
-position = Vector2(964, 1056)
+position = Vector2(964, 1035)
 shape = SubResource("RectangleShape2D_jotkl")
 
 [node name="Inviswall3" type="CollisionShape2D" parent="Invisible Walls"]
