@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cc7teempqvi0u"]
 
-[ext_resource type="Texture2D" uid="uid://cxmje2y2an1pg" path="res://assets/sprites/gridpaper/GridPaper.png" id="1_x4emh"]
+[ext_resource type="Texture2D" uid="uid://cmfnp3hb388ul" path="res://assets/sprites/Menu/background-WIP.png" id="1_x4emh"]
 
 [node name="parallax" type="Node2D"]
 rotation = -0.00039291804
@@ -8,10 +8,7 @@ rotation = -0.00039291804
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(200, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Parallax2D"]
-offset_right = 1917.8066
-offset_bottom = 1080.7758
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="BackgroundWip" type="Sprite2D" parent="."]
+position = Vector2(957.9391, 556.6618)
+scale = Vector2(0.6155236, 0.61552364)
 texture = ExtResource("1_x4emh")
-expand_mode = 3
