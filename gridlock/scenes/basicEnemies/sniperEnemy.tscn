@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd330qd4wlqdq"]
+[gd_scene load_steps=6 format=3 uid="uid://dd330qd4wlqdq"]
 
 [ext_resource type="Texture2D" uid="uid://c8dgju5xuntri" path="res://scenes/basicEnemies/sniper.jpg" id="1_gskm0"]
 [ext_resource type="Script" uid="uid://c6u7ulp0b7oam" path="res://scenes/basicEnemies/sniper_enemy.gd" id="1_xd12u"]
+[ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_tbwvw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd12u"]
 size = Vector2(95, 87)
@@ -11,6 +12,7 @@ size = Vector2(91, 86)
 
 [node name="SniperEnemy" type="CharacterBody2D"]
 script = ExtResource("1_xd12u")
+bullet_node = ExtResource("2_tbwvw")
 health = 25
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

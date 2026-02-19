@@ -27,7 +27,7 @@ size = Vector2(26, 1022)
 position = Vector2(978, 415)
 starting_pattern = 1
 starting_movement = 1
-health = 100.0
+health = 300.0
 isMainBoss = true
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_bpcqn")]

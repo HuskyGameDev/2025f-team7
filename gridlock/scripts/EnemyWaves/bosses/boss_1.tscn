@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg2ebxkql5jyb"]
+
+[ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_dlo54"]
+[ext_resource type="Texture2D" uid="uid://kj2hkbm1lu4a" path="res://assets/sprites/other/boss1_turret_var3.png" id="2_882u6"]
+[ext_resource type="Texture2D" uid="uid://cf48twroox0ku" path="res://assets/sprites/other/boss1_turret_var1.png" id="3_di84i"]
+[ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="4_tl1v3"]
+
+[node name="Boss1" type="Node2D"]
+
+[node name="Boss" parent="." instance=ExtResource("1_dlo54")]
+starting_pattern = 1
+starting_movement = 1
+health = 100.0
+isMainBoss = true
+
+[node name="TLTurret" parent="." instance=ExtResource("1_dlo54")]
+position = Vector2(-878, -315)
+starting_pattern = 12
+health = 50.0
+
+[node name="AnimatedSprite2D" parent="TLTurret" index="0"]
+visible = false
+
+[node name="debug" parent="TLTurret" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TLTurret"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_882u6")
+
+[node name="TRTurret" parent="." instance=ExtResource("1_dlo54")]
+position = Vector2(688, -315)
+starting_pattern = 10
+health = 50.0
+
+[node name="AnimatedSprite2D" parent="TRTurret" index="0"]
+visible = false
+
+[node name="debug" parent="TRTurret" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TRTurret"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_di84i")
+
+[node name="BLTurret" parent="." instance=ExtResource("1_dlo54")]
+position = Vector2(-878, 565)
+starting_pattern = 10
+health = 50.0
+
+[node name="AnimatedSprite2D" parent="BLTurret" index="0"]
+visible = false
+
+[node name="debug" parent="BLTurret" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BLTurret"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_tl1v3")
+
+[node name="BRTurret" parent="." instance=ExtResource("1_dlo54")]
+position = Vector2(688, 565)
+starting_pattern = 12
+health = 50.0
+
+[node name="AnimatedSprite2D" parent="BRTurret" index="0"]
+visible = false
+
+[node name="debug" parent="BRTurret" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BRTurret"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_882u6")
+
+[editable path="TLTurret"]
+[editable path="TRTurret"]
+[editable path="BLTurret"]
+[editable path="BRTurret"]

@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=3 uid="uid://r8o75ws4kg5e"]
+
+[ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_db04r"]
+[ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_2yrsf"]
+[ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="3_bk7mi"]
+[ext_resource type="Script" uid="uid://bv1js5gomnval" path="res://scripts/EnemyWaves/timeline.gd" id="4_0xrqh"]
+[ext_resource type="Script" uid="uid://c0iyvboumgjap" path="res://scripts/EnemyWaves/random_enemy_spawner.gd" id="5_ffden"]
+[ext_resource type="Script" uid="uid://b1rkfnw2y7pey" path="res://scripts/EnemyWaves/enemy_wave_entry.gd" id="6_g2kos"]
+[ext_resource type="PackedScene" uid="uid://60d8f13gtv6b" path="res://scenes/basicEnemies/shotgunOrbiter.tscn" id="7_0oc87"]
+[ext_resource type="PackedScene" uid="uid://dd330qd4wlqdq" path="res://scenes/basicEnemies/sniperEnemy.tscn" id="8_y3q0q"]
+[ext_resource type="PackedScene" uid="uid://dwrn3jf27llc" path="res://scenes/basicEnemies/swordDude.tscn" id="9_0mqso"]
+[ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="10_bk7mi"]
+[ext_resource type="Script" uid="uid://bpii2j1obe26o" path="res://scripts/EnemyWaves/go_to_scene.gd" id="10_ffden"]
+[ext_resource type="PackedScene" uid="uid://ckobbp2dagqok" path="res://scenes/Boss/boss_room.tscn" id="11_g2kos"]
+
+[node name="Wave1" type="Node2D"]
+
+[node name="parallax" parent="." instance=ExtResource("1_db04r")]
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("2_2yrsf")]
+position = Vector2(837, 845)
+
+[node name="blade" parent="." instance=ExtResource("3_bk7mi")]
+position = Vector2(1217, 836)
+
+[node name="Timeline" type="Node2D" parent="."]
+script = ExtResource("4_0xrqh")
+metadata/_custom_type_script = "uid://bv1js5gomnval"
+
+[node name="Wave1" type="Node2D" parent="Timeline"]
+script = ExtResource("5_ffden")
+total_difficulty = 3.0
+spawn_rate = 1.5
+
+[node name="ShotgunOrbiter" type="Node" parent="Timeline/Wave1"]
+script = ExtResource("6_g2kos")
+difficulty = 1.0
+weight = 0.25
+spawns = ExtResource("7_0oc87")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Sniper" type="Node" parent="Timeline/Wave1"]
+script = ExtResource("6_g2kos")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("8_y3q0q")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="SwordDude" type="Node" parent="Timeline/Wave1"]
+script = ExtResource("6_g2kos")
+difficulty = 1.0
+weight = 2.0
+spawns = ExtResource("9_0mqso")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Wave2" type="Node2D" parent="Timeline"]
+script = ExtResource("5_ffden")
+total_difficulty = 4.0
+spawn_rate = 1.5
+
+[node name="ShotgunOrbiter" type="Node" parent="Timeline/Wave2"]
+script = ExtResource("6_g2kos")
+difficulty = 1.5
+weight = 0.5
+spawns = ExtResource("7_0oc87")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Sniper" type="Node" parent="Timeline/Wave2"]
+script = ExtResource("6_g2kos")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("8_y3q0q")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="SwordDude" type="Node" parent="Timeline/Wave2"]
+script = ExtResource("6_g2kos")
+difficulty = 0.75
+weight = 2.0
+spawns = ExtResource("9_0mqso")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Wave3" type="Node2D" parent="Timeline"]
+script = ExtResource("5_ffden")
+total_difficulty = 5.0
+spawn_rate = 1.5
+
+[node name="ShotgunOrbiter" type="Node" parent="Timeline/Wave3"]
+script = ExtResource("6_g2kos")
+difficulty = 1.5
+weight = 1.0
+spawns = ExtResource("7_0oc87")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Sniper" type="Node" parent="Timeline/Wave3"]
+script = ExtResource("6_g2kos")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("8_y3q0q")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="SwordDude" type="Node" parent="Timeline/Wave3"]
+script = ExtResource("6_g2kos")
+difficulty = 0.5
+weight = 1.0
+spawns = ExtResource("9_0mqso")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Node" type="Node" parent="Timeline"]
+script = ExtResource("10_ffden")
+scene = ExtResource("11_g2kos")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("10_bk7mi")]

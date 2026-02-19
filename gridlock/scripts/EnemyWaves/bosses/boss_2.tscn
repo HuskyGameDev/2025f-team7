@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdpequotft3ve"]
+
+[ext_resource type="PackedScene" uid="uid://ddy6dvqegvph2" path="res://scenes/Boss2/boss_2.tscn" id="1_bvcr5"]
+[ext_resource type="PackedScene" uid="uid://cmwaa2ltynn4r" path="res://scenes/basicEnemies/burstRingEnemy.tscn" id="2_rkvlq"]
+
+[node name="Boss2" type="Node2D"]
+
+[node name="Boss2" parent="." instance=ExtResource("1_bvcr5")]
+position = Vector2(960, 540)
+health = 150.0
+
+[node name="BurstRingEnemy" parent="." instance=ExtResource("2_rkvlq")]
+position = Vector2(300, 540)

@@ -7,7 +7,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 #Switches to the Main scene when StartButton is pressed
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/Boss/boss_room.tscn")
+	get_tree().change_scene_to_file("res://scripts/EnemyWaves/waves_for_playtest/waves_1.tscn")
 
 func _on_tutorial_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scripts/Tutorial/tutorial.tscn")
