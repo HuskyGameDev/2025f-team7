@@ -21,7 +21,7 @@ size = Vector2(112, 1092)
 
 [node name="Boss2" parent="." instance=ExtResource("2_hsdv2")]
 position = Vector2(960, 540)
-health = 150.0
+health = 400.0
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("5_dlyuh")]
 position = Vector2(788, 505)

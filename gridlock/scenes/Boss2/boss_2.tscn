@@ -1,23 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddy6dvqegvph2"]
+[gd_scene load_steps=11 format=3 uid="uid://ddy6dvqegvph2"]
 
 [ext_resource type="Script" uid="uid://cyk0xwrlaq64l" path="res://scenes/Boss2/boss_2.gd" id="1_ypx45"]
-[ext_resource type="Texture2D" uid="uid://bcu7t1r3ukgea" path="res://assets/sprites/Bosses/Frame1.png" id="2_n0x0t"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_ypx45"]
-[ext_resource type="Texture2D" uid="uid://b51nt706e4yry" path="res://assets/sprites/Bosses/Frame2.png" id="3_ypx45"]
+[ext_resource type="Texture2D" uid="uid://wkc4l5ke7fiy" path="res://assets/sprites/Bosses/centipede remaket.png" id="3_ytnt7"]
 [ext_resource type="Script" uid="uid://p0uno3xxi6f6" path="res://scripts/State Machine/FiniteStateMachine.gd" id="5_udsia"]
 [ext_resource type="Script" uid="uid://c47tft8la4ni0" path="res://scenes/Boss2/FollowLeaf.gd" id="6_4ggrf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xuxg1"]
 radius = 116.28823
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_udsia"]
+atlas = ExtResource("3_ytnt7")
+region = Rect2(0, 0, 2240, 1380)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ggrf"]
+atlas = ExtResource("3_ytnt7")
+region = Rect2(2240, 0, 2240, 1380)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_n0x0t"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_n0x0t")
+"texture": SubResource("AtlasTexture_udsia")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ypx45")
+"texture": SubResource("AtlasTexture_4ggrf")
 }],
 "loop": true,
 "name": &"move",
@@ -38,7 +45,8 @@ shape = SubResource("CircleShape2D_xuxg1")
 disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3.2459624, 3.0762763)
+position = Vector2(93.00001, 51)
+scale = Vector2(1.0202897, 0.96695274)
 sprite_frames = SubResource("SpriteFrames_n0x0t")
 animation = &"move"
 

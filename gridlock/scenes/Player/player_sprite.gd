@@ -21,6 +21,8 @@ func _ready():
 	# Use existing singleton
 	if err != OK:
 		fg.modulate = Color(1,1,1)
+		config.set_value("Player","player_color",Color(1,1,1))
+		config.save("res://save_data.cfg")
 	else:
 		fg.modulate = config.get_value("Player","player_color")
 		

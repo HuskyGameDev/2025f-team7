@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://60d8f13gtv6b"]
+[gd_scene load_steps=6 format=3 uid="uid://60d8f13gtv6b"]
 
 [ext_resource type="Script" uid="uid://cxlk7fd1qa62l" path="res://scripts/basicEnemies/shotgun_orbiter.gd" id="1_ctxoa"]
+[ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_qnk06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnk06"]
 size = Vector2(89, 90)
@@ -12,6 +13,7 @@ size = Vector2(91, 88)
 
 [node name="ShotgunOrbiter" type="CharacterBody2D"]
 script = ExtResource("1_ctxoa")
+bullet_node = ExtResource("2_qnk06")
 health = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

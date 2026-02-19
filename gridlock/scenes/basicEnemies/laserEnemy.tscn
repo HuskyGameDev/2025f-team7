@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dd6o2q0te40up"]
 
-[ext_resource type="Script" uid="uid://83l4ifsx048u" path="res://scenes/basicEnemies/laser_enemy.gd" id="1_nlydf"]
+[ext_resource type="Script" path="res://scenes/basicEnemies/laser_enemy.gd" id="1_nlydf"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f8wff"]
 size = Vector2(20, 20)

@@ -1,14 +1,14 @@
 extends Node
 
-const SPAWN_RATE := 0.5
 const ENEMY_SPAWNER := preload("res://scenes/basicEnemies/enemy_spawner.tscn")
 
 @export var total_difficulty: float
+@export var spawn_rate: float
 
 @onready var remaining_difficulty := total_difficulty
 @onready var enemies_alive := 0
 
-@onready var timer := SPAWN_RATE
+@onready var timer := spawn_rate
 
 func _process(delta: float) -> void:
 	if remaining_difficulty == 0: return
@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	timer -= delta
 	while timer < 0:
 		__try_spawn()
-		timer += SPAWN_RATE
+		timer += spawn_rate
 
 func __try_spawn() -> void:
 	var spawnable_enemies: Array[EnemyWaveEntry] = []
@@ -39,7 +39,7 @@ func __try_spawn() -> void:
 		remaining_difficulty -= enemy.difficulty
 		var spawner := ENEMY_SPAWNER.instantiate()
 		spawner.spawns = enemy.spawns
-		spawner.spawn_time = SPAWN_RATE
+		spawner.spawn_time = spawn_rate
 		spawner.spawned.connect(_enemy_spawned)
 		get_parent().add_child(spawner)
 		
