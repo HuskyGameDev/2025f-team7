@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://r8o75ws4kg5e"]
+[gd_scene load_steps=15 format=3 uid="uid://r8o75ws4kg5e"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_db04r"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_2yrsf"]
@@ -12,6 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="10_bk7mi"]
 [ext_resource type="Script" uid="uid://bpii2j1obe26o" path="res://scripts/EnemyWaves/go_to_scene.gd" id="10_ffden"]
 [ext_resource type="PackedScene" uid="uid://ckobbp2dagqok" path="res://scenes/Boss/boss_room.tscn" id="11_g2kos"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xrqh"]
+size = Vector2(1976.5, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffden"]
+size = Vector2(26, 1022)
 
 [node name="Wave1" type="Node2D"]
 
@@ -30,7 +36,7 @@ metadata/_custom_type_script = "uid://bv1js5gomnval"
 [node name="Wave1" type="Node2D" parent="Timeline"]
 script = ExtResource("5_ffden")
 total_difficulty = 3.0
-spawn_rate = 1.5
+spawn_rate = 1.0
 
 [node name="ShotgunOrbiter" type="Node" parent="Timeline/Wave1"]
 script = ExtResource("6_g2kos")
@@ -56,7 +62,7 @@ metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 [node name="Wave2" type="Node2D" parent="Timeline"]
 script = ExtResource("5_ffden")
 total_difficulty = 4.0
-spawn_rate = 1.5
+spawn_rate = 1.0
 
 [node name="ShotgunOrbiter" type="Node" parent="Timeline/Wave2"]
 script = ExtResource("6_g2kos")
@@ -82,7 +88,7 @@ metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 [node name="Wave3" type="Node2D" parent="Timeline"]
 script = ExtResource("5_ffden")
 total_difficulty = 5.0
-spawn_rate = 1.5
+spawn_rate = 1.0
 
 [node name="ShotgunOrbiter" type="Node" parent="Timeline/Wave3"]
 script = ExtResource("6_g2kos")
@@ -112,3 +118,24 @@ scene = ExtResource("11_g2kos")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("10_bk7mi")]
+
+[node name="Invisible Walls" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="Inviswall1" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(975, -11)
+shape = SubResource("RectangleShape2D_0xrqh")
+
+[node name="Inviswall2" type="CollisionShape2D" parent="Invisible Walls"]
+light_mask = 1023
+position = Vector2(964, 1035)
+shape = SubResource("RectangleShape2D_0xrqh")
+
+[node name="Inviswall3" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(-13, 510)
+shape = SubResource("RectangleShape2D_ffden")
+
+[node name="Inviswall4" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(1779, 527)
+shape = SubResource("RectangleShape2D_ffden")

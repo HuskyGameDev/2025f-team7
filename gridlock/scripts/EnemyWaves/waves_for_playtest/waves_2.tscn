@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djyb1etb70irs"]
+[gd_scene load_steps=17 format=3 uid="uid://djyb1etb70irs"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_n7xme"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_8x6as"]
@@ -14,6 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://bgbhpo80ucalq" path="res://scenes/basicEnemies/enemy_spawner.tscn" id="12_4ibwa"]
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="12_7phkl"]
 [ext_resource type="PackedScene" uid="uid://cmwaa2ltynn4r" path="res://scenes/basicEnemies/burstRingEnemy.tscn" id="13_8x6as"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ibwa"]
+size = Vector2(1976.5, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8akvn"]
+size = Vector2(26, 1022)
 
 [node name="Wave1" type="Node2D"]
 
@@ -149,3 +155,24 @@ scene = ExtResource("11_n7xme")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("12_7phkl")]
+
+[node name="Invisible Walls" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="Inviswall1" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(975, -11)
+shape = SubResource("RectangleShape2D_4ibwa")
+
+[node name="Inviswall2" type="CollisionShape2D" parent="Invisible Walls"]
+light_mask = 1023
+position = Vector2(964, 1035)
+shape = SubResource("RectangleShape2D_4ibwa")
+
+[node name="Inviswall3" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(-13, 510)
+shape = SubResource("RectangleShape2D_8akvn")
+
+[node name="Inviswall4" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(1779, 527)
+shape = SubResource("RectangleShape2D_8akvn")
