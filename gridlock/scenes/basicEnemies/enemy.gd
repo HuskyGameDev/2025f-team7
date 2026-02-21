@@ -16,16 +16,13 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if taking_damage:
-		print("aaa i am taking damage")
-		health -= delta
+		health -= 10 * delta
 	
 	if health == 0.0:
 		queue_free()
 
 func _on_body_entered(_body: PhysicsBody2D) -> void:
-	print("woah! area entered!")
 	taking_damage = true
 
 func _on_body_exited(_body: PhysicsBody2D) -> void:
-	print("woah! area exited!")
 	taking_damage = false
