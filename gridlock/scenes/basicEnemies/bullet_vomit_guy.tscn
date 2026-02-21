@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://e4eqbtm68yje"]
+
+[ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="1_lxxky"]
+[ext_resource type="Script" uid="uid://bmis613sky5dv" path="res://scenes/basicEnemies/bullet_vomit_guy.gd" id="1_su5ei"]
+[ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_a07i0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_su5ei"]
+size = Vector2(79, 91)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a07i0"]
+radius = 20.0
+height = 56.0
+
+[node name="BulletVomitGuy" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_su5ei")
+bullet_node = ExtResource("2_a07i0")
+MAX_HEALTH = 30.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -12)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_lxxky")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -11.5)
+shape = SubResource("RectangleShape2D_su5ei")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(1, -12)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 12)
+shape = SubResource("CapsuleShape2D_a07i0")
+debug_color = Color(0.9917801, 0, 0.26715374, 0.41960785)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.3299999999999998
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timeout"]

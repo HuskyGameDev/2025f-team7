@@ -1,19 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://brbhv674ybd53"]
+[gd_scene load_steps=12 format=3 uid="uid://brbhv674ybd53"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_5qtuy"]
-[ext_resource type="Script" uid="uid://c0iyvboumgjap" path="res://scripts/EnemyWaves/random_enemy_spawner.gd" id="1_gqm1v"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_0k1h6"]
-[ext_resource type="Script" uid="uid://b1rkfnw2y7pey" path="res://scripts/EnemyWaves/enemy_wave_entry.gd" id="2_yuidk"]
-[ext_resource type="PackedScene" uid="uid://cc2m4nk2u1h88" path="res://scenes/basicEnemies/debug_enemy.tscn" id="3_ijmob"]
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="3_px3wn"]
-[ext_resource type="PackedScene" uid="uid://dd6o2q0te40up" path="res://scenes/basicEnemies/laserEnemy.tscn" id="3_y0du7"]
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="4_ijmob"]
-[ext_resource type="PackedScene" uid="uid://60d8f13gtv6b" path="res://scenes/basicEnemies/shotgunOrbiter.tscn" id="4_wfcfs"]
 [ext_resource type="Script" uid="uid://c7yc0rwepuypc" path="res://scripts/UI/victory_screen.gd" id="5_22lw5"]
-[ext_resource type="PackedScene" uid="uid://dwrn3jf27llc" path="res://scenes/basicEnemies/swordDude.tscn" id="6_o4743"]
 [ext_resource type="Script" uid="uid://bv1js5gomnval" path="res://scripts/EnemyWaves/timeline.gd" id="6_y0du7"]
 [ext_resource type="PackedScene" uid="uid://bgbhpo80ucalq" path="res://scenes/basicEnemies/enemy_spawner.tscn" id="6_yuidk"]
-[ext_resource type="Script" uid="uid://c7n0kqwx8ry53" path="res://scripts/EnemyWaves/enemy_wave.gd" id="7_wfcfs"]
+[ext_resource type="PackedScene" uid="uid://e4eqbtm68yje" path="res://scenes/basicEnemies/bullet_vomit_guy.tscn" id="8_ijmob"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xrvsb"]
 
@@ -106,70 +100,9 @@ text = "Continue"
 [node name="Timeline" type="Node2D" parent="."]
 script = ExtResource("6_y0du7")
 
-[node name="Wave1" type="Node2D" parent="Timeline"]
-script = ExtResource("7_wfcfs")
-
-[node name="Timeline" type="Node2D" parent="Timeline/Wave1"]
-script = ExtResource("6_y0du7")
-metadata/_custom_type_script = "uid://bv1js5gomnval"
-
-[node name="EnemySpawner" parent="Timeline/Wave1/Timeline" instance=ExtResource("6_yuidk")]
-position = Vector2(247, 215)
-spawns = ExtResource("3_ijmob")
-spawn_time = 0.5
-
-[node name="EnemySpawner2" parent="Timeline/Wave1/Timeline" instance=ExtResource("6_yuidk")]
-position = Vector2(1362, 235)
-spawns = ExtResource("3_ijmob")
+[node name="EnemySpawner" parent="Timeline" instance=ExtResource("6_yuidk")]
+position = Vector2(419, 175)
+spawns = ExtResource("8_ijmob")
 spawn_time = 1.0
-
-[node name="EnemySpawner3" parent="Timeline/Wave1/Timeline" instance=ExtResource("6_yuidk")]
-position = Vector2(497, 828)
-spawns = ExtResource("3_ijmob")
-spawn_time = 2.0
-
-[node name="RandomEnemySpawner" type="Node" parent="Timeline/Wave1/Timeline"]
-script = ExtResource("1_gqm1v")
-total_difficulty = 4.0
-
-[node name="DebugEnemy" type="Node" parent="Timeline/Wave1/Timeline/RandomEnemySpawner"]
-script = ExtResource("2_yuidk")
-difficulty = 1.0
-weight = 1.0
-spawns = ExtResource("3_ijmob")
-metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
-
-[node name="Wave3" type="Node2D" parent="Timeline"]
-script = ExtResource("7_wfcfs")
-
-[node name="Timeline" type="Node2D" parent="Timeline/Wave3"]
-script = ExtResource("6_y0du7")
-metadata/_custom_type_script = "uid://bv1js5gomnval"
-
-[node name="EnemySpawner" parent="Timeline/Wave3/Timeline" instance=ExtResource("6_yuidk")]
-position = Vector2(621, 201)
-spawns = ExtResource("6_o4743")
-spawn_time = 0.5
-
-[node name="EnemySpawner2" parent="Timeline/Wave3/Timeline" instance=ExtResource("6_yuidk")]
-position = Vector2(1445, 705)
-spawns = ExtResource("4_wfcfs")
-spawn_time = 1.0
-
-[node name="EnemySpawner3" parent="Timeline/Wave3/Timeline" instance=ExtResource("6_yuidk")]
-position = Vector2(424, 459)
-spawns = ExtResource("3_y0du7")
-spawn_time = 2.0
-
-[node name="RandomEnemySpawner" type="Node" parent="Timeline/Wave3/Timeline"]
-script = ExtResource("1_gqm1v")
-total_difficulty = 4.0
-
-[node name="DebugEnemy" type="Node" parent="Timeline/Wave3/Timeline/RandomEnemySpawner"]
-script = ExtResource("2_yuidk")
-difficulty = 1.0
-weight = 1.0
-spawns = ExtResource("3_ijmob")
-metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 
 [connection signal="pressed" from="CanvasLayer/VictoryScreen/Button" to="CanvasLayer/VictoryScreen" method="_on_button_pressed"]
