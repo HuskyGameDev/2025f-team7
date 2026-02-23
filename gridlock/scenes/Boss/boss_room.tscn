@@ -38,6 +38,7 @@ shape = SubResource("CircleShape2D_f2gah")
 
 [node name="TLTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(100, 100)
+rotation = 2.2340214
 starting_pattern = 12
 health = 50.0
 
@@ -50,6 +51,7 @@ texture = ExtResource("4_3xa8x")
 
 [node name="TRTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(1666, 100)
+rotation = -2.2340214
 starting_pattern = 10
 health = 50.0
 
@@ -62,6 +64,7 @@ texture = ExtResource("5_f2gah")
 
 [node name="BLTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(100, 980)
+rotation = 1.1170107
 starting_pattern = 10
 health = 50.0
 
@@ -74,6 +77,7 @@ texture = ExtResource("6_ar1tk")
 
 [node name="BRTurret" parent="." instance=ExtResource("1_3n20u")]
 position = Vector2(1666, 980)
+rotation = -1.1170107
 starting_pattern = 12
 health = 50.0
 
