@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=26 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://b0xrvt30cgsxw" path="res://scripts/UI/title_options_panel.gd" id="16_xutsw"]
 [ext_resource type="Theme" uid="uid://d8uuw1d6d7be" path="res://assets/label.tres" id="17_wvb7n"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="17_xutsw"]
+[ext_resource type="Script" uid="uid://b5gt8g6xhgm07" path="res://scenes/Title/credit_panel.gd" id="21_sxacd"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h6xyy"]
 load_path = "res://.godot/imported/TITLE.png-24dff41b91a507c67e6cea60932f1f3e.ctex"
@@ -176,6 +177,14 @@ grow_vertical = 0
 icon = ExtResource("13_wvb7n")
 icon_alignment = 1
 expand_icon = true
+
+[node name="CreditButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1469.0
+offset_top = 677.0
+offset_right = 1743.0
+offset_bottom = 770.0
+text = "Credits"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
@@ -563,15 +572,57 @@ size_flags_vertical = 4
 theme = ExtResource("17_wvb7n")
 text = "Back"
 
+[node name="CreditPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("CreditPanel")]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("17_wvb7n")
+theme_override_styles/panel = ExtResource("15_2e2l6")
+script = ExtResource("21_sxacd")
+CreditPanel = NodePath(".")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/CreditPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("17_wvb7n")
+
+[node name="CreditBackButton" type="Button" parent="CanvasLayer/CreditPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Back"
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditPanel/GridContainer"]
+layout_mode = 2
+text = "Bridger Mattson: Team leader, Programmer, Designer
+Ean Bingaman: Programmer, Designer, Artist
+Ender Ross: Programmer, Artist
+Evan Kropp: Programmer, Designer
+Gabriel Roberts: Programmer, Designer, Artist
+Gabriel Belanger: Programmer, Designer
+Jackson Frank: Programmer, Artist
+Dax Downing: Sound Design, Music Direction
+John McDevitt: Programmer, Artist
+Dylan Foster: Programmer, Artist
+Rayna Miller: Programmer, Artist"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="CanvasLayer/optionsPanel" method="_on_options_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="ColorButton" to="." method="_on_color_button_pressed"]
 [connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="CreditButton" to="CanvasLayer/CreditPanel" method="_on_credit_button_pressed"]
 [connection signal="color_changed" from="ColorPicker" to="PlayerSprite" method="_on_color_picker_color_changed"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionscontrolButton" to="CanvasLayer/optionsPanel" method="_on_optionscontrol_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionsaudioButton" to="CanvasLayer/optionsPanel" method="_on_optionsaudio_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionsbackButton" to="CanvasLayer/optionsPanel" method="_on_optionsback_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/controlsBackButton" to="CanvasLayer/optionsPanel" method="_on_controls_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/audioPanel/GridContainer/audioBackButton" to="CanvasLayer/optionsPanel" method="_on_audio_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CreditPanel/GridContainer/CreditBackButton" to="CanvasLayer/CreditPanel" method="_on_credit_back_button_pressed"]
