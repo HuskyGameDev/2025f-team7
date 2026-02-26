@@ -62,5 +62,5 @@ shape = SubResource("CircleShape2D_1kbk7")
 debug_color = Color(0.98443025, 0, 0.34811187, 0.41960785)
 
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
-[connection signal="area_entered" from="NearMissArea" to="." method="_on_near_miss"]
+[connection signal="area_exited" from="NearMissArea" to="." method="_on_near_miss"]
 [connection signal="area_entered" from="HurtboxArea" to="." method="_on_hit"]

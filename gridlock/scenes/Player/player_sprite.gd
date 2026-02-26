@@ -3,7 +3,18 @@ extends Node
 @onready var bg: AnimatedSprite2D = $Background
 @onready var fg: AnimatedSprite2D = $Foreground
 @onready var shadow: AnimatedSprite2D = $Shadow
+
 @onready var config = ConfigFile.new() #creates configfile object
+@onready var invincible := false:
+	get(): return invincible
+	set(value):
+		if value == invincible: return
+		invincible = value
+		
+		if invincible:
+			fg.modulate.a = 0.5
+		else:
+			fg.modulate.a = 1
 
 @onready var health := 5:
 	get(): return health

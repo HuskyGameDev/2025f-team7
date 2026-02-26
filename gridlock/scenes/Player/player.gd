@@ -60,6 +60,7 @@ func set_status(bullet_type):
 			3:
 				stun()
 		invincible = true
+		sprite.invincible = true
 		$InvincibleTimer.start(5)
 
 func fire():
@@ -83,14 +84,17 @@ func stun():
 	GlobalSignals.emit_signal("health_change", health)
 	
 func _update_sprite():
+	sprite.invincible = invincible
 	sprite.health = ceil(health / 2.0)
 
 func _on_invincible_timer_timeout() -> void:
 	invincible = false
+	sprite.invincible = false
 
 
 func _on_near_miss(_area: Area2D) -> void:
-	GlobalSignals.emit_signal("near_miss")
+	if !invincible:
+		GlobalSignals.emit_signal("near_miss")
 
 func _on_bomb_gained() -> void:
 	bombs_available += 1
