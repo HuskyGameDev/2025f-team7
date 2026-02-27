@@ -1,14 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://br0houypihsfp"]
+[gd_scene load_steps=5 format=3 uid="uid://br0houypihsfp"]
 
 [ext_resource type="Script" uid="uid://clourv754sbas" path="res://scripts/Player/saw.gd" id="1_54kj3"]
-[ext_resource type="Texture2D" uid="uid://cgb2w3fv32r42" path="res://assets/sprites/Saw/Saw.png" id="2_1s1bc"]
-[ext_resource type="Shader" uid="uid://cv0js8fiedxe4" path="res://scenes/boil_line.gdshader" id="2_hmvf4"]
-[ext_resource type="Script" uid="uid://c7vneo12soye2" path="res://scenes/Player/blade.gd" id="3_8eitm"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3ed1"]
-shader = ExtResource("2_hmvf4")
-shader_parameter/step_rate = 6.614000314165
-shader_parameter/distortion_strength = 18.6670008391825
+[ext_resource type="PackedScene" uid="uid://brgwd7siy17ly" path="res://scenes/Player/saw_sprite.tscn" id="2_1s1bc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hmvf4"]
 radius = 46.0
@@ -21,14 +14,6 @@ collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_54kj3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_n3ed1")
-position = Vector2(1.0000038, -0.12499225)
-scale = Vector2(0.15874983, 0.13937505)
-texture = ExtResource("2_1s1bc")
-script = ExtResource("3_8eitm")
-spin_speed = 230.0
-
 [node name="BladeArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BladeArea2D"]
@@ -36,3 +21,6 @@ shape = SubResource("CircleShape2D_hmvf4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n3ed1")
+
+[node name="SawSprite" parent="." instance=ExtResource("2_1s1bc")]
+scale = Vector2(0.25, 0.25)

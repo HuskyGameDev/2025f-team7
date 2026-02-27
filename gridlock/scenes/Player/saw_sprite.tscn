@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://brgwd7siy17ly"]
+
+[ext_resource type="Shader" uid="uid://cv0js8fiedxe4" path="res://scenes/boil_line.gdshader" id="1_27s3o"]
+[ext_resource type="Shader" uid="uid://cjvdvvju3112w" path="res://scenes/saw_color.gdshader" id="1_dnqgk"]
+[ext_resource type="Script" uid="uid://bgbr3hcdmhtlk" path="res://scenes/Player/saw_sprite.gd" id="1_hk82q"]
+[ext_resource type="Texture2D" uid="uid://n10eylvh4eyn" path="res://assets/sprites/Saw/saw_shine.png" id="2_ndc5g"]
+[ext_resource type="SpriteFrames" uid="uid://cva43qewbgkmk" path="res://assets/sprites/Saw/saw_shadow.tres" id="2_wcofd"]
+[ext_resource type="SpriteFrames" uid="uid://dm8bvu0y2ldfq" path="res://assets/sprites/Saw/saw_background.tres" id="3_ndc5g"]
+[ext_resource type="SpriteFrames" uid="uid://uiqsqvxbfpas" path="res://assets/sprites/Saw/saw_color.tres" id="4_hk82q"]
+[ext_resource type="SpriteFrames" uid="uid://2h5ql4jtfo8e" path="res://assets/sprites/Saw/saw_outline.tres" id="5_fumo7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hk82q"]
+shader = ExtResource("1_27s3o")
+shader_parameter/step_rate = 2.000000095
+shader_parameter/distortion_strength = 3.000000095
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndc5g"]
+shader = ExtResource("1_dnqgk")
+shader_parameter/step_rate = 2.000000095
+shader_parameter/distortion_strength = 3.0
+shader_parameter/shine_texture = ExtResource("2_ndc5g")
+
+[node name="SawSprite" type="Node2D"]
+script = ExtResource("1_hk82q")
+
+[node name="Shadow" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.2509804)
+texture_filter = 4
+material = SubResource("ShaderMaterial_hk82q")
+position = Vector2(8, 8)
+sprite_frames = ExtResource("2_wcofd")
+autoplay = "default"
+frame_progress = 0.52686936
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+texture_filter = 4
+material = SubResource("ShaderMaterial_hk82q")
+sprite_frames = ExtResource("3_ndc5g")
+autoplay = "default"
+frame_progress = 0.62913615
+
+[node name="Color" type="AnimatedSprite2D" parent="."]
+texture_filter = 4
+material = SubResource("ShaderMaterial_ndc5g")
+sprite_frames = ExtResource("4_hk82q")
+autoplay = "default"
+frame_progress = 0.9988492
+
+[node name="Outline" type="AnimatedSprite2D" parent="."]
+texture_filter = 4
+material = SubResource("ShaderMaterial_hk82q")
+sprite_frames = ExtResource("5_fumo7")
+autoplay = "default"
+frame_progress = 0.2516564

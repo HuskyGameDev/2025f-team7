@@ -1,12 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=23 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
-[ext_resource type="Shader" uid="uid://cv0js8fiedxe4" path="res://scenes/boil_line.gdshader" id="3_437ew"]
 [ext_resource type="Texture2D" uid="uid://bcu7t1r3ukgea" path="res://assets/sprites/Bosses/Frame1.png" id="3_sxacd"]
 [ext_resource type="Texture2D" uid="uid://b51nt706e4yry" path="res://assets/sprites/Bosses/Frame2.png" id="4_r8tji"]
-[ext_resource type="Texture2D" uid="uid://cgb2w3fv32r42" path="res://assets/sprites/Saw/Saw.png" id="5_lo6hs"]
-[ext_resource type="Script" uid="uid://b8ddrokqo1lo3" path="res://scenes/Title/saw_cursor.gd" id="5_uuwny"]
 [ext_resource type="Texture2D" uid="uid://c7anc0alr3pos" path="res://assets/sprites/Bosses/Boss.png" id="6_lo6hs"]
 [ext_resource type="Texture2D" uid="uid://dt6o4j3f4w75j" path="res://assets/sprites/Bosses/Boss1.png" id="7_0jllc"]
 [ext_resource type="PackedScene" uid="uid://d3snw0is72pw8" path="res://scenes/Player/player_sprite.tscn" id="7_wvb7n"]
@@ -20,6 +17,7 @@
 [ext_resource type="Script" uid="uid://b0xrvt30cgsxw" path="res://scripts/UI/title_options_panel.gd" id="16_xutsw"]
 [ext_resource type="Theme" uid="uid://d8uuw1d6d7be" path="res://assets/label.tres" id="17_wvb7n"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="17_xutsw"]
+[ext_resource type="PackedScene" uid="uid://d2lylhf5jew0m" path="res://scenes/Title/saw_cursor.tscn" id="19_xutsw"]
 [ext_resource type="Script" uid="uid://b5gt8g6xhgm07" path="res://scenes/Title/credit_panel.gd" id="21_sxacd"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h6xyy"]
@@ -52,11 +50,6 @@ animations = [{
 "name": &"move",
 "speed": 5.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jllc"]
-shader = ExtResource("3_437ew")
-shader_parameter/step_rate = 6.614000314165
-shader_parameter/distortion_strength = 18.6670008391825
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -203,15 +196,6 @@ color_modes_visible = false
 sliders_visible = false
 hex_visible = false
 presets_visible = false
-
-[node name="Saw" type="Sprite2D" parent="."]
-texture_repeat = 1
-material = SubResource("ShaderMaterial_0jllc")
-position = Vector2(912.99994, 516)
-rotation = 0.24434595
-scale = Vector2(0.131, 0.116)
-texture = ExtResource("5_lo6hs")
-script = ExtResource("5_uuwny")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -611,6 +595,9 @@ Dax Downing: Sound Design, Music Direction
 John McDevitt: Programmer, Artist
 Dylan Foster: Programmer, Artist
 Rayna Miller: Programmer, Artist"
+
+[node name="SawCursor" parent="." instance=ExtResource("19_xutsw")]
+position = Vector2(914, 517)
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

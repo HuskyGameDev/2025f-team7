@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://uiqsqvxbfpas"]
+
+[ext_resource type="Texture2D" uid="uid://coxoc8uho4tja" path="res://assets/sprites/Saw/saw_color.png" id="1_fridi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dluir"]
+atlas = ExtResource("1_fridi")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mf0y"]
+atlas = ExtResource("1_fridi")
+region = Rect2(512, 0, 512, 512)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dluir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mf0y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]

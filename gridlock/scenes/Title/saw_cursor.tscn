@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2lylhf5jew0m"]
+
+[ext_resource type="Script" uid="uid://b8ddrokqo1lo3" path="res://scenes/Title/saw_cursor.gd" id="1_xju8w"]
+[ext_resource type="PackedScene" uid="uid://brgwd7siy17ly" path="res://scenes/Player/saw_sprite.tscn" id="2_5eu3s"]
+
+[node name="SawCursor" type="Node2D"]
+script = ExtResource("1_xju8w")
+
+[node name="SawSprite" parent="." instance=ExtResource("2_5eu3s")]
+scale = Vector2(0.2, 0.2)
