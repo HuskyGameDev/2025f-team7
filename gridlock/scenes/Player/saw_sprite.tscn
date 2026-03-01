@@ -21,10 +21,12 @@ shader_parameter/distortion_strength = 3.0
 shader_parameter/shine_texture = ExtResource("2_ndc5g")
 
 [node name="SawSprite" type="Node2D"]
+z_index = 1
 script = ExtResource("1_hk82q")
 
 [node name="Shadow" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.2509804)
+z_index = -1
 texture_filter = 4
 material = SubResource("ShaderMaterial_hk82q")
 position = Vector2(8, 8)
