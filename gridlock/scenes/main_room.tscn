@@ -1,0 +1,184 @@
+[gd_scene load_steps=21 format=3 uid="uid://bx8dkwwoiesnh"]
+
+[ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_w27ju"]
+[ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_ruwqf"]
+[ext_resource type="Script" uid="uid://bv1js5gomnval" path="res://scripts/EnemyWaves/timeline.gd" id="3_2noi8"]
+[ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="4_phake"]
+[ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="5_ky753"]
+[ext_resource type="Script" uid="uid://c0iyvboumgjap" path="res://scripts/EnemyWaves/random_enemy_spawner.gd" id="5_nx0o4"]
+[ext_resource type="Script" uid="uid://c7n0kqwx8ry53" path="res://scripts/EnemyWaves/enemy_wave.gd" id="6_2noi8"]
+[ext_resource type="Script" uid="uid://b1rkfnw2y7pey" path="res://scripts/EnemyWaves/enemy_wave_entry.gd" id="6_10fbw"]
+[ext_resource type="PackedScene" uid="uid://60d8f13gtv6b" path="res://scenes/basicEnemies/shotgunOrbiter.tscn" id="7_mm8b8"]
+[ext_resource type="PackedScene" uid="uid://bgbhpo80ucalq" path="res://scenes/basicEnemies/enemy_spawner.tscn" id="7_phake"]
+[ext_resource type="PackedScene" uid="uid://dd330qd4wlqdq" path="res://scenes/basicEnemies/sniperEnemy.tscn" id="8_6gvn4"]
+[ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="8_phake"]
+[ext_resource type="PackedScene" uid="uid://dq86eoys66ddp" path="res://scenes/Boss/Turrets/tl_turret.tscn" id="8_q8it2"]
+[ext_resource type="PackedScene" uid="uid://dwrn3jf27llc" path="res://scenes/basicEnemies/swordDude.tscn" id="9_edhfb"]
+[ext_resource type="PackedScene" uid="uid://dgc0wh0ikw7bg" path="res://scenes/Boss/Turrets/tr_turret.tscn" id="9_rt06m"]
+[ext_resource type="PackedScene" uid="uid://132n2jysp4we" path="res://scenes/Boss/Turrets/bl_turret.tscn" id="10_qtdqc"]
+[ext_resource type="PackedScene" uid="uid://cthdms7ynnl2x" path="res://scenes/Boss/Turrets/br_turret.tscn" id="11_rvtox"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8it2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt06m"]
+size = Vector2(1798, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtdqc"]
+size = Vector2(16, 1080)
+
+[node name="MainRoom" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("5_ky753")]
+
+[node name="parallax" parent="." instance=ExtResource("1_w27ju")]
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("2_ruwqf")]
+position = Vector2(837, 845)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="player"]
+shape = SubResource("CircleShape2D_q8it2")
+
+[node name="Timeline" type="Node2D" parent="."]
+script = ExtResource("3_2noi8")
+
+[node name="Wave1" type="Node2D" parent="Timeline"]
+visible = false
+script = ExtResource("5_nx0o4")
+total_difficulty = 3.0
+spawn_rate = 1.0
+
+[node name="ShotgunOrbiter" type="Node" parent="Timeline/Wave1"]
+script = ExtResource("6_10fbw")
+difficulty = 1.0
+weight = 0.25
+spawns = ExtResource("7_mm8b8")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Sniper" type="Node" parent="Timeline/Wave1"]
+script = ExtResource("6_10fbw")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("8_6gvn4")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="SwordDude" type="Node" parent="Timeline/Wave1"]
+script = ExtResource("6_10fbw")
+difficulty = 1.0
+weight = 2.0
+spawns = ExtResource("9_edhfb")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Wave2" type="Node2D" parent="Timeline"]
+script = ExtResource("5_nx0o4")
+total_difficulty = 4.0
+spawn_rate = 1.0
+
+[node name="ShotgunOrbiter" type="Node" parent="Timeline/Wave2"]
+script = ExtResource("6_10fbw")
+difficulty = 1.5
+weight = 0.5
+spawns = ExtResource("7_mm8b8")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Sniper" type="Node" parent="Timeline/Wave2"]
+script = ExtResource("6_10fbw")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("8_6gvn4")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="SwordDude" type="Node" parent="Timeline/Wave2"]
+script = ExtResource("6_10fbw")
+difficulty = 0.75
+weight = 2.0
+spawns = ExtResource("9_edhfb")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Wave3" type="Node2D" parent="Timeline"]
+script = ExtResource("5_nx0o4")
+total_difficulty = 5.0
+spawn_rate = 1.0
+
+[node name="ShotgunOrbiter" type="Node" parent="Timeline/Wave3"]
+script = ExtResource("6_10fbw")
+difficulty = 1.5
+weight = 1.0
+spawns = ExtResource("7_mm8b8")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Sniper" type="Node" parent="Timeline/Wave3"]
+script = ExtResource("6_10fbw")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("8_6gvn4")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="SwordDude" type="Node" parent="Timeline/Wave3"]
+script = ExtResource("6_10fbw")
+difficulty = 0.5
+weight = 1.0
+spawns = ExtResource("9_edhfb")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Boss1" type="Node2D" parent="Timeline"]
+visible = false
+script = ExtResource("6_2noi8")
+
+[node name="BossSpawner" parent="Timeline/Boss1" instance=ExtResource("7_phake")]
+position = Vector2(978, 415)
+scale = Vector2(1.5, 1.5)
+spawns = ExtResource("8_phake")
+spawn_time = 3.0
+
+[node name="TLTurretSpawner" parent="Timeline/Boss1" instance=ExtResource("7_phake")]
+position = Vector2(100, 100)
+scale = Vector2(0.75, 0.75)
+spawns = ExtResource("8_q8it2")
+delay = 3.0
+
+[node name="TRTurretSpawner" parent="Timeline/Boss1" instance=ExtResource("7_phake")]
+position = Vector2(1666, 100)
+scale = Vector2(0.75, 0.75)
+spawns = ExtResource("9_rt06m")
+spawn_time = 0.9
+delay = 3.1
+
+[node name="BLTurretSpawner" parent="Timeline/Boss1" instance=ExtResource("7_phake")]
+position = Vector2(100, 980)
+scale = Vector2(0.75, 0.75)
+spawns = ExtResource("10_qtdqc")
+spawn_time = 0.8
+delay = 3.2
+
+[node name="BRTurretSpawner" parent="Timeline/Boss1" instance=ExtResource("7_phake")]
+position = Vector2(1666, 980)
+scale = Vector2(0.75, 0.75)
+spawns = ExtResource("11_rvtox")
+spawn_time = 0.7
+delay = 3.3
+
+[node name="blade" parent="." instance=ExtResource("4_phake")]
+position = Vector2(1217, 836)
+
+[node name="Invisible Walls" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="Inviswall1" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(883, -8)
+shape = SubResource("RectangleShape2D_rt06m")
+
+[node name="Inviswall2" type="CollisionShape2D" parent="Invisible Walls"]
+light_mask = 1023
+position = Vector2(883, 1088)
+shape = SubResource("RectangleShape2D_rt06m")
+
+[node name="Inviswall3" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(-8, 540)
+shape = SubResource("RectangleShape2D_qtdqc")
+
+[node name="Inviswall4" type="CollisionShape2D" parent="Invisible Walls"]
+position = Vector2(1774, 540)
+shape = SubResource("RectangleShape2D_qtdqc")

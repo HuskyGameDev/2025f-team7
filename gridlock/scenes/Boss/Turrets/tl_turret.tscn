@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq86eoys66ddp"]
+
+[ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_qawij"]
+[ext_resource type="Texture2D" uid="uid://kj2hkbm1lu4a" path="res://assets/sprites/other/boss1_turret_var3.png" id="2_niabo"]
+
+[node name="Turret" instance=ExtResource("1_qawij")]
+starting_pattern = 12
+starting_movement = 0
+health = 50.0
+isMainBoss = false
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="8"]
+rotation = 2.2340214
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_niabo")

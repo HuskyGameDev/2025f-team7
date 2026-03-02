@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgc0wh0ikw7bg"]
+
+[ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_xy54t"]
+[ext_resource type="Texture2D" uid="uid://cf48twroox0ku" path="res://assets/sprites/other/boss1_turret_var1.png" id="2_xy54t"]
+
+[node name="Turret" instance=ExtResource("1_xy54t")]
+starting_pattern = 10
+starting_movement = 0
+health = 50.0
+isMainBoss = false
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="8"]
+rotation = -2.2340214
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_xy54t")
