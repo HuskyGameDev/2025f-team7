@@ -594,7 +594,12 @@ Jackson Frank: Programmer, Artist
 Dax Downing: Sound Design, Music Direction
 John McDevitt: Programmer, Artist
 Dylan Foster: Programmer, Artist
-Rayna Miller: Programmer, Artist"
+Rayna Miller: Programmer, Artist
+
+Assets:
+Apollo Palette by AdamCYounis
+
+Made With Godot"
 
 [node name="SawCursor" parent="." instance=ExtResource("19_xutsw")]
 position = Vector2(914, 517)
