@@ -1,10 +1,15 @@
 class_name Timeline extends Node2D
 
+@export var enabled: bool = true
+
 @onready var advance_timeline := true
 
 func _init() -> void:
 	child_entered_tree.connect(_child_entering_tree)
 	child_exiting_tree.connect(_child_exiting_tree)
+
+func _ready() -> void:
+	if !enabled: queue_free()
 
 func _process(_delta: float) -> void:
 	if advance_timeline:
