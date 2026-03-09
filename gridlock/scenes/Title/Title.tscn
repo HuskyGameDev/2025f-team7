@@ -1,11 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=27 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
-[ext_resource type="Texture2D" uid="uid://bcu7t1r3ukgea" path="res://assets/sprites/Bosses/Frame1.png" id="3_sxacd"]
-[ext_resource type="Texture2D" uid="uid://b51nt706e4yry" path="res://assets/sprites/Bosses/Frame2.png" id="4_r8tji"]
-[ext_resource type="Texture2D" uid="uid://c7anc0alr3pos" path="res://assets/sprites/Bosses/Boss.png" id="6_lo6hs"]
-[ext_resource type="Texture2D" uid="uid://dt6o4j3f4w75j" path="res://assets/sprites/Bosses/Boss1.png" id="7_0jllc"]
+[ext_resource type="Texture2D" uid="uid://d0eqnygobjp0e" path="res://assets/sprites/Menu/Gridlock logo export.png" id="3_l0whq"]
+[ext_resource type="Texture2D" uid="uid://nmjqkowop31g" path="res://assets/sprites/Bosses/roach walk (jackson)-Sheet.png" id="5_l0whq"]
+[ext_resource type="Texture2D" uid="uid://wkc4l5ke7fiy" path="res://assets/sprites/Bosses/centipede remaket.png" id="6_xutsw"]
 [ext_resource type="PackedScene" uid="uid://d3snw0is72pw8" path="res://scenes/Player/player_sprite.tscn" id="7_wvb7n"]
 [ext_resource type="Texture2D" uid="uid://dwgt4vjwha7js" path="res://assets/sprites/Menu/Start.png" id="10_0jllc"]
 [ext_resource type="Texture2D" uid="uid://cyvl1twgbone" path="res://assets/sprites/Menu/Options.png" id="11_uuwny"]
@@ -20,35 +19,62 @@
 [ext_resource type="PackedScene" uid="uid://d2lylhf5jew0m" path="res://scenes/Title/saw_cursor.tscn" id="19_xutsw"]
 [ext_resource type="Script" uid="uid://b5gt8g6xhgm07" path="res://scenes/Title/credit_panel.gd" id="21_sxacd"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h6xyy"]
-load_path = "res://.godot/imported/TITLE.png-24dff41b91a507c67e6cea60932f1f3e.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvb7n"]
+atlas = ExtResource("6_xutsw")
+region = Rect2(0, 0, 2240, 1380)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_blibh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxacd"]
+atlas = ExtResource("6_xutsw")
+region = Rect2(2240, 0, 2240, 1380)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r8tji"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sxacd")
+"texture": SubResource("AtlasTexture_wvb7n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_r8tji")
+"texture": SubResource("AtlasTexture_sxacd")
 }],
 "loop": true,
-"name": &"move",
+"name": &"Move",
 "speed": 3.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_h2cek"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xutsw"]
+atlas = ExtResource("5_l0whq")
+region = Rect2(3000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8tji"]
+atlas = ExtResource("5_l0whq")
+region = Rect2(2000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blibh"]
+atlas = ExtResource("5_l0whq")
+region = Rect2(1000, 0, 1000, 1000)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc1d0"]
+atlas = ExtResource("5_l0whq")
+region = Rect2(0, 0, 1000, 1000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yehle"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_lo6hs")
+"texture": SubResource("AtlasTexture_xutsw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_0jllc")
+"texture": SubResource("AtlasTexture_r8tji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blibh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc1d0")
 }],
 "loop": true,
-"name": &"move",
-"speed": 5.0
+"name": &"Move",
+"speed": 6.0
 }]
 
 [node name="Title" type="Control"]
@@ -67,30 +93,28 @@ texture = ExtResource("2_h2cek")
 
 [node name="Title" type="Sprite2D" parent="MenuBackground"]
 texture_filter = 1
-position = Vector2(0, -184.011)
-scale = Vector2(4.548, 4.541)
-texture = SubResource("CompressedTexture2D_h6xyy")
+position = Vector2(-9.037668, -115.82173)
+scale = Vector2(0.24370912, 0.24333401)
+texture = ExtResource("3_l0whq")
 
 [node name="Boss2" type="AnimatedSprite2D" parent="MenuBackground"]
-position = Vector2(368.53558, -82.22841)
-rotation = 0.6108652
-scale = Vector2(0.40899125, 0.34146667)
-skew = 0.000654459
-sprite_frames = SubResource("SpriteFrames_blibh")
-animation = &"move"
-autoplay = "move"
-frame_progress = 0.5493734
+position = Vector2(383.59833, -44.62397)
+rotation = 0.42779073
+scale = Vector2(0.12939589, 0.12939587)
+sprite_frames = SubResource("SpriteFrames_r8tji")
+animation = &"Move"
+autoplay = "Move"
+frame_progress = 0.7682086
 
-[node name="Boss1" type="AnimatedSprite2D" parent="MenuBackground"]
-texture_filter = 1
-position = Vector2(-378.07535, -85.23677)
-rotation = 0.24401909
-scale = Vector2(2.2768018, 2.2740014)
-skew = 0.0006543398
-sprite_frames = SubResource("SpriteFrames_h2cek")
-animation = &"move"
-autoplay = "move"
-frame_progress = 0.74733365
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MenuBackground"]
+position = Vector2(-362.00836, -46.62953)
+rotation = -0.40060702
+scale = Vector2(0.24497436, 0.24497436)
+sprite_frames = SubResource("SpriteFrames_yehle")
+animation = &"Move"
+autoplay = "Move"
+frame_progress = 0.56062233
+offset = Vector2(60.45227, 71.24353)
 
 [node name="PlayerSprite" parent="." instance=ExtResource("7_wvb7n")]
 position = Vector2(908, 792)
@@ -201,7 +225,6 @@ presets_visible = false
 
 [node name="optionsPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("controlsPanel", "audioPanel")]
 process_mode = 3
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
