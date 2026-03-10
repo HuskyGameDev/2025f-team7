@@ -9,8 +9,8 @@
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="5_wm3ai"]
 [ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="6_8dubc"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="7_p7vwb"]
+[ext_resource type="Texture2D" uid="uid://2ymqktmu66fi" path="res://assets/sprites/Menu/options menu background.png" id="8_5sqrc"]
 [ext_resource type="Texture2D" uid="uid://c0npmdqw5qmcn" path="res://assets/sprites/Menu/options_menu.png" id="8_w7enk"]
-[ext_resource type="Texture2D" uid="uid://cf48twroox0ku" path="res://assets/sprites/other/boss1_turret_var1.png" id="9_5sqrc"]
 [ext_resource type="Texture2D" uid="uid://kj2hkbm1lu4a" path="res://assets/sprites/other/boss1_turret_var3.png" id="10_ilk7v"]
 [ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="12_flkkw"]
 
@@ -224,28 +224,31 @@ visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
-[node name="OptionsBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel"]
-visible = false
-modulate = Color(0.96035105, 0.96035105, 0.96035093, 1)
-position = Vector2(959.50006, 540.5)
-scale = Vector2(1.9989581, 1.998148)
-texture = ExtResource("8_w7enk")
-
-[node name="Beetle1" type="Sprite2D" parent="mainPausePanel/optionsPanel"]
-texture_filter = 1
-position = Vector2(217.99998, 275)
-rotation = 0.21816616
-scale = Vector2(6.27, 6.27)
-texture = ExtResource("9_5sqrc")
-
 [node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/GridContainer"]
+modulate = Color(0, 0, 0, 0.63529414)
+z_index = 2
+position = Vector2(-1019, 118.00009)
+scale = Vector2(0.6112295, 0.61122954)
+
+[node name="Polygon2D" type="Polygon2D" parent="mainPausePanel/optionsPanel/GridContainer/StaticBody2D"]
+z_index = -1
+position = Vector2(-35.99301, -503.90247)
+polygon = PackedVector2Array(4245.541, 57.26158, -211.04997, 6.544037, -283.03607, 2112.136, 4258.6294, 2099.0476)
+
+[node name="OptionsMenuBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/GridContainer"]
+position = Vector2(329.99994, 865.00006)
+scale = Vector2(0.6112295, 0.61122954)
+texture = ExtResource("8_5sqrc")
+
 [node name="optionsLabel" type="Label" parent="mainPausePanel/optionsPanel/GridContainer"]
 process_mode = 3
+z_index = 1
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -255,6 +258,7 @@ text = "OPTIONS"
 
 [node name="optionscontrolButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
 process_mode = 3
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
@@ -263,6 +267,7 @@ text = "Controls"
 
 [node name="optionsaudioButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
 process_mode = 3
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
@@ -271,6 +276,7 @@ text = "Audio"
 
 [node name="optionsbackButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
 process_mode = 3
+z_index = 1
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
@@ -280,6 +286,7 @@ text = "Back"
 [node name="controlsPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel"]
 process_mode = 3
 visible = false
+z_index = 1
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
@@ -290,6 +297,8 @@ scale = Vector2(1.9989581, 1.998148)
 texture = ExtResource("8_w7enk")
 
 [node name="Beetle2" type="Sprite2D" parent="mainPausePanel/optionsPanel/controlsPanel"]
+visible = false
+z_index = 2
 texture_filter = 1
 position = Vector2(1664.145, 804.22)
 rotation = -0.43633235
@@ -302,6 +311,7 @@ layout_mode = 2
 
 [node name="controlsLabel" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
 process_mode = 3
+z_index = 6
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
@@ -310,6 +320,7 @@ text = "Controls"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
 process_mode = 3
+z_index = 6
 layout_mode = 2
 
 [node name="mainCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
@@ -514,23 +525,42 @@ control_name = "UseBomb"
 
 [node name="controlsBackButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
 process_mode = 3
+z_index = 6
 layout_mode = 2
 size_flags_vertical = 4
 text = "Back"
 
+[node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+modulate = Color(0, 0, 0, 0.63529414)
+position = Vector2(-389.00003, 185.00009)
+scale = Vector2(0.6112295, 0.61122954)
+
+[node name="Polygon2D" type="Polygon2D" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/StaticBody2D"]
+z_index = 1
+position = Vector2(754.2176, -387.7432)
+polygon = PackedVector2Array(3115.0327, 26.176743, -211.04997, 6.544037, -211.04997, 1950.1675, 3141.2095, 1976.3442)
+
+[node name="OptionsMenuBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+position = Vector2(960.00006, 165.00003)
+scale = Vector2(0.6112295, 0.61122954)
+texture = ExtResource("8_5sqrc")
+
 [node name="audioPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel"]
 process_mode = 3
 visible = false
+z_index = 1
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
 [node name="AudioBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/audioPanel"]
+visible = false
 modulate = Color(0.96035105, 0.96035105, 0.96035093, 1)
 position = Vector2(959.50006, 540.5)
 scale = Vector2(1.9989581, 1.998148)
 texture = ExtResource("8_w7enk")
 
 [node name="Beetle3" type="Sprite2D" parent="mainPausePanel/optionsPanel/audioPanel"]
+visible = false
 texture_filter = 1
 position = Vector2(1623.51, 270)
 rotation = 0.55850536
@@ -543,10 +573,12 @@ layout_mode = 2
 
 [node name="MasterGridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer"]
 process_mode = 3
+z_index = 3
 layout_mode = 2
 
 [node name="MasterLabel" type="Label" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer/MasterGridContainer"]
 process_mode = 3
+z_index = 3
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -555,6 +587,7 @@ text = "Master Volume"
 
 [node name="MasterHSlider" type="HSlider" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer/MasterGridContainer" node_paths=PackedStringArray("volSlider")]
 process_mode = 3
+z_index = 3
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 script = ExtResource("7_p7vwb")
@@ -563,9 +596,25 @@ selectedBus = "Master"
 
 [node name="audioBackButton" type="Button" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer"]
 process_mode = 3
+z_index = 3
 layout_mode = 2
 size_flags_vertical = 4
 text = "Back"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/audioPanel"]
+modulate = Color(0, 0, 0, 0.63529414)
+position = Vector2(-389.00003, 185.00009)
+scale = Vector2(0.6112295, 0.61122954)
+
+[node name="Polygon2D" type="Polygon2D" parent="mainPausePanel/optionsPanel/audioPanel/StaticBody2D"]
+z_index = 1
+position = Vector2(754.2176, -387.7432)
+polygon = PackedVector2Array(3115.0327, 26.176743, -211.04997, 6.544037, -211.04997, 1950.1675, 3141.2095, 1976.3442)
+
+[node name="OptionsMenuBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/audioPanel"]
+position = Vector2(960.00006, 165.00003)
+scale = Vector2(0.6112295, 0.61122954)
+texture = ExtResource("8_5sqrc")
 
 [node name="BossHealthBar" type="ProgressBar" parent="."]
 layout_mode = 1
