@@ -20,6 +20,7 @@ size = Vector2(112, 1092)
 [node name="parallax" parent="." instance=ExtResource("1_a7lwn")]
 
 [node name="Boss2" parent="." instance=ExtResource("2_hsdv2")]
+texture_filter = 1
 position = Vector2(960, 540)
 health = 400.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=29 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cyvl1twgbone" path="res://assets/sprites/Menu/Options.png" id="11_uuwny"]
 [ext_resource type="Texture2D" uid="uid://c1m0xioaysc3" path="res://assets/sprites/Menu/Color.png" id="12_birck"]
 [ext_resource type="Texture2D" uid="uid://du0l3e3xsw6tc" path="res://assets/sprites/Menu/quit.png" id="12_s4040"]
+[ext_resource type="Texture2D" uid="uid://dh8xmbal7w7hq" path="res://assets/sprites/Menu/credits small.png" id="12_wvb7n"]
 [ext_resource type="Texture2D" uid="uid://bmbt75gs0watt" path="res://assets/sprites/Menu/tutorial.png" id="13_wvb7n"]
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="15_2e2l6"]
 [ext_resource type="Texture2D" uid="uid://2ymqktmu66fi" path="res://assets/sprites/Menu/options menu background.png" id="15_xutsw"]
@@ -99,6 +100,7 @@ scale = Vector2(0.24370912, 0.24333401)
 texture = ExtResource("3_l0whq")
 
 [node name="Boss2" type="AnimatedSprite2D" parent="MenuBackground"]
+texture_filter = 1
 position = Vector2(383.59833, -44.62397)
 rotation = 0.42779073
 scale = Vector2(0.12939589, 0.12939587)
@@ -108,6 +110,7 @@ autoplay = "Move"
 frame_progress = 0.3550929
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MenuBackground"]
+texture_filter = 1
 position = Vector2(-362.00836, -46.62953)
 rotation = -0.40060702
 scale = Vector2(0.24497436, 0.24497436)
@@ -197,12 +200,15 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="CreditButton" type="Button" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 1469.0
-offset_top = 677.0
-offset_right = 1743.0
-offset_bottom = 770.0
-text = "Credits"
+offset_left = 1470.0
+offset_top = 679.0
+offset_right = 1744.0
+offset_bottom = 772.0
+icon = ExtResource("12_wvb7n")
+icon_alignment = 1
+expand_icon = true
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
