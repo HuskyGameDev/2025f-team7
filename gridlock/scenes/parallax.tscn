@@ -9,6 +9,7 @@ shader_parameter/step_rate = 2.000000095
 shader_parameter/distortion_strength = 1.0
 
 [node name="parallax" type="Node2D"]
+z_index = -2
 rotation = -0.00039291804
 
 [node name="Parallax2D" type="Parallax2D" parent="."]

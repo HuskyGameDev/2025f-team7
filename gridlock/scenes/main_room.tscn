@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b3cxf12gwpr4q"]
+[gd_scene load_steps=23 format=3 uid="uid://bx8dkwwoiesnh"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_w27ju"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_ruwqf"]
@@ -175,6 +175,7 @@ script = ExtResource("3_2noi8")
 
 [node name="Waves" type="Node2D" parent="Timeline/Boss2"]
 script = ExtResource("3_2noi8")
+enabled = false
 metadata/_custom_type_script = "uid://bv1js5gomnval"
 
 [node name="Wave1" type="Node2D" parent="Timeline/Boss2/Waves"]

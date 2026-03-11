@@ -9,6 +9,15 @@ var bullet_type: int = 0
 var speed: int = 100
 var theta: float = 0.0
 
+func _ready() -> void:
+	GlobalSignals.boss_died.connect(_on_boss_died)
+
+func _on_boss_died() -> void:
+	if process_mode == ProcessMode.PROCESS_MODE_DISABLED:
+		return
+	
+	queue_free()
+
 func get_vector(angle):
 	theta = angle + alpha
 	return Vector2(cos(theta),sin(theta))

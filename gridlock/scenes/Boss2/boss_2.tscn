@@ -36,6 +36,7 @@ radius = 125.0
 height = 500.0
 
 [node name="Boss2" type="CharacterBody2D"]
+z_index = -1
 script = ExtResource("1_ypx45")
 bullet_node = ExtResource("2_ypx45")
 
