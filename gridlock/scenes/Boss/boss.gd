@@ -17,6 +17,9 @@ var pos: Vector2 = Vector2.ZERO
 var beingHit: bool = false
 var max_health: float
 
+func _on_boss_died() -> void:
+	queue_free()
+
 func _process(delta):
 	if (beingHit):
 		health -= 10*delta
@@ -75,40 +78,21 @@ func trackShoot(countRows, countCols, minVel, maxVel, angle):
 	
 func _ready():
 	$AnimatedSprite2D.play("move")
-	GlobalSignals.connect("player_position", Callable(self, "_track"))
+	GlobalSignals.player_position.connect(_track)
+	GlobalSignals.boss_died.connect(_on_boss_died)
 	pos = global_position
 	
 	max_health = health
 
 func _track(location: Vector2):
 	target = location
-	
-
-
-## IGNORE THE BODY_ENTERED
-func _on_player_detection_body_entered(body: Node2D) -> void:
-	##print(body.name + " hit")
-	if (body.name == "blade"):
-		print("ouch - hit")
-
-
-func _on_player_detection_body_exited(body: Node2D) -> void:
-	##print(body.name + " out")
-	if (body.name == "blade"):
-		print("ouch - out")
-		
-
 
 ## Functions to track the blade collision
 func _on_player_detection_area_entered(area: Area2D) -> void:
-	##print(area.name + " in")
 	if (area.name == "BladeArea2D"):
-		print("ouch - in")
 		beingHit = true
 
 
 func _on_player_detection_area_exited(area: Area2D) -> void:
-	##print(area.name + " out")
 	if (area.name == "BladeArea2D"):
-		print("ouch - out")
 		beingHit = false
