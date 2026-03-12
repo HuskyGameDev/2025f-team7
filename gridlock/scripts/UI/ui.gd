@@ -75,7 +75,7 @@ func _ready() -> void:
 	
 	#Remove after minion waves get put in
 	#Pauses the game after a level is loaded for a few seconds
-	emit_signal("bossInbound");
+	#emit_signal("bossInbound");
 	
 	#sets the Boss Health Bar to not visible
 	BossHealthBar.visible = false
