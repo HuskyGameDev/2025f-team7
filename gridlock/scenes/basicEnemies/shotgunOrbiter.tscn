@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://60d8f13gtv6b"]
+[gd_scene load_steps=7 format=3 uid="uid://60d8f13gtv6b"]
 
 [ext_resource type="Script" uid="uid://cxlk7fd1qa62l" path="res://scripts/basicEnemies/shotgun_orbiter.gd" id="1_ctxoa"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_qnk06"]
+[ext_resource type="Texture2D" uid="uid://s8ysdj601v1f" path="res://assets/sprites/lesser enemies/shotgunner.png" id="3_80ekg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnk06"]
 size = Vector2(89, 90)
@@ -22,6 +23,7 @@ shape = SubResource("RectangleShape2D_qnk06")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(36.5, 36.000004)
 scale = Vector2(91, 88.000015)
 texture = SubResource("PlaceholderTexture2D_80ekg")
@@ -35,6 +37,12 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(36.5, 36)
 shape = SubResource("RectangleShape2D_ctxoa")
+
+[node name="Shotgunner" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(34, 31.000004)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_80ekg")
 
 [connection signal="timeout" from="shoot" to="." method="_on_shoot_timeout"]
 [connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]

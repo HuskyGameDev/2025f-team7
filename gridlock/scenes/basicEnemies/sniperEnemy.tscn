@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd330qd4wlqdq"]
+[gd_scene load_steps=7 format=3 uid="uid://dd330qd4wlqdq"]
 
 [ext_resource type="Texture2D" uid="uid://c8dgju5xuntri" path="res://scenes/basicEnemies/sniper.jpg" id="1_gskm0"]
 [ext_resource type="Script" uid="uid://c6u7ulp0b7oam" path="res://scenes/basicEnemies/sniper_enemy.gd" id="1_xd12u"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_tbwvw"]
+[ext_resource type="Texture2D" uid="uid://dibc2pdaa8i0n" path="res://assets/sprites/lesser enemies/sniper-WIP.png" id="4_788j4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xd12u"]
 size = Vector2(95, 87)
@@ -16,6 +17,7 @@ bullet_node = ExtResource("2_tbwvw")
 health = 25
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(39.5, 35)
 scale = Vector2(0.6066667, 0.27564105)
 texture = ExtResource("1_gskm0")
@@ -30,6 +32,12 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(39.5, 35)
 shape = SubResource("RectangleShape2D_tbwvw")
+
+[node name="SniperWip" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(36.000004, 30)
+scale = Vector2(2.474432, 2.4744322)
+texture = ExtResource("4_788j4")
 
 [connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
 [connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]
