@@ -13,4 +13,10 @@ func _physics_process(delta: float) -> void:
 		owner.global_position = owner.pos
 		return
 	
-	owner.global_position = start_pos + owner.t * (owner.pos - start_pos)
+	var progress := __ease_out_quart(owner.t)
+	var diff: Vector2 = owner.pos - start_pos
+	owner.global_position = start_pos + progress * diff
+
+# https://easings.net/#easeOutQuart
+func __ease_out_quart(x: float) -> float:
+	return 1 - pow(1 - x, 4)
