@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bx8dkwwoiesnh"]
+[gd_scene load_steps=19 format=3 uid="uid://bx8dkwwoiesnh"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_w27ju"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_ruwqf"]
@@ -12,11 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bgbhpo80ucalq" path="res://scenes/basicEnemies/enemy_spawner.tscn" id="7_phake"]
 [ext_resource type="PackedScene" uid="uid://dd330qd4wlqdq" path="res://scenes/basicEnemies/sniperEnemy.tscn" id="8_6gvn4"]
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="8_phake"]
-[ext_resource type="PackedScene" uid="uid://dq86eoys66ddp" path="res://scenes/Boss/Turrets/tl_turret.tscn" id="8_q8it2"]
 [ext_resource type="PackedScene" uid="uid://dwrn3jf27llc" path="res://scenes/basicEnemies/swordDude.tscn" id="9_edhfb"]
-[ext_resource type="PackedScene" uid="uid://dgc0wh0ikw7bg" path="res://scenes/Boss/Turrets/tr_turret.tscn" id="9_rt06m"]
-[ext_resource type="PackedScene" uid="uid://132n2jysp4we" path="res://scenes/Boss/Turrets/bl_turret.tscn" id="10_qtdqc"]
-[ext_resource type="PackedScene" uid="uid://cthdms7ynnl2x" path="res://scenes/Boss/Turrets/br_turret.tscn" id="11_rvtox"]
 [ext_resource type="PackedScene" uid="uid://ddy6dvqegvph2" path="res://scenes/Boss2/boss_2.tscn" id="17_mm8b8"]
 [ext_resource type="PackedScene" uid="uid://cmwaa2ltynn4r" path="res://scenes/basicEnemies/burstRingEnemy.tscn" id="18_6gvn4"]
 
@@ -37,7 +33,7 @@ size = Vector2(16, 1080)
 [node name="parallax" parent="." instance=ExtResource("1_w27ju")]
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_ruwqf")]
-position = Vector2(837, 845)
+position = Vector2(683, 845)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="player"]
 shape = SubResource("CircleShape2D_q8it2")
@@ -133,41 +129,13 @@ spawns = ExtResource("9_edhfb")
 metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 
 [node name="Boss" type="Node2D" parent="Timeline/Boss1"]
-visible = false
 script = ExtResource("6_2noi8")
 
 [node name="BossSpawner" parent="Timeline/Boss1/Boss" instance=ExtResource("7_phake")]
-position = Vector2(978, 415)
+position = Vector2(883, 540)
 scale = Vector2(1.5, 1.5)
 spawns = ExtResource("8_phake")
 spawn_time = 3.0
-
-[node name="TLTurretSpawner" parent="Timeline/Boss1/Boss" instance=ExtResource("7_phake")]
-position = Vector2(100, 100)
-scale = Vector2(0.75, 0.75)
-spawns = ExtResource("8_q8it2")
-delay = 3.0
-
-[node name="TRTurretSpawner" parent="Timeline/Boss1/Boss" instance=ExtResource("7_phake")]
-position = Vector2(1666, 100)
-scale = Vector2(0.75, 0.75)
-spawns = ExtResource("9_rt06m")
-spawn_time = 0.9
-delay = 3.1
-
-[node name="BLTurretSpawner" parent="Timeline/Boss1/Boss" instance=ExtResource("7_phake")]
-position = Vector2(100, 980)
-scale = Vector2(0.75, 0.75)
-spawns = ExtResource("10_qtdqc")
-spawn_time = 0.8
-delay = 3.2
-
-[node name="BRTurretSpawner" parent="Timeline/Boss1/Boss" instance=ExtResource("7_phake")]
-position = Vector2(1666, 980)
-scale = Vector2(0.75, 0.75)
-spawns = ExtResource("11_rvtox")
-spawn_time = 0.7
-delay = 3.3
 
 [node name="Boss2" type="Node2D" parent="Timeline"]
 script = ExtResource("3_2noi8")
@@ -298,7 +266,7 @@ script = ExtResource("3_2noi8")
 metadata/_custom_type_script = "uid://bv1js5gomnval"
 
 [node name="blade" parent="." instance=ExtResource("4_phake")]
-position = Vector2(1217, 836)
+position = Vector2(1083, 836)
 
 [node name="Invisible Walls" type="StaticBody2D" parent="."]
 collision_layer = 8

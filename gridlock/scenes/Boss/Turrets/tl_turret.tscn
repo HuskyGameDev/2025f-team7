@@ -1,18 +1,104 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq86eoys66ddp"]
+[gd_scene load_steps=19 format=3 uid="uid://dq86eoys66ddp"]
 
-[ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_qawij"]
+[ext_resource type="Script" uid="uid://s5eg0eu8bkxj" path="res://scenes/Boss/turret.gd" id="1_86118"]
+[ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_2d1wj"]
 [ext_resource type="Texture2D" uid="uid://kj2hkbm1lu4a" path="res://assets/sprites/other/boss1_turret_var3.png" id="2_niabo"]
+[ext_resource type="Script" uid="uid://p0uno3xxi6f6" path="res://scripts/State Machine/FiniteStateMachine.gd" id="3_gr1jj"]
+[ext_resource type="Script" uid="uid://u2u5ul7o2b20" path="res://scripts/Attack Patterns/PlaceholderBoss/Idle.gd" id="4_cxy4w"]
+[ext_resource type="Script" uid="uid://bpla01kkpl4cx" path="res://scenes/Boss/BossIdle.gd" id="5_nydiv"]
+[ext_resource type="Script" uid="uid://uhysn1p2xi74" path="res://scripts/Attack Patterns/PlaceholderBoss/5Leaf.gd" id="6_5t3e4"]
+[ext_resource type="Script" uid="uid://ctgsoxfx6qrid" path="res://scripts/Attack Patterns/PlaceholderBoss/4Leaf.gd" id="7_h73nk"]
+[ext_resource type="Script" uid="uid://b2ai2smah8g0f" path="res://scripts/Attack Patterns/PlaceholderBoss/3Leaf.gd" id="8_011eu"]
+[ext_resource type="Script" uid="uid://d1dykoder1h37" path="res://scripts/Attack Patterns/PlaceholderBoss/2Leaf.gd" id="9_iqjay"]
+[ext_resource type="Script" uid="uid://b3ukxtsdwdt7p" path="res://scripts/Attack Patterns/PlaceholderBoss/Fast2Leaf.gd" id="10_bii6b"]
+[ext_resource type="Script" uid="uid://bve5cd884r3v0" path="res://scripts/Attack Patterns/PlaceholderBoss/Slow8Leaf.gd" id="11_xcl47"]
+[ext_resource type="Script" uid="uid://ml0uv5fw6bj4" path="res://scripts/Attack Patterns/PlaceholderBoss/BurstFlower.gd" id="12_iuv2j"]
+[ext_resource type="Script" uid="uid://d38qnjlfwx58u" path="res://scripts/Attack Patterns/PlaceholderBoss/PlayerAim.gd" id="13_swwaq"]
+[ext_resource type="Script" uid="uid://ddesr6hdp7rtk" path="res://scenes/Boss/TurretLeaf.gd" id="14_s678g"]
+[ext_resource type="Script" uid="uid://cjvayvb2hd53j" path="res://scenes/Boss/TurretAim.gd" id="15_s0bxc"]
+[ext_resource type="Script" uid="uid://b7auq17yxeri8" path="res://scenes/Boss/TurretIdle.gd" id="16_r3qys"]
 
-[node name="Turret" instance=ExtResource("1_qawij")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_neq0i"]
+radius = 70.0
+
+[node name="Turret" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_86118")
 starting_pattern = 12
-starting_movement = 0
 health = 50.0
-isMainBoss = false
+bullet_node = ExtResource("2_2d1wj")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="Speed" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="Duration" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="debug" type="Label" parent="."]
 visible = false
+offset_left = -19.0
+offset_top = -27.0
+offset_right = 21.0
+offset_bottom = -4.0
+theme_override_font_sizes/font_size = 8
+text = "debug"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="8"]
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_neq0i")
+
+[node name="FiniteStateMachine" type="Node2D" parent="."]
+script = ExtResource("3_gr1jj")
+
+[node name="Idle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("4_cxy4w")
+
+[node name="BossIdle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("5_nydiv")
+
+[node name="5Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("6_5t3e4")
+
+[node name="4Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_h73nk")
+
+[node name="3Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("8_011eu")
+
+[node name="2Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("9_iqjay")
+
+[node name="Fast2Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("10_bii6b")
+
+[node name="Slow8Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("11_xcl47")
+
+[node name="BurstFlower" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("12_iuv2j")
+
+[node name="PlayerAim" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("13_swwaq")
+
+[node name="TurretLeaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("14_s678g")
+
+[node name="TurretAim" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("15_s0bxc")
+
+[node name="TurretIdle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("16_r3qys")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 2.2340214
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_niabo")
+
+[connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
+[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
+[connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]
+[connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_entered"]

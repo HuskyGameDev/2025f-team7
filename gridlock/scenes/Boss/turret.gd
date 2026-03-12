@@ -1,19 +1,11 @@
 extends Node2D
 
-const TURRETS := preload("res://scenes/Boss/Turrets/turrets.tscn")
-
 var theta: float = 0.0
 @export_range(0,2*PI) var alpha: float = 0.0
 @export var starting_pattern: int
 @export var starting_movement: int
 @export var health: float
 @export var bullet_node: PackedScene
-
-@onready var finite_state_machine := $FiniteStateMachine
-@onready var movement_state_machine := $MovementStateMachine
-
-@onready var phase := 0
-var health_target: float
 
 var bullet_type: int = 0
 var speed: int = 100
@@ -28,33 +20,10 @@ var max_health: float
 func _on_boss_died() -> void:
 	queue_free()
 
-func _on_turrets_died() -> void:
-	movement_state_machine.change_state("Idle")
-	finite_state_machine.change_state("BurstFlower")
-
 func _process(delta):
 	if beingHit:
-		health -= 10*delta
-		health = max(health, 0)
-		
-		if health < health_target:
-			health_target -= max_health / 4
-			phase += 1
-			
-			match phase:
-				1:
-					var turrets := TURRETS.instantiate()
-					get_tree().root.add_child(turrets)
-					turrets.tree_exiting.connect(_on_turrets_died)
-					
-					finite_state_machine.change_state("Idle")
-					movement_state_machine.change_state("Figure8")
-		
-		GlobalSignals.emit_signal("boss_health_change", health, max_health)
-		if health <= 0:
-			GlobalSignals.emit_signal("boss_died")
-			get_tree().call_group("game", "on_victory")
-			queue_free()
+		health -= 10 * delta
+		if health <= 0: queue_free()
 
 func get_vector(angle):
 	theta = angle + alpha
@@ -85,29 +54,25 @@ func trackShoot(countRows, countCols, minVel, maxVel, angle):
 	for n: int in countRows:
 		speed = ((maxVel-minVel)/countRows)*n + minVel
 		theta = Vector2(1,0).angle_to(target - position) - (angle/2)
-		#shoot(theta)
 		for m in countCols:
 			shoot(theta)
 		
 	
 func _ready():
-	$AnimatedSprite2D.play("move")
 	GlobalSignals.player_position.connect(_track)
 	GlobalSignals.boss_died.connect(_on_boss_died)
 	pos = global_position
 	
 	max_health = health
-	health_target = max_health * 3 / 4
 
 func _track(location: Vector2):
 	target = location
 
-## Functions to track the blade collision
 func _on_player_detection_area_entered(area: Area2D) -> void:
-	if (area.name == "BladeArea2D"):
+	if area.name == "BladeArea2D":
 		beingHit = true
 
 
 func _on_player_detection_area_exited(area: Area2D) -> void:
-	if (area.name == "BladeArea2D"):
+	if area.name == "BladeArea2D":
 		beingHit = false

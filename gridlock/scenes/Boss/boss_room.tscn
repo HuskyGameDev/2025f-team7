@@ -1,174 +1,59 @@
-[gd_scene load_steps=14 format=3 uid="uid://ckobbp2dagqok"]
+[gd_scene load_steps=10 format=3 uid="uid://ckobbp2dagqok"]
 
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_3n20u"]
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="1_67v12"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_bpcqn"]
+[ext_resource type="PackedScene" uid="uid://bgbhpo80ucalq" path="res://scenes/basicEnemies/enemy_spawner.tscn" id="2_u03sx"]
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="3_673pk"]
-[ext_resource type="Texture2D" uid="uid://kj2hkbm1lu4a" path="res://assets/sprites/other/boss1_turret_var3.png" id="4_3xa8x"]
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="4_jotkl"]
-[ext_resource type="Texture2D" uid="uid://cf48twroox0ku" path="res://assets/sprites/other/boss1_turret_var1.png" id="5_f2gah"]
-[ext_resource type="Script" uid="uid://bsp7vbmx8aj5s" path="res://scenes/Boss/boss_manager.gd" id="5_u03sx"]
-[ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="6_ar1tk"]
-[ext_resource type="Script" uid="uid://c7yc0rwepuypc" path="res://scripts/UI/victory_screen.gd" id="7_nyngh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2gah"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jotkl"]
-size = Vector2(1976.5, 21)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67v12"]
-size = Vector2(26, 1022)
+size = Vector2(1798, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u03sx"]
+size = Vector2(16, 1080)
 
 [node name="BossRoom" type="Node2D"]
 
 [node name="parallax" parent="." instance=ExtResource("3_673pk")]
 
-[node name="Boss" parent="." instance=ExtResource("1_3n20u")]
-position = Vector2(978, 415)
+[node name="BossSpawner" parent="." instance=ExtResource("2_u03sx")]
+position = Vector2(883, 540)
+scale = Vector2(1.5, 1.5)
+spawns = ExtResource("1_3n20u")
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_bpcqn")]
-position = Vector2(837, 845)
+position = Vector2(683, 845)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="player"]
 shape = SubResource("CircleShape2D_f2gah")
 
-[node name="TLTurret" parent="." instance=ExtResource("1_3n20u")]
-position = Vector2(100, 100)
-rotation = 2.2340214
-starting_pattern = 12
-starting_movement = 0
-health = 50.0
-isMainBoss = false
-
-[node name="AnimatedSprite2D" parent="TLTurret" index="0"]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="TLTurret"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("4_3xa8x")
-
-[node name="TRTurret" parent="." instance=ExtResource("1_3n20u")]
-position = Vector2(1666, 100)
-rotation = -2.2340214
-starting_pattern = 10
-starting_movement = 0
-health = 50.0
-isMainBoss = false
-
-[node name="AnimatedSprite2D" parent="TRTurret" index="0"]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="TRTurret"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_f2gah")
-
-[node name="BLTurret" parent="." instance=ExtResource("1_3n20u")]
-position = Vector2(100, 980)
-rotation = 1.1170107
-starting_pattern = 10
-starting_movement = 0
-health = 50.0
-isMainBoss = false
-
-[node name="AnimatedSprite2D" parent="BLTurret" index="0"]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="BLTurret"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("6_ar1tk")
-
-[node name="BRTurret" parent="." instance=ExtResource("1_3n20u")]
-position = Vector2(1666, 980)
-rotation = -1.1170107
-starting_pattern = 12
-starting_movement = 0
-health = 50.0
-isMainBoss = false
-
-[node name="AnimatedSprite2D" parent="BRTurret" index="0"]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="BRTurret"]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("4_3xa8x")
-
 [node name="blade" parent="." instance=ExtResource("4_jotkl")]
-position = Vector2(1217, 836)
+position = Vector2(1083, 836)
 
 [node name="Invisible Walls" type="StaticBody2D" parent="."]
 collision_layer = 8
 collision_mask = 4
 
 [node name="Inviswall1" type="CollisionShape2D" parent="Invisible Walls"]
-position = Vector2(975, -11)
-shape = SubResource("RectangleShape2D_jotkl")
+position = Vector2(883, -8)
+shape = SubResource("RectangleShape2D_67v12")
 
 [node name="Inviswall2" type="CollisionShape2D" parent="Invisible Walls"]
 light_mask = 1023
-position = Vector2(964, 1035)
-shape = SubResource("RectangleShape2D_jotkl")
+position = Vector2(883, 1088)
+shape = SubResource("RectangleShape2D_67v12")
 
 [node name="Inviswall3" type="CollisionShape2D" parent="Invisible Walls"]
-position = Vector2(-13, 510)
-shape = SubResource("RectangleShape2D_67v12")
+position = Vector2(-8, 540)
+shape = SubResource("RectangleShape2D_u03sx")
 
 [node name="Inviswall4" type="CollisionShape2D" parent="Invisible Walls"]
-position = Vector2(1779, 527)
-shape = SubResource("RectangleShape2D_67v12")
-
-[node name="BossManager" type="Node2D" parent="."]
-script = ExtResource("5_u03sx")
-victory_screen = NodePath("../CanvasLayer/VictoryScreen")
+position = Vector2(1774, 540)
+shape = SubResource("RectangleShape2D_u03sx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("1_67v12")]
-
-[node name="VictoryScreen" type="Control" parent="CanvasLayer"]
-process_mode = 3
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_nyngh")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/VictoryScreen"]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.6955032, 0.6955031, 0.6955031, 1)
-
-[node name="Label" type="Label" parent="CanvasLayer/VictoryScreen"]
-process_mode = 3
-layout_mode = 0
-offset_left = 750.0
-offset_top = 340.0
-offset_right = 1231.0
-offset_bottom = 423.0
-theme_override_font_sizes/font_size = 60
-text = "Congratulations!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="CanvasLayer/VictoryScreen"]
-process_mode = 3
-layout_mode = 0
-offset_left = 950.0
-offset_top = 450.0
-offset_right = 1029.0
-offset_bottom = 481.0
-text = "Continue"
-
-[connection signal="pressed" from="CanvasLayer/VictoryScreen/Button" to="CanvasLayer/VictoryScreen" method="_on_button_pressed"]
-
-[editable path="TLTurret"]
-[editable path="TRTurret"]
-[editable path="BLTurret"]
-[editable path="BRTurret"]
