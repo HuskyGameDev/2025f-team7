@@ -1,5 +1,4 @@
-extends Node2D
-
+extends State
 
 var current_state: MovementState
 var previous_state: MovementState

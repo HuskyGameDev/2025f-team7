@@ -1,6 +1,10 @@
 extends Node2D
 
-const TURRETS := preload("res://scenes/Boss/Turrets/turrets.tscn")
+const SPAWNER := preload("res://scenes/basicEnemies/enemy_spawner.tscn")
+const TL_TURRET := preload("res://scenes/Boss/Turrets/tl_turret.tscn")
+const TR_TURRET := preload("res://scenes/Boss/Turrets/tr_turret.tscn")
+const BL_TURRET := preload("res://scenes/Boss/Turrets/bl_turret.tscn")
+const BR_TURRET := preload("res://scenes/Boss/Turrets/br_turret.tscn")
 
 var theta: float = 0.0
 @export_range(0,2*PI) var alpha: float = 0.0
@@ -12,7 +16,23 @@ var theta: float = 0.0
 @onready var finite_state_machine := $FiniteStateMachine
 @onready var movement_state_machine := $MovementStateMachine
 
-@onready var phase := 0
+@onready var tl_turret: Node2D = null
+@onready var tr_turret: Node2D = null
+@onready var bl_turret: Node2D = null
+@onready var br_turret: Node2D = null
+
+@onready var phase := 0:
+	get(): return phase
+	set(value):
+		value = clampi(value, 0, 3)
+		if value == phase: return
+		phase = value
+		
+		match phase:
+			1: __spawn_turrets()
+			2: pass # TODO
+			3: __spawn_turrets()
+
 var health_target: float
 
 var bullet_type: int = 0
@@ -26,11 +46,72 @@ var beingHit: bool = false
 var max_health: float
 
 func _on_boss_died() -> void:
+	get_tree().call_group("Bullet", "blow_up")
 	queue_free()
 
-func _on_turrets_died() -> void:
+func __spawn_turrets() -> void:
+	# TODO: this is terrible
+	if tl_turret == null:
+		tl_turret = SPAWNER.instantiate()
+		tl_turret.global_position = Vector2(100, 100)
+		tl_turret.spawns = TL_TURRET
+		tl_turret.spawned.connect(_on_tl_turret_spawned)
+		get_tree().root.add_child(tl_turret)
+	if tr_turret == null:
+		tr_turret = SPAWNER.instantiate()
+		tr_turret.global_position = Vector2(1666, 100)
+		tr_turret.spawns = TR_TURRET
+		tr_turret.spawned.connect(_on_tr_turret_spawned)
+		get_tree().root.add_child(tr_turret)
+	if bl_turret == null:
+		bl_turret = SPAWNER.instantiate()
+		bl_turret.global_position = Vector2(100, 980)
+		bl_turret.spawns = BL_TURRET
+		bl_turret.spawned.connect(_on_bl_turret_spawned)
+		get_tree().root.add_child(bl_turret)
+	if br_turret == null:
+		br_turret = SPAWNER.instantiate()
+		br_turret.global_position = Vector2(1666, 980)
+		br_turret.spawns = BR_TURRET
+		br_turret.spawned.connect(_on_br_turret_spawned)
+		get_tree().root.add_child(br_turret)
+	
+	finite_state_machine.change_state("Idle")
+	movement_state_machine.change_state("Figure8")
+
+func _on_tl_turret_spawned(turret: Node2D) -> void:
+	tl_turret = turret
+	turret.tree_exiting.connect(_on_tl_turret_died)
+func _on_tr_turret_spawned(turret: Node2D) -> void:
+	tr_turret = turret
+	turret.tree_exiting.connect(_on_tr_turret_died)
+func _on_bl_turret_spawned(turret: Node2D) -> void:
+	bl_turret = turret
+	turret.tree_exiting.connect(_on_bl_turret_died)
+func _on_br_turret_spawned(turret: Node2D) -> void:
+	br_turret = turret
+	turret.tree_exiting.connect(_on_br_turret_died)
+
+func _on_tl_turret_died() -> void:
+	tl_turret = null
+	if tr_turret == null and bl_turret == null and br_turret == null:
+		__turrets_died()
+func _on_tr_turret_died() -> void:
+	tr_turret = null
+	if tl_turret == null and bl_turret == null and br_turret == null:
+		__turrets_died()
+func _on_bl_turret_died() -> void:
+	bl_turret = null
+	if tl_turret == null and tr_turret == null and br_turret == null:
+		__turrets_died()
+func _on_br_turret_died() -> void:
+	br_turret = null
+	if tl_turret == null and tr_turret == null and bl_turret == null:
+		__turrets_died()
+
+func __turrets_died() -> void:
+	finite_state_machine.change_state("PrepareBurst")
 	movement_state_machine.change_state("Idle")
-	finite_state_machine.change_state("BurstFlower")
 
 func _process(delta):
 	if beingHit:
@@ -40,15 +121,6 @@ func _process(delta):
 		if health < health_target:
 			health_target -= max_health / 4
 			phase += 1
-			
-			match phase:
-				1:
-					var turrets := TURRETS.instantiate()
-					get_tree().root.add_child(turrets)
-					turrets.tree_exiting.connect(_on_turrets_died)
-					
-					finite_state_machine.change_state("Idle")
-					movement_state_machine.change_state("Figure8")
 		
 		GlobalSignals.emit_signal("boss_health_change", health, max_health)
 		if health <= 0:
