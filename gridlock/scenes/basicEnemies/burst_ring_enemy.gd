@@ -9,13 +9,14 @@ var bullet_type: int = 0
 var speed: int = 100
 var theta: float = 0.0
 
-func _ready() -> void:
-	GlobalSignals.boss_died.connect(_on_boss_died)
+@onready var spawned := false
+
+func _process(_delta: float) -> void:
+	if !spawned:
+		spawned = true
+		GlobalSignals.boss_died.connect(_on_boss_died)
 
 func _on_boss_died() -> void:
-	if process_mode == ProcessMode.PROCESS_MODE_DISABLED:
-		return
-	
 	queue_free()
 
 func get_vector(angle):
