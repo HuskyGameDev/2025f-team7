@@ -88,6 +88,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ascc0")
 
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://addons/fmod/AudioBanks/Desktop/Master.bank"]
+
+[node name="FmodListener2D" type="FmodListener2D" parent="."]
+
+[node name="ButtonHover" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/UI/UI_Hover"
+event_guid = "{5df90c8f-ac26-4e95-984f-64e2f4850c8d}"
+attached = false
+auto_release = true
+allow_fadeout = false
+
 [node name="MenuBackground" type="Sprite2D" parent="."]
 position = Vector2(956, 540)
 scale = Vector2(1.9916667, 1.9944445)
@@ -124,88 +136,92 @@ offset = Vector2(60.45227, 71.24353)
 position = Vector2(908, 792)
 scale = Vector2(0.667, 0.667)
 
-[node name="StartButton" type="Button" parent="."]
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 628.0
+offset_right = 75.0
+offset_bottom = 636.0
+
+[node name="StartButton" type="Button" parent="Button"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 67.0
-offset_top = -452.0
-offset_right = 319.99997
-offset_bottom = -375.0
+offset_top = -8.0
+offset_right = 252.99997
+offset_bottom = 69.0
 grow_vertical = 0
 icon = ExtResource("10_0jllc")
 icon_alignment = 1
 expand_icon = true
 
-[node name="OptionsButton" type="Button" parent="."]
+[node name="OptionsButton" type="Button" parent="Button"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 67.0
-offset_top = -324.0
-offset_right = 320.0
-offset_bottom = -247.0
+offset_top = 120.0
+offset_right = 253.0
+offset_bottom = 197.0
 grow_vertical = 0
 text = "
 "
 icon = ExtResource("11_uuwny")
 expand_icon = true
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="QuitButton" type="Button" parent="Button"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 67.0
-offset_top = -196.0
-offset_right = 320.0
-offset_bottom = -119.0
+offset_top = 248.0
+offset_right = 253.0
+offset_bottom = 325.0
 grow_vertical = 0
 icon = ExtResource("12_s4040")
 icon_alignment = 1
 expand_icon = true
 
-[node name="ColorButton" type="Button" parent="."]
+[node name="ColorButton" type="Button" parent="Button"]
 texture_filter = 1
 layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 781.0
-offset_top = -123.0
-offset_right = 1034.0
-offset_bottom = -46.0
+offset_left = 714.0
+offset_top = 321.0
+offset_right = 967.0
+offset_bottom = 398.0
 grow_vertical = 0
 icon = ExtResource("12_birck")
 icon_alignment = 1
 expand_icon = true
 
-[node name="TutorialButton" type="Button" parent="."]
+[node name="TutorialButton" type="Button" parent="Button"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 1469.0
-offset_top = -282.0
-offset_right = 1743.0
-offset_bottom = -189.0
+offset_left = 1402.0
+offset_top = 162.0
+offset_right = 1676.0
+offset_bottom = 255.0
 grow_vertical = 0
 icon = ExtResource("13_wvb7n")
 icon_alignment = 1
 expand_icon = true
 
-[node name="CreditButton" type="Button" parent="."]
+[node name="CreditButton" type="Button" parent="Button"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 1470.0
-offset_top = 679.0
-offset_right = 1744.0
-offset_bottom = 772.0
+offset_left = 1403.0
+offset_top = 51.0
+offset_right = 1677.0
+offset_bottom = 144.0
 icon = ExtResource("12_wvb7n")
 icon_alignment = 1
 expand_icon = true
@@ -229,6 +245,13 @@ hex_visible = false
 presets_visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ButtonHover" type="FmodEventEmitter2D" parent="CanvasLayer"]
+event_name = "event:/UI/UI_Hover"
+event_guid = "{5df90c8f-ac26-4e95-984f-64e2f4850c8d}"
+attached = false
+auto_release = true
+allow_fadeout = false
 
 [node name="optionsPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("controlsPanel", "audioPanel")]
 process_mode = 3
@@ -698,17 +721,45 @@ Made With Godot"
 [node name="SawCursor" parent="." instance=ExtResource("19_xutsw")]
 position = Vector2(914, 517)
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="OptionsButton" to="CanvasLayer/optionsPanel" method="_on_options_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="ColorButton" to="." method="_on_color_button_pressed"]
-[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
-[connection signal="pressed" from="CreditButton" to="CanvasLayer/CreditPanel" method="_on_credit_button_pressed"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="Button/StartButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Button/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="Button/OptionsButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Button/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Button/OptionsButton" to="CanvasLayer/optionsPanel" method="_on_options_button_pressed"]
+[connection signal="mouse_entered" from="Button/QuitButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Button/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="Button/ColorButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Button/ColorButton" to="." method="_on_color_button_pressed"]
+[connection signal="mouse_entered" from="Button/TutorialButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Button/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="mouse_entered" from="Button/CreditButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Button/CreditButton" to="CanvasLayer/CreditPanel" method="_on_credit_button_pressed"]
 [connection signal="color_changed" from="ColorPicker" to="PlayerSprite" method="_on_color_picker_color_changed"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/GridContainer/optionscontrolButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionscontrolButton" to="CanvasLayer/optionsPanel" method="_on_optionscontrol_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/GridContainer/optionsaudioButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionsaudioButton" to="CanvasLayer/optionsPanel" method="_on_optionsaudio_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/GridContainer/optionsbackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionsbackButton" to="CanvasLayer/optionsPanel" method="_on_optionsback_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls/charMoveUpButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls/charMoveDownButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls/charMoveLeftButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls/charMoveRightButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast/charMoveFastButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow/charMoveSlowButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls/sawMoveUpButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls/sawMoveDownButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls/sawMoveLeftButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls/sawMoveRightButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls/useBombButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/controlsBackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/controlsBackButton" to="CanvasLayer/optionsPanel" method="_on_controls_back_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/audioPanel/GridContainer/audioBackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/audioPanel/GridContainer/audioBackButton" to="CanvasLayer/optionsPanel" method="_on_audio_back_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/CreditPanel/GridContainer/CreditBackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/CreditPanel/GridContainer/CreditBackButton" to="CanvasLayer/CreditPanel" method="_on_credit_back_button_pressed"]

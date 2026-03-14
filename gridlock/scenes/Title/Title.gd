@@ -24,3 +24,7 @@ func _on_quit_button_pressed() -> void:
 func _on_color_button_pressed() -> void:
 	# Toggle the visibility of the color wheel
 	color_picker.visible = not color_picker.visible
+
+# for all button sounds
+func _on_button_mouse_entered() -> void:
+	$ButtonHover.play()

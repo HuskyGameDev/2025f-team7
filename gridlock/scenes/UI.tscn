@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1yptc0ppcic"]
+[gd_scene load_steps=18 format=3 uid="uid://b1yptc0ppcic"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cd1n6tkj0bmrm" path="res://scripts/UI/boss_inbound_text.gd" id="5_cgfq5"]
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="5_wm3ai"]
 [ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="6_8dubc"]
+[ext_resource type="Script" uid="uid://b5jew2lejvmhl" path="res://scenes/Pause.gd" id="7_ilk7v"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="7_p7vwb"]
 [ext_resource type="Texture2D" uid="uid://2ymqktmu66fi" path="res://assets/sprites/Menu/options menu background.png" id="8_5sqrc"]
 [ext_resource type="Texture2D" uid="uid://c0npmdqw5qmcn" path="res://assets/sprites/Menu/options_menu.png" id="8_w7enk"]
@@ -46,6 +47,9 @@ waveProgressBar = NodePath("WaveProgressBar/WaveProgressBar")
 audioPanel = NodePath("mainPausePanel/optionsPanel/audioPanel")
 HeartContainer = NodePath("mainUIPanelContainer/HeartContainer")
 HeartTextureRect = NodePath("mainUIPanelContainer/HeartContainer/HeartTexture0")
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://addons/fmod/AudioBanks/Desktop/Master.bank"]
 
 [node name="WaveProgressBar" type="GridContainer" parent="."]
 process_mode = 3
@@ -186,6 +190,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ktti3")
+script = ExtResource("7_ilk7v")
 
 [node name="GridContainer" type="GridContainer" parent="mainPausePanel"]
 process_mode = 3
@@ -616,6 +621,9 @@ position = Vector2(960.00006, 165.00003)
 scale = Vector2(0.6112295, 0.61122954)
 texture = ExtResource("8_5sqrc")
 
+[node name="ButtonHover" type="FmodEventEmitter2D" parent="mainPausePanel"]
+event_guid = "{00000000-004d-0000-0e00-000052000000}"
+
 [node name="BossHealthBar" type="ProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 11
@@ -636,11 +644,33 @@ show_percentage = false
 
 [connection signal="bossInbound" from="." to="WaveProgressBar/BossInboundText" method="activate_label"]
 [connection signal="pressed" from="WaveProgressBar/BossInboundTestButton" to="WaveProgressBar/BossInboundText" method="activate_label"]
+[connection signal="mouse_entered" from="mainPausePanel/GridContainer/resumeButton" to="mainPausePanel" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="mainPausePanel/GridContainer/resumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="mainPausePanel/GridContainer/optionButton" to="mainPausePanel" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="mainPausePanel/GridContainer/optionButton" to="." method="_on_option_button_pressed"]
+[connection signal="mouse_entered" from="mainPausePanel/GridContainer/quitButton" to="mainPausePanel" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="mainPausePanel/GridContainer/quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/GridContainer/optionscontrolButton" to="mainPausePanel" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="mainPausePanel/optionsPanel/GridContainer/optionscontrolButton" to="." method="_on_optionscontrol_button_pressed"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/GridContainer/optionsaudioButton" to="mainPausePanel" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="mainPausePanel/optionsPanel/GridContainer/optionsaudioButton" to="." method="_on_optionsaudio_button_pressed"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/GridContainer/optionsbackButton" to="mainPausePanel" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="mainPausePanel/optionsPanel/GridContainer/optionsbackButton" to="." method="_on_optionsback_button_pressed"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls/charMoveUpButton" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls/charMoveDownButton" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls/charMoveLeftButton" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls/charMoveRightButton" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast/charMoveFastButton" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow/charMoveSlowButton" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls/sawMoveUpButton" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls/sawMoveDownButton" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls/sawMoveLeftButton" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls/sawMoveRightButton" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls/useBombButton" to="mainPausePanel" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/controlsBackButton" to="mainPausePanel" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="mainPausePanel/optionsPanel/controlsPanel/GridContainer/controlsBackButton" to="." method="_on_controls_back_button_pressed"]
+[connection signal="mouse_entered" from="mainPausePanel/optionsPanel/audioPanel/GridContainer/audioBackButton" to="mainPausePanel" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="mainPausePanel/optionsPanel/audioPanel/GridContainer/audioBackButton" to="." method="_on_audio_back_button_pressed"]
