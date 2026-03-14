@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=31 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
@@ -19,6 +19,8 @@
 [ext_resource type="Theme" uid="uid://d8uuw1d6d7be" path="res://assets/label.tres" id="17_wvb7n"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="17_xutsw"]
 [ext_resource type="PackedScene" uid="uid://d2lylhf5jew0m" path="res://scenes/Title/saw_cursor.tscn" id="19_xutsw"]
+[ext_resource type="Texture2D" uid="uid://cjafq14xq2mhh" path="res://assets/sprites/lesser enemies/mosquito-WIP.png" id="20_r8tji"]
+[ext_resource type="PackedScene" uid="uid://brgwd7siy17ly" path="res://scenes/Player/saw_sprite.tscn" id="21_blibh"]
 [ext_resource type="Script" uid="uid://b5gt8g6xhgm07" path="res://scenes/Title/credit_panel.gd" id="21_sxacd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvb7n"]
@@ -651,7 +653,6 @@ scale = Vector2(0.6112295, 0.61122954)
 texture = ExtResource("15_xutsw")
 
 [node name="CreditPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("CreditPanel")]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -693,7 +694,18 @@ Rayna Miller: Programmer, Artist
 Assets:
 Apollo Palette by AdamCYounis
 
-Made With Godot"
+Made With Godot 4.5"
+
+[node name="MosquitoWip" type="Sprite2D" parent="CanvasLayer/CreditPanel"]
+position = Vector2(240, 472)
+rotation = -1.5707964
+texture = ExtResource("20_r8tji")
+
+[node name="SawSprite" parent="CanvasLayer/CreditPanel" instance=ExtResource("21_blibh")]
+position = Vector2(1608, 285)
+
+[node name="PlayerSprite" parent="CanvasLayer/CreditPanel" instance=ExtResource("7_wvb7n")]
+position = Vector2(1597, 733)
 
 [node name="SawCursor" parent="." instance=ExtResource("19_xutsw")]
 position = Vector2(914, 517)
