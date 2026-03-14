@@ -1,4 +1,4 @@
-extends Node2D
+extends Boss
 
 const SPAWNER := preload("res://scenes/basicEnemies/enemy_spawner.tscn")
 const TL_TURRET := preload("res://scenes/Boss/Turrets/tl_turret.tscn")
@@ -10,7 +10,6 @@ var theta: float = 0.0
 @export_range(0,2*PI) var alpha: float = 0.0
 @export var starting_pattern: int
 @export var starting_movement: int
-@export var health: float
 @export var bullet_node: PackedScene
 
 @onready var finite_state_machine := $FiniteStateMachine
@@ -33,21 +32,14 @@ var theta: float = 0.0
 			2: pass # TODO
 			3: __spawn_turrets()
 
-var health_target: float
+@onready var health_target := max_health * 3 / 4
 
 var bullet_type: int = 0
 var speed: int = 100
-var target: Vector2
 var move_speed: float = 0.8
 var move_size: int = 500
 var t: float = 0.0
 var pos: Vector2 = Vector2.ZERO
-var beingHit: bool = false
-var max_health: float
-
-func _on_boss_died() -> void:
-	get_tree().call_group("Bullet", "blow_up")
-	queue_free()
 
 func __spawn_turrets() -> void:
 	# TODO: this is terrible
@@ -113,21 +105,6 @@ func __turrets_died() -> void:
 	finite_state_machine.change_state("PrepareBurst")
 	movement_state_machine.change_state("Idle")
 
-func _process(delta):
-	if beingHit:
-		health -= 10*delta
-		health = max(health, 0)
-		
-		if health < health_target:
-			health_target -= max_health / 4
-			phase += 1
-		
-		GlobalSignals.emit_signal("boss_health_change", health, max_health)
-		if health <= 0:
-			GlobalSignals.emit_signal("boss_died")
-			get_tree().call_group("game", "on_victory")
-			queue_free()
-
 func get_vector(angle):
 	theta = angle + alpha
 	return Vector2(cos(theta),sin(theta))
@@ -163,23 +140,11 @@ func trackShoot(countRows, countCols, minVel, maxVel, angle):
 		
 	
 func _ready():
+	super._ready()
 	$AnimatedSprite2D.play("move")
-	GlobalSignals.player_position.connect(_track)
-	GlobalSignals.boss_died.connect(_on_boss_died)
 	pos = global_position
-	
-	max_health = health
-	health_target = max_health * 3 / 4
 
-func _track(location: Vector2):
-	target = location
-
-## Functions to track the blade collision
-func _on_player_detection_area_entered(area: Area2D) -> void:
-	if (area.name == "BladeArea2D"):
-		beingHit = true
-
-
-func _on_player_detection_area_exited(area: Area2D) -> void:
-	if (area.name == "BladeArea2D"):
-		beingHit = false
+func _on_health_changed(_new_health):
+	if health < health_target:
+		health_target -= max_health / 4
+		phase += 1

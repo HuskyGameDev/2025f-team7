@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dq86eoys66ddp"]
+[gd_scene load_steps=20 format=3 uid="uid://dq86eoys66ddp"]
 
 [ext_resource type="Script" uid="uid://s5eg0eu8bkxj" path="res://scenes/Boss/turret.gd" id="1_86118"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_2d1wj"]
@@ -21,12 +21,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_neq0i"]
 radius = 70.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2o8g5"]
+radius = 17.391731
+height = 46.515694
+
 [node name="Turret" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_86118")
 starting_pattern = 12
-health = 30.0
 bullet_node = ExtResource("2_2d1wj")
+max_health = 30.0
 
 [node name="Speed" type="Timer" parent="."]
 wait_time = 0.05
@@ -44,12 +48,6 @@ theme_override_font_sizes/font_size = 8
 text = "debug"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="PlayerDetection" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-unique_name_in_owner = true
-shape = SubResource("CircleShape2D_neq0i")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("3_gr1jj")
@@ -98,7 +96,21 @@ rotation = 2.2340214
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_niabo")
 
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_neq0i")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-9, -7)
+rotation = 2.2340214
+shape = SubResource("CapsuleShape2D_2o8g5")
+debug_color = Color(0.98433834, 0, 0.34898046, 0.41960785)
+
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
-[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
-[connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]
-[connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_entered"]

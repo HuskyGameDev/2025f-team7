@@ -1,6 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://b6t43grsclomr"]
+[gd_scene load_steps=29 format=3 uid="uid://b6t43grsclomr"]
 
-[ext_resource type="Script" uid="uid://djf1bewdugc0u" path="res://scenes/Boss/boss.gd" id="1_dlmty"]
+[ext_resource type="Script" uid="uid://djf1bewdugc0u" path="res://scenes/Boss/boss_1.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_neq0i"]
 [ext_resource type="Script" uid="uid://p0uno3xxi6f6" path="res://scripts/State Machine/FiniteStateMachine.gd" id="3_qnbj4"]
 [ext_resource type="Texture2D" uid="uid://nmjqkowop31g" path="res://assets/sprites/Bosses/roach walk (jackson)-Sheet.png" id="3_tivtr"]
@@ -61,12 +61,16 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_neq0i"]
 radius = 70.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_88t4m"]
+radius = 23.0
+height = 114.0
+
 [node name="Boss" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_dlmty")
 starting_pattern = 2
-health = 400.0
 bullet_node = ExtResource("2_neq0i")
+max_health = 400.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, 21)
@@ -90,12 +94,6 @@ theme_override_font_sizes/font_size = 8
 text = "debug"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="PlayerDetection" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-unique_name_in_owner = true
-shape = SubResource("CircleShape2D_neq0i")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("3_qnbj4")
@@ -151,7 +149,21 @@ script = ExtResource("15_aub7x")
 [node name="Figure8" type="Node2D" parent="MovementStateMachine"]
 script = ExtResource("16_4vq7k")
 
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_neq0i")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2, 1)
+shape = SubResource("CapsuleShape2D_88t4m")
+debug_color = Color(0.98433834, 0, 0.34898046, 0.41960785)
+
+[connection signal="health_changed" from="." to="." method="_on_health_changed"]
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
-[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
-[connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]
-[connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_entered"]
