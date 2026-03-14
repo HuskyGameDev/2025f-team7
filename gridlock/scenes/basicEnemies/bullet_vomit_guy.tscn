@@ -11,9 +11,7 @@ size = Vector2(79, 91)
 radius = 20.0
 height = 56.0
 
-[node name="BulletVomitGuy" type="Area2D"]
-collision_layer = 0
-collision_mask = 4
+[node name="BulletVomitGuy" type="Node2D"]
 script = ExtResource("1_su5ei")
 bullet_node = ExtResource("2_a07i0")
 MAX_HEALTH = 30.0
@@ -24,7 +22,11 @@ position = Vector2(1, -12)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_lxxky")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(0.5, -11.5)
 shape = SubResource("RectangleShape2D_su5ei")
 
