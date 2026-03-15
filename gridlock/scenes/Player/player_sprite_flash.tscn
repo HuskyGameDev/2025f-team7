@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bem2jjafq4ocd"]
+
+[ext_resource type="Texture2D" uid="uid://c1gwqma4x4cmg" path="res://assets/sprites/Player/flower_flash.png" id="1_sk47u"]
+[ext_resource type="Script" uid="uid://oblcjrrt7le1" path="res://scenes/Player/player_sprite_flash.gd" id="3_p6pr0"]
+
+[node name="Flash" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.5019608)
+texture_filter = 4
+texture = ExtResource("1_sk47u")
+script = ExtResource("3_p6pr0")
