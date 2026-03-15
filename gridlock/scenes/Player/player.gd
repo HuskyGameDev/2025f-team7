@@ -93,8 +93,7 @@ func _on_invincible_timer_timeout() -> void:
 
 
 func _on_near_miss(_area: Area2D) -> void:
-	if !invincible:
-		GlobalSignals.emit_signal("near_miss")
+	if !invincible: GlobalSignals.emit_signal("near_miss")
 
 func _on_bomb_gained() -> void:
 	bombs_available += 1
