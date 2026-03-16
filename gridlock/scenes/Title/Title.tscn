@@ -257,7 +257,6 @@ allow_fadeout = false
 
 [node name="optionsPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("controlsPanel", "audioPanel")]
 process_mode = 3
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -309,6 +308,15 @@ layout_mode = 2
 theme = ExtResource("17_wvb7n")
 theme_override_font_sizes/font_size = 75
 text = "Back"
+
+[node name="SaveDataButton" type="Button" parent="CanvasLayer/optionsPanel/GridContainer"]
+visibility_layer = 8
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("17_wvb7n")
+text = "Delete Save File"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="CanvasLayer/optionsPanel/GridContainer"]
 modulate = Color(0, 0, 0, 0.63529414)
@@ -676,6 +684,7 @@ scale = Vector2(0.6112295, 0.61122954)
 texture = ExtResource("15_xutsw")
 
 [node name="CreditPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("CreditPanel")]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -754,6 +763,8 @@ position = Vector2(914, 517)
 [connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionsaudioButton" to="CanvasLayer/optionsPanel" method="_on_optionsaudio_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/optionsPanel/GridContainer/optionsbackButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/optionsbackButton" to="CanvasLayer/optionsPanel" method="_on_optionsback_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/optionsPanel/GridContainer/SaveDataButton" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/optionsPanel/GridContainer/SaveDataButton" to="CanvasLayer/optionsPanel" method="_on_save_data_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls/charMoveUpButton" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_entered" from="CanvasLayer/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls/charMoveDownButton" to="." method="_on_button_mouse_entered"]

@@ -35,3 +35,6 @@ func _on_controls_back_button_pressed() -> void:
 func _on_audio_back_button_pressed() -> void:
 	audioPanel.visible = false;
 	pass # Replace with function body.
+
+func _on_save_data_button_pressed() -> void:
+	DirAccess.remove_absolute("res://save_data.cfg")
