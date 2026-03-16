@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://vcpjhf32cdd1"]
+
+[ext_resource type="Texture2D" uid="uid://2ymqktmu66fi" path="res://assets/sprites/Menu/options menu background.png" id="1_ujlt3"]
+[ext_resource type="Script" uid="uid://cevx8xka7p6n8" path="res://scenes/victory_screen.gd" id="1_wdgif"]
+
+[sub_resource type="SystemFont" id="SystemFont_wdgif"]
+font_names = PackedStringArray("Comic Sans MS")
+
+[sub_resource type="Theme" id="Theme_pfcnd"]
+default_font = SubResource("SystemFont_wdgif")
+default_font_size = 150
+
+[node name="VictoryScreen" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wdgif")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 1920.0
+grow_horizontal = 2
+texture = ExtResource("1_ujlt3")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.11764706, 0.5019608)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 342.0
+offset_top = 37.0
+offset_right = 1216.0
+offset_bottom = 883.0
+theme = SubResource("Theme_pfcnd")
+text = "you did it
+
+    yippeee"
