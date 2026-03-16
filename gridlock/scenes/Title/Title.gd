@@ -27,4 +27,5 @@ func _on_color_button_pressed() -> void:
 
 # for all button sounds
 func _on_button_mouse_entered() -> void:
-	$ButtonHover.play()
+	var button_hover := get_node("ButtonHover")
+	if button_hover: button_hover.play()
