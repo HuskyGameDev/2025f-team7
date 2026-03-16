@@ -48,25 +48,25 @@ func __spawn_turrets() -> void:
 		tl_turret.global_position = Vector2(100, 100)
 		tl_turret.spawns = TL_TURRET
 		tl_turret.spawned.connect(_on_tl_turret_spawned)
-		get_tree().root.add_child(tl_turret)
+		get_tree().current_scene.add_child(tl_turret)
 	if tr_turret == null:
 		tr_turret = SPAWNER.instantiate()
 		tr_turret.global_position = Vector2(1666, 100)
 		tr_turret.spawns = TR_TURRET
 		tr_turret.spawned.connect(_on_tr_turret_spawned)
-		get_tree().root.add_child(tr_turret)
+		get_tree().current_scene.add_child(tr_turret)
 	if bl_turret == null:
 		bl_turret = SPAWNER.instantiate()
 		bl_turret.global_position = Vector2(100, 980)
 		bl_turret.spawns = BL_TURRET
 		bl_turret.spawned.connect(_on_bl_turret_spawned)
-		get_tree().root.add_child(bl_turret)
+		get_tree().current_scene.add_child(bl_turret)
 	if br_turret == null:
 		br_turret = SPAWNER.instantiate()
 		br_turret.global_position = Vector2(1666, 980)
 		br_turret.spawns = BR_TURRET
 		br_turret.spawned.connect(_on_br_turret_spawned)
-		get_tree().root.add_child(br_turret)
+		get_tree().current_scene.add_child(br_turret)
 	
 	finite_state_machine.change_state("Idle")
 	movement_state_machine.change_state("Figure8")
