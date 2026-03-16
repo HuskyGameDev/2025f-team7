@@ -17,10 +17,11 @@ func _ready():
 	var err = config.load("res://save_data.cfg")
 	if err != OK:
 		update_text()
-	else:
+	elif (config.has_section("Inputs")):
 		for inputs in config.get_section_keys("Inputs"):
 			rebind_action(config.get_value("Inputs",inputs),inputs)
 		update_text()
+	update_text()
 
 #If the button is pressed then it gets ready to read a key for the input event
 func _pressed():
