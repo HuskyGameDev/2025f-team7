@@ -1,10 +1,19 @@
 extends Control
 
 @onready var color_picker = $ColorPicker
+@onready var config = ConfigFile.new() #creates configfile object
 
 #hides cursor
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	var err = config.load("res://save_data.cfg")
+	if err != OK:
+		pass
+	elif (config.has_section("Timer")):
+		var time = config.get_value("Timer","best_time")
+		var timer_value = "Best Time: " + str(snapped(time, 0.01))
+		get_node("CanvasLayer/BestTime").set_text(timer_value)
+
 #Switches to the Main scene when StartButton is pressed
 func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_room.tscn")

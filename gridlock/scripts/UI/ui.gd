@@ -43,6 +43,7 @@ signal bossInbound;
 @export var HeartContainer: GridContainer;
 @export var HeartTextureRect: TextureRect;
 @onready var BossHealthBar: ProgressBar = $BossHealthBar
+@onready var config = ConfigFile.new() #creates configfile object
 
 
 #Code that needs to run on start

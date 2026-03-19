@@ -257,6 +257,7 @@ allow_fadeout = false
 
 [node name="optionsPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("controlsPanel", "audioPanel")]
 process_mode = 3
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -738,6 +739,16 @@ position = Vector2(1608, 285)
 
 [node name="PlayerSprite" parent="CanvasLayer/CreditPanel" instance=ExtResource("7_wvb7n")]
 position = Vector2(1597, 733)
+
+[node name="BestTime" type="Label" parent="CanvasLayer"]
+offset_left = 1183.0
+offset_top = 898.0
+offset_right = 1388.3334
+offset_bottom = 961.0
+scale = Vector2(2.625, 2.625)
+theme = ExtResource("17_wvb7n")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Best Time:"
 
 [node name="SawCursor" parent="." instance=ExtResource("19_xutsw")]
 position = Vector2(914, 517)
