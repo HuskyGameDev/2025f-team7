@@ -103,6 +103,7 @@ auto_release = true
 allow_fadeout = false
 
 [node name="MenuBackground" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(956, 540)
 scale = Vector2(1.9916667, 1.9944445)
 texture = ExtResource("2_h2cek")
@@ -741,6 +742,7 @@ position = Vector2(1608, 285)
 position = Vector2(1597, 733)
 
 [node name="BestTime" type="Label" parent="CanvasLayer"]
+texture_filter = 1
 offset_left = 1183.0
 offset_top = 898.0
 offset_right = 1388.3334

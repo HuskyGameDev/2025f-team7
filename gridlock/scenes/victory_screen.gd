@@ -13,6 +13,12 @@ func _on_victory():
 			config.set_value("Timer","best_time",time)
 	else:
 		config.set_value("Timer","best_time",time)
-	get_tree().paused = true
+	# get_tree().paused = true
 	visible = true
 	config.save("res://save_data.cfg")
+
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
+func _on_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/Title/Title.tscn")

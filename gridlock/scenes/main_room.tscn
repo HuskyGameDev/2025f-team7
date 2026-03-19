@@ -33,7 +33,6 @@ size = Vector2(16, 1080)
 [node name="UI" parent="CanvasLayer" instance=ExtResource("5_ky753")]
 
 [node name="VictoryScreen" parent="CanvasLayer" instance=ExtResource("2_7h4nr")]
-visible = false
 
 [node name="parallax" parent="." instance=ExtResource("1_w27ju")]
 
@@ -49,6 +48,7 @@ script = ExtResource("3_2noi8")
 [node name="Boss1" type="Node2D" parent="Timeline"]
 position = Vector2(0, 1)
 script = ExtResource("3_2noi8")
+enabled = false
 
 [node name="Waves" type="Node2D" parent="Timeline/Boss1"]
 script = ExtResource("3_2noi8")
@@ -145,6 +145,7 @@ spawn_time = 3.0
 
 [node name="Boss2" type="Node2D" parent="Timeline"]
 script = ExtResource("3_2noi8")
+enabled = false
 
 [node name="Waves" type="Node2D" parent="Timeline/Boss2"]
 script = ExtResource("3_2noi8")
