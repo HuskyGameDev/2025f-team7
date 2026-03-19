@@ -1,14 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1yptc0ppcic"]
+[gd_scene load_steps=21 format=3 uid="uid://b1yptc0ppcic"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
 [ext_resource type="Theme" uid="uid://d8uuw1d6d7be" path="res://assets/label.tres" id="1_ktti3"]
-[ext_resource type="Texture2D" uid="uid://culnoxofg3gmk" path="res://assets/sprites/bomb/Bomb.png" id="2_ro3t7"]
 [ext_resource type="Texture2D" uid="uid://dkydi42h41a5q" path="res://assets/sprites/hearts/Gray Heart.png" id="3_ua6yw"]
 [ext_resource type="Script" uid="uid://cd1n6tkj0bmrm" path="res://scripts/UI/boss_inbound_text.gd" id="5_cgfq5"]
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="5_wm3ai"]
 [ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="6_8dubc"]
-[ext_resource type="Script" uid="uid://b5jew2lejvmhl" path="res://scenes/Pause.gd" id="7_ilk7v"]
+[ext_resource type="Texture2D" uid="uid://dcsoecysnuoc3" path="res://assets/sprites/Menu/bomb.png" id="6_ilk7v"]
+[ext_resource type="Script" path="res://scenes/Pause.gd" id="7_ilk7v"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="7_p7vwb"]
 [ext_resource type="Texture2D" uid="uid://2ymqktmu66fi" path="res://assets/sprites/Menu/options menu background.png" id="8_5sqrc"]
 [ext_resource type="Texture2D" uid="uid://c0npmdqw5qmcn" path="res://assets/sprites/Menu/options_menu.png" id="8_w7enk"]
@@ -16,10 +16,32 @@
 [ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="12_flkkw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro3t7"]
-bg_color = Color(0.7411765, 0.76862746, 0.80784315, 1)
+bg_color = Color(0.26103294, 0.2859105, 0.32571125, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5en4g"]
 bg_color = Color(0.92445606, 0.44463834, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilk7v"]
+atlas = ExtResource("6_ilk7v")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flkkw"]
+atlas = ExtResource("6_ilk7v")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mhjpf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilk7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flkkw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sqrc"]
 bg_color = Color(0.9137255, 0.047058824, 0.015686275, 0.79607844)
@@ -129,35 +151,43 @@ texture = ExtResource("1_dj8aq")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="BombContainer" type="GridContainer" parent="mainUIPanelContainer"]
+[node name="BombContainer" type="Control" parent="mainUIPanelContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-columns = 2
-
-[node name="BombTexture" type="TextureRect" parent="mainUIPanelContainer/BombContainer"]
-process_mode = 3
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("2_ro3t7")
-expand_mode = 2
-stretch_mode = 4
 
 [node name="BombBar" type="ProgressBar" parent="mainUIPanelContainer/BombContainer"]
 process_mode = 3
-custom_minimum_size = Vector2(100, 20)
-layout_mode = 2
+layout_mode = 0
+offset_left = 55.0
+offset_top = -453.0
+offset_right = 104.0
+offset_bottom = -26.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_ro3t7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5en4g")
+fill_mode = 3
+
+[node name="BombTexture" type="AnimatedSprite2D" parent="mainUIPanelContainer/BombContainer"]
+position = Vector2(49, -54)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_mhjpf")
+autoplay = "default"
+frame_progress = 0.44859362
 
 [node name="BombCountLabel" type="Label" parent="mainUIPanelContainer/BombContainer"]
 process_mode = 3
-layout_mode = 2
+layout_mode = 0
+offset_left = 50.0
+offset_top = -54.0
+offset_right = 85.0
+offset_bottom = -8.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
 text = "x0"
 
 [node name="GridContainer" type="GridContainer" parent="mainUIPanelContainer"]
@@ -179,6 +209,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
 text = "00:00:00"
+horizontal_alignment = 1
 
 [node name="mainPausePanel" type="PanelContainer" parent="."]
 process_mode = 3
