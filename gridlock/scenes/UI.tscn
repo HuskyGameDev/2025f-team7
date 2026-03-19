@@ -175,7 +175,7 @@ position = Vector2(49, -54)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_mhjpf")
 autoplay = "default"
-frame_progress = 0.44859362
+frame_progress = 0.48989072
 
 [node name="BombCountLabel" type="Label" parent="mainUIPanelContainer/BombContainer"]
 process_mode = 3

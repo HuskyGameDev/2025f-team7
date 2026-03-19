@@ -13,5 +13,4 @@ func _boss_died():
 	# so freeing it won't get rid of them. This will! :]
 	# (deferring it makes sure bullets spawned this frame will
 	#  also blow up)
-	get_tree().call_deferred("call_group", "Bullet", "blow_up")
 	queue_free()

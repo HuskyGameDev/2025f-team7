@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const BOMB := preload("res://scenes/bomb.tscn")
+
 signal player_position(location: Vector2)
 
 var SPEED = 300.0
@@ -38,7 +40,9 @@ func _physics_process(_delta: float):
 		currentSpeed = CTRLSPEED
 	if Input.is_action_just_pressed("UseBomb"):
 		if bombs_available > 0:
-			get_tree().call_group("Bullet", "blow_up")
+			var bomb := BOMB.instantiate()
+			bomb.global_position = global_position
+			get_parent().add_child(bomb)
 			bombs_available -= 1
 			GlobalSignals.emit_signal("bomb_used")
 	

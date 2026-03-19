@@ -165,5 +165,6 @@ position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_88t4m")
 debug_color = Color(0.98433834, 0, 0.34898046, 0.41960785)
 
+[connection signal="died" from="." to="." method="_on_death"]
 [connection signal="health_changed" from="." to="." method="_on_health_changed"]
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]

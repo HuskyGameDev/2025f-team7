@@ -1,5 +1,6 @@
 extends Boss
 
+const BOMB := preload("res://scenes/bomb.tscn")
 const SPAWNER := preload("res://scenes/basicEnemies/enemy_spawner.tscn")
 const TL_TURRET := preload("res://scenes/Boss/Turrets/tl_turret.tscn")
 const TR_TURRET := preload("res://scenes/Boss/Turrets/tr_turret.tscn")
@@ -148,3 +149,8 @@ func _on_health_changed(_new_health):
 	if health < health_target:
 		health_target -= max_health / 4
 		phase += 1
+
+func _on_death() -> void:
+	var bomb := BOMB.instantiate()
+	bomb.global_position = global_position
+	get_parent().add_child(bomb)
