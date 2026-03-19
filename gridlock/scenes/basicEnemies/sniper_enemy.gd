@@ -87,10 +87,11 @@ func _on_shoot_timeout() -> void:
 	alpha = 1 #Count Columns
 	for n: int in 1: #Count rows
 		#maxvelocity and then min velocity
-		speed = ((120-80)/10)*n + 80
+		speed = ((200-150)/10)*n + 120
+		
 		theta = Vector2(1,0).angle_to(player_position - position) - (180/2)
 		#shoot(theta)
-		for m: int in 5:
+		for m: int in 1:
 			shoot(theta)
 		
 	

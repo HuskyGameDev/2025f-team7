@@ -27,6 +27,10 @@ position = Vector2(37.5, 33.5)
 shape = SubResource("RectangleShape2D_xd12u")
 disabled = true
 
+[node name="shoot" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
 [node name="PlayerDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
@@ -39,5 +43,6 @@ position = Vector2(36.000004, 30)
 scale = Vector2(2.474432, 2.4744322)
 texture = ExtResource("4_788j4")
 
+[connection signal="timeout" from="shoot" to="." method="_on_shoot_timeout"]
 [connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
 [connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]

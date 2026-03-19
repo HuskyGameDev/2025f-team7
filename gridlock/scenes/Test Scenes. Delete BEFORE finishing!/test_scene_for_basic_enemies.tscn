@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://igrgd6rba3xv"]
+
+[ext_resource type="PackedScene" uid="uid://dd330qd4wlqdq" path="res://scenes/basicEnemies/sniperEnemy.tscn" id="1_qbkiq"]
+[ext_resource type="PackedScene" uid="uid://dwrn3jf27llc" path="res://scenes/basicEnemies/swordDude.tscn" id="2_x8iqt"]
+[ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="3_lry10"]
+[ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="4_qamu0"]
+
+[node name="Test Scene for Basic Enemies" type="Node2D"]
+
+[node name="SniperEnemy" parent="." instance=ExtResource("1_qbkiq")]
+
+[node name="SwordDude" parent="." instance=ExtResource("2_x8iqt")]
+position = Vector2(-1, 149)
+
+[node name="blade" parent="." instance=ExtResource("3_lry10")]
+position = Vector2(858, 134)
+
+[node name="player" parent="." instance=ExtResource("4_qamu0")]
+position = Vector2(533, 288)

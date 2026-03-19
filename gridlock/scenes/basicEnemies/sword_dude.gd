@@ -82,8 +82,11 @@ func _process(delta):
 		if (health <= 0):
 			die()
 	
+	# This is contact damage, for the player! Now the sword dude can fight back a little bit. 
+#func onPlayerDetectionAreaEntered(area: Area2D):
+#	if (area.name == "HurtboxArea"): 
+		
 	
-
 
 func _on_player_detection_area_entered(area: Area2D):
 	if (area.name == "BladeArea2D"):

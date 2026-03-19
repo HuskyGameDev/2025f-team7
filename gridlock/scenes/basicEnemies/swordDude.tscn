@@ -11,10 +11,14 @@ size = Vector2(195, 120)
 
 [node name="SwordDude" type="CharacterBody2D"]
 script = ExtResource("1_p3v8f")
+alpha = null
+starting_pattern = null
+starting_movement = null
+health = null
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+[node name="Player Detectiion Box" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(97.5, 60)
 shape = SubResource("RectangleShape2D_p3v8f")
 
