@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ce1tb5dlm5akk"]
+[gd_scene load_steps=11 format=3 uid="uid://ce1tb5dlm5akk"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_bj0tc"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_gmcp2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="4_3vjq3"]
 [ext_resource type="Script" uid="uid://c7yc0rwepuypc" path="res://scripts/UI/victory_screen.gd" id="5_u313f"]
 [ext_resource type="Script" uid="uid://bsp7vbmx8aj5s" path="res://scenes/Boss/boss_manager.gd" id="6_hevo8"]
+[ext_resource type="PackedScene" uid="uid://im0wqvumy8dx" path="res://scenes/Boss3/Boss3.tscn" id="8_3vjq3"]
 [ext_resource type="PackedScene" uid="uid://0cn5wfkhif6q" path="res://scenes/Boss3/HiveSpawner.tscn" id="8_jsdwj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mg1b"]
@@ -106,6 +107,7 @@ script = ExtResource("6_hevo8")
 victory_screen = NodePath("../CanvasLayer/VictoryScreen")
 
 [node name="HiveTimer" type="Timer" parent="." groups=["Hive"]]
+wait_time = 0.95
 autostart = true
 
 [node name="HiveSpawnerOne" parent="." instance=ExtResource("8_jsdwj")]
@@ -116,5 +118,8 @@ first = 1
 [node name="HiveSpawnerTwo" parent="." instance=ExtResource("8_jsdwj")]
 position = Vector2(-20, 80)
 side = -1
+
+[node name="Boss3" parent="." instance=ExtResource("8_3vjq3")]
+health = 500.0
 
 [connection signal="pressed" from="CanvasLayer/VictoryScreen/Button" to="CanvasLayer/VictoryScreen" method="_on_button_pressed"]

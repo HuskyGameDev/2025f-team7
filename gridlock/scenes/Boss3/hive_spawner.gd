@@ -8,7 +8,6 @@ var counter: int = 2
 
 func _ready():
 	counter = counter - first
-	pass
 
 
 func spawnHive():
