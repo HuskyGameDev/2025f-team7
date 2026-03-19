@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ded8qkxp64wrc"]
+[gd_scene load_steps=8 format=3 uid="uid://ded8qkxp64wrc"]
 
-[ext_resource type="Script" uid="uid://ya0jddob1pt6" path="res://scripts/Tutorial/tutorial.gd" id="1_8o0w1"]
+[ext_resource type="Script" uid="uid://ya0jddob1pt6" path="res://scenes/Tutorial/tutorial.gd" id="1_8o0w1"]
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_kbdgn"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="1_ob2r4"]
+[ext_resource type="PackedScene" uid="uid://dkofp4g4cjrlc" path="res://scenes/Tutorial/tutorial_enemy.tscn" id="2_8p2m1"]
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="2_kbdgn"]
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="5_h2nhn"]
 
@@ -16,6 +17,7 @@ border_color = Color(1, 1, 1, 1)
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_8o0w1")
+tutorial_enemy_scene = ExtResource("2_8p2m1")
 
 [node name="parallax" parent="." instance=ExtResource("1_kbdgn")]
 
@@ -30,7 +32,7 @@ anchor_bottom = 0.178
 offset_left = -0.44000244
 offset_top = -0.44000244
 offset_right = 20.679932
-offset_bottom = -0.4400177
+offset_bottom = 44.759995
 theme_override_styles/panel = SubResource("StyleBoxFlat_8o0w1")
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel"]

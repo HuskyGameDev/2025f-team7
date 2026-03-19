@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkofp4g4cjrlc"]
+
+[ext_resource type="Texture2D" uid="uid://cf48twroox0ku" path="res://assets/sprites/other/boss1_turret_var1.png" id="1_3e0ks"]
+[ext_resource type="Script" uid="uid://dot5eeegu62he" path="res://scenes/Tutorial/tutorial_enemy.gd" id="1_bd3lt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bd3lt"]
+radius = 22.0
+height = 62.0
+
+[node name="TutorialEnemy" type="Area2D"]
+script = ExtResource("1_bd3lt")
+health = 30.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3e0ks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bd3lt")
