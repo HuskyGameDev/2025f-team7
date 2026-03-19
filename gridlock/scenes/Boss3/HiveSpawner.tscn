@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://0cn5wfkhif6q"]
+
+[ext_resource type="Script" uid="uid://c67s4kk5rpmtg" path="res://scenes/Boss3/hive_spawner.gd" id="1_e0rel"]
+[ext_resource type="PackedScene" uid="uid://c4bqdyi8gwe8r" path="res://scenes/Boss3/hiveEnemy.tscn" id="2_qlp35"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qlp35"]
+size = Vector2(10, 10)
+
+[node name="HiveSpawner" type="CharacterBody2D"]
+script = ExtResource("1_e0rel")
+hive_enemy_node = ExtResource("2_qlp35")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_qlp35")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.89
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
