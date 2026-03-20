@@ -23,6 +23,8 @@ position = Vector2(97.5, 60)
 shape = SubResource("RectangleShape2D_p3v8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 17
+visibility_layer = 17
 position = Vector2(97.5, 60)
 shape = SubResource("RectangleShape2D_xvkfc")
 disabled = true
