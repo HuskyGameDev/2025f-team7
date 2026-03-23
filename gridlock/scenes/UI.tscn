@@ -8,7 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="5_wm3ai"]
 [ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="6_8dubc"]
 [ext_resource type="Texture2D" uid="uid://dcsoecysnuoc3" path="res://assets/sprites/Menu/bomb.png" id="6_ilk7v"]
-[ext_resource type="Script" path="res://scenes/Pause.gd" id="7_ilk7v"]
+[ext_resource type="Script" uid="uid://b5jew2lejvmhl" path="res://scenes/Pause.gd" id="7_ilk7v"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="7_p7vwb"]
 [ext_resource type="Texture2D" uid="uid://2ymqktmu66fi" path="res://assets/sprites/Menu/options menu background.png" id="8_5sqrc"]
 [ext_resource type="Texture2D" uid="uid://c0npmdqw5qmcn" path="res://assets/sprites/Menu/options_menu.png" id="8_w7enk"]
@@ -228,6 +228,10 @@ process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="ButtonHover" type="FmodEventEmitter2D" parent="mainPausePanel/GridContainer"]
+event_name = "event:/UI/UI_Hover"
+event_guid = "{5df90c8f-ac26-4e95-984f-64e2f4850c8d}"
 
 [node name="pauseTextLabel" type="Label" parent="mainPausePanel/GridContainer"]
 process_mode = 3
@@ -651,9 +655,6 @@ polygon = PackedVector2Array(3115.0327, 26.176743, -211.04997, 6.544037, -211.04
 position = Vector2(960.00006, 165.00003)
 scale = Vector2(0.6112295, 0.61122954)
 texture = ExtResource("8_5sqrc")
-
-[node name="ButtonHover" type="FmodEventEmitter2D" parent="mainPausePanel"]
-event_guid = "{00000000-004d-0000-0e00-000052000000}"
 
 [node name="BossHealthBar" type="ProgressBar" parent="."]
 layout_mode = 1

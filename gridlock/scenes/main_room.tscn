@@ -28,6 +28,11 @@ size = Vector2(16, 1080)
 
 [node name="MainRoom" type="Node2D"]
 
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://addons/fmod/AudioBanks/Desktop/Master.bank"]
+
+[node name="FmodListener2D" type="FmodListener2D" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("5_ky753")]
@@ -43,6 +48,18 @@ position = Vector2(683, 845)
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="player"]
 shape = SubResource("CircleShape2D_q8it2")
 
+[node name="Bombuse" type="FmodEventEmitter2D" parent="player"]
+event_guid = "{ff388b6f-9604-44e8-bbfb-9aa63a49ecb2}"
+position = Vector2(-698, -352)
+
+[node name="Nearmiss" type="FmodEventEmitter2D" parent="player"]
+event_guid = "{8deb4385-b6fd-4d44-8e40-52a91654a1f1}"
+position = Vector2(-698, -352)
+
+[node name="Hurt" type="FmodEventEmitter2D" parent="player"]
+event_name = "event:/PC/PC_Nearmiss"
+event_guid = "{2adc5f7a-abc6-462d-8c3b-df37ee097249}"
+
 [node name="Timeline" type="Node2D" parent="."]
 script = ExtResource("3_2noi8")
 
@@ -55,7 +72,6 @@ script = ExtResource("3_2noi8")
 metadata/_custom_type_script = "uid://bv1js5gomnval"
 
 [node name="Wave1" type="Node2D" parent="Timeline/Boss1/Waves"]
-visible = false
 script = ExtResource("5_nx0o4")
 total_difficulty = 3.0
 spawn_rate = 1.0

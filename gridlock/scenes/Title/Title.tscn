@@ -99,7 +99,6 @@ bank_paths = ["res://addons/fmod/AudioBanks/Desktop/Master.bank"]
 event_name = "event:/UI/UI_Hover"
 event_guid = "{5df90c8f-ac26-4e95-984f-64e2f4850c8d}"
 attached = false
-auto_release = true
 allow_fadeout = false
 
 [node name="MenuBackground" type="Sprite2D" parent="."]

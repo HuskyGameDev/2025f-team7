@@ -22,6 +22,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="ButtonHover" type="FmodEventEmitter2D" parent="mainPausePanel/GridContainer"]
+event_name = "event:/UI/UI_Hover"
+event_guid = "{5df90c8f-ac26-4e95-984f-64e2f4850c8d}"
+position = Vector2(-803, -299)
+
 [node name="pauseTextLabel" type="Label" parent="mainPausePanel/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 0

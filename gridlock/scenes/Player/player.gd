@@ -44,8 +44,8 @@ func _physics_process(_delta: float):
 			bomb.global_position = global_position
 			get_parent().add_child(bomb)
 			bombs_available -= 1
+			$Bombuse.play()
 			GlobalSignals.emit_signal("bomb_used")
-	
 	
 	velocity = Input.get_vector("MainPlayerMoveLeft","MainPlayerMoveRight","MainPlayerMoveUp","MainPlayerMoveDown") * currentSpeed
 	
@@ -70,21 +70,25 @@ func set_status(bullet_type):
 func fire():
 	debug.text = "fire"
 	health -= 2
+	$Hurt.play()
 	GlobalSignals.emit_signal("health_change", health)
 
 func poison():
 	debug.text = "poison"
 	health -= 2
+	$Hurt.play()
 	GlobalSignals.emit_signal("health_change", health)
 
 func slow():
 	debug.text = "slow"
 	health -= 2
+	$Hurt.play()
 	GlobalSignals.emit_signal("health_change", health)
 
 func stun():
 	debug.text = "stun"
 	health -= 2
+	$Hurt.play()
 	GlobalSignals.emit_signal("health_change", health)
 	
 func _update_sprite():
@@ -98,6 +102,7 @@ func _on_invincible_timer_timeout() -> void:
 
 func _on_near_miss(_area: Area2D) -> void:
 	if !invincible: GlobalSignals.emit_signal("near_miss")
+	$Nearmiss.play()
 
 func _on_bomb_gained() -> void:
 	bombs_available += 1
