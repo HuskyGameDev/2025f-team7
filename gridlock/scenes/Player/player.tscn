@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bieqraoqjj3gm"]
+[gd_scene load_steps=7 format=3 uid="uid://bieqraoqjj3gm"]
 
 [ext_resource type="Script" uid="uid://dbyns6rd0cqi8" path="res://scenes/Player/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://d3snw0is72pw8" path="res://scenes/Player/player_sprite.tscn" id="2_1kbk7"]
@@ -11,6 +11,8 @@ height = 18.0
 radius = 43.011627
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1kbk7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqjuk"]
 
 [node name="player" type="CharacterBody2D"]
 collision_mask = 8
@@ -60,6 +62,23 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxArea"]
 shape = SubResource("CircleShape2D_1kbk7")
 debug_color = Color(0.98443025, 0, 0.34811187, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gqjuk")
+
+[node name="Bombuse" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/PC/PC_Bombuse"
+event_guid = "{ff388b6f-9604-44e8-bbfb-9aa63a49ecb2}"
+position = Vector2(-698, -352)
+
+[node name="Nearmiss" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/PC/PC_Hurt"
+event_guid = "{8deb4385-b6fd-4d44-8e40-52a91654a1f1}"
+position = Vector2(-698, -352)
+
+[node name="Hurt" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/PC/PC_Nearmiss"
+event_guid = "{2adc5f7a-abc6-462d-8c3b-df37ee097249}"
 
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
 [connection signal="area_exited" from="NearMissArea" to="." method="_on_near_miss"]

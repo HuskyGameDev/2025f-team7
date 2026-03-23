@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bx8dkwwoiesnh"]
+[gd_scene load_steps=20 format=3 uid="uid://bx8dkwwoiesnh"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_w27ju"]
 [ext_resource type="PackedScene" uid="uid://vcpjhf32cdd1" path="res://scenes/victory_screen.tscn" id="2_7h4nr"]
@@ -17,8 +17,6 @@
 [ext_resource type="Script" uid="uid://dajg6mwwr8mtk" path="res://scripts/EnemyWaves/emit_signal.gd" id="16_nx0o4"]
 [ext_resource type="PackedScene" uid="uid://ddy6dvqegvph2" path="res://scenes/Boss2/boss_2.tscn" id="17_mm8b8"]
 [ext_resource type="PackedScene" uid="uid://cmwaa2ltynn4r" path="res://scenes/basicEnemies/burstRingEnemy.tscn" id="18_6gvn4"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_q8it2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt06m"]
 size = Vector2(1798, 16)
@@ -44,21 +42,6 @@ visible = false
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_ruwqf")]
 position = Vector2(683, 845)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="player"]
-shape = SubResource("CircleShape2D_q8it2")
-
-[node name="Bombuse" type="FmodEventEmitter2D" parent="player"]
-event_guid = "{ff388b6f-9604-44e8-bbfb-9aa63a49ecb2}"
-position = Vector2(-698, -352)
-
-[node name="Nearmiss" type="FmodEventEmitter2D" parent="player"]
-event_guid = "{8deb4385-b6fd-4d44-8e40-52a91654a1f1}"
-position = Vector2(-698, -352)
-
-[node name="Hurt" type="FmodEventEmitter2D" parent="player"]
-event_name = "event:/PC/PC_Nearmiss"
-event_guid = "{2adc5f7a-abc6-462d-8c3b-df37ee097249}"
 
 [node name="Timeline" type="Node2D" parent="."]
 script = ExtResource("3_2noi8")
