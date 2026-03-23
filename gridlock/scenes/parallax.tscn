@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc7teempqvi0u"]
+[gd_scene load_steps=5 format=3 uid="uid://cc7teempqvi0u"]
 
 [ext_resource type="Shader" uid="uid://cv0js8fiedxe4" path="res://scenes/boil_line.gdshader" id="1_m2aw8"]
+[ext_resource type="Script" uid="uid://bnnojymvlc2mi" path="res://scenes/parallax.gd" id="1_m6okp"]
 [ext_resource type="Texture2D" uid="uid://b3yjehn5p565s" path="res://assets/sprites/Menu/background_photo.png" id="1_x4emh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m6okp"]
@@ -8,16 +9,18 @@ shader = ExtResource("1_m2aw8")
 shader_parameter/step_rate = 2.000000095
 shader_parameter/distortion_strength = 1.0
 
-[node name="parallax" type="Node2D"]
+[node name="Parallax" type="Node2D"]
 z_index = -2
 rotation = -0.00039291804
+script = ExtResource("1_m6okp")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(200, 0)
 
-[node name="BackgroundWip" type="Sprite2D" parent="."]
+[node name="Sprite3D" type="Sprite2D" parent="."]
 texture_filter = 2
 material = SubResource("ShaderMaterial_m6okp")
-position = Vector2(960, 540)
 rotation = 0.0017453292
 texture = ExtResource("1_x4emh")
+centered = false
+offset = Vector2(-16, -16)
