@@ -1,0 +1,125 @@
+[gd_scene load_steps=11 format=3 uid="uid://ce1tb5dlm5akk"]
+
+[ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_bj0tc"]
+[ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_gmcp2"]
+[ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="3_jsdwj"]
+[ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="4_3vjq3"]
+[ext_resource type="Script" uid="uid://c7yc0rwepuypc" path="res://scripts/UI/victory_screen.gd" id="5_u313f"]
+[ext_resource type="Script" uid="uid://bsp7vbmx8aj5s" path="res://scenes/Boss/boss_manager.gd" id="6_hevo8"]
+[ext_resource type="PackedScene" uid="uid://im0wqvumy8dx" path="res://scenes/Boss3/Boss3.tscn" id="8_3vjq3"]
+[ext_resource type="PackedScene" uid="uid://0cn5wfkhif6q" path="res://scenes/Boss3/HiveSpawner.tscn" id="8_jsdwj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mg1b"]
+size = Vector2(2151, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twryw"]
+size = Vector2(112, 1092)
+
+[node name="BossRoom3" type="Node2D"]
+
+[node name="parallax" parent="." instance=ExtResource("1_bj0tc")]
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("2_gmcp2")]
+position = Vector2(788, 505)
+
+[node name="blade" parent="." instance=ExtResource("3_jsdwj")]
+position = Vector2(1185, 477)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("4_3vjq3")]
+
+[node name="VictoryScreen" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_u313f")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/VictoryScreen"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6955032, 0.6955031, 0.6955031, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/VictoryScreen"]
+process_mode = 3
+layout_mode = 0
+offset_left = 750.0
+offset_top = 340.0
+offset_right = 1231.0
+offset_bottom = 423.0
+theme_override_font_sizes/font_size = 60
+text = "Congratulations!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VictoryScreen"]
+process_mode = 3
+layout_mode = 0
+offset_left = 950.0
+offset_top = 450.0
+offset_right = 1029.0
+offset_bottom = 481.0
+text = "Continue"
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(116, -126)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(954, 113)
+shape = SubResource("RectangleShape2D_6mg1b")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(102, -166)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(939, 1256)
+shape = SubResource("RectangleShape2D_6mg1b")
+
+[node name="column" type="StaticBody2D" parent="."]
+position = Vector2(-278, 275)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="column"]
+position = Vector2(2101, 268)
+shape = SubResource("RectangleShape2D_twryw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="column"]
+position = Vector2(217, 257)
+shape = SubResource("RectangleShape2D_twryw")
+
+[node name="BossManager" type="Node2D" parent="."]
+script = ExtResource("6_hevo8")
+victory_screen = NodePath("../CanvasLayer/VictoryScreen")
+
+[node name="HiveTimer" type="Timer" parent="." groups=["Hive"]]
+wait_time = 0.95
+autostart = true
+
+[node name="HiveSpawnerOne" parent="." instance=ExtResource("8_jsdwj")]
+position = Vector2(-20, 1000)
+side = 1
+first = 1
+
+[node name="HiveSpawnerTwo" parent="." instance=ExtResource("8_jsdwj")]
+position = Vector2(-20, 80)
+side = -1
+
+[node name="Boss3" parent="." instance=ExtResource("8_3vjq3")]
+health = 500.0
+
+[connection signal="pressed" from="CanvasLayer/VictoryScreen/Button" to="CanvasLayer/VictoryScreen" method="_on_button_pressed"]

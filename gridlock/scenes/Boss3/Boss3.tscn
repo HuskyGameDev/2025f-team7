@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://im0wqvumy8dx"]
+
+[ext_resource type="Script" uid="uid://46aol2d61jdg" path="res://scenes/Boss3/boss_3.gd" id="1_1vcnj"]
+[ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_3gg5f"]
+[ext_resource type="Script" uid="uid://p0uno3xxi6f6" path="res://scripts/State Machine/FiniteStateMachine.gd" id="2_fctra"]
+[ext_resource type="Script" uid="uid://lviqiwyvc7gh" path="res://scenes/Boss3/slow_track.gd" id="3_3gg5f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xew6s"]
+size = Vector2(60, 100)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fctra"]
+size = Vector2(60, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gg5f"]
+size = Vector2(60, 100)
+
+[node name="Boss3" type="CharacterBody2D"]
+script = ExtResource("1_1vcnj")
+bullet_node = ExtResource("2_3gg5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xew6s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+texture = SubResource("PlaceholderTexture2D_fctra")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("RectangleShape2D_3gg5f")
+
+[node name="FiniteStateMachine" type="Node2D" parent="."]
+script = ExtResource("2_fctra")
+
+[node name="SlowTrack" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("3_3gg5f")
+
+[node name="Speed" type="Timer" parent="."]
+wait_time = 0.45
+autostart = true
+
+[node name="Duration" type="Timer" parent="."]
+
+[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
+[connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]
+[connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
