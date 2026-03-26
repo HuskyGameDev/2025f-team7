@@ -5,6 +5,7 @@ extends Control
 
 #hides cursor
 func _ready():
+	$Button/StartButton.grab_focus.call_deferred()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	var err = config.load("res://save_data.cfg")
 	if err != OK:
@@ -23,6 +24,7 @@ func _on_tutorial_button_pressed() -> void:
 	
 #Currently not implemented until we get a finished options menu, but will open said options menu when pressed
 func _on_options_button_pressed() -> void:
+	$CanvasLayer/optionsPanel/GridContainer/optionscontrolButton.grab_focus.call_deferred()
 	pass # Replace with function body.
 
 #Ends the 
