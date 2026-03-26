@@ -12,7 +12,7 @@ func _ready():
 	elif (config.has_section("Timer")):
 		var time = config.get_value("Timer","best_time")
 		var timer_value = "Best Time: " + str(snapped(time, 0.01))
-		get_node("CanvasLayer/BestTime").set_text(timer_value)
+		$BestTime.set_text(timer_value)
 
 #Switches to the Main scene when StartButton is pressed
 func _on_start_button_pressed() -> void:
