@@ -1,9 +1,8 @@
-extends CharacterBody2D
+extends Enemy
 
 var laser_scene = preload("res://scenes/basicEnemies/laser.tscn")
 
 
-var target: Vector2
 var shape: ConvexPolygonShape2D
 
 func _ready():

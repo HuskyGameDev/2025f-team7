@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://60d8f13gtv6b"]
+[gd_scene load_steps=8 format=3 uid="uid://60d8f13gtv6b"]
 
 [ext_resource type="Script" uid="uid://cxlk7fd1qa62l" path="res://scripts/basicEnemies/shotgun_orbiter.gd" id="1_ctxoa"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_qnk06"]
@@ -12,10 +12,14 @@ size = Vector2(89, 90)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctxoa"]
 size = Vector2(91, 88)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_80ekg"]
+radius = 30.0
+height = 76.0
+
 [node name="ShotgunOrbiter" type="CharacterBody2D"]
 script = ExtResource("1_ctxoa")
 bullet_node = ExtResource("2_qnk06")
-health = 50
+max_health = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(34.5, 35)
@@ -33,6 +37,8 @@ wait_time = 4.0
 autostart = true
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(36.5, 36)
@@ -44,6 +50,14 @@ position = Vector2(34, 31.000004)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_80ekg")
 
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(1, -12)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(32, 50)
+shape = SubResource("CapsuleShape2D_80ekg")
+debug_color = Color(0.9917801, 0, 0.26715374, 0.41960785)
+
 [connection signal="timeout" from="shoot" to="." method="_on_shoot_timeout"]
-[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
-[connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]

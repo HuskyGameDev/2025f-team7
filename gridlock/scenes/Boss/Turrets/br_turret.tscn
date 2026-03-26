@@ -25,8 +25,10 @@ radius = 70.0
 radius = 17.391731
 height = 46.515694
 
-[node name="Turret" type="Node2D"]
+[node name="Turret" type="CharacterBody2D"]
 texture_filter = 1
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_cst7d")
 starting_pattern = 12
 bullet_node = ExtResource("2_wnven")

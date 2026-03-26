@@ -1,5 +1,5 @@
 class_name Enemy
-extends Node2D
+extends CharacterBody2D
 
 signal health_changed(new_health: float)
 signal died
@@ -18,18 +18,14 @@ signal died
 var player_detection: Area2D:
 	get(): return player_detection
 	set(value):
-		print("setter triggered")
 		if player_detection == value: return
-		print("value is different")
 		
 		if player_detection:
-			print("disconnecting old one")
 			player_detection.body_entered.disconnect(_on_body_entered)
 			player_detection.body_exited.disconnect(_on_body_exited)
 		
 		player_detection = value
 		if player_detection:
-			print("connecting new one")
 			player_detection.body_entered.connect(_on_body_entered)
 			player_detection.body_exited.connect(_on_body_exited)
 
@@ -41,9 +37,7 @@ func _init() -> void:
 	GlobalSignals.player_position.connect(_on_player_position)
 
 func _ready() -> void:
-	print("_ready")
-	player_detection = get_node("PlayerDetection")
-	assert(player_detection)
+	player_detection = get_node_or_null("PlayerDetection")
 
 func _process(delta: float) -> void:
 	if taking_damage:
@@ -54,7 +48,6 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _on_body_entered(_body: PhysicsBody2D) -> void:
-	print("taking damage!!!")
 	taking_damage = true
 
 func _on_body_exited(_body: PhysicsBody2D) -> void:

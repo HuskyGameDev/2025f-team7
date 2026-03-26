@@ -39,6 +39,7 @@ height = 500.0
 z_index = -1
 script = ExtResource("1_ypx45")
 bullet_node = ExtResource("2_ypx45")
+max_health = 400.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(4.2107625, 2.9358974)
@@ -52,6 +53,8 @@ sprite_frames = SubResource("SpriteFrames_n0x0t")
 animation = &"move"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 position = Vector2(0, -400)

@@ -19,7 +19,7 @@ func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main_room.tscn")
 
 func _on_tutorial_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scripts/Tutorial/tutorial.tscn")
+	get_tree().change_scene_to_file("res://scenes/Tutorial/tutorial.tscn")
 	
 #Currently not implemented until we get a finished options menu, but will open said options menu when pressed
 func _on_options_button_pressed() -> void:

@@ -1,14 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd6o2q0te40up"]
+[gd_scene load_steps=5 format=3 uid="uid://dd6o2q0te40up"]
 
-[ext_resource type="Script" path="res://scenes/basicEnemies/laser_enemy.gd" id="1_nlydf"]
+[ext_resource type="Script" uid="uid://83l4ifsx048u" path="res://scenes/basicEnemies/laser_enemy.gd" id="1_nlydf"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f8wff"]
 size = Vector2(20, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlydf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8wff"]
+
 [node name="LaserEnemy" type="CharacterBody2D"]
 script = ExtResource("1_nlydf")
+max_health = 30.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_f8wff")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nlydf")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(1, -12)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1, 12)
+shape = SubResource("RectangleShape2D_f8wff")
+debug_color = Color(0.9917801, 0, 0.26715374, 0.41960785)
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("RectangleShape2D_nlydf")
