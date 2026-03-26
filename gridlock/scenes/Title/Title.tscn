@@ -230,6 +230,7 @@ expand_icon = true
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
+z_index = 2
 layout_mode = 0
 offset_left = 1104.0
 offset_top = 573.0
@@ -740,8 +741,13 @@ position = Vector2(1608, 285)
 [node name="PlayerSprite" parent="CanvasLayer/CreditPanel" instance=ExtResource("7_wvb7n")]
 position = Vector2(1597, 733)
 
-[node name="BestTime" type="Label" parent="CanvasLayer"]
+[node name="SawCursor" parent="." instance=ExtResource("19_xutsw")]
+position = Vector2(914, 517)
+
+[node name="BestTime" type="Label" parent="."]
+z_index = 1
 texture_filter = 1
+layout_mode = 0
 offset_left = 1183.0
 offset_top = 898.0
 offset_right = 1388.3334
@@ -750,9 +756,6 @@ scale = Vector2(2.625, 2.625)
 theme = ExtResource("17_wvb7n")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Best Time:"
-
-[node name="SawCursor" parent="." instance=ExtResource("19_xutsw")]
-position = Vector2(914, 517)
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_entered" from="Button/StartButton" to="." method="_on_button_mouse_entered"]
