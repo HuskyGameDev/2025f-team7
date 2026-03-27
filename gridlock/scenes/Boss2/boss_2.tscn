@@ -40,6 +40,18 @@ z_index = -1
 script = ExtResource("1_ypx45")
 bullet_node = ExtResource("2_ypx45")
 
+[node name="body wall" type="Node2D" parent="."]
+scale = Vector2(4.2107625, 2.9358974)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="body wall"]
+collision_layer = 4096
+collision_mask = 4097
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="body wall/StaticBody2D"]
+position = Vector2(-8.549526, 9.537128)
+scale = Vector2(7.578125, 6.7708335)
+polygon = PackedVector2Array(8.3987055, 16.29904, 13.914272, 10.6648035, 16.672056, 1.8110031, 14.917103, -9.45747, 11.407197, -13.88437, 7.395876, -15.896596, 8.900122, -22.738169, 19.429842, -15.091705, 24.193287, 8.6525755, 10.905783, 25.555285, -3.8859675, 28.372402, -17.173471, 14.689256, -15.669224, -12.274589, -3.8859673, -28.372406, 2.6324306, -30.787079, 8.900121, -23.140615, 7.3958745, -15.896598, 4.8887987, -13.88437, 1.1281849, -13.079479, -2.1310139, -14.286816, -4.63809, -17.103933, -8.649411, -13.88437, -11.407194, -6.640352, -12.159317, 4.6281214, -6.8944583, 14.286813, -0.3760606, 17.908823)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(4.2107625, 2.9358974)
 shape = SubResource("CircleShape2D_xuxg1")
