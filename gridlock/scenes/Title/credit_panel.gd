@@ -15,10 +15,12 @@ func _process(delta: float) -> void:
 func _on_credit_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	CreditPanel.visible = true
+	$GridContainer/CreditBackButton.grab_focus.call_deferred()
 	pass # Replace with function body.
 
 
 func _on_credit_back_button_pressed() -> void:
+	%CreditButton.grab_focus.call_deferred()
 	CreditPanel.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	pass # Replace with function body.

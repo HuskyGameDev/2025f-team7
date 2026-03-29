@@ -300,6 +300,10 @@ text = "OPTIONS"
 process_mode = 3
 z_index = 1
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../optionsbackButton")
+focus_neighbor_right = NodePath("../optionsaudioButton")
+focus_neighbor_bottom = NodePath("../optionsaudioButton")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 75
@@ -309,6 +313,10 @@ text = "Controls"
 process_mode = 3
 z_index = 1
 layout_mode = 2
+focus_neighbor_left = NodePath("../optionscontrolButton")
+focus_neighbor_top = NodePath("../optionscontrolButton")
+focus_neighbor_right = NodePath("../optionsbackButton")
+focus_neighbor_bottom = NodePath("../optionsbackButton")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 75
@@ -318,6 +326,10 @@ text = "Audio"
 process_mode = 3
 z_index = 1
 layout_mode = 2
+focus_neighbor_left = NodePath("../optionsaudioButton")
+focus_neighbor_top = NodePath("../optionsaudioButton")
+focus_neighbor_right = NodePath("../optionscontrolButton")
+focus_neighbor_bottom = NodePath("../optionscontrolButton")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 75
@@ -366,6 +378,10 @@ layout_mode = 2
 [node name="mainCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+focus_neighbor_left = NodePath("../../controlsBackButton")
+focus_neighbor_top = NodePath("../../controlsBackButton")
+focus_neighbor_right = NodePath("../sawCharacterMovementFoldable")
+focus_neighbor_bottom = NodePath("../sawCharacterMovementFoldable")
 folded = true
 title = "Main Character Movement"
 
@@ -468,6 +484,10 @@ control_name = "SlowWalk"
 [node name="sawCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+focus_neighbor_left = NodePath("../mainCharacterMovementFoldable")
+focus_neighbor_top = NodePath("../mainCharacterMovementFoldable")
+focus_neighbor_right = NodePath("../otherFoldable")
+focus_neighbor_bottom = NodePath("../otherFoldable")
 folded = true
 title = "Saw Character Movement"
 
@@ -540,6 +560,10 @@ control_name = "SawPlayerMoveRight"
 [node name="otherFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
+focus_neighbor_left = NodePath("../sawCharacterMovementFoldable")
+focus_neighbor_top = NodePath("../sawCharacterMovementFoldable")
+focus_neighbor_right = NodePath("../../controlsBackButton")
+focus_neighbor_bottom = NodePath("../../controlsBackButton")
 folded = true
 title = "Miscellaneous Controls"
 
@@ -568,6 +592,10 @@ process_mode = 3
 z_index = 6
 layout_mode = 2
 size_flags_vertical = 4
+focus_neighbor_left = NodePath("../VBoxContainer/otherFoldable")
+focus_neighbor_top = NodePath("../VBoxContainer/otherFoldable")
+focus_neighbor_right = NodePath("../VBoxContainer/mainCharacterMovementFoldable")
+focus_neighbor_bottom = NodePath("../VBoxContainer/mainCharacterMovementFoldable")
 text = "Back"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
@@ -630,6 +658,10 @@ process_mode = 3
 z_index = 3
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../audioBackButton")
+focus_neighbor_top = NodePath("../../audioBackButton")
+focus_neighbor_right = NodePath("../../audioBackButton")
+focus_neighbor_bottom = NodePath("../../audioBackButton")
 script = ExtResource("7_p7vwb")
 volSlider = NodePath(".")
 selectedBus = "Master"
@@ -639,6 +671,10 @@ process_mode = 3
 z_index = 3
 layout_mode = 2
 size_flags_vertical = 4
+focus_neighbor_left = NodePath("../MasterGridContainer/MasterHSlider")
+focus_neighbor_top = NodePath("../MasterGridContainer/MasterHSlider")
+focus_neighbor_right = NodePath("../MasterGridContainer/MasterHSlider")
+focus_neighbor_bottom = NodePath("../MasterGridContainer/MasterHSlider")
 text = "Back"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/audioPanel"]

@@ -174,10 +174,13 @@ func _input(_event: InputEvent) -> void:
 	if(Input.is_action_just_pressed("ui_cancel")):
 		if(audioPanel.visible):
 			audioPanel.visible = false;
+			$mainPausePanel/optionsPanel/GridContainer/optionscontrolButton.grab_focus.call_deferred()
 		elif(controlsPanel.visible):
 			controlsPanel.visible = false;
+			$mainPausePanel/optionsPanel/GridContainer/optionscontrolButton.grab_focus.call_deferred()
 		elif(optionsPanel.visible):
 			optionsPanel.visible = false;
+			$mainPausePanel/GridContainer/resumeButton.grab_focus.call_deferred()
 		elif(mainPausePanel.visible):
 			mainPausePanel.visible = false;
 			stopped = false;
@@ -185,6 +188,7 @@ func _input(_event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;	
 		elif(not mainPausePanel.visible):
 			mainPausePanel.visible = true;
+			$mainPausePanel/GridContainer/resumeButton.grab_focus.call_deferred()
 			stopped = true;
 			get_tree().paused = true;
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
@@ -200,6 +204,7 @@ func _on_resume_button_pressed() -> void:
 #Main Pause Panel Button
 func _on_option_button_pressed() -> void:
 	optionsPanel.visible = true;
+	$mainPausePanel/optionsPanel/GridContainer/optionscontrolButton.grab_focus.call_deferred()
 #Main Pause Panel Button
 func _on_quit_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
@@ -213,12 +218,15 @@ This block deals with the the buttons under optionsPanel and its GridContainer
 """
 func _on_optionscontrol_button_pressed() -> void:
 	controlsPanel.visible = true;
+	$mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable.grab_focus.call_deferred()
 #Options Panel Button
 func _on_optionsaudio_button_pressed() -> void:
 	audioPanel.visible = true;
+	$mainPausePanel/optionsPanel/audioPanel/GridContainer/MasterGridContainer/MasterHSlider.grab_focus.call_deferred()
 #Options Panel Button
 func _on_optionsback_button_pressed() -> void:
 	optionsPanel.visible = false;
+	$mainPausePanel/GridContainer/resumeButton.grab_focus.call_deferred()
 
 """
 Control Panel Buttons
@@ -226,6 +234,7 @@ This block deals with the the buttons under controlsPanel and its GridContainer
 """
 func _on_controls_back_button_pressed() -> void:
 	controlsPanel.visible = false;
+	$mainPausePanel/optionsPanel/GridContainer/optionscontrolButton.grab_focus.call_deferred()
 
 """
 Audio Panel Buttons
@@ -233,6 +242,7 @@ This block deals with the the buttons under audioPanel and its GridContainer
 """
 func _on_audio_back_button_pressed() -> void:
 	audioPanel.visible = false;
+	$mainPausePanel/optionsPanel/GridContainer/optionscontrolButton.grab_focus.call_deferred()
 
 """
 Temp
