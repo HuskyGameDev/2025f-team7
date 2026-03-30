@@ -1,22 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg2ebxkql5jyb"]
+[gd_scene load_steps=6 format=3 uid="uid://dg2ebxkql5jyb"]
 
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="1_dlo54"]
 [ext_resource type="Texture2D" uid="uid://kj2hkbm1lu4a" path="res://assets/sprites/other/boss1_turret_var3.png" id="2_882u6"]
 [ext_resource type="Texture2D" uid="uid://cf48twroox0ku" path="res://assets/sprites/other/boss1_turret_var1.png" id="3_di84i"]
 [ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="4_tl1v3"]
 
-[node name="Boss1" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dlo54"]
+radius = 31.0
+height = 122.0
+
+[node name="Boss1" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dlo54")
 
 [node name="Boss" parent="." instance=ExtResource("1_dlo54")]
 starting_pattern = 1
 starting_movement = 1
-health = 100.0
-isMainBoss = true
 
 [node name="TLTurret" parent="." instance=ExtResource("1_dlo54")]
 position = Vector2(-878, -315)
 starting_pattern = 12
-health = 50.0
 
 [node name="AnimatedSprite2D" parent="TLTurret" index="0"]
 visible = false
@@ -31,7 +37,6 @@ texture = ExtResource("2_882u6")
 [node name="TRTurret" parent="." instance=ExtResource("1_dlo54")]
 position = Vector2(688, -315)
 starting_pattern = 10
-health = 50.0
 
 [node name="AnimatedSprite2D" parent="TRTurret" index="0"]
 visible = false
@@ -46,7 +51,6 @@ texture = ExtResource("3_di84i")
 [node name="BLTurret" parent="." instance=ExtResource("1_dlo54")]
 position = Vector2(-878, 565)
 starting_pattern = 10
-health = 50.0
 
 [node name="AnimatedSprite2D" parent="BLTurret" index="0"]
 visible = false
@@ -61,7 +65,6 @@ texture = ExtResource("4_tl1v3")
 [node name="BRTurret" parent="." instance=ExtResource("1_dlo54")]
 position = Vector2(688, 565)
 starting_pattern = 12
-health = 50.0
 
 [node name="AnimatedSprite2D" parent="BRTurret" index="0"]
 visible = false

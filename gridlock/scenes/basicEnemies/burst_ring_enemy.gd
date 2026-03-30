@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Enemy
 
 # this "enemy" is used exclusively for patterns with boss 2 and cannot be harmed
 

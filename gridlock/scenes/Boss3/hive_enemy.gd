@@ -1,22 +1,19 @@
-extends CharacterBody2D
+extends Enemy
 #In spite of what would be best practice
 #I do not know what any of these unlabeled variables do. Please don't ask. 
 #I'll cry. 
 
 
 @export var bullet_node: PackedScene
-var health: int = 15
 
 var speed: int = 200 # Speed of the enemy's movement
 var player_position: Vector2
 var bullet_type: int = 0
-var target: Vector2
 var move_speed: float = 0.1
 var move_size: int = 100
 var t: float = 0.0
 var pos: Vector2 = Vector2.ZERO
 var theta: float = PI
-var beingHit: bool = false
 var time = 0
 var phase2: bool = false
 var startingSide: int
@@ -72,28 +69,6 @@ func _physics_process(delta: float) -> void:
 		
 	if (global_position.x >= 1700):
 		phase2 = true
-		
-
-func die():
-	queue_free()
-
-func _process(delta):
-	if (beingHit):
-		health -= 10*delta
-		if (health <= 0):
-			die()
 
 func _on_shoot_timeout() -> void:
 	shoot(theta)
-
-
-
-
-func _on_player_detection_area_entered(area: Area2D) -> void:
-	if (area.name == "BladeArea2D"):
-		beingHit = true
-
-
-func _on_player_detection_area_exited(area: Area2D) -> void:
-	if (area.name == "BladeArea2D"):
-		beingHit = false
