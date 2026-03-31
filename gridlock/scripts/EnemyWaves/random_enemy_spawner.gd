@@ -1,7 +1,6 @@
 extends Node
 
 const ENEMY_SPAWNER := preload("res://scenes/basicEnemies/enemy_spawner.tscn")
-
 @export var total_difficulty: float
 @export var spawn_rate: float
 

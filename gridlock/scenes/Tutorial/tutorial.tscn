@@ -19,6 +19,11 @@ border_color = Color(1, 1, 1, 1)
 script = ExtResource("1_8o0w1")
 tutorial_enemy_scene = ExtResource("2_8p2m1")
 
+[node name="Mus_Tutorial" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/MUSIC/Mus_Tut"
+event_guid = "{b06790dc-f559-4b07-a98e-7e2a856f3aa5}"
+autoplay = true
+
 [node name="parallax" parent="." instance=ExtResource("1_kbdgn")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

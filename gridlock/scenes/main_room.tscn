@@ -7,13 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="4_phake"]
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="5_ky753"]
 [ext_resource type="Script" uid="uid://c0iyvboumgjap" path="res://scripts/EnemyWaves/random_enemy_spawner.gd" id="5_nx0o4"]
-[ext_resource type="Script" uid="uid://c7n0kqwx8ry53" path="res://scripts/EnemyWaves/enemy_wave.gd" id="6_2noi8"]
 [ext_resource type="Script" uid="uid://b1rkfnw2y7pey" path="res://scripts/EnemyWaves/enemy_wave_entry.gd" id="6_10fbw"]
 [ext_resource type="PackedScene" uid="uid://60d8f13gtv6b" path="res://scenes/basicEnemies/shotgunOrbiter.tscn" id="7_mm8b8"]
 [ext_resource type="PackedScene" uid="uid://bgbhpo80ucalq" path="res://scenes/basicEnemies/enemy_spawner.tscn" id="7_phake"]
 [ext_resource type="PackedScene" uid="uid://dd330qd4wlqdq" path="res://scenes/basicEnemies/sniperEnemy.tscn" id="8_6gvn4"]
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="8_phake"]
 [ext_resource type="PackedScene" uid="uid://dwrn3jf27llc" path="res://scenes/basicEnemies/swordDude.tscn" id="9_edhfb"]
+[ext_resource type="Script" uid="uid://c24gramqxxiia" path="res://scripts/EnemyWaves/Boss_Wave.gd" id="11_nx0o4"]
 [ext_resource type="Script" uid="uid://dajg6mwwr8mtk" path="res://scripts/EnemyWaves/emit_signal.gd" id="16_nx0o4"]
 [ext_resource type="PackedScene" uid="uid://ddy6dvqegvph2" path="res://scenes/Boss2/boss_2.tscn" id="17_mm8b8"]
 [ext_resource type="PackedScene" uid="uid://cmwaa2ltynn4r" path="res://scenes/basicEnemies/burstRingEnemy.tscn" id="18_6gvn4"]
@@ -30,6 +30,17 @@ size = Vector2(16, 1080)
 bank_paths = ["res://addons/fmod/AudioBanks/Desktop/Master.bank"]
 
 [node name="FmodListener2D" type="FmodListener2D" parent="."]
+
+[node name="Mus_Main" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/MUSIC/Mus_Play"
+event_guid = "{ef7a1abf-9f57-4748-a716-462cb3ebcb32}"
+attached = false
+autoplay = true
+allow_fadeout = false
+"fmod_parameters/GAME STATE/id" = 7366261073603549199
+"fmod_parameters/GAME STATE" = "WAVE"
+"fmod_parameters/GAME STATE/labels" = PackedStringArray("WAVE", "BOSS", "END")
+"fmod_parameters/GAME STATE/variant_type" = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -134,7 +145,7 @@ spawns = ExtResource("9_edhfb")
 metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 
 [node name="Boss" type="Node2D" parent="Timeline/Boss1"]
-script = ExtResource("6_2noi8")
+script = ExtResource("11_nx0o4")
 delay = 3.0
 
 [node name="BossSpawner" parent="Timeline/Boss1/Boss" instance=ExtResource("7_phake")]
@@ -259,11 +270,10 @@ metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 
 [node name="Boss" type="Node2D" parent="Timeline/Boss2"]
 visible = false
-script = ExtResource("6_2noi8")
+script = ExtResource("11_nx0o4")
 
 [node name="Boss2" parent="Timeline/Boss2/Boss" instance=ExtResource("17_mm8b8")]
 position = Vector2(960, 540)
-health = 400.0
 
 [node name="BurstRingEnemy" parent="Timeline/Boss2/Boss" instance=ExtResource("18_6gvn4")]
 position = Vector2(300, 540)

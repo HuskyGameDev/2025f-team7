@@ -101,6 +101,11 @@ event_guid = "{5df90c8f-ac26-4e95-984f-64e2f4850c8d}"
 attached = false
 allow_fadeout = false
 
+[node name="MenuMusic" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/MUSIC/Mus_Menu"
+event_guid = "{62a14210-c748-4c17-a6d1-5b66ef087520}"
+autoplay = true
+
 [node name="MenuBackground" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(956, 540)
