@@ -65,8 +65,10 @@ radius = 70.0
 radius = 23.0
 height = 114.0
 
-[node name="Boss" type="Node2D"]
+[node name="Boss" type="CharacterBody2D"]
 texture_filter = 1
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_dlmty")
 starting_pattern = 2
 bullet_node = ExtResource("2_neq0i")
@@ -164,6 +166,10 @@ collision_mask = 0
 position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_88t4m")
 debug_color = Color(0.98433834, 0, 0.34898046, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_neq0i")
+disabled = true
 
 [connection signal="died" from="." to="." method="_on_death"]
 [connection signal="health_changed" from="." to="." method="_on_health_changed"]

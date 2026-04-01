@@ -27,7 +27,7 @@ spawns = ExtResource("1_3n20u")
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_bpcqn")]
 position = Vector2(683, 845)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="player"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="player"]
 shape = SubResource("CircleShape2D_f2gah")
 
 [node name="blade" parent="." instance=ExtResource("4_jotkl")]
