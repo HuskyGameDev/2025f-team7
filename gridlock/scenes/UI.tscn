@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b1yptc0ppcic"]
+[gd_scene load_steps=22 format=3 uid="uid://b1yptc0ppcic"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
@@ -8,6 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://cb6g0g1wx2arx" path="res://assets/darkBlueStyleBoxFlat.tres" id="5_wm3ai"]
 [ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="6_8dubc"]
 [ext_resource type="Texture2D" uid="uid://dcsoecysnuoc3" path="res://assets/sprites/Menu/bomb.png" id="6_ilk7v"]
+[ext_resource type="PackedScene" uid="uid://cei1dj3ywe6i2" path="res://scenes/timer_display.tscn" id="7_flkkw"]
 [ext_resource type="Script" uid="uid://b5jew2lejvmhl" path="res://scenes/Pause.gd" id="7_ilk7v"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="7_p7vwb"]
 [ext_resource type="Texture2D" uid="uid://2ymqktmu66fi" path="res://assets/sprites/Menu/options menu background.png" id="8_5sqrc"]
@@ -58,7 +59,7 @@ theme = ExtResource("1_ktti3")
 script = ExtResource("1_5en4g")
 full_heart = ExtResource("1_dj8aq")
 empty_heart = ExtResource("3_ua6yw")
-timeLabel = NodePath("mainUIPanelContainer/GridContainer/TimeLabel")
+timeLabel = NodePath("mainUIPanelContainer/BombContainer/TimerDisplay")
 bombPBar = NodePath("mainUIPanelContainer/BombContainer/BombBar")
 bombLabel = NodePath("mainUIPanelContainer/BombContainer/BombCountLabel")
 mainPausePanel = NodePath("mainPausePanel")
@@ -190,26 +191,12 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
 text = "x0"
 
-[node name="GridContainer" type="GridContainer" parent="mainUIPanelContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TimeTextLabel" type="Label" parent="mainUIPanelContainer/GridContainer"]
-process_mode = 3
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "TIME"
-horizontal_alignment = 1
-
-[node name="TimeLabel" type="Label" parent="mainUIPanelContainer/GridContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 20
-text = "00:00:00"
-horizontal_alignment = 1
+[node name="TimerDisplay" parent="mainUIPanelContainer/BombContainer" instance=ExtResource("7_flkkw")]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -572.0
+offset_right = 142.0
+offset_bottom = -508.0
 
 [node name="mainPausePanel" type="PanelContainer" parent="."]
 process_mode = 3

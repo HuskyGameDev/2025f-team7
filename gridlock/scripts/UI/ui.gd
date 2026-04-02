@@ -31,7 +31,7 @@ signal bossInbound;
 
 @export var full_heart: Texture;
 @export var empty_heart: Texture;
-@export var timeLabel: Label;
+@export var timeLabel: TimerDisplay;
 @export var bombPBar: ProgressBar;
 @export var bombLabel: Label;
 @export var mainPausePanel: PanelContainer;
@@ -90,7 +90,7 @@ func _process(delta: float) -> void:
 	if stopped||get_tree().paused:
 		return
 	time += delta;
-	timeLabel.text = _time_to_String();
+	timeLabel.time = time
 	
 	
 """
