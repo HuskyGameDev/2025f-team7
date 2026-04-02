@@ -17,6 +17,7 @@ var pos: Vector2
 var center: Vector2
 
 func _process(delta):
+	super._process(delta)
 	movement(delta)
 
 #Function for boss movement
@@ -36,15 +37,13 @@ func get_vector(angle):
 	return Vector2(cos(theta),sin(theta))
 	
 func _ready():
+	super._ready()
 	$AnimatedSprite2D.play("move")
 	center = get_viewport().get_visible_rect().size * 0.5
 	pos = global_position
 	GlobalSignals.connect("player_position", Callable(self, "_track"))
 	
 	max_health = health
-
-func _track(location: Vector2):
-	target = location
 
 func shoot(angle):
 	var bullet = bullet_node.instantiate()
