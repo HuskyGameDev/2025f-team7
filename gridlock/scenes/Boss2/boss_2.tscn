@@ -40,6 +40,7 @@ z_index = -1
 script = ExtResource("1_ypx45")
 bullet_node = ExtResource("2_ypx45")
 max_health = 400.0
+death_effect_scale = 0
 
 [node name="body wall" type="Node2D" parent="."]
 scale = Vector2(4.2107625, 2.9358974)

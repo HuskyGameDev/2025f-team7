@@ -1,10 +1,18 @@
 class_name Enemy
 extends CharacterBody2D
 
+const DEATH_EFFECT := preload("res://scenes/Effects/death_effect.tscn")
+
 signal health_changed(new_health: float)
 signal died
 
 @export var max_health: float
+
+# properties for automatic enemy effects (spawning, dying, taking damage)
+@export_category("Effect Properties")
+@export var effect_color: Color = Color.WHITE
+# how large the death effect should be (1 = default size, 0 = disabled)
+@export var death_effect_scale := 1
 
 @onready var health := max_health:
 	get(): return health
@@ -43,9 +51,19 @@ func _process(delta: float) -> void:
 	if taking_damage:
 		health -= 10 * delta
 	
-	if health == 0.0:
-		emit_signal("died")
-		queue_free()
+	if health == 0.0: __die()
+
+func __die() -> void:
+	if death_effect_scale > 0:
+		var effect := DEATH_EFFECT.instantiate()
+		effect.global_position = global_position
+		effect.scale = scale
+		effect.color = effect_color
+		get_parent().add_child(effect)
+		
+	
+	emit_signal("died")
+	queue_free()
 
 func _on_body_entered(_body: PhysicsBody2D) -> void:
 	taking_damage = true
