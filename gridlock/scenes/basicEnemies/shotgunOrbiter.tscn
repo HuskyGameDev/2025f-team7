@@ -19,10 +19,11 @@ height = 76.0
 [node name="ShotgunOrbiter" type="CharacterBody2D"]
 script = ExtResource("1_ctxoa")
 bullet_node = ExtResource("2_qnk06")
-max_health = 50.0
+max_health = 8.0
+effect_color = Color(0.87058824, 0.61960787, 0.25490198, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(34.5, 35)
+position = Vector2(1.5, -3.0000038)
 shape = SubResource("RectangleShape2D_qnk06")
 disabled = true
 
@@ -37,6 +38,7 @@ wait_time = 4.0
 autostart = true
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+position = Vector2(-33, -38.000004)
 collision_layer = 0
 collision_mask = 4
 
@@ -46,12 +48,12 @@ shape = SubResource("RectangleShape2D_ctxoa")
 
 [node name="Shotgunner" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(34, 31.000004)
+position = Vector2(1.0000038, -6.999996)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_80ekg")
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(1, -12)
+position = Vector2(-32, -50.000004)
 collision_layer = 16
 collision_mask = 0
 

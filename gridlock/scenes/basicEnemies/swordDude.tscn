@@ -19,12 +19,11 @@ height = 132.0
 
 [node name="SwordDude" type="CharacterBody2D"]
 script = ExtResource("1_p3v8f")
-alpha = null
-starting_pattern = null
-starting_movement = null
 max_health = 5.0
+effect_color = Color(0.64705884, 0.1882353, 0.1882353, 1)
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+position = Vector2(-40.602287, -63.374992)
 collision_layer = 0
 collision_mask = 4
 
@@ -35,17 +34,17 @@ shape = SubResource("RectangleShape2D_p3v8f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 17
 visibility_layer = 17
-position = Vector2(97.5, 60)
+position = Vector2(56.897713, -3.3749924)
 shape = SubResource("RectangleShape2D_xvkfc")
 disabled = true
 
 [node name="MosquitoWip" type="Sprite2D" parent="."]
-position = Vector2(116.00001, 45)
+position = Vector2(75.39772, -18.374992)
 scale = Vector2(0.34772724, 0.3477273)
 texture = ExtResource("2_p3v8f")
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(1, -12)
+position = Vector2(-39.602287, -75.37499)
 collision_layer = 16
 collision_mask = 0
 
