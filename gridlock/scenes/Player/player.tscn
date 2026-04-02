@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bieqraoqjj3gm"]
+[gd_scene load_steps=6 format=3 uid="uid://bieqraoqjj3gm"]
 
 [ext_resource type="Script" uid="uid://dbyns6rd0cqi8" path="res://scenes/Player/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://d3snw0is72pw8" path="res://scenes/Player/player_sprite.tscn" id="2_1kbk7"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
-radius = 9.0
-height = 18.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t6q27"]
 radius = 43.011627
@@ -20,9 +16,6 @@ script = ExtResource("1_3vyb7")
 
 [node name="PlayerSprite" parent="." instance=ExtResource("2_1kbk7")]
 scale = Vector2(0.25, 0.25)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_g2els")
 
 [node name="debug" type="Label" parent="."]
 visible = false
@@ -63,7 +56,7 @@ collision_mask = 16
 shape = SubResource("CircleShape2D_1kbk7")
 debug_color = Color(0.98443025, 0, 0.34811187, 0.41960785)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gqjuk")
 
 [node name="Bombuse" type="FmodEventEmitter2D" parent="."]
