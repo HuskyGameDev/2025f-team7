@@ -2,44 +2,41 @@
 
 [ext_resource type="Texture2D" uid="uid://c2bxve7wj67ry" path="res://assets/sprites/other/death_particle.png" id="1_55aop"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_55aop"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywqqq"]
 atlas = ExtResource("1_55aop")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ywqqq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oou2v"]
 atlas = ExtResource("1_55aop")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oou2v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qcrb"]
 atlas = ExtResource("1_55aop")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6qcrb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7orj"]
 atlas = ExtResource("1_55aop")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a7orj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2wtl"]
 atlas = ExtResource("1_55aop")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2wtl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_88j43"]
 atlas = ExtResource("1_55aop")
 region = Rect2(16, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_88j43"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_86kxg"]
 atlas = ExtResource("1_55aop")
 region = Rect2(32, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_86kxg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kffn1"]
 atlas = ExtResource("1_55aop")
 region = Rect2(48, 16, 16, 16)
 
 [resource]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_55aop")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ywqqq")
 }, {
@@ -60,8 +57,11 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_86kxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kffn1")
 }],
 "loop": false,
 "name": &"default",
-"speed": 12.0
+"speed": 8.0
 }]
