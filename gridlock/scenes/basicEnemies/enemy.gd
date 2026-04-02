@@ -57,7 +57,7 @@ func __die() -> void:
 	if death_effect_scale > 0:
 		var effect := DEATH_EFFECT.instantiate()
 		effect.global_position = global_position
-		effect.scale = scale
+		effect.scale = Vector2.ONE * death_effect_scale
 		effect.color = effect_color
 		get_parent().add_child(effect)
 		

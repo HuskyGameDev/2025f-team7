@@ -33,6 +33,7 @@ script = ExtResource("1_86118")
 starting_pattern = 12
 bullet_node = ExtResource("2_2d1wj")
 max_health = 30.0
+effect_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
 
 [node name="Speed" type="Timer" parent="."]
 wait_time = 0.05

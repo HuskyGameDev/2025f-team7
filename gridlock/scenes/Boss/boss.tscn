@@ -73,6 +73,7 @@ script = ExtResource("1_dlmty")
 starting_pattern = 2
 bullet_node = ExtResource("2_neq0i")
 max_health = 400.0
+effect_color = Color(0.44705883, 0.6039216, 0.7764706, 1)
 death_effect_scale = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
