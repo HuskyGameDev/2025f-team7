@@ -19,7 +19,7 @@ texture = ExtResource("2_3cp4v")
 
 [node name="Text" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(61.276802, 24.55604)
+position = Vector2(62.000004, 26)
 rotation = 0.017453292
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("2_wwpqk")
@@ -27,7 +27,7 @@ autoplay = "default"
 
 [node name="Percent1" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(113.276794, 61.55603)
+position = Vector2(115.276794, 65.276794)
 rotation = 0.017453292
 scale = Vector2(0.125, 0.125)
 sprite_frames = ExtResource("1_ynsn4")
@@ -36,7 +36,7 @@ autoplay = "0"
 
 [node name="Percent2" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(103.276794, 61.556038)
+position = Vector2(105.276794, 65.2768)
 rotation = 0.017453292
 scale = Vector2(0.125, 0.125)
 sprite_frames = ExtResource("1_ynsn4")
@@ -45,7 +45,7 @@ autoplay = "0"
 
 [node name="Second1" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(83.276794, 56.556038)
+position = Vector2(85.276794, 60.276802)
 rotation = 0.017453292
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("1_ynsn4")
@@ -54,7 +54,7 @@ autoplay = "0"
 
 [node name="Second2" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(63.2768, 55.55604)
+position = Vector2(65.276794, 59.276806)
 rotation = 0.017453292
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("1_ynsn4")
@@ -63,7 +63,7 @@ autoplay = "0"
 
 [node name="Colon" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(48.276802, 55.556038)
+position = Vector2(50.276802, 59.276802)
 rotation = 0.017453292
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("1_ynsn4")
@@ -72,7 +72,7 @@ autoplay = ":"
 
 [node name="Dot" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(95.7768, 60.556038)
+position = Vector2(97.7768, 64.2768)
 rotation = 0.017453292
 scale = Vector2(0.125, 0.125)
 sprite_frames = ExtResource("1_ynsn4")
@@ -81,7 +81,7 @@ autoplay = "."
 
 [node name="Minute1" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(33.276802, 55.556038)
+position = Vector2(35.276802, 59.276802)
 rotation = 0.017453292
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("1_ynsn4")
@@ -90,7 +90,7 @@ autoplay = "0"
 
 [node name="Minute2" type="AnimatedSprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(13.276802, 55.556038)
+position = Vector2(15.276802, 59.276802)
 rotation = 0.017453292
 scale = Vector2(0.25, 0.25)
 sprite_frames = ExtResource("1_ynsn4")
