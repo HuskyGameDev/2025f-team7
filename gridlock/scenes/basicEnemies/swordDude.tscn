@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cjafq14xq2mhh" path="res://assets/sprites/lesser enemies/mosquito-WIP.png" id="2_p3v8f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3v8f"]
-size = Vector2(195, 120)
+size = Vector2(216, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvkfc"]
 size = Vector2(195, 120)
@@ -23,12 +23,11 @@ max_health = 5.0
 effect_color = Color(0.64705884, 0.1882353, 0.1882353, 1)
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-position = Vector2(-40.602287, -63.374992)
-collision_layer = 0
+collision_layer = 32
 collision_mask = 4
 
 [node name="Player Detectiion Box" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(97.5, 60)
+position = Vector2(60, -3)
 shape = SubResource("RectangleShape2D_p3v8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

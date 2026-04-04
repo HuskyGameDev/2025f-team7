@@ -38,12 +38,12 @@ wait_time = 4.0
 autostart = true
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-position = Vector2(-33, -38.000004)
-collision_layer = 0
+position = Vector2(0, -1)
+collision_layer = 32
 collision_mask = 4
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(36.5, 36)
 shape = SubResource("RectangleShape2D_ctxoa")
 
 [node name="Shotgunner" type="Sprite2D" parent="."]

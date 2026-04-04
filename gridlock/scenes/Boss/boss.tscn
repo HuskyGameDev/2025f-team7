@@ -154,7 +154,7 @@ script = ExtResource("15_aub7x")
 script = ExtResource("16_4vq7k")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 32
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]

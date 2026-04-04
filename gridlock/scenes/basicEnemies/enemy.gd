@@ -2,6 +2,7 @@ class_name Enemy
 extends CharacterBody2D
 
 const DEATH_EFFECT := preload("res://scenes/Effects/death_effect.tscn")
+const DEATH_PARTICLE := preload("res://scenes/Effects/death_particle.tscn")
 
 signal health_changed(new_health: float)
 signal died
@@ -59,8 +60,7 @@ func __die() -> void:
 		effect.global_position = global_position
 		effect.scale = Vector2.ONE * death_effect_scale
 		effect.color = effect_color
-		get_parent().add_child(effect)
-		
+		add_sibling(effect)
 	
 	emit_signal("died")
 	queue_free()

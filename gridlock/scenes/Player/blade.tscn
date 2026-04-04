@@ -10,11 +10,14 @@ radius = 46.0
 radius = 29.14
 
 [node name="blade" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_54kj3")
 
 [node name="BladeArea2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BladeArea2D"]
 shape = SubResource("CircleShape2D_hmvf4")
@@ -24,3 +27,8 @@ shape = SubResource("CircleShape2D_n3ed1")
 
 [node name="SawSprite" parent="." instance=ExtResource("2_1s1bc")]
 scale = Vector2(0.25, 0.25)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="timeout" from="Timer" to="." method="_on_timeout"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpdn3r3pn1ms1"]
+
+[ext_resource type="SpriteFrames" uid="uid://li8qkalo4nn8" path="res://assets/sprites/other/damage_particle.tres" id="1_35m6u"]
+[ext_resource type="Script" uid="uid://cyd7w1r5djtxv" path="res://scenes/Effects/damage_particle.gd" id="2_e0ktk"]
+
+[node name="DamageParticle" type="AnimatedSprite2D"]
+modulate = Color(1, 0.725, 0.25, 1)
+z_index = 1
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("1_35m6u")
+autoplay = "default"
+script = ExtResource("2_e0ktk")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

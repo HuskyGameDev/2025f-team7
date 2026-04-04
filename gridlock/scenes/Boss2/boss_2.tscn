@@ -40,6 +40,7 @@ z_index = -1
 script = ExtResource("1_ypx45")
 bullet_node = ExtResource("2_ypx45")
 max_health = 400.0
+effect_color = Color(0.87058824, 0.61960787, 0.25490198, 1)
 death_effect_scale = 0
 
 [node name="body wall" type="Node2D" parent="."]
@@ -66,11 +67,11 @@ sprite_frames = SubResource("SpriteFrames_n0x0t")
 animation = &"move"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 0
+position = Vector2(0, -400)
+collision_layer = 32
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(0, -400)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_n0x0t")
 
