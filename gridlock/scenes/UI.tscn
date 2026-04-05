@@ -230,18 +230,21 @@ text = "PAUSE"
 [node name="resumeButton" type="Button" parent="mainPausePanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("1_ktti3")
 theme_override_font_sizes/font_size = 75
 text = "Resume"
 
 [node name="optionButton" type="Button" parent="mainPausePanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("1_ktti3")
 theme_override_font_sizes/font_size = 75
 text = "Options"
 
 [node name="quitButton" type="Button" parent="mainPausePanel/GridContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("1_ktti3")
 theme_override_font_sizes/font_size = 75
 text = "Quit"
 
@@ -291,6 +294,7 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../optionsbackButton")
 focus_neighbor_right = NodePath("../optionsaudioButton")
 focus_neighbor_bottom = NodePath("../optionsaudioButton")
+theme = ExtResource("1_ktti3")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 75
@@ -304,6 +308,7 @@ focus_neighbor_left = NodePath("../optionscontrolButton")
 focus_neighbor_top = NodePath("../optionscontrolButton")
 focus_neighbor_right = NodePath("../optionsbackButton")
 focus_neighbor_bottom = NodePath("../optionsbackButton")
+theme = ExtResource("1_ktti3")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 75
@@ -317,6 +322,7 @@ focus_neighbor_left = NodePath("../optionsaudioButton")
 focus_neighbor_top = NodePath("../optionsaudioButton")
 focus_neighbor_right = NodePath("../optionscontrolButton")
 focus_neighbor_bottom = NodePath("../optionscontrolButton")
+theme = ExtResource("1_ktti3")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 75
@@ -369,6 +375,7 @@ focus_neighbor_left = NodePath("../../controlsBackButton")
 focus_neighbor_top = NodePath("../../controlsBackButton")
 focus_neighbor_right = NodePath("../sawCharacterMovementFoldable")
 focus_neighbor_bottom = NodePath("../sawCharacterMovementFoldable")
+theme = ExtResource("1_ktti3")
 folded = true
 title = "Main Character Movement"
 
@@ -475,6 +482,7 @@ focus_neighbor_left = NodePath("../mainCharacterMovementFoldable")
 focus_neighbor_top = NodePath("../mainCharacterMovementFoldable")
 focus_neighbor_right = NodePath("../otherFoldable")
 focus_neighbor_bottom = NodePath("../otherFoldable")
+theme = ExtResource("1_ktti3")
 folded = true
 title = "Saw Character Movement"
 
@@ -551,6 +559,7 @@ focus_neighbor_left = NodePath("../sawCharacterMovementFoldable")
 focus_neighbor_top = NodePath("../sawCharacterMovementFoldable")
 focus_neighbor_right = NodePath("../../controlsBackButton")
 focus_neighbor_bottom = NodePath("../../controlsBackButton")
+theme = ExtResource("1_ktti3")
 folded = true
 title = "Miscellaneous Controls"
 
@@ -583,6 +592,7 @@ focus_neighbor_left = NodePath("../VBoxContainer/otherFoldable")
 focus_neighbor_top = NodePath("../VBoxContainer/otherFoldable")
 focus_neighbor_right = NodePath("../VBoxContainer/mainCharacterMovementFoldable")
 focus_neighbor_bottom = NodePath("../VBoxContainer/mainCharacterMovementFoldable")
+theme = ExtResource("1_ktti3")
 text = "Back"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
@@ -649,6 +659,7 @@ focus_neighbor_left = NodePath("../../audioBackButton")
 focus_neighbor_top = NodePath("../../audioBackButton")
 focus_neighbor_right = NodePath("../../audioBackButton")
 focus_neighbor_bottom = NodePath("../../audioBackButton")
+theme = ExtResource("1_ktti3")
 script = ExtResource("7_p7vwb")
 volSlider = NodePath(".")
 selectedBus = "Master"
@@ -662,6 +673,7 @@ focus_neighbor_left = NodePath("../MasterGridContainer/MasterHSlider")
 focus_neighbor_top = NodePath("../MasterGridContainer/MasterHSlider")
 focus_neighbor_right = NodePath("../MasterGridContainer/MasterHSlider")
 focus_neighbor_bottom = NodePath("../MasterGridContainer/MasterHSlider")
+theme = ExtResource("1_ktti3")
 text = "Back"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/audioPanel"]
