@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var texture_array : Array[Texture2D]
+@export var near_miss := false
 var speed = 100
 var speedChange: int = 0
 

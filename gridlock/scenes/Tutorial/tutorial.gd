@@ -51,6 +51,7 @@ func instruction():
 			step += 1
 		8:
 			$CanvasLayer/Panel/Label.text = "Once the bomb bar reaches 100%, the bomb is ready. Press space to launch a bomb. Why dont you try it now."
+			GlobalSignals.emit_signal("bomb_gained")
 			waiting_for_action = true
 			step += 1
 		9:

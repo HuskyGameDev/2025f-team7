@@ -7,7 +7,7 @@ signal player_position(location: Vector2)
 var SPEED = 300.0
 var SHIFTSPEED = 450
 var CTRLSPEED = 150
-@onready var bombs_available := 1
+@onready var bombs_available := 0
 var invincible = false
 var invincibleTimer: float = 0
 const SPEED_STANDARD = 150
@@ -101,7 +101,10 @@ func _on_invincible_timer_timeout() -> void:
 	sprite.invincible = false
 
 
-func _on_near_miss(_area: Area2D) -> void:
+func _on_near_miss(area: Area2D) -> void:
+	if area.near_miss: return
+	area.near_miss = true
+	
 	if !invincible: GlobalSignals.emit_signal("near_miss")
 	$Nearmiss.play()
 

@@ -21,7 +21,7 @@ extends Control
 var currentHealth := 5;
 var heartTextures := [];
 
-var bombs := 1;
+var bombs := 0;
 
 var time := 0.0;
 var stopped := false;
@@ -73,6 +73,7 @@ func _ready() -> void:
 	GlobalSignals.connect("boss_health_change", Callable(self, "_on_boss_health_change"));
 	GlobalSignals.connect("boss_spawned", Callable(self, "_on_boss_spawned"));
 	GlobalSignals.connect("boss_died", Callable(self, "_on_boss_died"));
+	GlobalSignals.bomb_gained.connect(_on_bomb_gained)
 	
 	#Remove after minion waves get put in
 	#Pauses the game after a level is loaded for a few seconds
@@ -133,12 +134,14 @@ Max bombs right now is 2
 """
 func _near_Miss_Bomb() -> void:
 	if(bombs<2):
-		bombPBar.value += 10;
+		bombPBar.value += 2;
 		if(bombPBar.value>=100):
-			bombs += 1;
-			bombLabel.text = "x" + str(bombs);
 			bombPBar.value = 0;
 			GlobalSignals.emit_signal("bomb_gained");
+
+func _on_bomb_gained() -> void:
+	bombs += 1;
+	bombLabel.text = "x" + str(bombs);
 
 #activated by global signals
 #When a bomb is used by player lower amount of bombs by 1
