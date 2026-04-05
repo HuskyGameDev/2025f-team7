@@ -40,13 +40,10 @@ func get_vector(angle):
 	return Vector2(cos(theta),sin(theta))
 	
 func _ready():
+	super._ready()
 	pos = global_position
-	GlobalSignals.connect("player_position", Callable(self, "_track"))
 	
 	max_health = health
-
-func _track(location: Vector2):
-	target = location
 
 func shoot(angle):
 	var bullet = bullet_node.instantiate()

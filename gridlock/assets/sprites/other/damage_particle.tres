@@ -1,10 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://li8qkalo4nn8"]
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://li8qkalo4nn8"]
 
 [ext_resource type="Texture2D" uid="uid://c2bxve7wj67ry" path="res://assets/sprites/other/death_particle.png" id="1_bduno"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ggbbq"]
-atlas = ExtResource("1_bduno")
-region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_db24r"]
 atlas = ExtResource("1_bduno")
@@ -21,9 +17,6 @@ region = Rect2(48, 16, 16, 16)
 [resource]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ggbbq")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_db24r")
 }, {

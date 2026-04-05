@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bx8dkwwoiesnh"]
+[gd_scene load_steps=23 format=3 uid="uid://bx8dkwwoiesnh"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_w27ju"]
 [ext_resource type="PackedScene" uid="uid://vcpjhf32cdd1" path="res://scenes/victory_screen.tscn" id="2_7h4nr"]
@@ -14,9 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="8_phake"]
 [ext_resource type="PackedScene" uid="uid://dwrn3jf27llc" path="res://scenes/basicEnemies/swordDude.tscn" id="9_edhfb"]
 [ext_resource type="Script" uid="uid://c24gramqxxiia" path="res://scripts/EnemyWaves/Boss_Wave.gd" id="11_nx0o4"]
+[ext_resource type="Script" uid="uid://c7n0kqwx8ry53" path="res://scripts/EnemyWaves/enemy_wave.gd" id="16_6gvn4"]
 [ext_resource type="Script" uid="uid://dajg6mwwr8mtk" path="res://scripts/EnemyWaves/emit_signal.gd" id="16_nx0o4"]
+[ext_resource type="PackedScene" uid="uid://0cn5wfkhif6q" path="res://scenes/Boss3/HiveSpawner.tscn" id="17_edhfb"]
 [ext_resource type="PackedScene" uid="uid://ddy6dvqegvph2" path="res://scenes/Boss2/boss_2.tscn" id="17_mm8b8"]
 [ext_resource type="PackedScene" uid="uid://cmwaa2ltynn4r" path="res://scenes/basicEnemies/burstRingEnemy.tscn" id="18_6gvn4"]
+[ext_resource type="PackedScene" uid="uid://im0wqvumy8dx" path="res://scenes/Boss3/Boss3.tscn" id="18_gy4ma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt06m"]
 size = Vector2(1798, 16)
@@ -283,6 +286,24 @@ alpha = null
 [node name="Boss3" type="Node2D" parent="Timeline"]
 script = ExtResource("3_2noi8")
 metadata/_custom_type_script = "uid://bv1js5gomnval"
+
+[node name="Boss" type="Node2D" parent="Timeline/Boss3"]
+script = ExtResource("16_6gvn4")
+
+[node name="HiveSpawnerOne" parent="Timeline/Boss3/Boss" instance=ExtResource("17_edhfb")]
+position = Vector2(-20, 1000)
+side = 1
+first = 1
+
+[node name="HiveSpawnerTwo" parent="Timeline/Boss3/Boss" instance=ExtResource("17_edhfb")]
+position = Vector2(-20, 80)
+side = -1
+
+[node name="Boss3" parent="Timeline/Boss3/Boss" instance=ExtResource("18_gy4ma")]
+
+[node name="HiveTimer" type="Timer" parent="Timeline/Boss3/Boss" groups=["Hive"]]
+wait_time = 0.95
+autostart = true
 
 [node name="VictoryScreen" type="Node2D" parent="Timeline"]
 script = ExtResource("16_nx0o4")

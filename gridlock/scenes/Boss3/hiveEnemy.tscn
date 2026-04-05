@@ -13,12 +13,13 @@ size = Vector2(40, 40)
 script = ExtResource("1_d00xp")
 bullet_node = ExtResource("2_0gqtu")
 max_health = 15.0
+effect_color = Color(1, 0, 1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_0gqtu")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 32
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]

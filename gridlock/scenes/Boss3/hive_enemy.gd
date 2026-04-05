@@ -20,6 +20,7 @@ var startingSide: int
 
 
 func _ready():
+	super._ready()
 	GlobalSignals.player_position.connect(_on_position_change)
 	var timer = get_tree().get_first_node_in_group("Hive")
 	timer.timeout.connect(_on_hive_timeout)
