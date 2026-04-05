@@ -2,6 +2,7 @@ extends PanelContainer
 
 @export var controlsPanel: PanelContainer;
 @export var audioPanel: PanelContainer;
+@export var SaveDataPrompt: PanelContainer;
 
 
 func _ready() -> void:
@@ -42,4 +43,17 @@ func _on_audio_back_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_save_data_button_pressed() -> void:
+	SaveDataPrompt.visible = true;
+	$SaveDataPrompt/GridContainer/GridContainer/DoNotDeleteButton.grab_focus.call_deferred()
+
+
+func _on_delete_button_pressed() -> void:
 	DirAccess.remove_absolute("res://save_data.cfg")
+	SaveDataPrompt.visible = false;
+	$GridContainer/SaveDataButton.grab_focus.call_deferred()
+	InputMap.load_from_project_settings()
+	get_tree().reload_current_scene()
+
+func _on_do_not_delete_button_pressed() -> void:
+	SaveDataPrompt.visible = false;
+	$GridContainer/SaveDataButton.grab_focus.call_deferred()
