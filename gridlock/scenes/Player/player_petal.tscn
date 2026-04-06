@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3ec6gwgiic4w"]
+
+[ext_resource type="Script" uid="uid://bx4e2abw4ja04" path="res://scenes/Player/player_petal.gd" id="1_5soat"]
+[ext_resource type="Texture2D" uid="uid://c3x220jg40j3f" path="res://assets/sprites/Player/flower_petal_background.png" id="3_lw845"]
+[ext_resource type="Texture2D" uid="uid://dslwbv7m45me1" path="res://assets/sprites/Player/flower_petal_foreground.png" id="4_clc47"]
+
+[node name="PlayerPetal" type="Node2D"]
+z_index = -1
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_5soat")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("3_lw845")
+
+[node name="Foreground" type="Sprite2D" parent="."]
+texture = ExtResource("4_clc47")

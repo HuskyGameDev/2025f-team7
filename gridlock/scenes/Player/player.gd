@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const BOMB := preload("res://scenes/bomb.tscn")
+const PETAL := preload("res://scenes/Player/player_petal.tscn")
 
 signal player_position(location: Vector2)
 
@@ -73,6 +74,12 @@ func fire():
 	health -= 2
 	$Hurt.play()
 	GlobalSignals.emit_signal("health_change", health)
+	
+	var petal := PETAL.instantiate()
+	petal.color = sprite.fg.modulate
+	petal.start_position = position
+	petal.angle = sprite.angle + (2 * PI / 5.0) * (5 - (health / 2.0))
+	add_sibling(petal)
 
 func poison():
 	debug.text = "poison"

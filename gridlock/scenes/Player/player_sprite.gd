@@ -2,9 +2,17 @@ extends Node
 
 const FLASH := preload("res://scenes/Player/player_sprite_flash.tscn")
 
+
 @onready var bg: AnimatedSprite2D = $Background
 @onready var fg: AnimatedSprite2D = $Foreground
 @onready var shadow: AnimatedSprite2D = $Shadow
+@onready var angle := 0.0:
+	get(): return angle
+	set(value):
+		angle = fmod(value, PI * 2)
+		bg.rotation = angle
+		fg.rotation = angle
+		shadow.rotation = angle
 
 @onready var config = ConfigFile.new() #creates configfile object
 @onready var invincible := false:
@@ -55,9 +63,7 @@ func _ready():
 		fg.modulate = config.get_value("Player","player_color")
 		
 func _process(delta: float) -> void:
-	bg.rotation += delta
-	fg.rotation += delta
-	shadow.rotation += delta
+	angle += delta
 	
 func _on_color_picker_color_changed(color: Color) -> void:
 	fg.modulate = color
