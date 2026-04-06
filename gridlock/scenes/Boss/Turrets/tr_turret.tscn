@@ -100,7 +100,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_xy54t")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 32
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
