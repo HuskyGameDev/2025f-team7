@@ -5,12 +5,21 @@ extends Node2D
 @export var delay := 0.0
 
 @onready var timer := 0.0
+@onready var boss_alive := true
+@onready var active := false
+@onready var mus_main := get_tree().current_scene.get_node("Mus_Main")
 
 func _process(delta: float) -> void:
-	var Mus_Main := get_node("../Mus_Main")
-	Mus_Main.set_parameter("Game State", 1)
-	if get_child_count() != 0: return
-	timer += delta
-	if timer >= delay:
-		Mus_Main.set_parameter("Game State", 0)
-		queue_free()
+	if !active:
+		active = true
+		GlobalSignals.boss_died.connect(_on_boss_died)
+		mus_main.set_parameter("Game State", 1)
+	
+	if !boss_alive:
+		timer += delta
+		if timer >= delay:
+			mus_main.set_parameter("Game State", 0)
+			queue_free()
+
+func _on_boss_died() -> void:
+	boss_alive = false

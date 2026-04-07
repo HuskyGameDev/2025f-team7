@@ -8,7 +8,7 @@ extends Enemy
 @export var starting_movement: int
 @export var bullet_node: PackedScene
 
-var speed: int = 75 # Speed of the enemy's movement
+var speed: float = 75.0 # Speed of the enemy's movement
 var orbit_radius: int = 500 # Desired distance from the player
 var orbit_speed: int = 1 # How fast the enemy orbits
 var bullet_type: int = 0
@@ -70,9 +70,9 @@ func _on_shoot_timeout() -> void:
 	alpha = 1 #Count Columns
 	for n: int in 1: #Count rows
 		#maxvelocity and then min velocity
-		speed = ((200-150)/10)*n + 120
+		speed = ((200-150)/10.0)*n + 120
 		
-		theta = Vector2(1,0).angle_to(target - position) - (180/2)
+		theta = global_position.angle_to(target)
 		#shoot(theta)
 		for m: int in 1:
 			shoot(theta)

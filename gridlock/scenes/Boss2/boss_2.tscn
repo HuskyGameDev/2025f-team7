@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddy6dvqegvph2"]
+[gd_scene load_steps=12 format=3 uid="uid://ddy6dvqegvph2"]
 
 [ext_resource type="Script" uid="uid://cyk0xwrlaq64l" path="res://scenes/Boss2/boss_2.gd" id="1_ypx45"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_ypx45"]
 [ext_resource type="Texture2D" uid="uid://wkc4l5ke7fiy" path="res://assets/sprites/Bosses/centipede remaket.png" id="3_ytnt7"]
+[ext_resource type="Script" uid="uid://bpla01kkpl4cx" path="res://scenes/Boss/BossIdle.gd" id="5_4ggrf"]
 [ext_resource type="Script" uid="uid://p0uno3xxi6f6" path="res://scripts/State Machine/FiniteStateMachine.gd" id="5_udsia"]
 [ext_resource type="Script" uid="uid://c47tft8la4ni0" path="res://scenes/Boss2/FollowLeaf.gd" id="6_4ggrf"]
 
@@ -71,12 +72,16 @@ position = Vector2(0, -400)
 collision_layer = 32
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+[node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDetection"]
+unique_name_in_owner = true
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_n0x0t")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("5_udsia")
+
+[node name="BossIdle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("5_4ggrf")
 
 [node name="FollowLeaf" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("6_4ggrf")
@@ -87,4 +92,5 @@ wait_time = 4.0
 [node name="Speed" type="Timer" parent="."]
 wait_time = 0.05
 
+[connection signal="died" from="." to="." method="_on_death"]
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]

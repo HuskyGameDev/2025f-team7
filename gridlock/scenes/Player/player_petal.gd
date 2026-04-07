@@ -9,7 +9,6 @@ const TIME := 0.75
 
 @onready var timer: float = 0
 
-@onready var shadow := $Shadow
 @onready var background := $Background
 @onready var foreground = $Foreground
 

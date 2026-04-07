@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bx8dkwwoiesnh"]
+[gd_scene load_steps=24 format=3 uid="uid://bx8dkwwoiesnh"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_w27ju"]
 [ext_resource type="PackedScene" uid="uid://vcpjhf32cdd1" path="res://scenes/victory_screen.tscn" id="2_7h4nr"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b6t43grsclomr" path="res://scenes/Boss/boss.tscn" id="8_phake"]
 [ext_resource type="PackedScene" uid="uid://dwrn3jf27llc" path="res://scenes/basicEnemies/swordDude.tscn" id="9_edhfb"]
 [ext_resource type="Script" uid="uid://c24gramqxxiia" path="res://scripts/EnemyWaves/Boss_Wave.gd" id="11_nx0o4"]
+[ext_resource type="Script" uid="uid://cxwwx24jjq0kf" path="res://scripts/EnemyWaves/reparent.gd" id="14_edhfb"]
 [ext_resource type="Script" uid="uid://c7n0kqwx8ry53" path="res://scripts/EnemyWaves/enemy_wave.gd" id="16_6gvn4"]
 [ext_resource type="Script" uid="uid://dajg6mwwr8mtk" path="res://scripts/EnemyWaves/emit_signal.gd" id="16_nx0o4"]
 [ext_resource type="PackedScene" uid="uid://0cn5wfkhif6q" path="res://scenes/Boss3/HiveSpawner.tscn" id="17_edhfb"]
@@ -62,8 +63,10 @@ collision_mask = 4104
 script = ExtResource("3_2noi8")
 
 [node name="Boss1" type="Node2D" parent="Timeline"]
+visible = false
 position = Vector2(0, 1)
 script = ExtResource("3_2noi8")
+enabled = false
 
 [node name="Waves" type="Node2D" parent="Timeline/Boss1"]
 script = ExtResource("3_2noi8")
@@ -217,6 +220,12 @@ weight = 1.0
 spawns = ExtResource("9_edhfb")
 metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 
+[node name="SpawnBossEarly" type="Node2D" parent="Timeline/Boss2/Waves"]
+script = ExtResource("14_edhfb")
+
+[node name="Boss2" parent="Timeline/Boss2/Waves/SpawnBossEarly" instance=ExtResource("17_mm8b8")]
+position = Vector2(960, 540)
+
 [node name="Wave3" type="Node2D" parent="Timeline/Boss2/Waves"]
 position = Vector2(3, -3)
 script = ExtResource("5_nx0o4")
@@ -243,6 +252,9 @@ difficulty = 1.0
 weight = 1.0
 spawns = ExtResource("9_edhfb")
 metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="AdvanceBossStage" type="Node2D" parent="Timeline/Boss2/Waves"]
+script = ExtResource("16_nx0o4")
 
 [node name="Wave4" type="Node2D" parent="Timeline/Boss2/Waves"]
 position = Vector2(3, -3)
@@ -275,8 +287,8 @@ metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 visible = false
 script = ExtResource("11_nx0o4")
 
-[node name="Boss2" parent="Timeline/Boss2/Boss" instance=ExtResource("17_mm8b8")]
-position = Vector2(960, 540)
+[node name="AdvanceBossStage" type="Node2D" parent="Timeline/Boss2/Boss"]
+script = ExtResource("16_nx0o4")
 
 [node name="BurstRingEnemy" parent="Timeline/Boss2/Boss" instance=ExtResource("18_6gvn4")]
 position = Vector2(300, 540)
@@ -332,4 +344,6 @@ shape = SubResource("RectangleShape2D_qtdqc")
 position = Vector2(1774, 540)
 shape = SubResource("RectangleShape2D_qtdqc")
 
+[connection signal="emitted" from="Timeline/Boss2/Waves/AdvanceBossStage" to="Timeline/Boss2/Waves/SpawnBossEarly/Boss2" method="_on_next_stage"]
+[connection signal="emitted" from="Timeline/Boss2/Boss/AdvanceBossStage" to="Timeline/Boss2/Waves/SpawnBossEarly/Boss2" method="_on_next_stage"]
 [connection signal="emitted" from="Timeline/VictoryScreen" to="CanvasLayer/VictoryScreen" method="_on_victory"]
