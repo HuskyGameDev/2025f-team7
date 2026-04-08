@@ -230,6 +230,7 @@ metadata/_custom_type_script = "uid://bv1js5gomnval"
 
 [node name="Wave1" type="Node2D" parent="Timeline/Boss2/Waves"]
 script = ExtResource("16_6gvn4")
+enabled = false
 metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
 
 [node name="RandomEnemySpawner" type="Node" parent="Timeline/Boss2/Waves/Wave1"]
@@ -262,6 +263,7 @@ metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 [node name="Wave2" type="Node2D" parent="Timeline/Boss2/Waves"]
 visible = false
 script = ExtResource("16_6gvn4")
+enabled = false
 metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
 
 [node name="Timeline" type="Node2D" parent="Timeline/Boss2/Waves/Wave2"]
@@ -302,6 +304,7 @@ spawns = ExtResource("15_erf3j")
 [node name="Wave3" type="Node2D" parent="Timeline/Boss2/Waves"]
 position = Vector2(3, -3)
 script = ExtResource("16_6gvn4")
+enabled = false
 metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
 
 [node name="Timeline" type="Node2D" parent="Timeline/Boss2/Waves/Wave3"]
@@ -369,6 +372,7 @@ position = Vector2(960, 540)
 visible = false
 position = Vector2(3, -3)
 script = ExtResource("16_6gvn4")
+enabled = false
 metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
 
 [node name="Timeline" type="Node2D" parent="Timeline/Boss2/Waves/Wave4"]
@@ -414,6 +418,7 @@ script = ExtResource("16_nx0o4")
 visible = false
 position = Vector2(3, -3)
 script = ExtResource("16_6gvn4")
+enabled = false
 metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
 
 [node name="Timeline" type="Node2D" parent="Timeline/Boss2/Waves/Wave5"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddy6dvqegvph2"]
+[gd_scene load_steps=13 format=3 uid="uid://ddy6dvqegvph2"]
 
 [ext_resource type="Script" uid="uid://cyk0xwrlaq64l" path="res://scenes/Boss2/boss_2.gd" id="1_ypx45"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_ypx45"]
+[ext_resource type="PackedScene" uid="uid://bp6gpc0485mg3" path="res://scenes/basicEnemies/centipede_spawner.tscn" id="3_4ggrf"]
 [ext_resource type="Texture2D" uid="uid://wkc4l5ke7fiy" path="res://assets/sprites/Bosses/centipede remaket.png" id="3_ytnt7"]
 [ext_resource type="Script" uid="uid://bpla01kkpl4cx" path="res://scenes/Boss/BossIdle.gd" id="5_4ggrf"]
 [ext_resource type="Script" uid="uid://p0uno3xxi6f6" path="res://scripts/State Machine/FiniteStateMachine.gd" id="5_udsia"]
@@ -43,6 +44,9 @@ bullet_node = ExtResource("2_ypx45")
 max_health = 400.0
 effect_color = Color(0.87058824, 0.61960787, 0.25490198, 1)
 death_effect_scale = 0
+
+[node name="CentipedeSpawner" parent="." instance=ExtResource("3_4ggrf")]
+wait_time = 3.5
 
 [node name="body wall" type="Node2D" parent="."]
 scale = Vector2(4.2107625, 2.9358974)
@@ -97,4 +101,5 @@ event_name = "event:/Enemy/Enemy_Hurt"
 event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
 
 [connection signal="died" from="." to="." method="_on_death"]
+[connection signal="health_changed" from="." to="." method="_on_health_changed"]
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]

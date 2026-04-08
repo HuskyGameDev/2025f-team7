@@ -1,6 +1,9 @@
 extends Node
 
+@warning_ignore_start("unused_signal")
+
 signal player_position(position: Vector2)
+signal saw_position(position: Vector2)
 signal health_change(newHealth: int)#signal used to send out health changes
 signal near_miss()#signal to send out when the player encounters a near miss
 signal bomb_gained()#signal sent out when bomb is gained.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brbhv674ybd53"]
+[gd_scene load_steps=13 format=3 uid="uid://brbhv674ybd53"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_5qtuy"]
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="2_0k1h6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bv1js5gomnval" path="res://scripts/EnemyWaves/timeline.gd" id="6_y0du7"]
 [ext_resource type="PackedScene" uid="uid://bgbhpo80ucalq" path="res://scenes/basicEnemies/enemy_spawner.tscn" id="6_yuidk"]
 [ext_resource type="PackedScene" uid="uid://e4eqbtm68yje" path="res://scenes/basicEnemies/bullet_vomit_guy.tscn" id="8_ijmob"]
+[ext_resource type="PackedScene" uid="uid://bp6gpc0485mg3" path="res://scenes/basicEnemies/centipede_spawner.tscn" id="9_22lw5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xrvsb"]
 
@@ -54,6 +55,8 @@ shape = SubResource("RectangleShape2D_yuidk")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("4_ijmob")]
+offset_top = -1.0
+offset_bottom = -1.0
 
 [node name="VictoryScreen" type="Control" parent="CanvasLayer"]
 process_mode = 3
@@ -98,11 +101,15 @@ offset_bottom = 481.0
 text = "Continue"
 
 [node name="Timeline" type="Node2D" parent="."]
+visible = false
 script = ExtResource("6_y0du7")
+enabled = false
 
 [node name="EnemySpawner" parent="Timeline" instance=ExtResource("6_yuidk")]
 position = Vector2(419, 175)
 spawns = ExtResource("8_ijmob")
-spawn_time = 1.0
+
+[node name="CentipedeSpawner" parent="." instance=ExtResource("9_22lw5")]
+wait_time = 3.5
 
 [connection signal="pressed" from="CanvasLayer/VictoryScreen/Button" to="CanvasLayer/VictoryScreen" method="_on_button_pressed"]

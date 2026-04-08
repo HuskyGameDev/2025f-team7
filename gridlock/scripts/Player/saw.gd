@@ -40,3 +40,5 @@ func _physics_process(delta: float) -> void:
 		particle.modulate.a = strength - 0.1
 		add_sibling(particle)
 		particle.global_position = global_position + dir * 30
+	
+	GlobalSignals.saw_position.emit(global_position)

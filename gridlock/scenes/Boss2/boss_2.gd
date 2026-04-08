@@ -17,6 +17,7 @@ var theta: float = 0.0
 @export var starting_movement: int
 @export var bullet_node: PackedScene
 
+@onready var centipede_spawner: Timer = $CentipedeSpawner
 @onready var player_detection_shape := %PlayerDetectionShape
 @onready var state_machine := $FiniteStateMachine
 
@@ -55,7 +56,9 @@ var shrink_speed := SHRINK_SPEED_STAGE_1
 			4:
 				state_machine.change_state("FollowLeaf")
 				player_detection_shape.disabled = false
-		
+				centipede_spawner.stop()
+
+@onready var phase := 1
 
 
 func _process(delta):
@@ -124,3 +127,12 @@ func _on_death() -> void:
 	var bomb := BOMB.instantiate()
 	bomb.global_position = player_detection_shape.global_position
 	add_sibling(bomb)
+
+
+func _on_health_changed(new_health):
+	if phase == 1:
+		if new_health <= max_health * 3 / 4:
+			phase = 2
+			
+			centipede_spawner.force_spawn()
+			centipede_spawner.start()

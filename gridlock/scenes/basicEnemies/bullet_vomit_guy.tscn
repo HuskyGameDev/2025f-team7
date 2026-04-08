@@ -18,7 +18,7 @@ height = 90.0
 [node name="BulletVomitGuy" type="CharacterBody2D"]
 script = ExtResource("1_su5ei")
 bullet_node = ExtResource("2_a07i0")
-max_health = 30.0
+max_health = 20.0
 effect_color = Color(0.4745098, 0.22745098, 0.5019608, 1)
 
 [node name="Enemy_Hurt" type="FmodEventEmitter2D" parent="."]

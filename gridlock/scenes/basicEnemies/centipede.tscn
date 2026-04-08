@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://cm6ulfaiue26c"]
+
+[ext_resource type="Script" uid="uid://duigyr1qm2d8t" path="res://scenes/basicEnemies/centipede.gd" id="1_3g5oe"]
+[ext_resource type="Texture2D" uid="uid://dvc6mag5yndlw" path="res://assets/sprites/Bosses/Head.png" id="2_duju5"]
+[ext_resource type="Texture2D" uid="uid://cac0rr8a58vt1" path="res://assets/sprites/Bosses/Middle.png" id="3_04co8"]
+[ext_resource type="Texture2D" uid="uid://dmllr27gvddfg" path="res://assets/sprites/Bosses/Tail.png" id="4_vh17o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_04co8"]
+height = 116.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3g5oe"]
+radius = 22.250002
+height = 174.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_duju5"]
+radius = 11.25
+height = 114.0
+
+[node name="Centipede" type="CharacterBody2D"]
+script = ExtResource("1_3g5oe")
+max_health = 2.5
+effect_color = Color(0.9529412, 0.42352942, 0.1764706, 1)
+
+[node name="Enemy_Hurt" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Enemy/Enemy_Hurt"
+event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-22, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_04co8")
+disabled = true
+debug_color = Color(0.7935478, 0.42836204, 0, 0.41960785)
+
+[node name="Head" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(43, 0)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_duju5")
+
+[node name="Middle" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, 0)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_04co8")
+
+[node name="Middle2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-41, 0)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_04co8")
+
+[node name="Tail" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-83, 0)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_vh17o")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+position = Vector2(0, -0.25)
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(-20, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_3g5oe")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -0.25)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-21, 1.25)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_duju5")
+debug_color = Color(0.9788411, 0, 0.39673477, 0.41960785)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="died" from="." to="." method="_on_died"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
