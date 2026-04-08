@@ -10,7 +10,7 @@ extends Enemy
 var speed: int = 200 # Speed of the enemy's movement
 var orbit_radius: int = 175 # Desired distance from the player
 var orbit_speed: int = 3 # How fast the enemy orbits
-var bullet_type: int = 0
+var bullet_type: int = 1
 var bulletspeed: int = 100
 var move_speed: float = 0.2
 var move_size: int = 200
@@ -25,7 +25,7 @@ func get_vector(angle):
 func shoot(angle):
 	var bullet = bullet_node.instantiate()
 	
-	bullet.position = position
+	bullet.position = global_position
 	bullet.direction = get_vector(angle)
 	bullet.set_property(bullet_type)
 	bullet.set_speed(speed)
@@ -48,17 +48,7 @@ func _physics_process(delta: float) -> void:
 		var distance_to_player = global_position.distance_to(target)
 
 		# Movement towards/away from player to maintain orbit radius
-		var radial_velocity = Vector2.ZERO
-		if distance_to_player > orbit_radius:
-			if distance_to_player - orbit_radius < speed:
-				radial_velocity = direction_to_player * (distance_to_player - orbit_radius)
-			else:
-				radial_velocity = direction_to_player * speed
-		elif distance_to_player < orbit_radius:
-			if orbit_radius - distance_to_player < speed:
-				radial_velocity = direction_to_player * (distance_to_player - orbit_radius)
-			else:
-				radial_velocity = -direction_to_player * speed
+		var radial_velocity = direction_to_player * (distance_to_player - orbit_radius)
 
 		# Orbital movement (perpendicular to direction to player)
 		var perpendicular_direction = direction_to_player.rotated(PI / 2.0) # Rotate 90 degrees
@@ -69,12 +59,4 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _on_shoot_timeout() -> void:
-	print("shooting")
-	alpha = 0.2 #Count Columns
-	for n: int in 1: #Count rows
-		#maxvelocity and then min velocity
-		speed = ((120-80)/10)*n + 90
-		theta = Vector2(1,0).angle_to(target - position) - (0.5)
-		#shoot(theta)
-		for m: int in 5:
-			shoot(theta)
+	trackShoot(1, 5, 100, 100, PI/2)
