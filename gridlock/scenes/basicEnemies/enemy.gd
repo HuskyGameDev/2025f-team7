@@ -66,11 +66,13 @@ func __die() -> void:
 
 func _on_body_entered(_body: PhysicsBody2D) -> void:
 	taking_damage = true
-	Hurt.play()
+	# Not sure what's going on here, but this
+	# causes a crash occasionally otherwise
+	if Hurt: Hurt.play()
 
 func _on_body_exited(_body: PhysicsBody2D) -> void:
 	taking_damage = false
-	Hurt.stop()
+	if Hurt: Hurt.stop()
 
 func _on_player_position(pos: Vector2) -> void:
 	target = pos
