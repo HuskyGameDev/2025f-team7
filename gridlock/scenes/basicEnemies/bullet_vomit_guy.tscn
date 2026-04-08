@@ -19,7 +19,11 @@ height = 90.0
 script = ExtResource("1_su5ei")
 bullet_node = ExtResource("2_a07i0")
 max_health = 30.0
-effect_color = Color(1, 0, 0, 1)
+effect_color = Color(0.4745098, 0.22745098, 0.5019608, 1)
+
+[node name="Enemy_Hurt" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Enemy/Enemy_Hurt"
+event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
