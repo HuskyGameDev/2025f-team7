@@ -34,7 +34,7 @@ scale = Vector2(91, 88.000015)
 texture = SubResource("PlaceholderTexture2D_80ekg")
 
 [node name="shoot" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 2.31
 autostart = true
 
 [node name="PlayerDetection" type="Area2D" parent="."]
