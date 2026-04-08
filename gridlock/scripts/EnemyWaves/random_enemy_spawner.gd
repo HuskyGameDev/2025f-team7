@@ -1,6 +1,10 @@
 extends Node
 
 const ENEMY_SPAWNER := preload("res://scenes/basicEnemies/enemy_spawner.tscn")
+
+# If disabled, will remove itself from the scene
+@export var enabled := true
+
 @export var total_difficulty: float
 @export var spawn_rate: float
 
@@ -8,6 +12,9 @@ const ENEMY_SPAWNER := preload("res://scenes/basicEnemies/enemy_spawner.tscn")
 @onready var enemies_alive := 0
 
 @onready var timer := spawn_rate
+
+func _ready() -> void:
+	if !enabled: queue_free()
 
 func _process(delta: float) -> void:
 	if remaining_difficulty == 0: return
