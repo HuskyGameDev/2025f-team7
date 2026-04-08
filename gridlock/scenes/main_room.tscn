@@ -66,7 +66,6 @@ script = ExtResource("3_2noi8")
 visible = false
 position = Vector2(0, 1)
 script = ExtResource("3_2noi8")
-enabled = false
 
 [node name="Waves" type="Node2D" parent="Timeline/Boss1"]
 script = ExtResource("3_2noi8")
@@ -152,7 +151,7 @@ metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 
 [node name="Boss" type="Node2D" parent="Timeline/Boss1"]
 script = ExtResource("11_nx0o4")
-delay = 3.0
+delay = 2.0
 
 [node name="BossSpawner" parent="Timeline/Boss1/Boss" instance=ExtResource("7_phake")]
 position = Vector2(883, 540)

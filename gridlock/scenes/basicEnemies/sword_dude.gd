@@ -45,6 +45,7 @@ func trackShoot(countRows, countCols, minVel, maxVel, angle):
 	
 func _physics_process(delta: float) -> void:
 	if target:
+		rotation = Vector2.RIGHT.angle_to(target - global_position)
 		var direction_to_player = (target - global_position).normalized()
 		var distance_to_player = global_position.distance_to(target)
 

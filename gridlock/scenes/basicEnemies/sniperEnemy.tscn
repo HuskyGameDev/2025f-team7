@@ -34,7 +34,7 @@ shape = SubResource("RectangleShape2D_xd12u")
 disabled = true
 
 [node name="shoot" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 1.7599999999999998
 autostart = true
 
 [node name="PlayerDetection" type="Area2D" parent="."]

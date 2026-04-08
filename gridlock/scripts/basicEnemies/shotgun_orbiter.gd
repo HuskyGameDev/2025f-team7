@@ -50,22 +50,30 @@ func _physics_process(delta: float) -> void:
 		# Movement towards/away from player to maintain orbit radius
 		var radial_velocity = Vector2.ZERO
 		if distance_to_player > orbit_radius:
-			radial_velocity = direction_to_player * speed
+			if distance_to_player - orbit_radius < speed:
+				radial_velocity = direction_to_player * (distance_to_player - orbit_radius)
+			else:
+				radial_velocity = direction_to_player * speed
 		elif distance_to_player < orbit_radius:
-			radial_velocity = -direction_to_player * speed
+			if orbit_radius - distance_to_player < speed:
+				radial_velocity = direction_to_player * (distance_to_player - orbit_radius)
+			else:
+				radial_velocity = -direction_to_player * speed
 
 		# Orbital movement (perpendicular to direction to player)
 		var perpendicular_direction = direction_to_player.rotated(PI / 2.0) # Rotate 90 degrees
 		var orbital_velocity = perpendicular_direction * orbit_speed * orbit_radius
 
-		position += delta * (radial_velocity + orbital_velocity)
+		velocity = radial_velocity + orbital_velocity
+		rotation = Vector2(0,-1).angle_to(target - position)
+		move_and_slide()
 
 func _on_shoot_timeout() -> void:
 	print("shooting")
 	alpha = 0.2 #Count Columns
 	for n: int in 1: #Count rows
 		#maxvelocity and then min velocity
-		speed = ((120-80)/10)*n + 80
+		speed = ((120-80)/10)*n + 90
 		theta = Vector2(1,0).angle_to(target - position) - (0.5)
 		#shoot(theta)
 		for m: int in 5:
