@@ -292,8 +292,6 @@ script = ExtResource("16_nx0o4")
 
 [node name="BurstRingEnemy" parent="Timeline/Boss2/Boss" instance=ExtResource("18_6gvn4")]
 position = Vector2(300, 540)
-starting_pattern = null
-alpha = null
 
 [node name="Boss3" type="Node2D" parent="Timeline"]
 script = ExtResource("3_2noi8")

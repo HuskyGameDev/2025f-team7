@@ -116,4 +116,9 @@ rotation = 2.2340214
 shape = SubResource("CapsuleShape2D_2o8g5")
 debug_color = Color(0.98433834, 0, 0.34898046, 0.41960785)
 
+[node name="Enemy_Hurt" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Enemy/Enemy_Hurt"
+event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
+auto_release = true
+
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]

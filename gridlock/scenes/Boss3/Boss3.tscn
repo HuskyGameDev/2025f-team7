@@ -20,6 +20,10 @@ bullet_node = ExtResource("2_3gg5f")
 max_health = 500.0
 effect_color = Color(0, 0, 1, 1)
 
+[node name="Enemy_Hurt" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Enemy/Enemy_Hurt"
+event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xew6s")
 

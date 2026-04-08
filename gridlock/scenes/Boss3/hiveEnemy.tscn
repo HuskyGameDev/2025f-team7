@@ -25,5 +25,9 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("RectangleShape2D_2d0hb")
 
+[node name="Enemy_Hurt" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Enemy/Enemy_Hurt"
+event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
+
 [connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
 [connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]

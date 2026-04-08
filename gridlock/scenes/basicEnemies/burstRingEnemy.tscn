@@ -33,4 +33,9 @@ script = ExtResource("5_8yn6h")
 [node name="BurstDelay" type="Timer" parent="."]
 wait_time = 1.5
 
+[node name="Enemy_Hurt" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Enemy/Enemy_Hurt"
+event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
+auto_release = true
+
 [connection signal="timeout" from="BurstDelay" to="FiniteStateMachine/BurstWaveLeft" method="_on_burst_delay_timeout"]

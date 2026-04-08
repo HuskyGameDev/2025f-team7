@@ -31,4 +31,8 @@ scale = Vector2(0.25, 0.25)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
 
+[node name="Enemy_Hurt" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Enemy/Enemy_Hurt"
+event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]

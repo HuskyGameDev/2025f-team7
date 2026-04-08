@@ -62,4 +62,8 @@ position = Vector2(32, 50)
 shape = SubResource("CapsuleShape2D_80ekg")
 debug_color = Color(0.9917801, 0, 0.26715374, 0.41960785)
 
+[node name="Enemy_Hurt" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Enemy/Enemy_Hurt"
+event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
+
 [connection signal="timeout" from="shoot" to="." method="_on_shoot_timeout"]

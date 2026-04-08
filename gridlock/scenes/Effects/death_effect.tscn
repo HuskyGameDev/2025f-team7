@@ -4,3 +4,8 @@
 
 [node name="DeathEffect" type="Node2D"]
 script = ExtResource("1_ii3r5")
+
+[node name="Enemy_Die" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Enemy/Enemy_Die"
+event_guid = "{37761e4d-d1bb-4b90-a75d-a745287411c0}"
+allow_fadeout = false

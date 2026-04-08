@@ -14,7 +14,7 @@ signal died
 @export var effect_color: Color = Color.WHITE
 # how large the death effect should be (1 = default size, 0 = disabled)
 @export var death_effect_scale := 1
-
+@onready var Hurt = get_node("Enemy_Hurt")
 @onready var health := max_health:
 	get(): return health
 	set(value):
@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 	if taking_damage:
 		health -= 10 * delta
 	
-	if health == 0.0: __die()
+	if health == 0.0:__die()
 
 func __die() -> void:
 	if death_effect_scale > 0:
@@ -61,15 +61,16 @@ func __die() -> void:
 		effect.scale = Vector2.ONE * death_effect_scale
 		effect.color = effect_color
 		add_sibling(effect)
-	
 	emit_signal("died")
 	queue_free()
 
 func _on_body_entered(_body: PhysicsBody2D) -> void:
 	taking_damage = true
+	Hurt.play()
 
 func _on_body_exited(_body: PhysicsBody2D) -> void:
 	taking_damage = false
+	Hurt.stop()
 
 func _on_player_position(pos: Vector2) -> void:
 	target = pos

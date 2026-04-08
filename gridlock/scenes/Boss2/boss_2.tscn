@@ -92,5 +92,9 @@ wait_time = 4.0
 [node name="Speed" type="Timer" parent="."]
 wait_time = 0.05
 
+[node name="Enemy_Hurt" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Enemy/Enemy_Hurt"
+event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
+
 [connection signal="died" from="." to="." method="_on_death"]
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]

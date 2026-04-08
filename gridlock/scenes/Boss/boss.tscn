@@ -76,6 +76,10 @@ max_health = 400.0
 effect_color = Color(0.44705883, 0.6039216, 0.7764706, 1)
 death_effect_scale = 2
 
+[node name="Enemy_Hurt" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/Enemy/Enemy_Hurt"
+event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, 21)
 scale = Vector2(0.25, 0.25)
