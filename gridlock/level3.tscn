@@ -20,21 +20,10 @@ position = Vector2(742, 50)
 [node name="player" parent="." groups=["player"] instance=ExtResource("1_o2ccw")]
 position = Vector2(698, 352)
 
-[node name="Bombuse" type="FmodEventEmitter2D" parent="player"]
-event_name = "event:/PC/PC_Bombuse"
-event_guid = "{ff388b6f-9604-44e8-bbfb-9aa63a49ecb2}"
-position = Vector2(-698, -352)
-
-[node name="Nearmiss" type="FmodEventEmitter2D" parent="player"]
-event_name = "event:/PC/PC_Hurt"
-event_guid = "{8deb4385-b6fd-4d44-8e40-52a91654a1f1}"
-position = Vector2(-698, -352)
-
 [node name="ShotgunOrbiter" parent="." instance=ExtResource("2_qrujo")]
 
 [node name="SwordDude" parent="." instance=ExtResource("5_an40m")]
 position = Vector2(232, 268)
-health = 40.0
 
 [node name="SniperEnemy" parent="." instance=ExtResource("6_mu84n")]
 position = Vector2(258, -78)
