@@ -4,18 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://cjafq14xq2mhh" path="res://assets/sprites/lesser enemies/mosquito-WIP.png" id="2_p3v8f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3v8f"]
-size = Vector2(216, 120)
+size = Vector2(161, 84)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvkfc"]
-size = Vector2(195, 120)
+size = Vector2(160.6023, 84)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3v8f"]
 radius = 17.0
-height = 86.0
+height = 72.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvkfc"]
 radius = 2.0
-height = 132.0
+height = 88.795425
 
 [node name="SwordDude" type="CharacterBody2D"]
 script = ExtResource("1_p3v8f")
@@ -27,19 +27,19 @@ collision_layer = 32
 collision_mask = 4
 
 [node name="Player Detectiion Box" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(60, -3)
+position = Vector2(40, -4)
 shape = SubResource("RectangleShape2D_p3v8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 17
 visibility_layer = 17
-position = Vector2(56.897713, -3.3749924)
+position = Vector2(39.698853, -4)
 shape = SubResource("RectangleShape2D_xvkfc")
 disabled = true
 
 [node name="MosquitoWip" type="Sprite2D" parent="."]
-position = Vector2(75.39772, -18.374992)
-scale = Vector2(0.34772724, 0.3477273)
+position = Vector2(52, -14)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_p3v8f")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -48,13 +48,13 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(40, 75)
+position = Vector2(38.602287, 74.37499)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_p3v8f")
 debug_color = Color(0.9917801, 0, 0.26715374, 0.41960785)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(142, 71)
+position = Vector2(114.60229, 71.37499)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_xvkfc")
 debug_color = Color(0.9917801, 0, 0.26715374, 0.41960785)
