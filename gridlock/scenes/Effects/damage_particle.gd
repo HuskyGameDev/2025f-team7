@@ -8,6 +8,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y += GRAVITY * delta
 	position += velocity * delta
 	modulate.a -= delta
+	if modulate.a == 0: queue_free()
 
 func _on_animation_finished() -> void:
 	queue_free()
