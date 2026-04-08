@@ -60,7 +60,7 @@ func __die() -> void:
 		effect.global_position = global_position
 		effect.scale = Vector2.ONE * death_effect_scale
 		effect.color = effect_color
-		add_sibling(effect)
+		get_tree().current_scene.add_child(effect)
 	emit_signal("died")
 	queue_free()
 

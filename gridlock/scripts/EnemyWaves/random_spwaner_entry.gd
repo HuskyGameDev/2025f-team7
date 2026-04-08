@@ -1,4 +1,4 @@
-class_name EnemyWaveEntry extends Node
+class_name RandomSpawnerEntry extends Node
 
 # how many points to add to the wave's difffuclty total
 # (a higher number will result in fewer enemies spawning to

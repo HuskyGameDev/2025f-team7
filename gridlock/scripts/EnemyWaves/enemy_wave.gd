@@ -1,3 +1,4 @@
+class_name EnemyWave
 extends Node2D
 
 # If disabled, the enemy wave will remove itself
