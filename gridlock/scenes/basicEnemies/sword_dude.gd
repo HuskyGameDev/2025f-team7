@@ -18,6 +18,7 @@ var move_size: int = 200
 var t: float = 0.0
 var pos: Vector2 = Vector2.ZERO
 var theta: float = 0.0
+var time = 0
 	
 func get_vector(angle):
 	theta = angle + alpha
@@ -47,21 +48,24 @@ func _ready() -> void:
 	rotation = Vector2(1,0).angle_to(get_tree().get_first_node_in_group("player").global_position - global_position)
 
 func _physics_process(delta: float) -> void:
+	time = time + delta
 	if target:
-		rotation = Vector2.RIGHT.angle_to(target - global_position)
-		var direction_to_player = (target - global_position).normalized()
-		var distance_to_player = global_position.distance_to(target)
+		velocity = (velocity.normalized() + (target - global_position).normalized()/16)*560*abs(sin(time*1.2))
+		rotation = Vector2.RIGHT.angle_to(velocity.normalized())
+		#rotation = Vector2.RIGHT.angle_to(target - global_position)
+		#var direction_to_player = (target - global_position).normalized()
+		#var distance_to_player = global_position.distance_to(target)
 
 		# Movement towards/away from player to maintain orbit radius
-		var radial_velocity = Vector2.ZERO
-		if distance_to_player > orbit_radius:
-			radial_velocity = direction_to_player * speed
-		elif distance_to_player < orbit_radius:
-			radial_velocity = -direction_to_player * speed
+		#var radial_velocity = Vector2.ZERO
+		#if distance_to_player > orbit_radius:
+		#	radial_velocity = direction_to_player * speed
+		#elif distance_to_player < orbit_radius:
+		#	radial_velocity = -direction_to_player * speed
 
 		# Orbital movement (perpendicular to direction to player)
 		#var perpendicular_direction = direction_to_player.rotated(PI / 2.0) # Rotate 90 degrees
 		#var orbital_velocity = perpendicular_direction * orbit_speed * orbit_radius
 
-		velocity = radial_velocity
+		#velocity = radial_velocity
 		move_and_slide()
