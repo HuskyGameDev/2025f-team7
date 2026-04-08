@@ -49,17 +49,7 @@ func _physics_process(delta: float) -> void:
 		var distance_to_player = global_position.distance_to(target)
 
 		# Movement towards/away from player to maintain orbit radius
-		var radial_velocity = Vector2.ZERO
-		if distance_to_player > orbit_radius:
-			if distance_to_player - orbit_radius < speed:
-				radial_velocity = direction_to_player * (distance_to_player - orbit_radius)
-			else:
-				radial_velocity = direction_to_player * speed
-		elif distance_to_player < orbit_radius:
-			if orbit_radius - distance_to_player < speed:
-				radial_velocity = direction_to_player * (distance_to_player - orbit_radius)
-			else:
-				radial_velocity = -direction_to_player * speed
+		var radial_velocity = direction_to_player * (distance_to_player - orbit_radius)
 
 		# Orbital movement (perpendicular to direction to player)
 		var perpendicular_direction = direction_to_player.rotated(PI / 2.0) # Rotate 90 degrees
