@@ -57,6 +57,8 @@ func _physics_process(delta: float) -> void:
 		velocity = radial_velocity + orbital_velocity
 		rotation = Vector2(0,-1).angle_to(target - position)
 		move_and_slide()
-
+func _ready() -> void:
+	super._ready()
+	rotation = Vector2(0,-1).angle_to(get_tree().get_first_node_in_group("player").global_position - global_position)
 func _on_shoot_timeout() -> void:
 	trackShoot(1, 5, 100, 100, PI/2)

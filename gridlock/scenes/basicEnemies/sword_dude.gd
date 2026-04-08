@@ -42,7 +42,10 @@ func trackShoot(countRows, countCols, minVel, maxVel, angle):
 		for m in countCols:
 			shoot(theta)
 		
-	
+func _ready() -> void:
+	super._ready()
+	rotation = Vector2(1,0).angle_to(get_tree().get_first_node_in_group("player").global_position - global_position)
+
 func _physics_process(delta: float) -> void:
 	if target:
 		rotation = Vector2.RIGHT.angle_to(target - global_position)
