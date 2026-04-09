@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=33 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://cjafq14xq2mhh" path="res://assets/sprites/lesser enemies/mosquito-WIP.png" id="20_r8tji"]
 [ext_resource type="PackedScene" uid="uid://brgwd7siy17ly" path="res://scenes/Player/saw_sprite.tscn" id="21_blibh"]
 [ext_resource type="Script" uid="uid://b5gt8g6xhgm07" path="res://scenes/Title/credit_panel.gd" id="21_sxacd"]
+[ext_resource type="Texture2D" uid="uid://dibc2pdaa8i0n" path="res://assets/sprites/lesser enemies/sniper-WIP.png" id="22_lc1d0"]
+[ext_resource type="Texture2D" uid="uid://s8ysdj601v1f" path="res://assets/sprites/lesser enemies/shotgunner.png" id="24_yehle"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvb7n"]
 atlas = ExtResource("6_xutsw")
@@ -272,6 +274,7 @@ allow_fadeout = false
 
 [node name="optionsPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("controlsPanel", "audioPanel", "SaveDataPrompt")]
 process_mode = 3
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -770,6 +773,16 @@ theme_override_styles/panel = ExtResource("15_2e2l6")
 script = ExtResource("21_sxacd")
 CreditPanel = NodePath(".")
 
+[node name="OptionsMenuBackground" type="Sprite2D" parent="CanvasLayer/CreditPanel"]
+position = Vector2(893, 1084)
+rotation = 0.05235988
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("15_xutsw")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CreditPanel"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.8039216)
+
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/CreditPanel"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -803,15 +816,32 @@ Apollo Palette by AdamCYounis
 Made With Godot 4.5"
 
 [node name="MosquitoWip" type="Sprite2D" parent="CanvasLayer/CreditPanel"]
-position = Vector2(240, 472)
-rotation = -1.5707964
+position = Vector2(181.00002, 688.00006)
+rotation = -1.736811
 texture = ExtResource("20_r8tji")
 
 [node name="SawSprite" parent="CanvasLayer/CreditPanel" instance=ExtResource("21_blibh")]
-position = Vector2(1608, 285)
+position = Vector2(1679.0001, 525.00006)
+scale = Vector2(1.25, 1.25)
 
 [node name="PlayerSprite" parent="CanvasLayer/CreditPanel" instance=ExtResource("7_wvb7n")]
-position = Vector2(1597, 733)
+z_index = 3
+position = Vector2(1422, 883)
+scale = Vector2(1.5, 1.5)
+
+[node name="SniperWip" type="Sprite2D" parent="CanvasLayer/CreditPanel"]
+texture_filter = 1
+position = Vector2(195.99998, 234.00003)
+rotation = -0.293749
+scale = Vector2(6.71002, 6.7100215)
+texture = ExtResource("22_lc1d0")
+
+[node name="Shotgunner" type="Sprite2D" parent="CanvasLayer/CreditPanel"]
+texture_filter = 1
+position = Vector2(370.00003, 435.00003)
+rotation = -2.9877481
+scale = Vector2(7.4791665, 7.4791665)
+texture = ExtResource("24_yehle")
 
 [node name="SawCursor" parent="." instance=ExtResource("19_xutsw")]
 position = Vector2(914, 517)
