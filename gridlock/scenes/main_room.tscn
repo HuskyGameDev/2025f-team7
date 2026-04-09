@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bx8dkwwoiesnh"]
+[gd_scene load_steps=28 format=3 uid="uid://bx8dkwwoiesnh"]
 
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_w27ju"]
 [ext_resource type="PackedScene" uid="uid://vcpjhf32cdd1" path="res://scenes/victory_screen.tscn" id="2_7h4nr"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="4_phake"]
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="5_ky753"]
 [ext_resource type="Script" uid="uid://c0iyvboumgjap" path="res://scripts/EnemyWaves/random_enemy_spawner.gd" id="5_nx0o4"]
-[ext_resource type="Script" path="res://scripts/EnemyWaves/random_spwaner_entry.gd" id="6_10fbw"]
+[ext_resource type="Script" uid="uid://b1rkfnw2y7pey" path="res://scripts/EnemyWaves/random_spwaner_entry.gd" id="6_10fbw"]
 [ext_resource type="PackedScene" uid="uid://60d8f13gtv6b" path="res://scenes/basicEnemies/shotgunOrbiter.tscn" id="7_mm8b8"]
 [ext_resource type="PackedScene" uid="uid://bgbhpo80ucalq" path="res://scenes/basicEnemies/enemy_spawner.tscn" id="7_phake"]
 [ext_resource type="PackedScene" uid="uid://dd330qd4wlqdq" path="res://scenes/basicEnemies/sniperEnemy.tscn" id="8_6gvn4"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cmwaa2ltynn4r" path="res://scenes/basicEnemies/burstRingEnemy.tscn" id="18_6gvn4"]
 [ext_resource type="PackedScene" uid="uid://im0wqvumy8dx" path="res://scenes/Boss3/Boss3.tscn" id="18_gy4ma"]
 [ext_resource type="Texture2D" uid="uid://cvaujp7un3nsf" path="res://assets/sprites/Bosses/Boss3/honey comb.png" id="23_y385t"]
+[ext_resource type="Script" uid="uid://cb3q3u2wudyoo" path="res://scripts/honeycomb.gd" id="24_xuva2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt06m"]
 size = Vector2(1798, 16)
@@ -69,6 +70,7 @@ script = ExtResource("3_2noi8")
 visible = false
 position = Vector2(0, 1)
 script = ExtResource("3_2noi8")
+enabled = false
 
 [node name="Waves" type="Node2D" parent="Timeline/Boss1"]
 script = ExtResource("3_2noi8")
@@ -476,6 +478,7 @@ metadata/_custom_type_script = "uid://bv1js5gomnval"
 [node name="Wave1" type="Node2D" parent="Timeline/Boss3"]
 visible = false
 script = ExtResource("16_6gvn4")
+enabled = false
 metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
 
 [node name="Timeline" type="Node2D" parent="Timeline/Boss3/Wave1"]
@@ -585,6 +588,7 @@ metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 [node name="Wave2" type="Node2D" parent="Timeline/Boss3"]
 visible = false
 script = ExtResource("16_6gvn4")
+enabled = false
 metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
 
 [node name="Timeline" type="Node2D" parent="Timeline/Boss3/Wave2"]
@@ -618,6 +622,7 @@ spawn_time = 0.75
 
 [node name="Wave3" type="Node2D" parent="Timeline/Boss3"]
 script = ExtResource("16_6gvn4")
+enabled = false
 metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
 
 [node name="Timeline" type="Node2D" parent="Timeline/Boss3/Wave3"]
@@ -668,7 +673,7 @@ spawns = ExtResource("9_edhfb")
 metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 
 [node name="Boss" type="Node2D" parent="Timeline/Boss3"]
-script = ExtResource("16_6gvn4")
+script = ExtResource("11_nx0o4")
 
 [node name="HiveSpawnerOne" parent="Timeline/Boss3/Boss" instance=ExtResource("17_edhfb")]
 position = Vector2(-20, 1000)
@@ -692,6 +697,7 @@ texture_filter = 1
 position = Vector2(1088, 536)
 scale = Vector2(8.59375, 8.59375)
 texture = ExtResource("23_y385t")
+script = ExtResource("24_xuva2")
 
 [node name="VictoryScreen" type="Node2D" parent="Timeline"]
 script = ExtResource("16_nx0o4")

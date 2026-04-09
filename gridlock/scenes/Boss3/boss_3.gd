@@ -40,6 +40,7 @@ func get_vector(angle):
 	return Vector2(cos(theta),sin(theta))
 	
 func _ready():
+	GlobalSignals.boss_spawned.emit()
 	super._ready()
 	pos = global_position
 	

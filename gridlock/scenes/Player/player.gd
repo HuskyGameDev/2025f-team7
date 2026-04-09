@@ -32,7 +32,8 @@ func _ready():
 	emit_signal("player_position", global_position)
 	invincible = false
 	GlobalSignals.bomb_gained.connect(_on_bomb_gained)
-	GlobalSignals.boss_died.connect(_on_boss_died)
+	GlobalSignals.boss_spawning.connect(_heal_to_full)
+	GlobalSignals.boss_died.connect(_heal_to_full)
 
 func _physics_process(_delta: float):
 	var currentSpeed = SPEED
@@ -121,5 +122,6 @@ func _on_bomb_gained() -> void:
 func _on_hit(_area: Area2D) -> void:
 	set_status(0)
 
-func _on_boss_died() -> void:
+# TODO: animation for healing?
+func _heal_to_full() -> void:
 	health = 10

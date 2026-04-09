@@ -54,6 +54,7 @@ var shrink_speed := SHRINK_SPEED_STAGE_1
 				target_scale = 1
 				shrink_speed = SHRINK_SPEED_STAGE_3
 			4:
+				GlobalSignals.boss_spawned.emit()
 				state_machine.change_state("FollowLeaf")
 				player_detection_shape.disabled = false
 				centipede_spawner.stop()

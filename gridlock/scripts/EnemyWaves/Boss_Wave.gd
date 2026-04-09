@@ -17,6 +17,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if !active:
+		GlobalSignals.boss_spawning.emit()
 		active = true
 		GlobalSignals.boss_died.connect(_on_boss_died)
 		mus_main.set_parameter("Game State", 1)

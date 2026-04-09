@@ -156,6 +156,7 @@ func trackShoot(countRows, countCols, minVel, maxVel, angle):
 	
 func _ready():
 	super._ready()
+	GlobalSignals.boss_spawned.emit()
 	$AnimatedSprite2D.play("move")
 	pos = global_position
 
