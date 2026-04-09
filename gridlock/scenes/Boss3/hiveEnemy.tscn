@@ -1,7 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4bqdyi8gwe8r"]
+[gd_scene load_steps=9 format=3 uid="uid://c4bqdyi8gwe8r"]
 
 [ext_resource type="Script" uid="uid://dmrv21pplepwt" path="res://scenes/Boss3/hive_enemy.gd" id="1_d00xp"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_0gqtu"]
+[ext_resource type="Texture2D" uid="uid://lv7agv5yktdu" path="res://assets/sprites/Bosses/Boss3/BEE-Sheet.png" id="3_2d0hb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36tp1"]
+atlas = ExtResource("3_2d0hb")
+region = Rect2(0, 0, 37, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_katoe"]
+atlas = ExtResource("3_2d0hb")
+region = Rect2(37, 0, 37, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1tali"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36tp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_katoe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0gqtu"]
 size = Vector2(40, 40)
@@ -13,12 +36,22 @@ size = Vector2(40, 40)
 script = ExtResource("1_d00xp")
 bullet_node = ExtResource("2_0gqtu")
 max_health = 5.0
-effect_color = Color(1, 0, 1, 1)
+effect_color = Color(0.9843137, 0.9490196, 0.21176471, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(5.8416624, -1.7499995)
+scale = Vector2(4.192834, 4.192834)
+sprite_frames = SubResource("SpriteFrames_1tali")
+autoplay = "default"
+frame_progress = 0.6388874
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = SubResource("PlaceholderTexture2D_0gqtu")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+scale = Vector2(2.4424274, 2.4424274)
 collision_layer = 32
 collision_mask = 4
 

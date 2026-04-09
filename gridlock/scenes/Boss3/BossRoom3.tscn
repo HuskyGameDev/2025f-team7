@@ -120,6 +120,6 @@ position = Vector2(-20, 80)
 side = -1
 
 [node name="Boss3" parent="." instance=ExtResource("8_3vjq3")]
-health = 500.0
+effect_color = Color(0.7294118, 0.58431375, 0.18431373, 1)
 
 [connection signal="pressed" from="CanvasLayer/VictoryScreen/Button" to="CanvasLayer/VictoryScreen" method="_on_button_pressed"]

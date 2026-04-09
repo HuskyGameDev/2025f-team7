@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://im0wqvumy8dx"]
+[gd_scene load_steps=17 format=3 uid="uid://im0wqvumy8dx"]
 
 [ext_resource type="Script" uid="uid://46aol2d61jdg" path="res://scenes/Boss3/boss_3.gd" id="1_1vcnj"]
 [ext_resource type="PackedScene" uid="uid://cmqfix6tqbbq" path="res://scenes/Bullet/bullet.tscn" id="2_3gg5f"]
 [ext_resource type="Script" uid="uid://p0uno3xxi6f6" path="res://scripts/State Machine/FiniteStateMachine.gd" id="2_fctra"]
 [ext_resource type="Script" uid="uid://lviqiwyvc7gh" path="res://scenes/Boss3/slow_track.gd" id="3_3gg5f"]
+[ext_resource type="Texture2D" uid="uid://c1derf54h21xa" path="res://assets/sprites/Bosses/Boss3/Boss3 sheet.png" id="5_qhejx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xew6s"]
 size = Vector2(60, 100)
@@ -12,7 +13,64 @@ size = Vector2(60, 100)
 size = Vector2(60, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gg5f"]
-size = Vector2(60, 100)
+size = Vector2(285.5, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0fer"]
+atlas = ExtResource("5_qhejx")
+region = Rect2(0, 0, 128, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv2pu"]
+atlas = ExtResource("5_qhejx")
+region = Rect2(128, 0, 128, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snhxb"]
+atlas = ExtResource("5_qhejx")
+region = Rect2(256, 0, 128, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7yqg"]
+atlas = ExtResource("5_qhejx")
+region = Rect2(384, 0, 128, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejl8g"]
+atlas = ExtResource("5_qhejx")
+region = Rect2(512, 0, 128, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0owt5"]
+atlas = ExtResource("5_qhejx")
+region = Rect2(640, 0, 128, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kb0r"]
+atlas = ExtResource("5_qhejx")
+region = Rect2(768, 0, 128, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7es5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0fer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv2pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snhxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7yqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejl8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0owt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kb0r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
 
 [node name="Boss3" type="CharacterBody2D"]
 script = ExtResource("1_1vcnj")
@@ -28,6 +86,7 @@ event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
 shape = SubResource("RectangleShape2D_xew6s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0, 0, 1, 1)
 texture = SubResource("PlaceholderTexture2D_fctra")
 
@@ -36,6 +95,7 @@ collision_layer = 32
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+position = Vector2(125.25, 15.5)
 shape = SubResource("RectangleShape2D_3gg5f")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
@@ -49,6 +109,14 @@ wait_time = 0.45
 autostart = true
 
 [node name="Duration" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(132, 8)
+scale = Vector2(5.569672, 5.569672)
+sprite_frames = SubResource("SpriteFrames_w7es5")
+autoplay = "default"
+frame_progress = 0.954187
 
 [connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
 [connection signal="area_exited" from="PlayerDetection" to="." method="_on_player_detection_area_exited"]
