@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=34 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://2ymqktmu66fi" path="res://assets/sprites/Menu/options menu background.png" id="15_xutsw"]
 [ext_resource type="Script" uid="uid://dc4v3o4waybsu" path="res://scripts/UI/controlButton.gd" id="16_l0whq"]
 [ext_resource type="Script" uid="uid://b0xrvt30cgsxw" path="res://scripts/UI/title_options_panel.gd" id="16_xutsw"]
+[ext_resource type="FontFile" uid="uid://cevvelverwilc" path="res://assets/Jersey25-Regular.ttf" id="16_yehle"]
 [ext_resource type="Theme" uid="uid://d8uuw1d6d7be" path="res://assets/label.tres" id="17_wvb7n"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="17_xutsw"]
 [ext_resource type="PackedScene" uid="uid://d2lylhf5jew0m" path="res://scenes/Title/saw_cursor.tscn" id="19_xutsw"]
@@ -300,6 +301,7 @@ z_index = 2
 layout_mode = 2
 size_flags_vertical = 1
 theme = ExtResource("17_wvb7n")
+theme_override_constants/outline_size = 22
 theme_override_font_sizes/font_size = 100
 text = "OPTIONS"
 
@@ -308,6 +310,8 @@ process_mode = 3
 z_index = 2
 layout_mode = 2
 theme = ExtResource("17_wvb7n")
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("16_yehle")
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
@@ -316,6 +320,8 @@ process_mode = 3
 z_index = 2
 layout_mode = 2
 theme = ExtResource("17_wvb7n")
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("16_yehle")
 theme_override_font_sizes/font_size = 75
 text = "Audio"
 
@@ -325,6 +331,8 @@ visibility_layer = 8
 z_index = 2
 layout_mode = 2
 theme = ExtResource("17_wvb7n")
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("16_yehle")
 theme_override_font_sizes/font_size = 75
 text = "Back"
 
@@ -344,11 +352,11 @@ position = Vector2(-389.00003, 185.00009)
 scale = Vector2(0.6112295, 0.61122954)
 
 [node name="Polygon2D" type="Polygon2D" parent="CanvasLayer/optionsPanel/GridContainer/StaticBody2D"]
-position = Vector2(-224.1383, -503.9025)
+position = Vector2(-457, -870)
 polygon = PackedVector2Array(3115.0327, 26.176743, -211.04997, 6.544037, -211.04997, 1950.1675, 3141.2095, 1976.3442)
 
 [node name="OptionsMenuBackground" type="Sprite2D" parent="CanvasLayer/optionsPanel/GridContainer"]
-position = Vector2(333.99963, 805)
+position = Vector2(170, 602)
 scale = Vector2(0.6112295, 0.61122954)
 texture = ExtResource("15_xutsw")
 

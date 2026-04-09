@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b1yptc0ppcic"]
+[gd_scene load_steps=23 format=3 uid="uid://b1yptc0ppcic"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="7_p7vwb"]
 [ext_resource type="Texture2D" uid="uid://2ymqktmu66fi" path="res://assets/sprites/Menu/options menu background.png" id="8_5sqrc"]
 [ext_resource type="Texture2D" uid="uid://c0npmdqw5qmcn" path="res://assets/sprites/Menu/options_menu.png" id="8_w7enk"]
+[ext_resource type="FontFile" uid="uid://cevvelverwilc" path="res://assets/Jersey25-Regular.ttf" id="9_mhjpf"]
 [ext_resource type="Texture2D" uid="uid://kj2hkbm1lu4a" path="res://assets/sprites/other/boss1_turret_var3.png" id="10_ilk7v"]
 [ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="12_flkkw"]
 
@@ -231,6 +232,7 @@ text = "PAUSE"
 process_mode = 3
 layout_mode = 2
 theme = ExtResource("1_ktti3")
+theme_override_fonts/font = ExtResource("9_mhjpf")
 theme_override_font_sizes/font_size = 75
 text = "Resume"
 
@@ -238,6 +240,7 @@ text = "Resume"
 process_mode = 3
 layout_mode = 2
 theme = ExtResource("1_ktti3")
+theme_override_fonts/font = ExtResource("9_mhjpf")
 theme_override_font_sizes/font_size = 75
 text = "Options"
 
@@ -245,6 +248,7 @@ text = "Options"
 process_mode = 3
 layout_mode = 2
 theme = ExtResource("1_ktti3")
+theme_override_fonts/font = ExtResource("9_mhjpf")
 theme_override_font_sizes/font_size = 75
 text = "Quit"
 
@@ -263,7 +267,7 @@ size_flags_vertical = 4
 [node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/GridContainer"]
 modulate = Color(0, 0, 0, 0.63529414)
 z_index = 2
-position = Vector2(-1019, 118.00009)
+position = Vector2(-1019, -100)
 scale = Vector2(0.6112295, 0.61122954)
 
 [node name="Polygon2D" type="Polygon2D" parent="mainPausePanel/optionsPanel/GridContainer/StaticBody2D"]
@@ -272,7 +276,7 @@ position = Vector2(-35.99301, -503.90247)
 polygon = PackedVector2Array(4245.541, 57.26158, -211.04997, 6.544037, -283.03607, 2112.136, 4258.6294, 2099.0476)
 
 [node name="OptionsMenuBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/GridContainer"]
-position = Vector2(329.99994, 865.00006)
+position = Vector2(169, 573)
 scale = Vector2(0.6112295, 0.61122954)
 texture = ExtResource("8_5sqrc")
 
@@ -282,7 +286,7 @@ z_index = 1
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 30
+theme_override_constants/outline_size = 22
 theme_override_font_sizes/font_size = 100
 text = "OPTIONS"
 
@@ -295,8 +299,8 @@ focus_neighbor_top = NodePath("../optionsbackButton")
 focus_neighbor_right = NodePath("../optionsaudioButton")
 focus_neighbor_bottom = NodePath("../optionsaudioButton")
 theme = ExtResource("1_ktti3")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 30
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("9_mhjpf")
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
@@ -309,8 +313,8 @@ focus_neighbor_top = NodePath("../optionscontrolButton")
 focus_neighbor_right = NodePath("../optionsbackButton")
 focus_neighbor_bottom = NodePath("../optionsbackButton")
 theme = ExtResource("1_ktti3")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 30
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("9_mhjpf")
 theme_override_font_sizes/font_size = 75
 text = "Audio"
 
@@ -323,8 +327,8 @@ focus_neighbor_top = NodePath("../optionsaudioButton")
 focus_neighbor_right = NodePath("../optionscontrolButton")
 focus_neighbor_bottom = NodePath("../optionscontrolButton")
 theme = ExtResource("1_ktti3")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 30
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = ExtResource("9_mhjpf")
 theme_override_font_sizes/font_size = 75
 text = "Back"
 
