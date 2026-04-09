@@ -50,8 +50,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	time = time + delta
 	if target:
-		velocity = (velocity.normalized() + (target - global_position).normalized()/16)*560*abs(sin(time*1.45))
-		rotation = Vector2.RIGHT.angle_to(velocity.normalized())
+		if (pow(sin(time*1.45),2) < PI/16):
+			velocity = Vector2(0,0)
+			rotation = rotation + (Vector2(cos(rotation),sin(rotation)).angle_to(get_tree().get_first_node_in_group("player").global_position - global_position))/4
+		else:
+			velocity = (velocity.normalized() + (target - global_position).normalized()/16)*560*(pow(sin(time*1.45),2)-PI/16)
+			rotation = Vector2.RIGHT.angle_to(velocity.normalized())
 		#rotation = Vector2.RIGHT.angle_to(target - global_position)
 		#var direction_to_player = (target - global_position).normalized()
 		#var distance_to_player = global_position.distance_to(target)

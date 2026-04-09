@@ -96,4 +96,4 @@ func _on_enemy_died():
 	print("tutorial recieved enemy death")
 	if step == 4 and waiting_for_action:
 		waiting_for_action = false
-		$CanvasLayer/Panel/Label.text += "\n(click to continue)"
+		$CanvasLayer/Panel/Label.text += "\n(Press Enter to continue)"
