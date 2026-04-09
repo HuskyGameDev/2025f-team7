@@ -17,7 +17,7 @@ General/banks_path="res://addons/fmod/AudioBanks/Desktop"
 config/name="Gridlock"
 run/main_scene="uid://cx3teay4u1uo"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cwpypdngeb8mm"
 
 [autoload]
 
