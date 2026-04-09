@@ -50,7 +50,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	time = time + delta
 	if target:
-		velocity = (velocity.normalized() + (target - global_position).normalized()/16)*560*abs(sin(time*1.2))
+		velocity = (velocity.normalized() + (target - global_position).normalized()/16)*560*abs(sin(time*1.45))
 		rotation = Vector2.RIGHT.angle_to(velocity.normalized())
 		#rotation = Vector2.RIGHT.angle_to(target - global_position)
 		#var direction_to_player = (target - global_position).normalized()

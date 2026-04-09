@@ -12,7 +12,7 @@ size = Vector2(40, 40)
 [node name="HiveEnemy" type="CharacterBody2D"]
 script = ExtResource("1_d00xp")
 bullet_node = ExtResource("2_0gqtu")
-max_health = 15.0
+max_health = 5.0
 effect_color = Color(1, 0, 1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
