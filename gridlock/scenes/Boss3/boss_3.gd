@@ -6,6 +6,7 @@ var theta: float = 0.0
 @export var starting_movement: int
 @export var bullet_node: PackedScene
 
+@onready var spawned := false
 var bullet_type: int = 0
 var speed: int = 200
 var move_speed: float = 0.8
@@ -20,6 +21,10 @@ var time: float = 0
 var tracking: bool = false
 
 func _physics_process(delta: float):
+	if !spawned:
+		spawned = true
+		GlobalSignals.boss_spawned.emit()
+	
 	time = time + delta
 	movement(time)
 
@@ -40,7 +45,6 @@ func get_vector(angle):
 	return Vector2(cos(theta),sin(theta))
 	
 func _ready():
-	GlobalSignals.boss_spawned.emit()
 	super._ready()
 	pos = global_position
 	
