@@ -19,12 +19,11 @@ func _process(delta: float) -> void:
 	if !active:
 		active = true
 		GlobalSignals.boss_died.connect(_on_boss_died)
-		mus_main.set_parameter("Game State", 1)
+		mus_main.set_parameter("Game State", 2)
 	
 	if !boss_alive:
 		timer += delta
 		if timer >= delay:
-			mus_main.set_parameter("Game State", 2)
 			queue_free()
 
 func _on_boss_died() -> void:

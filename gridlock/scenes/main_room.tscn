@@ -461,7 +461,7 @@ spawns = ExtResource("15_erf3j")
 
 [node name="Boss" type="Node2D" parent="Timeline/Boss2"]
 visible = false
-script = ExtResource("17_gy4ma")
+script = ExtResource("11_nx0o4")
 
 [node name="AdvanceBossStage" type="Node2D" parent="Timeline/Boss2/Boss"]
 script = ExtResource("16_nx0o4")
@@ -578,7 +578,7 @@ position = Vector2(174, 925)
 spawns = ExtResource("15_erf3j")
 
 [node name="Boss" type="Node2D" parent="Timeline/Boss3"]
-script = ExtResource("11_nx0o4")
+script = ExtResource("17_gy4ma")
 
 [node name="HiveSpawnerOne" parent="Timeline/Boss3/Boss" instance=ExtResource("17_edhfb")]
 position = Vector2(-20, 1000)
