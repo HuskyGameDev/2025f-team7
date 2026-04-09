@@ -211,7 +211,9 @@ spawns = ExtResource("8_phake")
 spawn_time = 3.0
 
 [node name="Boss2" type="Node2D" parent="Timeline"]
+visible = false
 script = ExtResource("3_2noi8")
+enabled = false
 
 [node name="Waves" type="Node2D" parent="Timeline/Boss2"]
 script = ExtResource("3_2noi8")
@@ -470,6 +472,200 @@ position = Vector2(300, 540)
 [node name="Boss3" type="Node2D" parent="Timeline"]
 script = ExtResource("3_2noi8")
 metadata/_custom_type_script = "uid://bv1js5gomnval"
+
+[node name="Wave1" type="Node2D" parent="Timeline/Boss3"]
+visible = false
+script = ExtResource("16_6gvn4")
+metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
+
+[node name="Timeline" type="Node2D" parent="Timeline/Boss3/Wave1"]
+script = ExtResource("3_2noi8")
+metadata/_custom_type_script = "uid://bv1js5gomnval"
+
+[node name="Reparent" type="Node2D" parent="Timeline/Boss3/Wave1/Timeline"]
+script = ExtResource("14_edhfb")
+
+[node name="Timeline" type="Node2D" parent="Timeline/Boss3/Wave1/Timeline/Reparent"]
+script = ExtResource("3_2noi8")
+metadata/_custom_type_script = "uid://bv1js5gomnval"
+
+[node name="EnemyWave" type="Node2D" parent="Timeline/Boss3/Wave1/Timeline/Reparent/Timeline"]
+script = ExtResource("16_6gvn4")
+metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
+
+[node name="BulletVomitSpawner" parent="Timeline/Boss3/Wave1/Timeline/Reparent/Timeline/EnemyWave" instance=ExtResource("7_phake")]
+position = Vector2(167, 154)
+spawns = ExtResource("15_erf3j")
+
+[node name="BulletVomitSpawner2" parent="Timeline/Boss3/Wave1/Timeline/Reparent/Timeline/EnemyWave" instance=ExtResource("7_phake")]
+position = Vector2(1619, 936)
+spawns = ExtResource("15_erf3j")
+
+[node name="EnemyWave2" type="Node2D" parent="Timeline/Boss3/Wave1/Timeline/Reparent/Timeline"]
+script = ExtResource("16_6gvn4")
+metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
+
+[node name="BulletVomitSpawner2" parent="Timeline/Boss3/Wave1/Timeline/Reparent/Timeline/EnemyWave2" instance=ExtResource("7_phake")]
+position = Vector2(1628, 150)
+spawns = ExtResource("15_erf3j")
+
+[node name="BulletVomitSpawner3" parent="Timeline/Boss3/Wave1/Timeline/Reparent/Timeline/EnemyWave2" instance=ExtResource("7_phake")]
+position = Vector2(147, 930)
+spawns = ExtResource("15_erf3j")
+
+[node name="Reparent2" type="Node2D" parent="Timeline/Boss3/Wave1/Timeline"]
+script = ExtResource("14_edhfb")
+
+[node name="Timeline" type="Node2D" parent="Timeline/Boss3/Wave1/Timeline/Reparent2"]
+script = ExtResource("3_2noi8")
+metadata/_custom_type_script = "uid://bv1js5gomnval"
+
+[node name="EnemyWave" type="Node2D" parent="Timeline/Boss3/Wave1/Timeline/Reparent2/Timeline"]
+script = ExtResource("16_6gvn4")
+metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
+
+[node name="RandomEnemySpawner" type="Node" parent="Timeline/Boss3/Wave1/Timeline/Reparent2/Timeline/EnemyWave"]
+script = ExtResource("5_nx0o4")
+total_difficulty = 4.5
+spawn_rate = 0.75
+metadata/_custom_type_script = "uid://c0iyvboumgjap"
+
+[node name="Sniper" type="Node" parent="Timeline/Boss3/Wave1/Timeline/Reparent2/Timeline/EnemyWave/RandomEnemySpawner"]
+script = ExtResource("6_10fbw")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("8_6gvn4")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="ShotgunOrbiter" type="Node" parent="Timeline/Boss3/Wave1/Timeline/Reparent2/Timeline/EnemyWave/RandomEnemySpawner"]
+script = ExtResource("6_10fbw")
+difficulty = 1.5
+weight = 1.0
+spawns = ExtResource("7_mm8b8")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="SwordDude" type="Node" parent="Timeline/Boss3/Wave1/Timeline/Reparent2/Timeline/EnemyWave/RandomEnemySpawner"]
+script = ExtResource("6_10fbw")
+difficulty = 1.0
+weight = 0.5
+spawns = ExtResource("9_edhfb")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="EnemyWave2" type="Node2D" parent="Timeline/Boss3/Wave1/Timeline/Reparent2/Timeline"]
+script = ExtResource("16_6gvn4")
+metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
+
+[node name="RandomEnemySpawner2" type="Node" parent="Timeline/Boss3/Wave1/Timeline/Reparent2/Timeline/EnemyWave2"]
+script = ExtResource("5_nx0o4")
+total_difficulty = 4.5
+spawn_rate = 0.75
+metadata/_custom_type_script = "uid://c0iyvboumgjap"
+
+[node name="Sniper" type="Node" parent="Timeline/Boss3/Wave1/Timeline/Reparent2/Timeline/EnemyWave2/RandomEnemySpawner2"]
+script = ExtResource("6_10fbw")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("8_6gvn4")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="ShotgunOrbiter" type="Node" parent="Timeline/Boss3/Wave1/Timeline/Reparent2/Timeline/EnemyWave2/RandomEnemySpawner2"]
+script = ExtResource("6_10fbw")
+difficulty = 1.5
+weight = 1.0
+spawns = ExtResource("7_mm8b8")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="SwordDude" type="Node" parent="Timeline/Boss3/Wave1/Timeline/Reparent2/Timeline/EnemyWave2/RandomEnemySpawner2"]
+script = ExtResource("6_10fbw")
+difficulty = 1.0
+weight = 0.5
+spawns = ExtResource("9_edhfb")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="Wave2" type="Node2D" parent="Timeline/Boss3"]
+visible = false
+script = ExtResource("16_6gvn4")
+metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
+
+[node name="Timeline" type="Node2D" parent="Timeline/Boss3/Wave2"]
+script = ExtResource("3_2noi8")
+metadata/_custom_type_script = "uid://bv1js5gomnval"
+
+[node name="EnemySpawner" parent="Timeline/Boss3/Wave2/Timeline" instance=ExtResource("7_phake")]
+position = Vector2(1309, 142)
+spawns = ExtResource("9_edhfb")
+spawn_time = 0.75
+
+[node name="EnemySpawner2" parent="Timeline/Boss3/Wave2/Timeline" instance=ExtResource("7_phake")]
+position = Vector2(1468, 223)
+spawns = ExtResource("9_edhfb")
+spawn_time = 0.75
+
+[node name="EnemySpawner3" parent="Timeline/Boss3/Wave2/Timeline" instance=ExtResource("7_phake")]
+position = Vector2(1569, 315)
+spawns = ExtResource("9_edhfb")
+spawn_time = 0.75
+
+[node name="EnemySpawner4" parent="Timeline/Boss3/Wave2/Timeline" instance=ExtResource("7_phake")]
+position = Vector2(1617, 455)
+spawns = ExtResource("9_edhfb")
+spawn_time = 0.75
+
+[node name="EnemySpawner5" parent="Timeline/Boss3/Wave2/Timeline" instance=ExtResource("7_phake")]
+position = Vector2(1606, 599)
+spawns = ExtResource("9_edhfb")
+spawn_time = 0.75
+
+[node name="Wave3" type="Node2D" parent="Timeline/Boss3"]
+script = ExtResource("16_6gvn4")
+metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
+
+[node name="Timeline" type="Node2D" parent="Timeline/Boss3/Wave3"]
+script = ExtResource("3_2noi8")
+metadata/_custom_type_script = "uid://bv1js5gomnval"
+
+[node name="BulletVomitSpawner" parent="Timeline/Boss3/Wave3/Timeline" instance=ExtResource("7_phake")]
+position = Vector2(167, 154)
+spawns = ExtResource("15_erf3j")
+
+[node name="BulletVomitSpawner3" parent="Timeline/Boss3/Wave3/Timeline" instance=ExtResource("7_phake")]
+position = Vector2(1609, 937)
+spawns = ExtResource("15_erf3j")
+
+[node name="BulletVomitSpawner2" parent="Timeline/Boss3/Wave3/Timeline" instance=ExtResource("7_phake")]
+position = Vector2(1601, 137)
+spawns = ExtResource("15_erf3j")
+
+[node name="BulletVomitSpawner4" parent="Timeline/Boss3/Wave3/Timeline" instance=ExtResource("7_phake")]
+position = Vector2(149, 927)
+spawns = ExtResource("15_erf3j")
+
+[node name="RandomEnemySpawner" type="Node" parent="Timeline/Boss3/Wave3/Timeline"]
+script = ExtResource("5_nx0o4")
+total_difficulty = 8.0
+spawn_rate = 0.75
+metadata/_custom_type_script = "uid://c0iyvboumgjap"
+
+[node name="Sniper" type="Node" parent="Timeline/Boss3/Wave3/Timeline/RandomEnemySpawner"]
+script = ExtResource("6_10fbw")
+difficulty = 1.0
+weight = 1.0
+spawns = ExtResource("8_6gvn4")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="ShotgunOrbiter" type="Node" parent="Timeline/Boss3/Wave3/Timeline/RandomEnemySpawner"]
+script = ExtResource("6_10fbw")
+difficulty = 1.5
+weight = 1.0
+spawns = ExtResource("7_mm8b8")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
+
+[node name="SwordDude" type="Node" parent="Timeline/Boss3/Wave3/Timeline/RandomEnemySpawner"]
+script = ExtResource("6_10fbw")
+difficulty = 1.0
+weight = 0.5
+spawns = ExtResource("9_edhfb")
+metadata/_custom_type_script = "uid://b1rkfnw2y7pey"
 
 [node name="Boss" type="Node2D" parent="Timeline/Boss3"]
 script = ExtResource("16_6gvn4")

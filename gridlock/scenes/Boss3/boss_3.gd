@@ -1,4 +1,4 @@
-extends Enemy
+extends Boss
 
 var theta: float = 0.0
 @export_range(0,2*PI) var alpha: float = 0.0
