@@ -17,7 +17,7 @@ script = ExtResource("1_m6okp")
 [node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_size = Vector2(200, 0)
 
-[node name="Sprite3D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
 material = SubResource("ShaderMaterial_m6okp")
 rotation = 0.0017453292

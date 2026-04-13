@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var sprite := $BackgroundWip
+@onready var sprite := $Sprite2D
 
 # TODO: hardcoded :\
 const ARENA_WIDTH := 1782
