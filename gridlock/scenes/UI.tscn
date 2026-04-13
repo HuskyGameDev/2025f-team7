@@ -170,6 +170,7 @@ offset_right = 104.0
 offset_bottom = -26.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 25
 theme_override_styles/background = SubResource("StyleBoxFlat_ro3t7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5en4g")
 fill_mode = 3
@@ -185,13 +186,14 @@ frame_progress = 0.48989072
 process_mode = 3
 layout_mode = 0
 offset_left = 50.0
-offset_top = -54.0
+offset_top = -45.0
 offset_right = 85.0
-offset_bottom = -8.0
+offset_bottom = 1.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 25
 text = "x0"
 
 [node name="TimerDisplay" parent="mainUIPanelContainer/BombContainer" instance=ExtResource("7_flkkw")]
