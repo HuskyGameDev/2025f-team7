@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 const FLASH := preload("res://scenes/Player/player_sprite_flash.tscn")
 
@@ -32,9 +32,13 @@ const FLASH := preload("res://scenes/Player/player_sprite_flash.tscn")
 		if health == value: return
 		health = value
 		
-		if fg: fg.play(str(health) + "_hp")
-		if bg: bg.play(str(health) + "_hp")
-		if shadow: shadow.play(str(health) + "_hp")
+		if health > 0:
+			visible = true
+			if fg: fg.play(str(health) + "_hp")
+			if bg: bg.play(str(health) + "_hp")
+			if shadow: shadow.play(str(health) + "_hp")
+		else:
+			visible = false
 
 func __spawn_flash(alpha: float) -> void:
 	var flash := FLASH.instantiate()

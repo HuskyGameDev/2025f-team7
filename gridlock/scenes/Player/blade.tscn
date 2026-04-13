@@ -19,10 +19,11 @@ script = ExtResource("1_54kj3")
 collision_layer = 4
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BladeArea2D"]
+[node name="AreaShape" type="CollisionShape2D" parent="BladeArea2D"]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_hmvf4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CharacterShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n3ed1")
 
 [node name="SawSprite" parent="." instance=ExtResource("2_1s1bc")]

@@ -1,0 +1,123 @@
+[gd_scene load_steps=10 format=3 uid="uid://cw080ehmxwbf3"]
+
+[ext_resource type="Script" uid="uid://ptiuiaek1fw1" path="res://scenes/Menus/death_screen.gd" id="1_4404p"]
+[ext_resource type="Theme" uid="uid://d8uuw1d6d7be" path="res://assets/label.tres" id="1_i52en"]
+[ext_resource type="Texture2D" uid="uid://nmjqkowop31g" path="res://assets/sprites/Bosses/roach walk (jackson)-Sheet.png" id="3_d0y25"]
+[ext_resource type="Texture2D" uid="uid://wkc4l5ke7fiy" path="res://assets/sprites/Bosses/centipede remaket.png" id="4_yff6u"]
+[ext_resource type="Texture2D" uid="uid://c1derf54h21xa" path="res://assets/sprites/Bosses/Boss3/Boss3 sheet.png" id="5_1cxn0"]
+[ext_resource type="PackedScene" uid="uid://d3snw0is72pw8" path="res://scenes/Player/player_sprite.tscn" id="6_yff6u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqm4e"]
+atlas = ExtResource("3_d0y25")
+region = Rect2(250, 100, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqfmk"]
+atlas = ExtResource("4_yff6u")
+region = Rect2(780, 20, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6doe2"]
+atlas = ExtResource("5_1cxn0")
+region = Rect2(50, 8, 40, 40)
+
+[node name="DeathScreen" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7529412)
+script = ExtResource("1_4404p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.5
+offset_top = -99.0
+offset_right = 277.5
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_i52en")
+theme_override_font_sizes/font_size = 128
+text = "Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ProgressDisplay" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ProgressDisplay"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_pqm4e")
+expand_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ProgressDisplay"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_oqfmk")
+expand_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/ProgressDisplay"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_6doe2")
+expand_mode = 4
+
+[node name="FlowerContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 32
+
+[node name="Control" type="Control" parent="VBoxContainer/FlowerContainer"]
+layout_mode = 2
+
+[node name="ProgressMarker" type="Control" parent="VBoxContainer/FlowerContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 1.24
+
+[node name="PlayerSprite" parent="VBoxContainer/FlowerContainer/Control/ProgressMarker" instance=ExtResource("6_yff6u")]
+scale = Vector2(0.25, 0.25)
+
+[node name="Time" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_i52en")
+theme_override_font_sizes/font_size = 64
+text = "time: 04:13"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TryAgain" type="Button" parent="VBoxContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../ReturnToTitle")
+theme = ExtResource("1_i52en")
+theme_override_font_sizes/font_size = 48
+text = "Try Again"
+
+[node name="ReturnToTitle" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../TryAgain")
+theme = ExtResource("1_i52en")
+theme_override_font_sizes/font_size = 48
+text = "Return to Title"
+
+[connection signal="pressed" from="VBoxContainer/Buttons/TryAgain" to="." method="_on_try_again"]
+[connection signal="pressed" from="VBoxContainer/Buttons/ReturnToTitle" to="." method="_on_return_to_title"]

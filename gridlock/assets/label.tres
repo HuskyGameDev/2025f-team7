@@ -1,6 +1,5 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://d8uuw1d6d7be"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d8uuw1d6d7be"]
 
-[ext_resource type="FontFile" uid="uid://fcmvobvaxrfl" path="res://assets/Pixeled.ttf" id="1_hgv2j"]
 [ext_resource type="FontFile" uid="uid://cevvelverwilc" path="res://assets/Jersey25-Regular.ttf" id="2_wnrnw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgv2j"]
@@ -11,6 +10,6 @@ border_width_bottom = 5
 
 [resource]
 default_font = ExtResource("2_wnrnw")
-Button/fonts/font = ExtResource("1_hgv2j")
+Button/fonts/font = ExtResource("2_wnrnw")
 Button/styles/focus = SubResource("StyleBoxFlat_hgv2j")
 Label/fonts/font = ExtResource("2_wnrnw")

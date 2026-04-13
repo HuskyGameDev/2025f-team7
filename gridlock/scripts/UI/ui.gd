@@ -25,6 +25,7 @@ var bombs := 0;
 
 var time := 0.0;
 var stopped := false;
+var timer_stopped := false
 
 var testVar := false;
 signal bossInbound;
@@ -42,6 +43,7 @@ signal bossInbound;
 @export var audioPanel: PanelContainer;
 @export var HeartContainer: GridContainer;
 @export var HeartTextureRect: TextureRect;
+@export var death_screen: DeathScreen
 @onready var BossHealthBar: ProgressBar = $BossHealthBar
 @onready var config = ConfigFile.new() #creates configfile object
 
@@ -88,7 +90,7 @@ func _process(delta: float) -> void:
 	#if testVar==false:
 		#_on_player_health_change(5);
 		#testVar=true
-	if stopped||get_tree().paused:
+	if timer_stopped or stopped or get_tree().paused:
 		return
 	time += delta;
 	timeLabel.time = time
@@ -102,6 +104,11 @@ amount has to be divided in 2.
 Uses the heartTextures array which is sorted and just changes the hearts
 """
 func _on_player_health_change(new_health) -> void:
+	if new_health == 0:
+		timer_stopped = true
+		death_screen.time = time
+		death_screen.activate()
+	
 	var temp := int(new_health/2);
 	if(temp >= 0 and temp <= 5):	
 		if(currentHealth < temp):

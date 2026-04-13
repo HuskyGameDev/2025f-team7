@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b1yptc0ppcic"]
+[gd_scene load_steps=24 format=3 uid="uid://b1yptc0ppcic"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
@@ -16,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://cevvelverwilc" path="res://assets/Jersey25-Regular.ttf" id="9_mhjpf"]
 [ext_resource type="Texture2D" uid="uid://kj2hkbm1lu4a" path="res://assets/sprites/other/boss1_turret_var3.png" id="10_ilk7v"]
 [ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="12_flkkw"]
+[ext_resource type="PackedScene" uid="uid://cw080ehmxwbf3" path="res://scenes/Menus/death_screen.tscn" id="17_s2m3y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro3t7"]
 bg_color = Color(0.26103294, 0.2859105, 0.32571125, 1)
@@ -48,7 +49,7 @@ animations = [{
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sqrc"]
 bg_color = Color(0.9137255, 0.047058824, 0.015686275, 0.79607844)
 
-[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel", "controlsPanel", "waveProgressLabel", "waveProgressBar", "audioPanel", "HeartContainer", "HeartTextureRect")]
+[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel", "controlsPanel", "waveProgressLabel", "waveProgressBar", "audioPanel", "HeartContainer", "HeartTextureRect", "death_screen")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -71,6 +72,7 @@ waveProgressBar = NodePath("WaveProgressBar/WaveProgressBar")
 audioPanel = NodePath("mainPausePanel/optionsPanel/audioPanel")
 HeartContainer = NodePath("mainUIPanelContainer/HeartContainer")
 HeartTextureRect = NodePath("mainUIPanelContainer/HeartContainer/HeartTexture0")
+death_screen = NodePath("DeathScreen")
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://addons/fmod/AudioBanks/Desktop/Master.bank"]
@@ -712,6 +714,10 @@ theme_override_colors/font_color = Color(0.9578478, 0.95135707, 0.90729994, 1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_5sqrc")
 value = 100.0
 show_percentage = false
+
+[node name="DeathScreen" parent="." instance=ExtResource("17_s2m3y")]
+visible = false
+layout_mode = 1
 
 [connection signal="bossInbound" from="." to="WaveProgressBar/BossInboundText" method="activate_label"]
 [connection signal="pressed" from="WaveProgressBar/BossInboundTestButton" to="WaveProgressBar/BossInboundText" method="activate_label"]

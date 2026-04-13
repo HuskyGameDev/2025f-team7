@@ -1,4 +1,15 @@
+class_name SawSprite
 extends Node2D
+
+const ROTATION_SPEED := 180.0
+const DAMAGE_ROTATION_SPEED := 450.0
+const DEATH_ROTATION_DECEL := 36.0
+
+enum State {
+	DEFAULT,
+	DEALING_DAMAGE,
+	PLAYER_DIED,
+}
 
 @onready var bg: AnimatedSprite2D = $Background
 @onready var outline: AnimatedSprite2D = $Outline
@@ -15,13 +26,17 @@ extends Node2D
 		color.rotation_degrees = angle
 		shadow.rotation_degrees = angle
 
-@onready var dealing_damage := false
-
-const ROTATION_SPEED := 180.0
-const DAMAGE_ROTATION_SPEED := 450.0
+@onready var state := State.DEFAULT
+@onready var rotation_speed := ROTATION_SPEED
 
 func _process(delta: float) -> void:
-	if dealing_damage:
-		angle += delta * DAMAGE_ROTATION_SPEED
-	else:
-		angle += delta * ROTATION_SPEED
+	match state:
+		State.DEFAULT: rotation_speed = ROTATION_SPEED
+		State.DEALING_DAMAGE: rotation_speed = DAMAGE_ROTATION_SPEED
+		State.PLAYER_DIED: rotation_speed = move_toward(
+			rotation_speed,
+			0,
+			delta * DEATH_ROTATION_DECEL
+		)
+	
+	angle += delta * rotation_speed

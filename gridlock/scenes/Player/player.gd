@@ -5,6 +5,12 @@ const PETAL := preload("res://scenes/Player/player_petal.tscn")
 
 signal player_position(location: Vector2)
 
+@export_range(2, 10) var max_health := 10:
+	get(): return max_health
+	set(value):
+		max_health = value
+		health = clampi(health, 0, max_health)
+
 var SPEED = 300.0
 var SHIFTSPEED = 450
 var CTRLSPEED = 150
@@ -18,17 +24,16 @@ const BOMB_STEP = 0.01
 
 @onready var sprite := $PlayerSprite
 
-var health := 10:
+var health := max_health:
 	set(value):
-		value = clamp(value, 0, 10)
+		value = clamp(value, 0, max_health)
 		if value != health:
 			health = value
 			progress_bar.value = value
 			_update_sprite()
-		if value == 0:
-			get_tree().change_scene_to_file("res://scenes/Title/Title.tscn")
 
 func _ready():
+	_update_sprite()
 	emit_signal("player_position", global_position)
 	invincible = false
 	GlobalSignals.bomb_gained.connect(_on_bomb_gained)
@@ -36,21 +41,24 @@ func _ready():
 	GlobalSignals.boss_died.connect(_heal_to_full)
 
 func _physics_process(_delta: float):
-	var currentSpeed = SPEED
-	if Input.is_action_pressed("FastWalk"):
-		currentSpeed = SHIFTSPEED
-	if Input.is_action_pressed("SlowWalk"):
-		currentSpeed = CTRLSPEED
-	if Input.is_action_just_pressed("UseBomb"):
-		if bombs_available > 0:
-			var bomb := BOMB.instantiate()
-			bomb.global_position = global_position
-			get_parent().add_child(bomb)
-			bombs_available -= 1
-			$Bombuse.play()
-			GlobalSignals.emit_signal("bomb_used")
-	
-	velocity = Input.get_vector("MainPlayerMoveLeft","MainPlayerMoveRight","MainPlayerMoveUp","MainPlayerMoveDown") * currentSpeed
+	if health > 0:
+		var currentSpeed = SPEED
+		if Input.is_action_pressed("FastWalk"):
+			currentSpeed = SHIFTSPEED
+		if Input.is_action_pressed("SlowWalk"):
+			currentSpeed = CTRLSPEED
+		if Input.is_action_just_pressed("UseBomb"):
+			if bombs_available > 0:
+				var bomb := BOMB.instantiate()
+				bomb.global_position = global_position
+				get_parent().add_child(bomb)
+				bombs_available -= 1
+				$Bombuse.play()
+				GlobalSignals.emit_signal("bomb_used")
+		
+		velocity = Input.get_vector("MainPlayerMoveLeft","MainPlayerMoveRight","MainPlayerMoveUp","MainPlayerMoveDown") * currentSpeed
+	else:
+		velocity = Vector2.ZERO
 	
 	move_and_slide()
 	GlobalSignals.emit_signal("player_position", position)
@@ -79,7 +87,7 @@ func fire():
 	var petal := PETAL.instantiate()
 	petal.color = sprite.fg.modulate
 	petal.start_position = position
-	petal.angle = sprite.angle + (2 * PI / 5.0) * (5 - (health / 2.0))
+	petal.angle = sprite.angle + (2 * PI / 5.0) * (5 - health / 2.0)
 	add_sibling(petal)
 
 func poison():
@@ -124,4 +132,4 @@ func _on_hit(_area: Area2D) -> void:
 
 # TODO: animation for healing?
 func _heal_to_full() -> void:
-	health = 10
+	health = max_health

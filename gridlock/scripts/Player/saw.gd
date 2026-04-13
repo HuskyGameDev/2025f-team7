@@ -5,9 +5,17 @@ const PARTICLE := preload("res://scenes/Effects/damage_particle.tscn")
 const SPEED = 350.0
 
 @onready var blade_area: Area2D = $BladeArea2D
-@onready var sprite := $SawSprite
+@onready var sprite: SawSprite = $SawSprite
+@onready var died := false
 
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
+	GlobalSignals.health_change.connect(_health_change)
+
+func _physics_process(_delta: float) -> void:
+	if died:
+		sprite.state = SawSprite.State.PLAYER_DIED
+		return
+	
 	var directionx := Input.get_axis("SawPlayerMoveLeft", "SawPlayerMoveRight")
 	var directiony :=Input.get_axis("SawPlayerMoveUp", "SawPlayerMoveDown")
 	# Get the input direction and handle the movement/deceleration.
@@ -23,7 +31,10 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-	sprite.dealing_damage = blade_area.has_overlapping_areas()
+	if blade_area.has_overlapping_areas():
+		sprite.state = SawSprite.State.DEALING_DAMAGE
+	else:
+		sprite.state = SawSprite.State.DEFAULT
 	
 	for area in blade_area.get_overlapping_areas():
 		var enemy: Enemy = area.get_parent()
@@ -42,3 +53,12 @@ func _physics_process(delta: float) -> void:
 		particle.global_position = global_position + dir * 30
 	
 	GlobalSignals.saw_position.emit(global_position)
+
+func _health_change(health: int) -> void:
+	if health > 0: return
+	
+	died = true
+	# not sure what's going on here, but these need to be
+	# deferred
+	$CharacterShape.set_deferred("disabled", true)
+	%AreaShape.set_deferred("disabled", true)
