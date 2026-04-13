@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cx3teay4u1uo"]
+[gd_scene load_steps=35 format=3 uid="uid://cx3teay4u1uo"]
 
 [ext_resource type="Script" uid="uid://bqiqk05m2w0ba" path="res://scenes/Title/Title.gd" id="1_ascc0"]
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
@@ -84,6 +84,10 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yehle"]
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+
 [node name="Title" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -111,8 +115,8 @@ autoplay = true
 
 [node name="MenuBackground" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(956, 540)
-scale = Vector2(1.9916667, 1.9944445)
+position = Vector2(960, 540)
+scale = Vector2(1.998, 2)
 texture = ExtResource("2_h2cek")
 
 [node name="Title" type="Sprite2D" parent="MenuBackground"]
@@ -857,15 +861,22 @@ position = Vector2(914, 517)
 [node name="BestTime" type="Label" parent="."]
 z_index = 1
 texture_filter = 1
-layout_mode = 0
-offset_left = 1183.0
-offset_top = 898.0
-offset_right = 1388.3334
-offset_bottom = 961.0
-scale = Vector2(2.625, 2.625)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = -51.0
+grow_horizontal = 0
+grow_vertical = 0
 theme = ExtResource("17_wvb7n")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yehle")
 text = "Best Time:"
+vertical_alignment = 2
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_entered" from="Button/StartButton" to="." method="_on_button_mouse_entered"]
