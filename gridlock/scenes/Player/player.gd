@@ -63,23 +63,15 @@ func _physics_process(_delta: float):
 	move_and_slide()
 	GlobalSignals.emit_signal("player_position", position)
 
-func set_status(bullet_type):
-	if !invincible:
-		match bullet_type:
-			0:
-				fire()
-			1:
-				poison()
-			2:
-				slow()
-			3:
-				stun()
-		invincible = true
-		sprite.invincible = true
-		$InvincibleTimer.start(5)
+func set_status(_bullet_type):
+	if invincible: return
+	take_damage()
+	invincible = true
+	sprite.invincible = true
+	$InvincibleTimer.start(5)
 
-func fire():
-	debug.text = "fire"
+func take_damage():
+	if health == 0: return
 	health -= 2
 	$Hurt.play()
 	GlobalSignals.emit_signal("health_change", health)
@@ -89,24 +81,6 @@ func fire():
 	petal.start_position = position
 	petal.angle = sprite.angle + (2 * PI / 5.0) * (5 - health / 2.0)
 	add_sibling(petal)
-
-func poison():
-	debug.text = "poison"
-	health -= 2
-	$Hurt.play()
-	GlobalSignals.emit_signal("health_change", health)
-
-func slow():
-	debug.text = "slow"
-	health -= 2
-	$Hurt.play()
-	GlobalSignals.emit_signal("health_change", health)
-
-func stun():
-	debug.text = "stun"
-	health -= 2
-	$Hurt.play()
-	GlobalSignals.emit_signal("health_change", health)
 	
 func _update_sprite():
 	sprite.invincible = invincible
@@ -118,6 +92,7 @@ func _on_invincible_timer_timeout() -> void:
 
 
 func _on_near_miss(area: Area2D) -> void:
+	if health == 0: return
 	if area.near_miss: return
 	area.near_miss = true
 	
