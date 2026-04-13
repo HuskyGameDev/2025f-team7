@@ -141,7 +141,7 @@ Max bombs right now is 2
 """
 func _near_Miss_Bomb() -> void:
 	if(bombs<2):
-		bombPBar.value += 2;
+		bombPBar.value += 5;
 		if(bombPBar.value>=100):
 			bombPBar.value = 0;
 			GlobalSignals.emit_signal("bomb_gained");
