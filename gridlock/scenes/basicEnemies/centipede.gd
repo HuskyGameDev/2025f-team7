@@ -1,5 +1,11 @@
 extends Enemy
 
+enum Mode {
+	RANDOM,
+	EDITOR_ROTATION,
+	TRACK_SAW,
+}
+
 const BULLET := preload("res://scenes/Bullet/bullet.tscn")
 const SPEED := 250
 const RING_SIZE := 16
@@ -8,12 +14,27 @@ const RING_SIZE := 16
 # to not be visible anymore
 const MAX_DISTANCE := 1300
 
+@export var mode := Mode.RANDOM
+
 # TODO: hardcoded :(
-const CENTER := Vector2(960, 540)
+const WINDOW_SIZE := Vector2(1920, 1080)
+const CENTER := WINDOW_SIZE / 2
 
 func _ready() -> void:
 	super._ready()
-	GlobalSignals.saw_position.connect(_track_saw)
+	
+	match mode:
+		Mode.RANDOM:
+			var random_point := Vector2(
+				randf_range(0, WINDOW_SIZE.x),
+				randf_range(0, WINDOW_SIZE.y),
+			)
+			velocity = (random_point - global_position).normalized() * SPEED
+			rotation = velocity.angle()
+		Mode.TRACK_SAW:
+			GlobalSignals.saw_position.connect(_track_saw)
+		Mode.EDITOR_ROTATION:
+			velocity = Vector2.from_angle(rotation) * SPEED
 
 func _track_saw(saw_pos: Vector2) -> void:
 	velocity = (saw_pos - global_position).normalized() * SPEED
@@ -46,4 +67,7 @@ func __bullet_ring(speed: float, angle_offset: float) -> void:
 
 
 func _on_timer_timeout():
+	queue_free()
+
+func _screen_exited():
 	queue_free()

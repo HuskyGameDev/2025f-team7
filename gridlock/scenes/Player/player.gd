@@ -96,8 +96,9 @@ func _on_near_miss(area: Area2D) -> void:
 	if area.near_miss: return
 	area.near_miss = true
 	
-	if !invincible: GlobalSignals.emit_signal("near_miss")
-	$Nearmiss.play()
+	if !invincible:
+		GlobalSignals.emit_signal("near_miss")
+		$Nearmiss.play()
 
 func _on_bomb_gained() -> void:
 	bombs_available += 1

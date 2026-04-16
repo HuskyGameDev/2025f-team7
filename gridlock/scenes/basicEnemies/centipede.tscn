@@ -25,6 +25,9 @@ effect_color = Color(0.9529412, 0.42352942, 0.1764706, 1)
 event_name = "event:/Enemy/Enemy_Hurt"
 event_guid = "{35e4487f-e1fb-4d87-9996-b5c1dc53cd22}"
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-102, -23, 164, 46)
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-22, 1)
 rotation = 1.5707964
@@ -82,4 +85,5 @@ wait_time = 10.0
 autostart = true
 
 [connection signal="died" from="." to="." method="_on_died"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

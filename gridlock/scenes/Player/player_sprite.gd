@@ -40,6 +40,8 @@ const FLASH := preload("res://scenes/Player/player_sprite_flash.tscn")
 		else:
 			visible = false
 
+@onready var bombs_full := false
+
 func __spawn_flash(alpha: float) -> void:
 	var flash := FLASH.instantiate()
 	flash.rotation = fg.rotation
@@ -47,7 +49,7 @@ func __spawn_flash(alpha: float) -> void:
 	add_child(flash)
 
 func _on_near_miss() -> void:
-	__spawn_flash(0.5)
+	if !bombs_full: __spawn_flash(0.5)
 func _on_bomb_gained() -> void:
 	__spawn_flash(1)
 
