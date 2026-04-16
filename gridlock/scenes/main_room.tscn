@@ -529,7 +529,7 @@ metadata/_custom_type_script = "uid://c7n0kqwx8ry53"
 [node name="RandomEnemySpawner" type="Node" parent="Timeline/Boss3/Wave1"]
 script = ExtResource("5_nx0o4")
 total_difficulty = 5.0
-spawn_rate = 0.75
+spawn_rate = 1.0
 metadata/_custom_type_script = "uid://c0iyvboumgjap"
 
 [node name="Sniper" type="Node" parent="Timeline/Boss3/Wave1/RandomEnemySpawner"]
@@ -561,7 +561,7 @@ metadata/_custom_type_script = "uid://bv1js5gomnval"
 [node name="RandomEnemySpawner" type="Node" parent="Timeline/Boss3/Wave2/Timeline"]
 script = ExtResource("5_nx0o4")
 total_difficulty = 6.0
-spawn_rate = 0.75
+spawn_rate = 1.0
 metadata/_custom_type_script = "uid://c0iyvboumgjap"
 
 [node name="Sniper" type="Node" parent="Timeline/Boss3/Wave2/Timeline/RandomEnemySpawner"]
@@ -601,7 +601,7 @@ spawns = ExtResource("15_erf3j")
 [node name="RandomEnemySpawner" type="Node" parent="Timeline/Boss3/Wave3/Timeline"]
 script = ExtResource("5_nx0o4")
 total_difficulty = 7.0
-spawn_rate = 0.75
+spawn_rate = 1.0
 metadata/_custom_type_script = "uid://c0iyvboumgjap"
 
 [node name="Sniper" type="Node" parent="Timeline/Boss3/Wave3/Timeline/RandomEnemySpawner"]
