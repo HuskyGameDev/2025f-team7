@@ -30,6 +30,8 @@ var timer_stopped := false
 var testVar := false;
 signal bossInbound;
 
+@export var pausing_disabled := false
+
 @export var full_heart: Texture;
 @export var empty_heart: Texture;
 @export var timeLabel: TimerDisplay;
@@ -83,6 +85,16 @@ func _ready() -> void:
 	
 	#sets the Boss Health Bar to not visible
 	BossHealthBar.visible = false
+	
+	# to make sure we eat the accept button (since it
+	# was likely pressed to start the game), we disable pausing
+	# for the first frame
+	if !pausing_disabled:
+		pausing_disabled = true
+		call_deferred("__enable_pause")
+
+func __enable_pause():
+	pausing_disabled = false
 
 #Increases the timer every second
 #If scene tree is paused or stopped flag is flipped timer doesn't increase
@@ -181,7 +193,7 @@ Goes down the tree and checks the logic which does certain actions
 With this tree escape works throughout the whole pause and options screen currently
 """
 func _input(_event: InputEvent) -> void:
-	if(Input.is_action_just_pressed("ui_cancel")):
+	if(!pausing_disabled and !mainPausePanel.visible and Input.is_action_just_pressed("ui_accept")):
 		if(audioPanel.visible):
 			audioPanel.visible = false;
 			$mainPausePanel/optionsPanel/GridContainer/optionscontrolButton.grab_focus.call_deferred()

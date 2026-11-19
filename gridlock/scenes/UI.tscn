@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b1yptc0ppcic"]
+[gd_scene format=3 uid="uid://b1yptc0ppcic"]
 
 [ext_resource type="Script" uid="uid://cw15j5pj37ba7" path="res://scripts/UI/ui.gd" id="1_5en4g"]
 [ext_resource type="Texture2D" uid="uid://b7k8w444xyqox" path="res://assets/sprites/hearts/Red Heart.png" id="1_dj8aq"]
@@ -41,7 +41,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_flkkw")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 1.0
 }]
@@ -49,7 +49,7 @@ animations = [{
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sqrc"]
 bg_color = Color(0.9137255, 0.047058824, 0.015686275, 0.79607844)
 
-[node name="UI" type="Control" node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel", "controlsPanel", "waveProgressLabel", "waveProgressBar", "audioPanel", "HeartContainer", "HeartTextureRect", "death_screen")]
+[node name="UI" type="Control" unique_id=2123897100 node_paths=PackedStringArray("timeLabel", "bombPBar", "bombLabel", "mainPausePanel", "optionsPanel", "controlsPanel", "waveProgressLabel", "waveProgressBar", "audioPanel", "HeartContainer", "HeartTextureRect", "death_screen")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -74,10 +74,10 @@ HeartContainer = NodePath("mainUIPanelContainer/HeartContainer")
 HeartTextureRect = NodePath("mainUIPanelContainer/HeartContainer/HeartTexture0")
 death_screen = NodePath("DeathScreen")
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=566762529]
 bank_paths = ["res://addons/fmod/AudioBanks/Desktop/Master.bank"]
 
-[node name="WaveProgressBar" type="GridContainer" parent="."]
+[node name="WaveProgressBar" type="GridContainer" parent="." unique_id=1436649050]
 process_mode = 3
 layout_mode = 1
 anchors_preset = 5
@@ -91,7 +91,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource("1_ktti3")
 
-[node name="WaveProgressLabel" type="Label" parent="WaveProgressBar"]
+[node name="WaveProgressLabel" type="Label" parent="WaveProgressBar" unique_id=1750856057]
 process_mode = 3
 visible = false
 layout_mode = 2
@@ -101,7 +101,7 @@ theme = ExtResource("1_ktti3")
 theme_override_colors/font_color = Color(0, 0.32050937, 0.31017795, 1)
 text = "Wave Progress"
 
-[node name="WaveProgressBar" type="ProgressBar" parent="WaveProgressBar"]
+[node name="WaveProgressBar" type="ProgressBar" parent="WaveProgressBar" unique_id=162163045]
 process_mode = 3
 visible = false
 custom_minimum_size = Vector2(200, 20)
@@ -113,7 +113,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_ro3t7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5en4g")
 show_percentage = false
 
-[node name="BossInboundText" type="Label" parent="WaveProgressBar"]
+[node name="BossInboundText" type="Label" parent="WaveProgressBar" unique_id=722334623]
 process_mode = 3
 visible = false
 layout_mode = 2
@@ -124,13 +124,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_cgfq5")
 
-[node name="BossInboundTestButton" type="Button" parent="WaveProgressBar"]
+[node name="BossInboundTestButton" type="Button" parent="WaveProgressBar" unique_id=236331117]
 visible = false
 layout_mode = 2
 theme = ExtResource("1_ktti3")
 text = "TEST TEST TEST"
 
-[node name="mainUIPanelContainer" type="PanelContainer" parent="."]
+[node name="mainUIPanelContainer" type="PanelContainer" parent="." unique_id=163597704]
 process_mode = 3
 layout_mode = 1
 anchors_preset = 11
@@ -142,12 +142,12 @@ grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("1_ktti3")
 
-[node name="HeartContainer" type="GridContainer" parent="mainUIPanelContainer"]
+[node name="HeartContainer" type="GridContainer" parent="mainUIPanelContainer" unique_id=1125489534]
 process_mode = 3
 visible = false
 layout_mode = 2
 
-[node name="HeartTexture0" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" groups=["heartsGroup"]]
+[node name="HeartTexture0" type="TextureRect" parent="mainUIPanelContainer/HeartContainer" unique_id=1882242218 groups=["heartsGroup"]]
 process_mode = 3
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
@@ -155,13 +155,13 @@ texture = ExtResource("1_dj8aq")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="BombContainer" type="Control" parent="mainUIPanelContainer"]
+[node name="BombContainer" type="Control" parent="mainUIPanelContainer" unique_id=1628654824]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="BombBar" type="ProgressBar" parent="mainUIPanelContainer/BombContainer"]
+[node name="BombBar" type="ProgressBar" parent="mainUIPanelContainer/BombContainer" unique_id=2114591198]
 process_mode = 3
 layout_mode = 0
 offset_left = 55.0
@@ -175,14 +175,14 @@ theme_override_styles/background = SubResource("StyleBoxFlat_ro3t7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5en4g")
 fill_mode = 3
 
-[node name="BombTexture" type="AnimatedSprite2D" parent="mainUIPanelContainer/BombContainer"]
+[node name="BombTexture" type="AnimatedSprite2D" parent="mainUIPanelContainer/BombContainer" unique_id=500712006]
 position = Vector2(49, -54)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_mhjpf")
 autoplay = "default"
 frame_progress = 0.48989072
 
-[node name="BombCountLabel" type="Label" parent="mainUIPanelContainer/BombContainer"]
+[node name="BombCountLabel" type="Label" parent="mainUIPanelContainer/BombContainer" unique_id=1782930982]
 process_mode = 3
 layout_mode = 0
 offset_left = 50.0
@@ -196,14 +196,14 @@ theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 25
 text = "x0"
 
-[node name="TimerDisplay" parent="mainUIPanelContainer/BombContainer" instance=ExtResource("7_flkkw")]
+[node name="TimerDisplay" parent="mainUIPanelContainer/BombContainer" unique_id=450739389 instance=ExtResource("7_flkkw")]
 layout_mode = 0
 offset_left = 12.0
 offset_top = -572.0
 offset_right = 142.0
 offset_bottom = -508.0
 
-[node name="mainPausePanel" type="PanelContainer" parent="."]
+[node name="mainPausePanel" type="PanelContainer" parent="." unique_id=630807834]
 process_mode = 3
 visible = false
 layout_mode = 1
@@ -215,24 +215,24 @@ grow_vertical = 2
 theme = ExtResource("1_ktti3")
 script = ExtResource("7_ilk7v")
 
-[node name="GridContainer" type="GridContainer" parent="mainPausePanel"]
+[node name="GridContainer" type="GridContainer" parent="mainPausePanel" unique_id=726201401]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ButtonHover" type="FmodEventEmitter2D" parent="mainPausePanel/GridContainer"]
+[node name="ButtonHover" type="FmodEventEmitter2D" parent="mainPausePanel/GridContainer" unique_id=1404573357]
 event_name = "event:/UI/UI_Hover"
 event_guid = "{5df90c8f-ac26-4e95-984f-64e2f4850c8d}"
 
-[node name="pauseTextLabel" type="Label" parent="mainPausePanel/GridContainer"]
+[node name="pauseTextLabel" type="Label" parent="mainPausePanel/GridContainer" unique_id=1957602170]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 100
 text = "PAUSE"
 
-[node name="resumeButton" type="Button" parent="mainPausePanel/GridContainer"]
+[node name="resumeButton" type="Button" parent="mainPausePanel/GridContainer" unique_id=511283582]
 process_mode = 3
 layout_mode = 2
 theme = ExtResource("1_ktti3")
@@ -240,15 +240,7 @@ theme_override_fonts/font = ExtResource("9_mhjpf")
 theme_override_font_sizes/font_size = 75
 text = "Resume"
 
-[node name="optionButton" type="Button" parent="mainPausePanel/GridContainer"]
-process_mode = 3
-layout_mode = 2
-theme = ExtResource("1_ktti3")
-theme_override_fonts/font = ExtResource("9_mhjpf")
-theme_override_font_sizes/font_size = 75
-text = "Options"
-
-[node name="quitButton" type="Button" parent="mainPausePanel/GridContainer"]
+[node name="quitButton" type="Button" parent="mainPausePanel/GridContainer" unique_id=1508681635]
 process_mode = 3
 layout_mode = 2
 theme = ExtResource("1_ktti3")
@@ -256,35 +248,35 @@ theme_override_fonts/font = ExtResource("9_mhjpf")
 theme_override_font_sizes/font_size = 75
 text = "Quit"
 
-[node name="optionsPanel" type="PanelContainer" parent="mainPausePanel"]
+[node name="optionsPanel" type="PanelContainer" parent="mainPausePanel" unique_id=993158027]
 process_mode = 3
 visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
-[node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel"]
+[node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel" unique_id=136229335]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/GridContainer"]
+[node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/GridContainer" unique_id=382698569]
 modulate = Color(0, 0, 0, 0.63529414)
 z_index = 2
 position = Vector2(-1019, -100)
 scale = Vector2(0.6112295, 0.61122954)
 
-[node name="Polygon2D" type="Polygon2D" parent="mainPausePanel/optionsPanel/GridContainer/StaticBody2D"]
+[node name="Polygon2D" type="Polygon2D" parent="mainPausePanel/optionsPanel/GridContainer/StaticBody2D" unique_id=1501425024]
 z_index = -1
 position = Vector2(-35.99301, -503.90247)
 polygon = PackedVector2Array(4245.541, 57.26158, -211.04997, 6.544037, -283.03607, 2112.136, 4258.6294, 2099.0476)
 
-[node name="OptionsMenuBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/GridContainer"]
+[node name="OptionsMenuBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/GridContainer" unique_id=828905747]
 position = Vector2(169, 573)
 scale = Vector2(0.6112295, 0.61122954)
 texture = ExtResource("8_5sqrc")
 
-[node name="optionsLabel" type="Label" parent="mainPausePanel/optionsPanel/GridContainer"]
+[node name="optionsLabel" type="Label" parent="mainPausePanel/optionsPanel/GridContainer" unique_id=478637700]
 process_mode = 3
 z_index = 1
 layout_mode = 2
@@ -294,7 +286,7 @@ theme_override_constants/outline_size = 22
 theme_override_font_sizes/font_size = 100
 text = "OPTIONS"
 
-[node name="optionscontrolButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
+[node name="optionscontrolButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer" unique_id=1399601022]
 process_mode = 3
 z_index = 1
 layout_mode = 2
@@ -308,7 +300,7 @@ theme_override_fonts/font = ExtResource("9_mhjpf")
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
-[node name="optionsaudioButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
+[node name="optionsaudioButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer" unique_id=1218658906]
 process_mode = 3
 z_index = 1
 layout_mode = 2
@@ -322,7 +314,7 @@ theme_override_fonts/font = ExtResource("9_mhjpf")
 theme_override_font_sizes/font_size = 75
 text = "Audio"
 
-[node name="optionsbackButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer"]
+[node name="optionsbackButton" type="Button" parent="mainPausePanel/optionsPanel/GridContainer" unique_id=1598436615]
 process_mode = 3
 z_index = 1
 layout_mode = 2
@@ -336,20 +328,20 @@ theme_override_fonts/font = ExtResource("9_mhjpf")
 theme_override_font_sizes/font_size = 75
 text = "Back"
 
-[node name="controlsPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel"]
+[node name="controlsPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel" unique_id=370041269]
 process_mode = 3
 visible = false
 z_index = 1
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
-[node name="ControlsBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/controlsPanel"]
+[node name="ControlsBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/controlsPanel" unique_id=2056782856]
 modulate = Color(0.96035105, 0.96035105, 0.96035093, 1)
 position = Vector2(959.50006, 540.5)
 scale = Vector2(1.9989581, 1.998148)
 texture = ExtResource("8_w7enk")
 
-[node name="Beetle2" type="Sprite2D" parent="mainPausePanel/optionsPanel/controlsPanel"]
+[node name="Beetle2" type="Sprite2D" parent="mainPausePanel/optionsPanel/controlsPanel" unique_id=1201497018]
 visible = false
 z_index = 2
 texture_filter = 1
@@ -358,11 +350,11 @@ rotation = -0.43633235
 scale = Vector2(7.84, 7.84)
 texture = ExtResource("10_ilk7v")
 
-[node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/controlsPanel"]
+[node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/controlsPanel" unique_id=11306424]
 process_mode = 3
 layout_mode = 2
 
-[node name="controlsLabel" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+[node name="controlsLabel" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer" unique_id=1695039331]
 process_mode = 3
 z_index = 6
 layout_mode = 2
@@ -371,12 +363,12 @@ theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer" unique_id=809922904]
 process_mode = 3
 z_index = 6
 layout_mode = 2
 
-[node name="mainCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+[node name="mainCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer" unique_id=2042452112]
 process_mode = 3
 layout_mode = 2
 focus_neighbor_left = NodePath("../../controlsBackButton")
@@ -387,103 +379,103 @@ theme = ExtResource("1_ktti3")
 folded = true
 title = "Main Character Movement"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable"]
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable" unique_id=1596096890]
 process_mode = 3
 visible = false
 layout_mode = 2
 
-[node name="moveUpControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+[node name="moveUpControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer" unique_id=1604510450]
 process_mode = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls" unique_id=970350922]
 process_mode = 3
 layout_mode = 2
 text = "Move Up"
 
-[node name="charMoveUpButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+[node name="charMoveUpButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveUpControls" unique_id=1636461874]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("6_8dubc")
 control_name = "MainPlayerMoveUp"
 
-[node name="moveDownControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+[node name="moveDownControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer" unique_id=377757059]
 process_mode = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls" unique_id=264585084]
 process_mode = 3
 layout_mode = 2
 text = "Move Down"
 
-[node name="charMoveDownButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+[node name="charMoveDownButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveDownControls" unique_id=932011272]
 process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "MainPlayerMoveDown"
 
-[node name="moveLeftControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+[node name="moveLeftControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer" unique_id=1347025694]
 process_mode = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls" unique_id=85085909]
 process_mode = 3
 layout_mode = 2
 text = "Move Left"
 
-[node name="charMoveLeftButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+[node name="charMoveLeftButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveLeftControls" unique_id=1726123587]
 process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "MainPlayerMoveLeft"
 
-[node name="moveRightControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+[node name="moveRightControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer" unique_id=1057032015]
 process_mode = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls" unique_id=1070351625]
 process_mode = 3
 layout_mode = 2
 text = "Move Right"
 
-[node name="charMoveRightButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+[node name="charMoveRightButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveRightControls" unique_id=1022964574]
 process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "MainPlayerMoveRight"
 
-[node name="moveFast" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+[node name="moveFast" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer" unique_id=1854630889]
 process_mode = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast"]
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast" unique_id=1867975812]
 process_mode = 3
 layout_mode = 2
 text = "Fast Move"
 
-[node name="charMoveFastButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast"]
+[node name="charMoveFastButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveFast" unique_id=590680812]
 process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "FastWalk"
 
-[node name="moveSlow" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer"]
+[node name="moveSlow" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer" unique_id=579337443]
 process_mode = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow"]
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow" unique_id=826175411]
 process_mode = 3
 layout_mode = 2
 text = "Slow Walk"
 
-[node name="charMoveSlowButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow"]
+[node name="charMoveSlowButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/mainCharacterMovementFoldable/VBoxContainer/moveSlow" unique_id=1777760015]
 process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "SlowWalk"
 
-[node name="sawCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+[node name="sawCharacterMovementFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer" unique_id=1948907374]
 process_mode = 3
 layout_mode = 2
 focus_neighbor_left = NodePath("../mainCharacterMovementFoldable")
@@ -494,73 +486,73 @@ theme = ExtResource("1_ktti3")
 folded = true
 title = "Saw Character Movement"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable"]
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable" unique_id=776229673]
 process_mode = 3
 visible = false
 layout_mode = 2
 
-[node name="moveUpControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+[node name="moveUpControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer" unique_id=1231700788]
 process_mode = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls" unique_id=354688281]
 process_mode = 3
 layout_mode = 2
 text = "Move Up"
 
-[node name="sawMoveUpButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls"]
+[node name="sawMoveUpButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveUpControls" unique_id=1618128351]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("6_8dubc")
 control_name = "SawPlayerMoveUp"
 
-[node name="moveDownControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+[node name="moveDownControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer" unique_id=184760128]
 process_mode = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls" unique_id=1385634691]
 process_mode = 3
 layout_mode = 2
 text = "Move Down"
 
-[node name="sawMoveDownButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls"]
+[node name="sawMoveDownButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveDownControls" unique_id=1718321765]
 process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "SawPlayerMoveDown"
 
-[node name="moveLeftControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+[node name="moveLeftControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer" unique_id=691643584]
 process_mode = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls" unique_id=493986519]
 process_mode = 3
 layout_mode = 2
 text = "Move Left"
 
-[node name="sawMoveLeftButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls"]
+[node name="sawMoveLeftButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveLeftControls" unique_id=971031750]
 process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "SawPlayerMoveLeft"
 
-[node name="moveRightControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer"]
+[node name="moveRightControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer" unique_id=2128263220]
 process_mode = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls" unique_id=1175208812]
 process_mode = 3
 layout_mode = 2
 text = "Move Right"
 
-[node name="sawMoveRightButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls"]
+[node name="sawMoveRightButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/sawCharacterMovementFoldable/VBoxContainer/moveRightControls" unique_id=728669067]
 process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "SawPlayerMoveRight"
 
-[node name="otherFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer"]
+[node name="otherFoldable" type="FoldableContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer" unique_id=1946298721]
 process_mode = 3
 layout_mode = 2
 focus_neighbor_left = NodePath("../sawCharacterMovementFoldable")
@@ -571,27 +563,27 @@ theme = ExtResource("1_ktti3")
 folded = true
 title = "Miscellaneous Controls"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable"]
+[node name="VBoxContainer" type="VBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable" unique_id=1808029640]
 process_mode = 3
 visible = false
 layout_mode = 2
 
-[node name="UseBombControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer"]
+[node name="UseBombControls" type="HBoxContainer" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer" unique_id=2125748604]
 process_mode = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls"]
+[node name="Label" type="Label" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls" unique_id=200215509]
 process_mode = 3
 layout_mode = 2
 text = "Use Bomb"
 
-[node name="useBombButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls"]
+[node name="useBombButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/VBoxContainer/otherFoldable/VBoxContainer/UseBombControls" unique_id=2137075248]
 process_mode = 3
 layout_mode = 2
 script = ExtResource("6_8dubc")
 control_name = "UseBomb"
 
-[node name="controlsBackButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+[node name="controlsBackButton" type="Button" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer" unique_id=1402900225]
 process_mode = 3
 z_index = 6
 layout_mode = 2
@@ -603,36 +595,36 @@ focus_neighbor_bottom = NodePath("../VBoxContainer/mainCharacterMovementFoldable
 theme = ExtResource("1_ktti3")
 text = "Back"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+[node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer" unique_id=932849196]
 modulate = Color(0, 0, 0, 0.63529414)
 position = Vector2(-389.00003, 185.00009)
 scale = Vector2(0.6112295, 0.61122954)
 
-[node name="Polygon2D" type="Polygon2D" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/StaticBody2D"]
+[node name="Polygon2D" type="Polygon2D" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer/StaticBody2D" unique_id=756352621]
 z_index = 1
 position = Vector2(754.2176, -387.7432)
 polygon = PackedVector2Array(3115.0327, 26.176743, -211.04997, 6.544037, -211.04997, 1950.1675, 3141.2095, 1976.3442)
 
-[node name="OptionsMenuBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer"]
+[node name="OptionsMenuBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/controlsPanel/GridContainer" unique_id=1013416190]
 position = Vector2(960.00006, 165.00003)
 scale = Vector2(0.6112295, 0.61122954)
 texture = ExtResource("8_5sqrc")
 
-[node name="audioPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel"]
+[node name="audioPanel" type="PanelContainer" parent="mainPausePanel/optionsPanel" unique_id=918100564]
 process_mode = 3
 visible = false
 z_index = 1
 layout_mode = 2
 theme_override_styles/panel = ExtResource("5_wm3ai")
 
-[node name="AudioBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/audioPanel"]
+[node name="AudioBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/audioPanel" unique_id=221341967]
 visible = false
 modulate = Color(0.96035105, 0.96035105, 0.96035093, 1)
 position = Vector2(959.50006, 540.5)
 scale = Vector2(1.9989581, 1.998148)
 texture = ExtResource("8_w7enk")
 
-[node name="Beetle3" type="Sprite2D" parent="mainPausePanel/optionsPanel/audioPanel"]
+[node name="Beetle3" type="Sprite2D" parent="mainPausePanel/optionsPanel/audioPanel" unique_id=345953875]
 visible = false
 texture_filter = 1
 position = Vector2(1623.51, 270)
@@ -640,16 +632,16 @@ rotation = 0.55850536
 scale = Vector2(6.74, 6.74)
 texture = ExtResource("12_flkkw")
 
-[node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/audioPanel"]
+[node name="GridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/audioPanel" unique_id=1324079882]
 process_mode = 3
 layout_mode = 2
 
-[node name="MasterGridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer"]
+[node name="MasterGridContainer" type="GridContainer" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer" unique_id=1440135604]
 process_mode = 3
 z_index = 3
 layout_mode = 2
 
-[node name="MasterLabel" type="Label" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer/MasterGridContainer"]
+[node name="MasterLabel" type="Label" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer/MasterGridContainer" unique_id=1508725491]
 process_mode = 3
 z_index = 3
 layout_mode = 2
@@ -658,7 +650,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 text = "Master Volume"
 
-[node name="MasterHSlider" type="HSlider" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer/MasterGridContainer" node_paths=PackedStringArray("volSlider")]
+[node name="MasterHSlider" type="HSlider" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer/MasterGridContainer" unique_id=1527916214 node_paths=PackedStringArray("volSlider")]
 process_mode = 3
 z_index = 3
 custom_minimum_size = Vector2(200, 20)
@@ -672,7 +664,7 @@ script = ExtResource("7_p7vwb")
 volSlider = NodePath(".")
 selectedBus = "Master"
 
-[node name="audioBackButton" type="Button" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer"]
+[node name="audioBackButton" type="Button" parent="mainPausePanel/optionsPanel/audioPanel/GridContainer" unique_id=2051817344]
 process_mode = 3
 z_index = 3
 layout_mode = 2
@@ -684,22 +676,22 @@ focus_neighbor_bottom = NodePath("../MasterGridContainer/MasterHSlider")
 theme = ExtResource("1_ktti3")
 text = "Back"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/audioPanel"]
+[node name="StaticBody2D" type="StaticBody2D" parent="mainPausePanel/optionsPanel/audioPanel" unique_id=1070034271]
 modulate = Color(0, 0, 0, 0.63529414)
 position = Vector2(-389.00003, 185.00009)
 scale = Vector2(0.6112295, 0.61122954)
 
-[node name="Polygon2D" type="Polygon2D" parent="mainPausePanel/optionsPanel/audioPanel/StaticBody2D"]
+[node name="Polygon2D" type="Polygon2D" parent="mainPausePanel/optionsPanel/audioPanel/StaticBody2D" unique_id=69155814]
 z_index = 1
 position = Vector2(754.2176, -387.7432)
 polygon = PackedVector2Array(3115.0327, 26.176743, -211.04997, 6.544037, -211.04997, 1950.1675, 3141.2095, 1976.3442)
 
-[node name="OptionsMenuBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/audioPanel"]
+[node name="OptionsMenuBackground" type="Sprite2D" parent="mainPausePanel/optionsPanel/audioPanel" unique_id=1032923549]
 position = Vector2(960.00006, 165.00003)
 scale = Vector2(0.6112295, 0.61122954)
 texture = ExtResource("8_5sqrc")
 
-[node name="BossHealthBar" type="ProgressBar" parent="."]
+[node name="BossHealthBar" type="ProgressBar" parent="." unique_id=441712534]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -717,7 +709,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_5sqrc")
 value = 100.0
 show_percentage = false
 
-[node name="DeathScreen" parent="." instance=ExtResource("17_s2m3y")]
+[node name="DeathScreen" parent="." unique_id=110118223 instance=ExtResource("17_s2m3y")]
 visible = false
 layout_mode = 1
 
@@ -725,8 +717,6 @@ layout_mode = 1
 [connection signal="pressed" from="WaveProgressBar/BossInboundTestButton" to="WaveProgressBar/BossInboundText" method="activate_label"]
 [connection signal="mouse_entered" from="mainPausePanel/GridContainer/resumeButton" to="mainPausePanel" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="mainPausePanel/GridContainer/resumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="mouse_entered" from="mainPausePanel/GridContainer/optionButton" to="mainPausePanel" method="_on_button_mouse_entered"]
-[connection signal="pressed" from="mainPausePanel/GridContainer/optionButton" to="." method="_on_option_button_pressed"]
 [connection signal="mouse_entered" from="mainPausePanel/GridContainer/quitButton" to="mainPausePanel" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="mainPausePanel/GridContainer/quitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="mouse_entered" from="mainPausePanel/optionsPanel/GridContainer/optionscontrolButton" to="mainPausePanel" method="_on_button_mouse_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ded8qkxp64wrc"]
+[gd_scene format=3 uid="uid://ded8qkxp64wrc"]
 
 [ext_resource type="Script" uid="uid://ya0jddob1pt6" path="res://scenes/Tutorial/tutorial.gd" id="1_8o0w1"]
 [ext_resource type="PackedScene" uid="uid://cc7teempqvi0u" path="res://scenes/parallax.tscn" id="1_kbdgn"]
@@ -15,20 +15,20 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
 
-[node name="Tutorial" type="Node2D"]
+[node name="Tutorial" type="Node2D" unique_id=687026672]
 script = ExtResource("1_8o0w1")
 tutorial_enemy_scene = ExtResource("2_8p2m1")
 
-[node name="Mus_Tutorial" type="FmodEventEmitter2D" parent="."]
+[node name="Mus_Tutorial" type="FmodEventEmitter2D" parent="." unique_id=2109867222]
 event_name = "event:/MUSIC/Mus_Tut"
 event_guid = "{b06790dc-f559-4b07-a98e-7e2a856f3aa5}"
 autoplay = true
 
-[node name="parallax" parent="." instance=ExtResource("1_kbdgn")]
+[node name="parallax" parent="." unique_id=1455270985 instance=ExtResource("1_kbdgn")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=325896627]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1247456029]
 anchors_preset = -1
 anchor_left = 0.257
 anchor_top = 0.043
@@ -40,7 +40,7 @@ offset_right = 20.679932
 offset_bottom = 44.759995
 theme_override_styles/panel = SubResource("StyleBoxFlat_8o0w1")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=1679498548]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 35.0
@@ -50,12 +50,13 @@ theme_override_font_sizes/font_size = 30
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="player" parent="." instance=ExtResource("1_ob2r4")]
+[node name="player" parent="." unique_id=2027844281 instance=ExtResource("1_ob2r4")]
 position = Vector2(795, 716)
 
-[node name="blade" parent="." instance=ExtResource("2_kbdgn")]
+[node name="blade" parent="." unique_id=1133257010 instance=ExtResource("2_kbdgn")]
 position = Vector2(1127, 702)
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=973787390]
 
-[node name="UI" parent="CanvasLayer2" instance=ExtResource("5_h2nhn")]
+[node name="UI" parent="CanvasLayer2" unique_id=342384229 instance=ExtResource("5_h2nhn")]
+pausing_disabled = true

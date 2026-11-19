@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://beu3xwhat6ni6"]
 
-[node name="pauseScreen" type="Control"]
+[node name="pauseScreen" type="Control" unique_id=455990177]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -9,7 +9,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="mainPausePanel" type="PanelContainer" parent="."]
+[node name="mainPausePanel" type="PanelContainer" parent="." unique_id=60878068]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,42 +17,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="mainPausePanel"]
+[node name="GridContainer" type="GridContainer" parent="mainPausePanel" unique_id=439621778]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ButtonHover" type="FmodEventEmitter2D" parent="mainPausePanel/GridContainer"]
+[node name="ButtonHover" type="FmodEventEmitter2D" parent="mainPausePanel/GridContainer" unique_id=2017471233]
 event_name = "event:/UI/UI_Hover"
 event_guid = "{5df90c8f-ac26-4e95-984f-64e2f4850c8d}"
 position = Vector2(-803, -299)
 
-[node name="pauseTextLabel" type="Label" parent="mainPausePanel/GridContainer"]
+[node name="pauseTextLabel" type="Label" parent="mainPausePanel/GridContainer" unique_id=1786148781]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 100
 text = "PAUSE"
 
-[node name="resumeButton" type="Button" parent="mainPausePanel/GridContainer"]
+[node name="resumeButton" type="Button" parent="mainPausePanel/GridContainer" unique_id=312879286]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Resume"
 
-[node name="optionButton" type="Button" parent="mainPausePanel/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 75
-text = "Options"
-
-[node name="quitButton" type="Button" parent="mainPausePanel/GridContainer"]
+[node name="quitButton" type="Button" parent="mainPausePanel/GridContainer" unique_id=517875924]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "Quit"
 
-[node name="optionsPanel" type="PanelContainer" parent="."]
+[node name="optionsPanel" type="PanelContainer" parent="." unique_id=467290592]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [connection signal="pressed" from="mainPausePanel/GridContainer/resumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="mainPausePanel/GridContainer/optionButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="mainPausePanel/GridContainer/quitButton" to="." method="_on_quit_button_pressed"]

@@ -57,6 +57,7 @@ func instruction():
 		9:
 			$CanvasLayer/Panel/Label.text = "The tutorial is now over. Press Esc to open the pause menu, and press quit to leave the tutorial."
 			step += 1
+			$CanvasLayer2/UI.pausing_disabled = false
 
 func _process(_delta):
 	if step == 1 and waiting_for_action:

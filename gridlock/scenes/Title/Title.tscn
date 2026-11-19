@@ -163,7 +163,7 @@ position = Vector2(-13.184116, -2.341458)
 scale = Vector2(0.75, 0.75)
 sprite_frames = ExtResource("7_yehle")
 autoplay = "default"
-frame_progress = 0.8823073
+frame_progress = 0.78244716
 
 [node name="PlayerSprite" parent="." unique_id=2115561993 instance=ExtResource("7_wvb7n")]
 position = Vector2(908, 792)
