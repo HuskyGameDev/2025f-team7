@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://2h5ql4jtfo8e"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://2h5ql4jtfo8e"]
 
 [ext_resource type="Texture2D" uid="uid://byhgayhtyfxyt" path="res://assets/sprites/Saw/saw_outline.png" id="1_cfxre"]
 
@@ -19,7 +19,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j7qyx")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 2.0
 }]

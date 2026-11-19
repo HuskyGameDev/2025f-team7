@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://b1tvj7j1t47l0"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://b1tvj7j1t47l0"]
 
 [ext_resource type="Texture2D" uid="uid://8nnsilnydv17" path="res://assets/sprites/Player/flower_shadow.png" id="1_1j466"]
 
@@ -51,7 +51,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dl504")
 }],
-"loop": true,
+"loop": 1,
 "name": &"1_hp",
 "speed": 2.0
 }, {
@@ -62,7 +62,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gcjl7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"2_hp",
 "speed": 2.0
 }, {
@@ -73,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_323jr")
 }],
-"loop": true,
+"loop": 1,
 "name": &"3_hp",
 "speed": 2.0
 }, {
@@ -84,7 +84,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fjcvl")
 }],
-"loop": true,
+"loop": 1,
 "name": &"4_hp",
 "speed": 2.0
 }, {
@@ -95,7 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m4fkk")
 }],
-"loop": true,
+"loop": 1,
 "name": &"5_hp",
 "speed": 2.0
 }]

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://dtxsjbody588f"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://dtxsjbody588f"]
 
 [ext_resource type="Texture2D" uid="uid://tgpq4rdrfbk3" path="res://assets/sprites/Player/flower_foreground.png" id="1_0vqj0"]
 
@@ -51,7 +51,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r13eb")
 }],
-"loop": true,
+"loop": 1,
 "name": &"1_hp",
 "speed": 2.0
 }, {
@@ -62,7 +62,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dcyoo")
 }],
-"loop": true,
+"loop": 1,
 "name": &"2_hp",
 "speed": 2.0
 }, {
@@ -73,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c6xsm")
 }],
-"loop": true,
+"loop": 1,
 "name": &"3_hp",
 "speed": 2.0
 }, {
@@ -84,7 +84,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lcsut")
 }],
-"loop": true,
+"loop": 1,
 "name": &"4_hp",
 "speed": 2.0
 }, {
@@ -95,7 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ctgks")
 }],
-"loop": true,
+"loop": 1,
 "name": &"5_hp",
 "speed": 2.0
 }]

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://li8qkalo4nn8"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://li8qkalo4nn8"]
 
 [ext_resource type="Texture2D" uid="uid://c2bxve7wj67ry" path="res://assets/sprites/other/death_particle.png" id="1_bduno"]
 
@@ -26,7 +26,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mb0l1")
 }],
-"loop": false,
+"loop": 0,
 "name": &"default",
 "speed": 4.0
 }]
