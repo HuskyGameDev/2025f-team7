@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cu8uuvpuut31x" path="res://assets/sprites/Menu/Menu Background.png" id="2_h2cek"]
 [ext_resource type="Texture2D" uid="uid://d0eqnygobjp0e" path="res://assets/sprites/Menu/Gridlock logo export.png" id="3_l0whq"]
 [ext_resource type="Texture2D" uid="uid://nmjqkowop31g" path="res://assets/sprites/Bosses/roach walk (jackson)-Sheet.png" id="5_l0whq"]
+[ext_resource type="Texture2D" uid="uid://cpkn487n5mmsk" path="res://assets/sprites/Menu/index_card.png" id="6_62hwe"]
 [ext_resource type="Texture2D" uid="uid://wkc4l5ke7fiy" path="res://assets/sprites/Bosses/centipede remaket.png" id="6_xutsw"]
 [ext_resource type="PackedScene" uid="uid://d3snw0is72pw8" path="res://scenes/Player/player_sprite.tscn" id="7_wvb7n"]
+[ext_resource type="SpriteFrames" uid="uid://bwo78bgnfqike" path="res://assets/sprites/ArcadeCabinet/menu_controls.tres" id="7_yehle"]
 [ext_resource type="Texture2D" uid="uid://dwgt4vjwha7js" path="res://assets/sprites/Menu/Start.png" id="10_0jllc"]
 [ext_resource type="Texture2D" uid="uid://c1m0xioaysc3" path="res://assets/sprites/Menu/Color.png" id="12_birck"]
 [ext_resource type="Texture2D" uid="uid://du0l3e3xsw6tc" path="res://assets/sprites/Menu/quit.png" id="12_s4040"]
@@ -18,7 +20,6 @@
 [ext_resource type="FontFile" uid="uid://cevvelverwilc" path="res://assets/Jersey25-Regular.ttf" id="16_yehle"]
 [ext_resource type="Theme" uid="uid://d8uuw1d6d7be" path="res://assets/label.tres" id="17_wvb7n"]
 [ext_resource type="Script" uid="uid://bvb213t76vk3i" path="res://scripts/UI/volumeSlider.gd" id="17_xutsw"]
-[ext_resource type="PackedScene" uid="uid://d2lylhf5jew0m" path="res://scenes/Title/saw_cursor.tscn" id="19_xutsw"]
 [ext_resource type="Texture2D" uid="uid://cjafq14xq2mhh" path="res://assets/sprites/lesser enemies/mosquito-WIP.png" id="20_r8tji"]
 [ext_resource type="PackedScene" uid="uid://brgwd7siy17ly" path="res://scenes/Player/saw_sprite.tscn" id="21_blibh"]
 [ext_resource type="Script" uid="uid://b5gt8g6xhgm07" path="res://scenes/Title/credit_panel.gd" id="21_sxacd"]
@@ -83,6 +84,8 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_62hwe"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yehle"]
 content_margin_right = 16.0
 content_margin_bottom = 16.0
@@ -145,6 +148,23 @@ autoplay = "Move"
 frame_progress = 0.73393273
 offset = Vector2(60.45227, 71.24353)
 
+[node name="BestTimesCard" type="Sprite2D" parent="MenuBackground" unique_id=498527727]
+position = Vector2(331.83182, 152.5)
+scale = Vector2(0.60068214, 0.60286456)
+texture = ExtResource("6_62hwe")
+
+[node name="ControlCard" type="Sprite2D" parent="." unique_id=2096682729]
+position = Vector2(1261, 956)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_62hwe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ControlCard" unique_id=763301936]
+position = Vector2(-13.184116, -2.341458)
+scale = Vector2(0.75, 0.75)
+sprite_frames = ExtResource("7_yehle")
+autoplay = "default"
+frame_progress = 0.8823073
+
 [node name="PlayerSprite" parent="." unique_id=2115561993 instance=ExtResource("7_wvb7n")]
 position = Vector2(908, 792)
 scale = Vector2(0.667, 0.667)
@@ -155,6 +175,8 @@ offset_left = 67.0
 offset_top = 628.0
 offset_right = 75.0
 offset_bottom = 636.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_62hwe")
+button_mask = 0
 
 [node name="StartButton" type="Button" parent="Button" unique_id=979263768]
 texture_filter = 1
@@ -162,15 +184,16 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = 43.0
+offset_top = 99.0
 offset_right = 274.0
-offset_bottom = 136.0
+offset_bottom = 192.0
 grow_vertical = 0
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../QuitButton")
+focus_neighbor_right = NodePath("../TutorialButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 theme = ExtResource("17_wvb7n")
+button_mask = 0
 icon = ExtResource("10_0jllc")
 icon_alignment = 1
 expand_icon = true
@@ -181,15 +204,16 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = 162.0
+offset_top = 219.0
 offset_right = 274.0
-offset_bottom = 255.0
+offset_bottom = 312.0
 grow_vertical = 0
-focus_neighbor_left = NodePath("../StartButton")
+focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../StartButton")
-focus_neighbor_right = NodePath("../ColorButton")
+focus_neighbor_right = NodePath("../CreditButton")
 focus_neighbor_bottom = NodePath("../ColorButton")
 theme = ExtResource("17_wvb7n")
+button_mask = 0
 icon = ExtResource("12_s4040")
 icon_alignment = 1
 expand_icon = true
@@ -204,11 +228,12 @@ offset_top = 321.0
 offset_right = 967.0
 offset_bottom = 398.0
 grow_vertical = 0
-focus_neighbor_left = NodePath("../QuitButton")
-focus_neighbor_top = NodePath("../QuitButton")
-focus_neighbor_right = NodePath("../TutorialButton")
+focus_neighbor_left = NodePath("../TutorialButton")
+focus_neighbor_top = NodePath("../CreditButton")
+focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 theme = ExtResource("17_wvb7n")
+button_mask = 0
 icon = ExtResource("12_birck")
 icon_alignment = 1
 expand_icon = true
@@ -219,16 +244,17 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 1402.0
-offset_top = 162.0
-offset_right = 1676.0
-offset_bottom = 255.0
+offset_left = 310.0
+offset_top = 99.0
+offset_right = 584.0
+offset_bottom = 192.0
 grow_vertical = 0
-focus_neighbor_left = NodePath("../ColorButton")
-focus_neighbor_top = NodePath("../CreditButton")
-focus_neighbor_right = NodePath("../CreditButton")
-focus_neighbor_bottom = NodePath("../ColorButton")
+focus_neighbor_left = NodePath("../StartButton")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../ColorButton")
+focus_neighbor_bottom = NodePath("../CreditButton")
 theme = ExtResource("17_wvb7n")
+button_mask = 0
 icon = ExtResource("13_wvb7n")
 icon_alignment = 1
 expand_icon = true
@@ -237,11 +263,16 @@ expand_icon = true
 unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
-offset_left = 1403.0
-offset_top = 51.0
-offset_right = 1677.0
-offset_bottom = 144.0
+offset_left = 310.0
+offset_top = 227.0
+offset_right = 584.0
+offset_bottom = 320.0
+focus_neighbor_left = NodePath("../QuitButton")
+focus_neighbor_top = NodePath("../TutorialButton")
+focus_neighbor_right = NodePath("../ColorButton")
+focus_neighbor_bottom = NodePath("../ColorButton")
 theme = ExtResource("17_wvb7n")
+button_mask = 0
 icon = ExtResource("12_wvb7n")
 icon_alignment = 1
 expand_icon = true
@@ -853,22 +884,14 @@ rotation = -2.9877481
 scale = Vector2(7.4791665, 7.4791665)
 texture = ExtResource("24_yehle")
 
-[node name="SawCursor" parent="." unique_id=799682010 instance=ExtResource("19_xutsw")]
-position = Vector2(914, 517)
-
 [node name="BestTime" type="Label" parent="." unique_id=1079663878]
 z_index = 1
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -194.0
-offset_top = -51.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 1433.0
+offset_top = 964.0
+offset_right = 1643.0
+offset_bottom = 1031.0
 theme = ExtResource("17_wvb7n")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
