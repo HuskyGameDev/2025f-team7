@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bb5h0dsjcgnmi"]
+
+[ext_resource type="Texture2D" uid="uid://dj1h447ntgx0i" path="res://assets/sprites/ArcadeCabinet/controls_prompt_gameplay.png" id="1_yn0yw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x31td"]
+atlas = ExtResource("1_yn0yw")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otccc"]
+atlas = ExtResource("1_yn0yw")
+region = Rect2(512, 0, 512, 512)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x31td")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otccc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.5
+}]

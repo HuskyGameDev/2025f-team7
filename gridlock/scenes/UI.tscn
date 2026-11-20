@@ -16,6 +16,8 @@
 [ext_resource type="FontFile" uid="uid://cevvelverwilc" path="res://assets/Jersey25-Regular.ttf" id="9_mhjpf"]
 [ext_resource type="Texture2D" uid="uid://kj2hkbm1lu4a" path="res://assets/sprites/other/boss1_turret_var3.png" id="10_ilk7v"]
 [ext_resource type="Texture2D" uid="uid://cdbo4ddgh6vpq" path="res://assets/sprites/other/boss1_turret_var2.png" id="12_flkkw"]
+[ext_resource type="SpriteFrames" uid="uid://bb5h0dsjcgnmi" path="res://assets/sprites/ArcadeCabinet/controls_prompt_gameplay.tres" id="17_4dthu"]
+[ext_resource type="Texture2D" uid="uid://cpkn487n5mmsk" path="res://assets/sprites/Menu/index_card.png" id="17_hu0pd"]
 [ext_resource type="PackedScene" uid="uid://cw080ehmxwbf3" path="res://scenes/Menus/death_screen.tscn" id="17_s2m3y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ro3t7"]
@@ -690,6 +692,18 @@ polygon = PackedVector2Array(3115.0327, 26.176743, -211.04997, 6.544037, -211.04
 position = Vector2(960.00006, 165.00003)
 scale = Vector2(0.6112295, 0.61122954)
 texture = ExtResource("8_5sqrc")
+
+[node name="Sprite2D" type="Sprite2D" parent="mainPausePanel" unique_id=2120670599]
+process_mode = 3
+position = Vector2(1562, 913)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("17_hu0pd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="mainPausePanel/Sprite2D" unique_id=1677329217]
+position = Vector2(-15, -22.5)
+scale = Vector2(0.6860351, 0.6860351)
+sprite_frames = ExtResource("17_4dthu")
+autoplay = "default"
 
 [node name="BossHealthBar" type="ProgressBar" parent="." unique_id=441712534]
 layout_mode = 1
