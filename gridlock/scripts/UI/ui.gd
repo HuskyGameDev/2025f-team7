@@ -30,7 +30,7 @@ var timer_stopped := false
 var testVar := false;
 signal bossInbound;
 
-@export var pausing_disabled := false
+@export var pause_with_accept := true
 
 @export var full_heart: Texture;
 @export var empty_heart: Texture;
@@ -86,15 +86,15 @@ func _ready() -> void:
 	#sets the Boss Health Bar to not visible
 	BossHealthBar.visible = false
 	
-	# to make sure we eat the accept button (since it
-	# was likely pressed to start the game), we disable pausing
-	# for the first frame
-	if !pausing_disabled:
-		pausing_disabled = true
-		call_deferred("__enable_pause")
+	if pause_with_accept:
+		# to make sure we eat the accept button (since it
+		# was likely pressed to start the game), we disable pausing
+		# for the first frame
+		pause_with_accept = false
+		call_deferred("__enable_pause_with_accept")
 
-func __enable_pause():
-	pausing_disabled = false
+func __enable_pause_with_accept():
+	pause_with_accept = true
 
 #Increases the timer every second
 #If scene tree is paused or stopped flag is flipped timer doesn't increase
@@ -193,28 +193,32 @@ Goes down the tree and checks the logic which does certain actions
 With this tree escape works throughout the whole pause and options screen currently
 """
 func _input(_event: InputEvent) -> void:
-	if(!pausing_disabled and !mainPausePanel.visible and Input.is_action_just_pressed("ui_accept")):
-		if(audioPanel.visible):
-			audioPanel.visible = false;
-			$mainPausePanel/optionsPanel/GridContainer/optionscontrolButton.grab_focus.call_deferred()
-		elif(controlsPanel.visible):
-			controlsPanel.visible = false;
-			$mainPausePanel/optionsPanel/GridContainer/optionscontrolButton.grab_focus.call_deferred()
-		elif(optionsPanel.visible):
-			optionsPanel.visible = false;
-			$mainPausePanel/GridContainer/resumeButton.grab_focus.call_deferred()
-		elif(mainPausePanel.visible):
-			mainPausePanel.visible = false;
-			stopped = false;
-			get_tree().paused = false;
-			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;	
-		elif(not mainPausePanel.visible):
-			mainPausePanel.visible = true;
-			$mainPausePanel/GridContainer/resumeButton.grab_focus.call_deferred()
-			stopped = true;
-			get_tree().paused = true;
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
-		
+	if !Input.is_action_just_pressed("ui_cancel"):
+		if !Input.is_action_just_pressed("ui_accept"): return
+		if !pause_with_accept: return
+		if mainPausePanel.visible: return
+	
+	if(audioPanel.visible):
+		audioPanel.visible = false;
+		$mainPausePanel/optionsPanel/GridContainer/optionscontrolButton.grab_focus.call_deferred()
+	elif(controlsPanel.visible):
+		controlsPanel.visible = false;
+		$mainPausePanel/optionsPanel/GridContainer/optionscontrolButton.grab_focus.call_deferred()
+	elif(optionsPanel.visible):
+		optionsPanel.visible = false;
+		$mainPausePanel/GridContainer/resumeButton.grab_focus.call_deferred()
+	elif(mainPausePanel.visible):
+		mainPausePanel.visible = false;
+		stopped = false;
+		get_tree().paused = false;
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;	
+	elif(not mainPausePanel.visible):
+		mainPausePanel.visible = true;
+		$mainPausePanel/GridContainer/resumeButton.grab_focus.call_deferred()
+		stopped = true;
+		get_tree().paused = true;
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
+
 """
 Main Pause Panel Buttons
 This block deals with the the buttons under mainPausePanel and its GridContainer

@@ -5,19 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://bieqraoqjj3gm" path="res://scenes/Player/player.tscn" id="1_ob2r4"]
 [ext_resource type="PackedScene" uid="uid://dkofp4g4cjrlc" path="res://scenes/Tutorial/tutorial_enemy.tscn" id="2_8p2m1"]
 [ext_resource type="PackedScene" uid="uid://br0houypihsfp" path="res://scenes/Player/blade.tscn" id="2_kbdgn"]
+[ext_resource type="PackedScene" uid="uid://bgbhpo80ucalq" path="res://scenes/basicEnemies/enemy_spawner.tscn" id="3_6jcgc"]
+[ext_resource type="FontFile" uid="uid://cevvelverwilc" path="res://assets/Jersey25-Regular.ttf" id="4_1g8ws"]
 [ext_resource type="PackedScene" uid="uid://b1yptc0ppcic" path="res://scenes/UI.tscn" id="5_h2nhn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o0w1"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6jcgc"]
 
 [node name="Tutorial" type="Node2D" unique_id=687026672]
 script = ExtResource("1_8o0w1")
 tutorial_enemy_scene = ExtResource("2_8p2m1")
+spawner_scene = ExtResource("3_6jcgc")
 
 [node name="Mus_Tutorial" type="FmodEventEmitter2D" parent="." unique_id=2109867222]
 event_name = "event:/MUSIC/Mus_Tut"
@@ -29,26 +26,20 @@ autoplay = true
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=325896627]
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1247456029]
-anchors_preset = -1
-anchor_left = 0.257
-anchor_top = 0.043
-anchor_right = 0.77300006
-anchor_bottom = 0.178
-offset_left = -0.44000244
-offset_top = -0.44000244
-offset_right = 20.679932
-offset_bottom = 44.759995
-theme_override_styles/panel = SubResource("StyleBoxFlat_8o0w1")
+offset_right = 21.119934
+offset_bottom = 45.199997
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6jcgc")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=1679498548]
-layout_mode = 0
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/Panel" unique_id=1651523684]
+layout_mode = 1
 offset_left = 26.0
 offset_top = 35.0
 offset_right = 980.0
-offset_bottom = 116.0
-theme_override_font_sizes/font_size = 30
-vertical_alignment = 1
-autowrap_mode = 3
+offset_bottom = 279.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_1g8ws")
+theme_override_font_sizes/normal_font_size = 45
+text = "wow i love being a tutorial"
 
 [node name="player" parent="." unique_id=2027844281 instance=ExtResource("1_ob2r4")]
 position = Vector2(795, 716)
@@ -59,4 +50,4 @@ position = Vector2(1127, 702)
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=973787390]
 
 [node name="UI" parent="CanvasLayer2" unique_id=342384229 instance=ExtResource("5_h2nhn")]
-pausing_disabled = true
+pause_with_accept = false

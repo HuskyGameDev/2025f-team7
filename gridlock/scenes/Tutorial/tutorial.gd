@@ -1,100 +1,111 @@
 extends Node
 
 @export var tutorial_enemy_scene: PackedScene
+@export var spawner_scene: PackedScene
+
 var spawned_enemy = null
 var step = 0
 var waiting_for_action = false
 
+@onready var label: RichTextLabel = $CanvasLayer/Panel/Label
+
+const BUTTON_ADVANCE := "[img]res://assets/sprites/ArcadeCabinet/button_advance.png[/img]"
+const BUTTON_BOMB := "[img]res://assets/sprites/ArcadeCabinet/button_bomb.png[/img]"
+const BUTTON_FAST := "[img]res://assets/sprites/ArcadeCabinet/button_fast.png[/img]"
+const BUTTON_PAUSE := "[img]res://assets/sprites/ArcadeCabinet/button_pause.png[/img]"
+const BUTTON_SLOW := "[img]res://assets/sprites/ArcadeCabinet/button_slow.png[/img]"
+
 func _ready():
-	$CanvasLayer/Panel/Label.text = "This tutorial will explain the controls. Press Enter to start!"
+	label.clear()
+	label.append_text("This tutorial will explain the controls. Press ")
+	label.append_text(BUTTON_ADVANCE)
+	label.append_text(" to start!")
+	
 	waiting_for_action = false
 	
 func _input(event):
 	if Input.is_action_just_pressed("Confirm"):
 		if not waiting_for_action:
 			instruction()
-			
+
+func __action_complete():
+	waiting_for_action = false
+	label.newline()
+	label.append_text("(Press ")
+	label.append_text(BUTTON_ADVANCE)
+	label.append_text(" to continue)")
+
 func instruction():
+	label.clear()
+	waiting_for_action = true
 	match step:
-		0:
-			$CanvasLayer/Panel/Label.text = "Move the flower using WASD."
-			waiting_for_action = true
-			step += 1
-		1: 
-			$CanvasLayer/Panel/Label.text = "Move the saw using the arrow keys."
-			waiting_for_action = true
-			step += 1
+		0: label.append_text("Move the flower using the left joystick.")
+		1: label.append_text("Move the saw using the right joystick.")
 		2:
-			$CanvasLayer/Panel/Label.text = "The saw harms the enemies, and it is invulnerable to bullets."
-			$CanvasLayer/Panel/Label.text += "\n(Press Enter to Continue)"
-			step += 1
+			label.append_text("The saw harms the enemies, and it is invulnerable to bullets.")
+			__action_complete()
 		3:
-			$CanvasLayer/Panel/Label.text = "Use the saw to destroy this enemy."
-			waiting_for_action = true
+			label.append_text("Use the saw to destroy this enemy.")
 			spawn_enemy()
-			step += 1
 		4:
-			$CanvasLayer/Panel/Label.text = "The center of the flower is vulnerable to bullets. The amount of flower petals represents its health."
-			$CanvasLayer/Panel/Label.text += "\n(Press Enter to Continue)"
-			step += 1
+			label.append_text("The center of the flower is vulnerable to bullets. The amount of flower petals represents its health.")
+			label.newline()
+			__action_complete()
 		5:
-			$CanvasLayer/Panel/Label.text = "If you want to have more prescise movements, you can hold control to slow the flowers move speed. Try it!"
-			waiting_for_action = true
-			step += 1
+			label.append_text("If you want to have more prescise movements, you can hold ")
+			label.append_text(BUTTON_SLOW)
+			label.append_text(" to slow the flowers move speed. Try it!")
 		6:
-			$CanvasLayer/Panel/Label.text = "If you hold shift it does the opposite and speeds up the flower. Give it a try!"
-			waiting_for_action = true
-			step += 1
+			label.append_text("If you hold ")
+			label.append_text(BUTTON_FAST)
+			label.append_text(" it does the opposite and speeds up the flower. Give it a try!")
 		7:
-			$CanvasLayer/Panel/Label.text = "Additionally, you have a Bomb Bar in the bottom right, it will fill up as you narrowly dodge enemy bullets"
-			$CanvasLayer/Panel/Label.text += "\n(Press Enter to Continue)"
-			step += 1
+			label.append_text("Additionally, you have a Bomb Bar in the bottom right, it will fill up as you narrowly dodge enemy bullets")
+			__action_complete()
 		8:
-			$CanvasLayer/Panel/Label.text = "Once the bomb bar reaches 100%, the bomb is ready. Press space to launch a bomb. Why dont you try it now."
+			label.append_text("Once the bomb bar reaches 100%, the bomb is ready. Press ")
+			label.append_text(BUTTON_BOMB)
+			label.append_text(" to launch a bomb.")
 			GlobalSignals.emit_signal("bomb_gained")
-			waiting_for_action = true
-			step += 1
 		9:
-			$CanvasLayer/Panel/Label.text = "The tutorial is now over. Press Esc to open the pause menu, and press quit to leave the tutorial."
-			step += 1
-			$CanvasLayer2/UI.pausing_disabled = false
+			label.append_text("The tutorial is now over. Press ")
+			label.append_text(BUTTON_PAUSE)
+			label.append_text(" to open the pause menu, and press quit to leave the tutorial.")
+	step += 1
 
 func _process(_delta):
 	if step == 1 and waiting_for_action:
 		if Input.get_vector("MainPlayerMoveLeft", "MainPlayerMoveRight", "MainPlayerMoveUp", "MainPlayerMoveDown") != Vector2.ZERO:
-			waiting_for_action = false
-			$CanvasLayer/Panel/Label.text += "\n(Press Enter to Continue)"
+			__action_complete()
 	if step == 2 and waiting_for_action:
 		if Input.get_vector("SawPlayerMoveLeft", "SawPlayerMoveRight", "SawPlayerMoveUp", "SawPlayerMoveDown") != Vector2.ZERO:
-			waiting_for_action = false
-			$CanvasLayer/Panel/Label.text += "\n(Press Enter to Continue)"
+			__action_complete()
 	if step == 6 and waiting_for_action:
 		if Input.is_action_just_pressed("SlowWalk"):
-			waiting_for_action = false
-			$CanvasLayer/Panel/Label.text += "\n(Press Enter to Continue)"
+			__action_complete()
 	if step == 7 and waiting_for_action:
 		if Input.is_action_just_pressed("FastWalk"):
-			waiting_for_action = false
-			$CanvasLayer/Panel/Label.text += "\n(Press Enter to Continue)"
+			__action_complete()
 	if step == 9 and waiting_for_action:
 		if Input.is_action_just_pressed("UseBomb"):
-			waiting_for_action = false
-			$CanvasLayer/Panel/Label.text += "\n(Press Enter to Continue)"
+			__action_complete()
 	
 func spawn_enemy():
 	if tutorial_enemy_scene == null:
 		return
 	
-	spawned_enemy = tutorial_enemy_scene.instantiate()
-	
-	spawned_enemy.global_position = Vector2(1000, 400)
-	
-	get_tree().current_scene.add_child(spawned_enemy)
-	
-	spawned_enemy.connect("died", Callable(self, "_on_enemy_died"))
+	var spawner = spawner_scene.instantiate()
+	spawner.spawns = tutorial_enemy_scene
+	spawner.spawn_time = 0.75
+	spawner.scale = Vector2.ONE * 1.5
+	spawner.spawned.connect(_on_enemy_spawned)
+	spawner.global_position = Vector2(1000, 400)
+	add_child(spawner)
+
+func _on_enemy_spawned(enemy: Node2D) -> void:
+	enemy.died.connect(_on_enemy_died)
 
 func _on_enemy_died():
 	print("tutorial recieved enemy death")
 	if step == 4 and waiting_for_action:
-		waiting_for_action = false
-		$CanvasLayer/Panel/Label.text += "\n(Press Enter to continue)"
+		__action_complete()

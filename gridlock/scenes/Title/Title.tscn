@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cpkn487n5mmsk" path="res://assets/sprites/Menu/index_card.png" id="6_62hwe"]
 [ext_resource type="Texture2D" uid="uid://wkc4l5ke7fiy" path="res://assets/sprites/Bosses/centipede remaket.png" id="6_xutsw"]
 [ext_resource type="PackedScene" uid="uid://d3snw0is72pw8" path="res://scenes/Player/player_sprite.tscn" id="7_wvb7n"]
-[ext_resource type="SpriteFrames" uid="uid://bwo78bgnfqike" path="res://assets/sprites/ArcadeCabinet/menu_controls.tres" id="7_yehle"]
+[ext_resource type="SpriteFrames" uid="uid://68ffwo0qt60i" path="res://assets/sprites/ArcadeCabinet/controls_prompt_menu.tres" id="7_yehle"]
 [ext_resource type="Texture2D" uid="uid://dwgt4vjwha7js" path="res://assets/sprites/Menu/Start.png" id="10_0jllc"]
 [ext_resource type="Texture2D" uid="uid://c1m0xioaysc3" path="res://assets/sprites/Menu/Color.png" id="12_birck"]
 [ext_resource type="Texture2D" uid="uid://du0l3e3xsw6tc" path="res://assets/sprites/Menu/quit.png" id="12_s4040"]
@@ -148,22 +148,15 @@ autoplay = "Move"
 frame_progress = 0.73393273
 offset = Vector2(60.45227, 71.24353)
 
-[node name="BestTimesCard" type="Sprite2D" parent="MenuBackground" unique_id=498527727]
-position = Vector2(331.83182, 152.5)
-scale = Vector2(0.60068214, 0.60286456)
-texture = ExtResource("6_62hwe")
-
 [node name="ControlCard" type="Sprite2D" parent="." unique_id=2096682729]
 position = Vector2(1261, 956)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_62hwe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ControlCard" unique_id=763301936]
-position = Vector2(-13.184116, -2.341458)
-scale = Vector2(0.75, 0.75)
+position = Vector2(-4.0000343, -22.000027)
 sprite_frames = ExtResource("7_yehle")
 autoplay = "default"
-frame_progress = 0.78244716
 
 [node name="PlayerSprite" parent="." unique_id=2115561993 instance=ExtResource("7_wvb7n")]
 position = Vector2(908, 792)
@@ -888,10 +881,10 @@ texture = ExtResource("24_yehle")
 z_index = 1
 texture_filter = 1
 layout_mode = 1
-offset_left = 1433.0
-offset_top = 964.0
-offset_right = 1643.0
-offset_bottom = 1031.0
+offset_left = 1425.0
+offset_top = 1001.0
+offset_right = 1635.0
+offset_bottom = 1068.0
 theme = ExtResource("17_wvb7n")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50

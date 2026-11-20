@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1raikhrpte0l"
-path="res://.godot/imported/menu_controls.png-0fba3768a06bcd00c15f8f530c7a5eea.ctex"
+uid="uid://ck4qw8d3yljta"
+path="res://.godot/imported/button_fast.png-b19e8230818965a5bca935938816e017.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ArcadeCabinet/menu_controls.png"
-dest_files=["res://.godot/imported/menu_controls.png-0fba3768a06bcd00c15f8f530c7a5eea.ctex"]
+source_file="res://assets/sprites/ArcadeCabinet/button_fast.png"
+dest_files=["res://.godot/imported/button_fast.png-b19e8230818965a5bca935938816e017.ctex"]
 
 [params]
 
